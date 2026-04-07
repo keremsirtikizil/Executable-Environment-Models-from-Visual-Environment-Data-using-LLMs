@@ -54,18 +54,24 @@ TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 EPISODES = {
 
-    # Short sequence: shows attraction clearly (agent moves toward metal 3 times)
+    # Extended sequence (~5x frames): drags metal across grid using attraction,
+    # demonstrates wall-blocked attraction, mixes toward / away / orthogonal moves.
     "attract_3steps": {
         "grid": [
-            [WALL,  WALL,  WALL,  WALL,  WALL,  WALL],
-            [WALL,  EMPTY, AGENT, EMPTY, EMPTY, WALL],
-            [WALL,  EMPTY, EMPTY, EMPTY, EMPTY, WALL],
-            [WALL,  EMPTY, METAL, EMPTY, EMPTY, WALL],
-            [WALL,  EMPTY, EMPTY, EMPTY, EMPTY, WALL],
-            [WALL,  WALL,  WALL,  WALL,  WALL,  WALL],
+            [WALL, WALL,  WALL,  WALL,  WALL,  WALL,  WALL,  WALL],
+            [WALL, AGENT, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, EMPTY, METAL, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL],
+            [WALL, WALL,  WALL,  WALL,  WALL,  WALL,  WALL,  WALL],
         ],
-        "actions": [1, 1, 1],   # DOWN x3 toward metal
-        "description": "Agent moves DOWN toward metal — metal co-moves each step",
+        "actions": [1, 1, 1, 3, 0, 3, 3, 0, 2, 2, 2, 3, 2],
+        # DOWN x2 (drag metal down), DOWN (blocked attraction — no-op),
+        # RIGHT (drag), UP (away — agent only), RIGHT x2 (drag metal east),
+        # UP (away), LEFT x3 (orthogonal — metal stationary), RIGHT (drag), LEFT (away).
+        "description": "Extended attraction sequence — toward/away/blocked/orthogonal mixed",
     },
 
     # Mixed sequence: toward + away + orthogonal — tests all three rule cases

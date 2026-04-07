@@ -112,24 +112,37 @@ EPISODES = {
     },
 
     # 10x10: full showcase — ice slide, then attraction, then hole
+    # Extended sequence (~5x frames): pushes metal into hole early, then long
+    # exploration showing ice slide, internal walls, normal movement, all 4 directions.
     "full_complex": {
         "grid": [
             [W, W, W, W, W, W, W, W, W, W],
             [W, E, E, E, E, E, E, E, E, W],
-            [W, M, E, E, E, E, E, E, E, W],
-            [W, E, A, I, I, E, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
+            [W, A, E, M, E, H, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
+            [W, E, I, I, I, I, I, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
-            [W, E, E, E, E, E, E, E, E, W],
+            [W, E, E, E, W, E, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
             [W, W, W, W, W, W, W, W, W, W],
         ],
-        "actions": [3, 1, 1, 1, 2, 0, 0],
-        # RIGHT (slide on ice to col 5, metal behind not toward),
-        # DOWN x3 (normal, metal above not toward),
-        # LEFT (normal), UP x2 (toward metal — attraction)
-        "description": "Ice slide, normal movement, then attraction toward metal upward",
+        "actions": [
+            3, 3,                        # push metal east into hole — both vanish
+            3, 3, 3,                     # walk right along row 3
+            1, 1,                        # down (one onto ice → slides further down)
+            3, 3,                        # right
+            0, 0, 0, 0,                  # up to row 1
+            2, 2, 2, 2,                  # left along row 1
+            1, 1,                        # down
+            2,                           # left (onto ice → slides further left)
+            1, 1, 1,                     # down toward bottom-left, around internal wall
+            3, 3, 3, 3,                  # right along row 8
+            0, 0,                        # up
+            2, 2, 2,                     # left
+            0, 0,                        # up (one onto ice → slides further up)
+        ],
+        "description": "Hole consumption, ice slides (UP/DOWN/LEFT), normal movement, internal walls",
     },
 }
 

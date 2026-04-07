@@ -129,27 +129,42 @@ EPISODES = {
         "description": "Agent hits beacon and bounces an extra cell",
     },
 
-    # Full showcase: echo opposite + blocked + void + beacon
+    # Extended sequence (~5x frames): echo opposite in all 4 directions, void
+    # consumption, two beacon bounces, long post-echo exploration.
     "full_echo": {
         "grid": [
             [W, W, W, W, W, W, W, W, W, W],
+            [W, E, E, E, E, E, E, E, V, W],
+            [W, E, E, E, E, E, O, E, E, W],
+            [W, E, E, E, E, A, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
-            [W, E, V, E, O, E, A, B, E, W],
-            [W, E, E, E, E, E, E, E, E, W],
-            [W, E, E, E, E, E, E, E, E, W],
-            [W, E, E, E, E, E, E, E, E, W],
+            [W, E, B, E, E, E, E, B, E, W],
             [W, E, E, E, E, E, E, E, E, W],
             [W, E, E, E, E, E, E, E, E, W],
             [W, W, W, W, W, W, W, W, W, W],
         ],
-        "actions": [3, 1, 2, 2, 2],
-        # RIGHT: agent (3,6)→(3,7)=BEACON, bounce→(3,8). Echo (3,4)→LEFT→(3,3).
-        # DOWN: agent→(4,8). Echo (3,3)→UP→(2,3).
-        # LEFT: agent→(4,7). Echo (2,3)→RIGHT→(2,4).
-        # LEFT: agent→(4,6). Echo (2,4)→RIGHT→(2,5).
-        # LEFT: agent→(4,5). Echo (2,5)→RIGHT→(2,6).
-        "description": "Full showcase — beacon bounce, echo opposite in multiple directions",
+        "actions": [
+            2,                         # LEFT  — echo opp RIGHT
+            0, 0,                      # UP x2 — echo opp DOWN
+            1,                         # DOWN  — echo opp UP
+            3,                         # RIGHT — echo opp LEFT
+            1, 1,                      # DOWN x2 — echo UP
+            2, 2,                      # LEFT x2 — echo RIGHT (last lands echo on VOID → both vanish)
+            1, 1, 1,                   # DOWN x3 (no echo)
+            2,                         # LEFT
+            0,                         # UP — agent enters BEACON cell, bounces UP
+            0, 0, 0,                   # UP x3 to row 2
+            3, 3,                      # RIGHT x2
+            1, 1,                      # DOWN x2
+            3, 3,                      # RIGHT x2
+            1, 1,                      # DOWN x2
+            3,                         # RIGHT — agent enters BEACON cell, bounces RIGHT
+            1,                         # DOWN
+            2, 2,                      # LEFT x2
+            0,                         # UP
+        ],
+        "description": "Echo opposite in 4 directions, void consumption, two beacon bounces, full exploration",
     },
 }
 
