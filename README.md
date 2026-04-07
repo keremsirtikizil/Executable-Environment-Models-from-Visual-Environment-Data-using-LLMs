@@ -306,6 +306,54 @@ The pipeline (frame generation → extraction → verification → evaluation �
 
 ---
 
+## What the test suites actually measure
+
+The test suites are the heart of the project — they are how we score whether the VLM's generated code *actually understood the rules* rather than just producing plausible-looking pseudocode.
+
+Each test case is a `(grid, agent_position, action) → (expected_grid, expected_agent_position)` tuple. The grid is a small hand-built scenario that isolates **one specific behaviour** of one rule. We then:
+
+1. Take the Python `apply_action(...)` function the VLM generated.
+2. `exec` it inside a sandbox.
+3. Run it on the test grid with the test action.
+4. Compare the resulting grid (and agent/object positions) to the ground truth, cell by cell.
+
+A test passes only if **every cell** matches. There is no partial credit per case.
+
+The suites are designed so each rule is exercised by multiple cases at multiple difficulties:
+
+| Suite | Total cases | Categories covered |
+|---|---|---|
+| MagnetWorld (exp01) | 21 | basic movement, wall blocks (4 directions), attraction (toward + adjacent), blocked attraction (4 directions), away/orthogonal non-attraction |
+| MagnetWorld (exp02) | 31 | all of exp01 + ice slide (4 directions, into wall, no-ice case), hole consumption, hole edge cases, large-grid attraction through corridors |
+| EchoWorld (exp03) | 22 | normal movement, opposite echo motion (4 directions), blocked echo (agent still moves), void consumption, beacon bounce, beacon blocked by wall/echo |
+
+Critically, the test suites contain **edge cases the model never saw in the training frames**. The model sees one short episode of 5–8 frames, but is graded on dozens of grids it has never been shown. So the score reflects how well the inferred rules **generalise** beyond the specific situations used to teach them.
+
+The accuracy reported in each run's `*_summary.json` is simply `n_passed / n_total` over the relevant suite.
+
+---
+
+## Overall results so far
+
+These are the scores we've recorded from runs on `gemini-2.5-pro` (extractor) + `gemini-2.5-flash` (verifier) via fal.ai:
+
+| Experiment | Environment | Tests | Best run | Mean | Verifier verdict pattern |
+|---|---|---|---|---|---|
+| exp02 | MagnetWorld (5 rules) | 31 | 11/31 (35%) | ~27% over 4 runs | 3/4 CORRECT — overly lenient |
+| exp03 | EchoWorld (5 rules)   | 22 | 8/22 (36%)  | (1 run so far)    | INCORRECT |
+
+What this tells us:
+
+- **The model can extract *some* rules from pixels alone** — basic movement and wall blocking are essentially solved across runs. These cases pass reliably.
+- **It struggles with higher-order interactions** — combined effects (attraction + wall, ice + edge of grid, beacon + echo) are where most failures concentrate.
+- **There is high run-to-run variance** even with the same model on the same frames (16% – 35% on MagnetWorld), which suggests the inference is brittle and prompt-sensitive rather than robust.
+- **EchoWorld's failure mode is particularly informative.** Inspecting the generated pseudocode shows the model imported MagnetWorld-style "same direction" attraction (the *opposite* of EchoWorld's actual rule), and even hallucinated a non-existent `WAIT` action with a fake patrol behaviour. This is direct evidence that part of the model's output comes from prior pattern-matching, not from observing the new frames — exactly the failure mode EchoWorld was designed to expose.
+- **The verifier LLM is currently too lenient.** It marked 3 of 4 MagnetWorld runs as `CORRECT` despite all of them scoring below 36%. A stronger or more adversarial verifier is needed before its verdicts can be trusted as a quality signal.
+
+These numbers should be read as a **baseline**, not a final result. The pipeline is now in place; the natural next steps are increasing the number of episodes shown to the extractor, closing the verifier→extractor feedback loop, comparing across stronger models, and finally building a planner on top of the extracted environment.
+
+---
+
 ## Verification Step — How it works
 
 The verification is a separate LLM call (Step 4 in the pipeline diagram) designed to catch errors in the pseudocode before we even run the Python code. The verifier receives the **same images** plus the **generated pseudocode**, and checks every consecutive frame pair:
