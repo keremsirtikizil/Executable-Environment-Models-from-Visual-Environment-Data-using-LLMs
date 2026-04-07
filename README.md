@@ -1,8 +1,8 @@
-# PURE — Program Undergrad Research (Sabanci)
+# Executable Environment Models from Visual Environment Data using LLMs
 
 **Can a vision-language model watch a short video of an unknown environment and write correct code describing its rules — from pixels alone?**
 
-PURE is a research project exploring **visual rule induction via program synthesis**. A VLM is shown a sequence of rendered frames from a completely invented 2D grid environment and must produce:
+This is a research project exploring **visual rule induction via program synthesis**. A VLM is shown a sequence of rendered frames from a completely invented 2D grid environment and must produce:
 
 1. **Pseudocode** — a human-readable description of the inferred rules
 2. **Python** — an executable transition function
@@ -17,7 +17,7 @@ Finally, the generated Python code is **evaluated against ground-truth test case
 
 ## Full Pipeline
 
-![PURE Pipeline Diagram](results/pipeline_diagram.png)
+![Pipeline Diagram](results/pipeline_diagram.png)
 
 **Step 1 — Environment:** MagnetWorld generates grid states via `step(action)` using scripted episodes.
 **Step 2 — Frame Generation:** Each state is rendered as a clean PNG (no text labels, no action names).
@@ -337,7 +337,7 @@ Each experiment run produces the following in `results/`:
 ## File Structure
 
 ```
-PURE/
+.
 │
 ├── experiments/
 │   ├── exp01_single_rule.py      # 3-rule experiment (21 tests, small grids)
