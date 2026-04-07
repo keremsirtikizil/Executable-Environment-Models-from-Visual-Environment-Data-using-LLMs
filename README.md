@@ -352,6 +352,26 @@ What this tells us:
 
 These numbers should be read as a **baseline**, not a final result. The pipeline is now in place; the natural next steps are increasing the number of episodes shown to the extractor, closing the verifier→extractor feedback loop, comparing across stronger models, and finally building a planner on top of the extracted environment.
 
+### Ablation — does showing the model more frames help?
+
+The hypothesis was simple: the VLM is failing because it only sees 5–8 frames per episode. If we extend each primary episode to ~5x the frames (still a single episode, still one continuous trajectory, just longer and demonstrating more situations) the model should have an easier time inducting the rules. Each extended episode was hand-designed so that *every* rule is demonstrated multiple times across the trajectory, with no repeated no-ops.
+
+| Experiment | Frames (old → new) | Old accuracy | New accuracy |
+|---|---|---|---|
+| exp01 (3 rules)  | 4 → 14  | (no prior baseline)         | 12/21 (57%), 10/21 (48%) |
+| exp02 (5 rules)  | 8 → 35  | mean ~27% over 4 runs       | 9/31 (29%) |
+| exp03 (5 rules)  | 6 → 31  | 8/22 (36%) (1 run)          | 7/22 (32%) |
+
+**The extension did not improve accuracy.** exp02 stayed inside the existing variance band, exp03 was actually slightly worse, and exp01 (no prior baseline) sits in the same ~50% range we've seen across all MagnetWorld runs.
+
+More interestingly, the failure modes changed in informative ways:
+
+- **exp02 — overfitting to the new episode.** In the new sequence, the agent consumes the metal+hole during the very first two RIGHT actions (this was deliberate, to demo Rule 5 early). The extracted pseudocode now contains the rule *"if the agent's move is horizontal, remove ALL blue diamonds and orange X-boxes from the entire grid"*. The model latched onto a temporal coincidence between "horizontal move" and "metal disappears" — a hallucination directly caused by the longer episode giving it a richer surface to overfit to.
+- **exp01 — invented mode systems.** One run produced a fictional "MIRROR / ROTATE" mode toggle on the metal object that has no basis in any frame. The other run dropped attraction entirely and modelled the metal as a static obstacle. Both are confidently confabulated rather than gaps in observation.
+- **exp03 — same root cause as before.** The new pseudocode now correctly identifies void consumption (the longer episode helped reveal this rule, which was missed in the 6-frame version), but still claims the green diamond moves in the **same** direction as the agent — the inverse of the actual EchoWorld rule. The model is importing MagnetWorld's attraction prior even with 5x more disconfirming evidence.
+
+**Takeaway:** more demonstration frames alone are not the bottleneck. The model is not failing because it lacks examples — it is failing because, given any plausible-looking sequence of frames, it produces a confidently wrong pseudocode that pattern-matches to grid-game priors from training data. Future improvements should focus on the *reasoning loop* (verifier→extractor feedback, multi-model voting, stronger prompts that force the model to explain each frame transition) rather than on simply giving the model more pixels.
+
 ---
 
 ## Verification Step — How it works
