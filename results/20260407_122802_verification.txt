@@ -1,0 +1,1004 @@
+Verifier: fal / google/gemini-2.5-flash
+Verdict: CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 0 to Frame 1:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The proposed rules state that if the target cell is empty floor, the agent moves to it. The blue diamond moved from (2,3) to (2,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 1 to Frame 2:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The blue diamond moved from (2,4) to (2,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 2 to Frame 3:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The blue diamond moved from (2,5) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 3 to Frame 4:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 4 to Frame 5:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 5 to Frame 6:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 6 to Frame 7:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 7 to Frame 8:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 8 to Frame 9:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 9 to Frame 10:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 10 to Frame 11:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 11 to Frame 12:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 12 to Frame 13:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 13 to Frame 14:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 14 to Frame 15:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 15 to Frame 16:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 16 to Frame 17:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 17 to Frame 18:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 18 to Frame 19:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 19 to Frame 20:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 20 to Frame 21:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 21 to Frame 22:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 22 to Frame 23:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 23 to Frame 24:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 24 to Frame 25:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 25 to Frame 26:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 26 to Frame 27:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 27 to Frame 28:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 28 to Frame 29:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 29 to Frame 30:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 30 to Frame 31:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 31 to Frame 32:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 32 to Frame 33:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 33 to Frame 34:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 34 to Frame 35:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 35 to Frame 36:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 36 to Frame 37:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 37 to Frame 38:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 38 to Frame 39:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 39 to Frame 40:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 40 to Frame 41:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 41 to Frame 42:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 42 to Frame 43:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 43 to Frame 44:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 44 to Frame 45:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 45 to Frame 46:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 46 to Frame 47:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 47 to Frame 48:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 48 to Frame 49:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 49 to Frame 50:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 50 to Frame 51:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 51 to Frame 52:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 52 to Frame 53:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 53 to Frame 54:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 54 to Frame 55:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 55 to Frame 56:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 56 to Frame 57:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 57 to Frame 58:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 58 to Frame 59:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 59 to Frame 60:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 60 to Frame 61:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 61 to Frame 62:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 62 to Frame 63:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 63 to Frame 64:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 64 to Frame 65:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 65 to Frame 66:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 66 to Frame 67:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 67 to Frame 68:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 68 to Frame 69:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 69 to Frame 70:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 70 to Frame 71:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 71 to Frame 72:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 72 to Frame 73:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 73 to Frame 74:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 74 to Frame 75:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 75 to Frame 76:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 76 to Frame 77:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 77 to Frame 78:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 78 to Frame 79:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 79 to Frame 80:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 80 to Frame 81:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 81 to Frame 82:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 82 to Frame 83:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 83 to Frame 84:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 84 to Frame 85:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 85 to Frame 86:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 86 to Frame 87:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 87 to Frame 88:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 88 to Frame 89:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 89 to Frame 90:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 90 to Frame 91:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 91 to Frame 92:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 92 to Frame 93:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 93 to Frame 94:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 94 to Frame 95:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 95 to Frame 96:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 96 to Frame 97:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 97 to Frame 98:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 98 to Frame 99:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 0 to Frame 1:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The proposed rules state that if the target cell is empty floor, the agent moves to it. The blue diamond moved from (2,3) to (2,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 1 to Frame 2:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The blue diamond moved from (2,4) to (2,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 2 to Frame 3:**
+- Visual change: The blue diamond moved one step to the right.
+- Prediction: The blue diamond moved from (2,5) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 3 to Frame 4:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 4 to Frame 5:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 5 to Frame 6:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 6 to Frame 7:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 7 to Frame 8:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 8 to Frame 9:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 9 to Frame 10:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 10 to Frame 11:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 11 to Frame 12:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 12 to Frame 13:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 13 to Frame 14:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 14 to Frame 15:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 15 to Frame 16:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 16 to Frame 17:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 17 to Frame 18:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 18 to Frame 19:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 19 to Frame 20:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 20 to Frame 21:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 21 to Frame 22:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 22 to Frame 23:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 23 to Frame 24:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 24 to Frame 25:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 25 to Frame 26:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 26 to Frame 27:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 27 to Frame 28:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 28 to Frame 29:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 29 to Frame 30:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 30 to Frame 31:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 31 to Frame 32:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 32 to Frame 33:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 33 to Frame 34:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 34 to Frame 35:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 35 to Frame 36:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 36 to Frame 37:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 37 to Frame 38:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 38 to Frame 39:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 39 to Frame 40:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 40 to Frame 41:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 41 to Frame 42:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 42 to Frame 43:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 43 to Frame 44:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 44 to Frame 45:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 45 to Frame 46:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 46 to Frame 47:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 47 to Frame 48:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 48 to Frame 49:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 49 to Frame 50:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 50 to Frame 51:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 51 to Frame 52:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 52 to Frame 53:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 53 to Frame 54:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 54 to Frame 55:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 55 to Frame 56:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 56 to Frame 57:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 57 to Frame 58:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 58 to Frame 59:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 59 to Frame 60:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 60 to Frame 61:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 61 to Frame 62:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 62 to Frame 63:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 63 to Frame 64:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 64 to Frame 65:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 65 to Frame 66:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 66 to Frame 67:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 67 to Frame 68:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 68 to Frame 69:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 69 to Frame 70:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 70 to Frame 71:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 71 to Frame 72:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 72 to Frame 73:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 73 to Frame 74:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 74 to Frame 75:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 75 to Frame 76:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 76 to Frame 77:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 77 to Frame 78:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 78 to Frame 79:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 79 to Frame 80:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,3) to (1,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 80 to Frame 81:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,4) to (1,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 81 to Frame 82:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,5) to (1,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 82 to Frame 83:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (1,6) to (2,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 83 to Frame 84:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (2,6) to (3,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 84 to Frame 85:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (3,6) to (4,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 85 to Frame 86:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (4,6) to (5,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 86 to Frame 87:**
+- Visual change: The blue diamond moved one step down.
+- Prediction: The blue diamond moved from (5,6) to (6,6), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 87 to Frame 88:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,6) to (6,5), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 88 to Frame 89:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,5) to (6,4), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 89 to Frame 90:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,4) to (6,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 90 to Frame 91:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,3) to (6,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 91 to Frame 92:**
+- Visual change: The blue diamond moved one step left.
+- Prediction: The blue diamond moved from (6,2) to (6,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 92 to Frame 93:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (6,1) to (5,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 93 to Frame 94:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (5,1) to (4,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 94 to Frame 95:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (4,1) to (3,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 95 to Frame 96:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (3,1) to (2,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 96 to Frame 97:**
+- Visual change: The blue diamond moved one step up.
+- Prediction: The blue diamond moved from (2,1) to (1,1), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 97 to Frame 98:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,1) to (1,2), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+**Frame 98 to Frame 99:**
+- Visual change: The blue diamond moved one step right.
+- Prediction: The blue diamond moved from (1,2) to (1,3), which is an empty floor cell. This is consistent with the rules.
+- Correctness: Correct.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None

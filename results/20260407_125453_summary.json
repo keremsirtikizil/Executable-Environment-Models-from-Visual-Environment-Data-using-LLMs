@@ -1,0 +1,13 @@
+{
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "episode": "attract_3steps",
+  "accuracy": 0.47619047619047616,
+  "n_passed": 10,
+  "n_total": 21,
+  "verification_verdict": "INCORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "extracted_code_path": "results/20260407_125453_extracted.py",
+  "pseudocode_path": "results/20260407_125453_pseudocode.txt",
+  "verification_path": "results/20260407_125453_verification.txt"
+}

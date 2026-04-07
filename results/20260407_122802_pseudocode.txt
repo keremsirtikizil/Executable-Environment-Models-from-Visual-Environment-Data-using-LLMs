@@ -1,0 +1,10 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: attract_3steps
+Actions: ['DOWN', 'DOWN', 'DOWN', 'RIGHT', 'UP', 'RIGHT', 'RIGHT', 'UP', 'LEFT', 'LEFT', 'LEFT', 'RIGHT', 'LEFT']
+
+Given an action, determine the agent's target cell.
+If the target cell is empty floor:
+  Move the agent to the target cell.
+Otherwise (if the target cell is a wall or a red circle):
+  The agent's position does not change.
+The grid of walls and circles is static and never changes.

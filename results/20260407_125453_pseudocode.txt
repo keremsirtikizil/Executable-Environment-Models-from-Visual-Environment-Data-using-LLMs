@@ -1,0 +1,20 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: attract_3steps
+Actions: ['DOWN', 'DOWN', 'DOWN', 'RIGHT', 'UP', 'RIGHT', 'RIGHT', 'UP', 'LEFT', 'LEFT', 'LEFT', 'RIGHT', 'LEFT']
+
+The red circle has two modes: MIRROR and ROTATE.
+
+If the action is STAY:
+  The agent and circle do not move.
+  The circle's mode is toggled (MIRROR becomes ROTATE, and vice-versa).
+
+If the action is a movement (UP, DOWN, LEFT, RIGHT):
+  Calculate the agent's potential next position.
+  If the agent's path is blocked by a wall:
+    Nothing moves.
+  Otherwise (agent's path is clear):
+    The agent moves to its new position.
+    Determine the circle's corresponding movement based on its current mode:
+      In MIRROR mode, the circle attempts the same move as the agent.
+      In ROTATE mode, the circle attempts a move 90-degrees counter-clockwise to the agent's move.
+    If the circle's path is not blocked by a wall, it also moves.

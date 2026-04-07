@@ -1,0 +1,10 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_complex
+Actions: ['RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'DOWN', 'DOWN', 'RIGHT', 'RIGHT', 'UP', 'UP', 'UP', 'UP', 'LEFT', 'LEFT', 'LEFT', 'LEFT', 'DOWN', 'DOWN', 'LEFT', 'DOWN', 'DOWN', 'DOWN', 'RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'UP', 'UP', 'LEFT', 'LEFT', 'LEFT', 'UP', 'UP']
+
+Calculate the agent's target destination based on the action.
+If the destination is outside the grid boundaries, the agent does not move.
+Otherwise, move the agent to the destination.
+If the destination cell contained a green triangle, it is removed (becomes empty).
+If the agent's move was horizontal (left or right):
+  Remove all blue diamonds and orange X-boxes from the entire grid.

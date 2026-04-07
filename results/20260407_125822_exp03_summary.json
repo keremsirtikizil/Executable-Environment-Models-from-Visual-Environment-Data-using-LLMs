@@ -1,0 +1,14 @@
+{
+  "experiment": "exp03_echo_world",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "episode": "full_echo",
+  "accuracy": 0.3181818181818182,
+  "n_passed": 7,
+  "n_total": 22,
+  "verification_verdict": "CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "extracted_code_path": "results/20260407_125822_exp03_extracted.py",
+  "pseudocode_path": "results/20260407_125822_exp03_pseudocode.txt",
+  "verification_path": "results/20260407_125822_exp03_verification.txt"
+}

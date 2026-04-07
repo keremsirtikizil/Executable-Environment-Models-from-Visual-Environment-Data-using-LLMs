@@ -1,0 +1,24 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_echo
+Actions: ['LEFT', 'UP', 'UP', 'DOWN', 'RIGHT', 'DOWN', 'DOWN', 'LEFT', 'LEFT', 'DOWN', 'DOWN', 'DOWN', 'LEFT', 'UP', 'UP', 'UP', 'UP', 'RIGHT', 'RIGHT', 'DOWN', 'DOWN', 'RIGHT', 'RIGHT', 'DOWN', 'DOWN', 'RIGHT', 'DOWN', 'LEFT', 'LEFT', 'UP']
+
+When an action is applied:
+  Calculate the agent's intended next position based on the action.
+
+  If the agent's move is invalid (out of bounds, or into a diamond or target):
+    The state does not change.
+    Return.
+
+  // If the agent's move is valid:
+  Find the green diamond on the grid.
+  
+  If a green diamond exists:
+    Calculate the diamond's intended next position using the same action.
+    If the diamond's move is valid (in bounds):
+      If its destination is the purple target:
+        Remove both the diamond and the target from the grid.
+      Else if its destination is an empty cell:
+        Move the diamond to its new position.
+
+  Move the agent to its new position.
+  If the destination cell contained a yellow star, the star is removed.
