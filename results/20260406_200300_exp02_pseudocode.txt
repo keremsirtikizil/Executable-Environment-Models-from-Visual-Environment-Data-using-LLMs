@@ -1,0 +1,17 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_complex
+Actions: ['RIGHT', 'DOWN', 'DOWN', 'DOWN', 'LEFT', 'UP', 'UP']
+
+Procedure to apply an action:
+  Count all green triangles currently on the grid. Let this count be N.
+
+  If N is zero:
+    The agent does not move and the grid does not change.
+  Else (if N is greater than zero):
+    The agent's move distance is equal to N.
+    The direction of movement is determined by the input action.
+    Calculate the agent's new position by moving N steps in the chosen direction.
+
+    Update the grid state:
+      Move the agent from its old position to the new one.
+      Remove ALL green triangles from the grid, turning their cells empty.

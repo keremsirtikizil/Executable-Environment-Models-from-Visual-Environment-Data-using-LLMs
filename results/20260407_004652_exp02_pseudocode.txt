@@ -1,0 +1,21 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_complex
+Actions: ['RIGHT', 'DOWN', 'DOWN', 'DOWN', 'LEFT', 'UP', 'UP']
+
+The agent (blue diamond) does not move. The action value is ignored. The simulation proceeds in discrete time steps.
+
+There are three types of objects: triangles, and two states of circles (static and moving).
+
+1.  Activation Rule (takes precedence):
+    If a static red circle exists:
+        Count all green triangles in the four cardinal directions (up, down, left, right) from the circle's position. Let this count be N.
+        If N is greater than zero:
+            The circle consumes all N triangles, removing them from the grid.
+            The circle moves N steps down and N steps right from its original position.
+            The circle's state changes from static to "moving down-right".
+
+2.  Movement Rule (if no activation occurs):
+    All moving red circles update their position simultaneously.
+    - A "moving down-right" circle moves one step diagonally down and right.
+    - A "moving up-left" circle moves one step diagonally up and left.
+    - If a circle's next position is a wall or another object, its direction of movement is inverted. For example, a "moving down-right" circle becomes a "moving up-left" circle and takes its first step in the new direction.

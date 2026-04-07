@@ -1,0 +1,14 @@
+{
+  "experiment": "exp02_complex",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "episode": "full_complex",
+  "accuracy": 0.2903225806451613,
+  "n_passed": 9,
+  "n_total": 31,
+  "verification_verdict": "CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "extracted_code_path": "results/20260407_004914_exp02_extracted.py",
+  "pseudocode_path": "results/20260407_004914_exp02_pseudocode.txt",
+  "verification_path": "results/20260407_004914_exp02_verification.txt"
+}

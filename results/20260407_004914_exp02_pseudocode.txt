@@ -1,0 +1,12 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_complex
+Actions: ['RIGHT', 'DOWN', 'DOWN', 'DOWN', 'LEFT', 'UP', 'UP']
+
+If the action is "update":
+  Find the red circle on the grid.
+  Count the number of consecutive green triangles (L) immediately to the circle's right.
+  If there are one or more triangles (L > 0):
+    The red circle jumps down one row and right L+1 columns.
+    The circle's original cell becomes empty.
+    The green triangles that were jumped over are removed.
+The agent's position does not change regardless of the action.

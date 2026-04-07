@@ -1,0 +1,16 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_complex
+Actions: ['RIGHT', 'DOWN', 'DOWN', 'DOWN', 'LEFT', 'UP', 'UP']
+
+First, perform an automatic grid update:
+Count all green triangles on the grid. Let the count be N.
+If N is greater than 0:
+  Find the red circle at position (r, c).
+  Move the red circle to a new position (r+N, c+N).
+  Remove all green triangles from the grid.
+
+Second, move the agent based on the action:
+Calculate the agent's target cell based on the action (Up, Down, Left, Right, or Stay).
+If the target cell is within the grid and is empty:
+  Move the agent to the target cell.
+Otherwise, the agent does not move.

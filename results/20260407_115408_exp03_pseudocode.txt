@@ -1,0 +1,24 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Episode: full_echo
+Actions: ['RIGHT', 'DOWN', 'LEFT', 'LEFT', 'LEFT']
+
+Procedure apply_action(grid, agent_pos, action):
+  Find the current positions of the green diamond and red circle.
+
+  If the action is a directional move (UP, DOWN, LEFT, RIGHT):
+    Calculate the agent's potential new position.
+    If the new position is not a wall:
+      Move the agent to the new position.
+      Move the green diamond by the same direction and distance as the agent.
+
+  If the action is WAIT:
+    // Green Diamond seeks the cell to the right of the agent
+    Define the diamond's target position as (agent_row, agent_col + 1).
+    If the diamond is not at its target, move it one step towards the target (prioritizing horizontal movement).
+
+    // Red Circle follows a fixed patrol route
+    Based on the circle's current position, determine its next step on its rectangular path.
+    If the circle's destination contains a yellow star, the star is removed.
+    Move the circle to its new position.
+
+  Return the updated grid and the agent's new position.
