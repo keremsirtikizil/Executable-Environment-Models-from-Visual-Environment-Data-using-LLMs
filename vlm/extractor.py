@@ -71,6 +71,73 @@ Study what changed and infer the transition rule."""
 
 
 # -----------------------------------------------------------------------
+# Incremental (multi-turn) pseudocode-only prompts
+# -----------------------------------------------------------------------
+
+INCREMENTAL_SYSTEM_PROMPT = """\
+You are an expert at inferring the rules of unknown environments from visual \
+observations alone. You will be shown frames from a 2D environment in small \
+batches. After each batch you will propose or revise your hypothesis about \
+the environment's transition rules.
+
+You MUST output ONLY pseudocode — a high-level, human-readable description \
+of the rules you believe govern this environment. Use plain English with \
+simple indentation. No Python, no code syntax — just logic.
+
+Be precise about:
+  - What visual elements exist (describe their appearance)
+  - How each element behaves when an action occurs
+  - What interactions exist between elements
+  - Edge cases and priorities (which rule wins when two could apply)
+
+Do NOT assume this resembles any known game. Infer everything from the images."""
+
+INCREMENTAL_FIRST_BATCH_PROMPT = """\
+Here are the first {n} frames from an unknown environment, in chronological order. \
+Each consecutive pair represents the state BEFORE and AFTER a single action.
+
+Study what changes between each pair of frames carefully. Then write your \
+INITIAL HYPOTHESIS — a pseudocode description of the rules you think govern \
+this environment. Mark anything you are uncertain about with [UNCERTAIN].
+
+=== HYPOTHESIS ==="""
+
+INCREMENTAL_NEXT_BATCH_PROMPT = """\
+Here are the next {n} frames, continuing from where we left off.
+
+Your current hypothesis is:
+{hypothesis}
+
+Study these new frames. Do they confirm, contradict, or extend your hypothesis? \
+Pay special attention to:
+  - Transitions that your current rules do NOT predict
+  - Cases where your rules predict something different from what happened
+  - New element types or interactions you haven't seen before
+
+Output your REVISED HYPOTHESIS — the complete updated pseudocode. Remove any \
+[UNCERTAIN] tags for things you are now confident about. Add new [UNCERTAIN] \
+tags for new ambiguities.
+
+=== REVISED HYPOTHESIS ==="""
+
+INCREMENTAL_FINAL_PROMPT = """\
+You have now seen all the frames. Your current hypothesis is:
+
+{hypothesis}
+
+Write your FINAL pseudocode. This should be:
+  - Complete — every rule that governs this environment
+  - Precise — no ambiguity, a human could implement this
+  - Prioritised — if rules can conflict, state which wins
+  - Concise — no unnecessary detail, no implementation specifics
+
+Remove all [UNCERTAIN] tags. For anything still uncertain, state your best \
+guess and note it as an assumption.
+
+=== FINAL PSEUDOCODE ==="""
+
+
+# -----------------------------------------------------------------------
 # Verification prompts — a second LLM checks the pseudocode against images
 # -----------------------------------------------------------------------
 
@@ -468,3 +535,224 @@ def _gpt4o(image_paths, action_name, is_sequence, action_sequence):
         messages=[{"role": "system", "content": SYSTEM_PROMPT},
                   {"role": "user", "content": content}])
     return _split_pseudocode_and_python(r.choices[0].message.content.strip())
+
+
+# -----------------------------------------------------------------------
+# Incremental (multi-turn) pseudocode-only extraction
+# -----------------------------------------------------------------------
+
+def extract_rule_incremental(
+    image_paths: list,
+    batch_size: int = 3,
+    provider: str = "fal",
+    model: str = "google/gemini-2.5-pro",
+    verbose: bool = True,
+) -> dict:
+    """
+    Send frames in small batches via a multi-turn conversation.
+    Each round the LLM proposes or revises its pseudocode hypothesis.
+
+    Returns dict with keys:
+      pseudocode     str   final consolidated pseudocode
+      rounds         list  of dicts, each with 'batch_indices', 'hypothesis', 'raw'
+    """
+    # Split image_paths into batches
+    batches = []
+    for i in range(0, len(image_paths), batch_size):
+        batches.append(image_paths[i:i + batch_size])
+
+    if verbose:
+        print(f"  Incremental extraction: {len(image_paths)} frames → "
+              f"{len(batches)} batches of ~{batch_size}")
+
+    if provider == "fal":
+        return _incremental_fal(batches, model, verbose)
+    elif provider == "claude":
+        return _incremental_claude(batches, verbose)
+    elif provider == "gpt4o":
+        return _incremental_gpt4o(batches, verbose)
+    else:
+        raise ValueError(f"Unknown provider '{provider}'. Use: fal | claude | gpt4o")
+
+
+def _build_incremental_messages(batches, round_idx, hypothesis):
+    """Build the full message history up to round_idx for multi-turn conversation."""
+    messages = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
+
+    for r in range(round_idx + 1):
+        batch = batches[r]
+        content = []
+        for path in batch:
+            content.append(_img_block(path))
+
+        is_last_batch = (r == len(batches) - 1)
+
+        if r == 0:
+            content.append({"type": "text", "text": INCREMENTAL_FIRST_BATCH_PROMPT.format(
+                n=len(batch))})
+        elif is_last_batch:
+            content.append({"type": "text", "text": INCREMENTAL_FINAL_PROMPT.format(
+                hypothesis=hypothesis)})
+        else:
+            content.append({"type": "text", "text": INCREMENTAL_NEXT_BATCH_PROMPT.format(
+                n=len(batch), hypothesis=hypothesis)})
+
+        messages.append({"role": "user", "content": content})
+
+        # Add placeholder for assistant response (filled in from prior rounds)
+        if r < round_idx:
+            messages.append({"role": "assistant", "content": hypothesis})
+
+    return messages
+
+
+def _incremental_fal(batches, model, verbose):
+    from openai import OpenAI
+
+    fal_key = os.environ.get("FAL_KEY")
+    if not fal_key:
+        raise EnvironmentError("FAL_KEY not set.")
+
+    client = OpenAI(
+        base_url="https://fal.run/openrouter/router/openai/v1",
+        api_key="not-needed",
+        default_headers={"Authorization": f"Key {fal_key}"},
+    )
+
+    hypothesis = ""
+    rounds = []
+
+    for r, batch in enumerate(batches):
+        is_last = (r == len(batches) - 1)
+        batch_start = sum(len(batches[i]) for i in range(r))
+        batch_indices = list(range(batch_start, batch_start + len(batch)))
+
+        if verbose:
+            label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
+            print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
+
+        messages = _build_incremental_messages(batches, r, hypothesis)
+
+        response = client.chat.completions.create(
+            model=model,
+            max_tokens=16000,
+            temperature=0.2,
+            messages=messages,
+        )
+        raw = response.choices[0].message.content.strip()
+
+        # Extract the hypothesis from the response
+        hypothesis = _extract_hypothesis(raw)
+
+        rounds.append({
+            "batch_indices": batch_indices,
+            "hypothesis": hypothesis,
+            "raw": raw,
+        })
+
+        if verbose:
+            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            print(f"         → {preview}\n")
+
+    return {"pseudocode": hypothesis, "rounds": rounds}
+
+
+def _incremental_claude(batches, verbose):
+    import anthropic
+    client = anthropic.Anthropic()
+
+    hypothesis = ""
+    rounds = []
+
+    for r, batch in enumerate(batches):
+        is_last = (r == len(batches) - 1)
+        batch_start = sum(len(batches[i]) for i in range(r))
+        batch_indices = list(range(batch_start, batch_start + len(batch)))
+
+        if verbose:
+            label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
+            print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
+
+        # Build messages in Anthropic format
+        messages = []
+        for prev_r in range(r + 1):
+            prev_batch = batches[prev_r]
+            content = []
+            for path in prev_batch:
+                content.append({"type": "image", "source": {"type": "base64",
+                                "media_type": "image/png", "data": _encode(path)}})
+            is_last_batch = (prev_r == len(batches) - 1)
+            if prev_r == 0:
+                content.append({"type": "text", "text": INCREMENTAL_FIRST_BATCH_PROMPT.format(
+                    n=len(prev_batch))})
+            elif is_last_batch:
+                content.append({"type": "text", "text": INCREMENTAL_FINAL_PROMPT.format(
+                    hypothesis=hypothesis)})
+            else:
+                content.append({"type": "text", "text": INCREMENTAL_NEXT_BATCH_PROMPT.format(
+                    n=len(prev_batch), hypothesis=hypothesis)})
+            messages.append({"role": "user", "content": content})
+            if prev_r < r:
+                messages.append({"role": "assistant", "content": hypothesis})
+
+        resp = client.messages.create(
+            model="claude-sonnet-4-6", max_tokens=16000,
+            system=INCREMENTAL_SYSTEM_PROMPT,
+            messages=messages,
+        )
+        raw = resp.content[0].text.strip()
+        hypothesis = _extract_hypothesis(raw)
+
+        rounds.append({"batch_indices": batch_indices, "hypothesis": hypothesis, "raw": raw})
+        if verbose:
+            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            print(f"         → {preview}\n")
+
+    return {"pseudocode": hypothesis, "rounds": rounds}
+
+
+def _incremental_gpt4o(batches, verbose):
+    from openai import OpenAI
+    client = OpenAI()
+
+    hypothesis = ""
+    rounds = []
+
+    for r, batch in enumerate(batches):
+        batch_start = sum(len(batches[i]) for i in range(r))
+        batch_indices = list(range(batch_start, batch_start + len(batch)))
+
+        if verbose:
+            is_last = (r == len(batches) - 1)
+            label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
+            print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
+
+        messages = _build_incremental_messages(batches, r, hypothesis)
+
+        resp = client.chat.completions.create(
+            model="gpt-4o", max_tokens=16000,
+            messages=messages,
+        )
+        raw = resp.choices[0].message.content.strip()
+        hypothesis = _extract_hypothesis(raw)
+
+        rounds.append({"batch_indices": batch_indices, "hypothesis": hypothesis, "raw": raw})
+        if verbose:
+            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            print(f"         → {preview}\n")
+
+    return {"pseudocode": hypothesis, "rounds": rounds}
+
+
+def _extract_hypothesis(raw: str) -> str:
+    """Pull the hypothesis/pseudocode from the LLM's response."""
+    import re
+    # Try to find content after any of the section headers
+    for header in [r"=== FINAL PSEUDOCODE ===",
+                   r"=== REVISED HYPOTHESIS ===",
+                   r"=== HYPOTHESIS ==="]:
+        match = re.search(header + r"\s*\n(.*)", raw, re.DOTALL)
+        if match:
+            return match.group(1).strip()
+    # Fallback: return the whole response
+    return raw

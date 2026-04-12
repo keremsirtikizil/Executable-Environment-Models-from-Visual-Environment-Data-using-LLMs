@@ -1,0 +1,79 @@
+Provider: fal / Model: google/gemini-2.5-pro
+Mode: magnetworld | Episode: full_complex
+Batch size: 3 | Rounds: 12
+Total frames: 35
+
+========================================
+FINAL PSEUDOCODE
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A black square tile. The Agent can occupy the same tile as a Hole.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Rule Precedence
+// The rules are evaluated in the order listed below. The first rule that matches the current state is executed.
+
+// Core Rules
+On Player Action (Move in `direction`):
+  Let `start_pos` be the Agent's current cell.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+
+  // Rule 1: Jump FROM a Hole
+  // This rule takes precedence over all others if the Agent starts its turn on a Hole.
+  If the Agent is on a Hole AND `direction` is Up:
+    // Assumption: The jump only succeeds if the landing spot is empty.
+    If `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+      Remove the Hole from `start_pos`.
+    Else:
+      The Agent does not move.
+    The action is complete.
+
+  // If Rule 1 did not apply, check the contents of the target cell.
+  Let `target_1_object` be the object at `target_1`.
+
+  // Rule 2: X-Seeker Jump
+  If `target_1_object` is a Diamond:
+    Scan in `direction` from `target_1` to find the first X-Block.
+    If an X-Block is found at position `x_block_pos`:
+      Move the Agent to `x_block_pos`.
+      Remove the Diamond from `target_1`.
+      Remove the X-Block from `x_block_pos`.
+    Else:
+      // Assumption: If no X-Block is found in the path, the move is blocked.
+      The Agent does not move.
+
+  // Rule 3: Spike Interactions
+  Else if `target_1_object` is a Spike:
+    // Rule 3a: Rightward Spike Jump
+    If `direction` is Right:
+      // Assumption: The jump only succeeds if the landing spot is empty.
+      If `target_2` is empty and not a Wall:
+        Move the Agent to `target_2`.
+        The Spike at `target_1` is not removed.
+      Else:
+        The Agent does not move.
+    // Rule 3b: Spike Consume (for all other directions)
+    Else:
+      Move the Agent to `target_1`.
+      Remove the Spike from `target_1`.
+
+  // Rule 4: Move Onto Hole
+  Else if `target_1_object` is a Hole:
+    Move the Agent to `target_1`.
+    The Agent now occupies the same tile as the Hole, which is not removed.
+
+  // Rule 5: Standard Move
+  Else if `target_1_object` is empty:
+    Move the Agent to `target_1`.
+
+  // Rule 6: Blocked Move
+  Else (if `target_1` contains a Wall or an X-Block):
+    // Assumption: X-Blocks are solid and block standard movement.
+    The Agent does not move.

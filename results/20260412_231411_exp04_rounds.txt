@@ -1,0 +1,687 @@
+
+========================================
+ROUND 1 — Frames [0, 1, 2]
+========================================
+
+=== HYPOTHESIS ===
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **X-Block:** A black square with an orange 'X'.
+- **Spikes:** A row of green triangles on a light blue background.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (e.g., Move Right):
+  Let the Agent's current position be (x, y).
+  Let the destination position be the adjacent cell in the direction of movement (e.g., (x+1, y) for Right).
+  Let the "overshoot" position be the cell adjacent to the destination, in the same direction (e.g., (x+2, y) for Right).
+
+  // Primary Movement Rule
+  If the destination cell is not a Wall:
+    // The Agent moves into the destination cell.
+    Move the Agent to the destination position.
+
+    // Interaction with the destination cell
+    If the destination cell contained a Diamond:
+      Remove the Diamond from the grid.
+
+    // Interaction with the "overshoot" cell
+    If the "overshoot" cell contains an X-Block:
+      Remove the X-Block from the grid.
+
+  // Invalid Move Rule
+  Else (if the destination cell is a Wall):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The behavior of Spikes is unknown. They may be a hazard, an obstacle, or purely decorative.
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be a hazard, an obstacle, or a goal.
+- [UNCERTAIN] It is unknown if the "overshoot" interaction affects objects other than X-Blocks.
+- [UNCERTAIN] The first two frames are identical. This could be a "wait" action or an invalid move (e.g., trying to move into a wall).
+
+========================================
+ROUND 2 — Frames [3, 4, 5]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape. It appears to be a collectible that enables a special move.
+- **X-Block:** A black square with an orange 'X'. It can be destroyed from a distance.
+- **Spikes:** A row of green triangles on a light blue background.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (e.g., Move Right):
+  Let the start position be the Agent's current cell.
+  Let `target_1` be the cell 1 space away in the direction of the action.
+  Let `target_2` be the cell 2 spaces away in the direction of the action.
+  Let `target_3` be the cell 3 spaces away in the direction of the action.
+
+  // Rule 1: Jump Move (takes priority)
+  If `target_1` contains a Diamond AND `target_2` is not a Wall:
+    // The Agent jumps two spaces over the Diamond.
+    Move the Agent to `target_2`.
+    // The jumped-over Diamond is removed.
+    Remove the Diamond from `target_1`.
+    // Check for a secondary effect three spaces away.
+    If `target_3` contains an X-Block:
+      Remove the X-Block from `target_3`.
+
+  // Rule 2: Standard Move
+  Else if `target_1` is not a Wall:
+    // The Agent moves one space.
+    Move the Agent to `target_1`.
+
+  // Rule 3: Invalid Move
+  Else (if the move is blocked by a Wall):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The behavior of Spikes is unknown. They may be an obstacle, a hazard, or decorative.
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be an obstacle, a hazard, or a goal.
+- [UNCERTAIN] It is unknown if other objects can be jumped over like Diamonds.
+- [UNCERTAIN] It is unknown if the "overshoot" effect of a jump can destroy objects other than X-Blocks.
+- [UNCERTAIN] The exact cause of the no-change frames is not fully clear. It is assumed to be an invalid move (like into a wall) or a "wait" action.
+- [UNCERTAIN] It is unknown what happens if `target_2` (the jump landing spot) is occupied by another object.
+
+========================================
+ROUND 3 — Frames [6, 7, 8]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Jumpable Objects:** Objects the agent can jump over.
+  - **Diamond:** A blue diamond shape.
+  - **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (e.g., Move Down):
+  Let the start position be the Agent's current cell.
+  Let `target_1` be the cell 1 space away in the direction of the action.
+  Let `target_2` be the cell 2 spaces away in the direction of the action.
+  Let `target_3` be the cell 3 spaces away in the direction of the action.
+
+  // Rule 1: Jump Move (takes priority)
+  If `target_1` contains a Jumpable Object (Diamond or Spike) AND `target_2` is not a Wall:
+    // The Agent jumps two spaces over the object.
+    Move the Agent to `target_2`.
+    // The jumped-over object is removed.
+    Remove the Jumpable Object from `target_1`.
+    // Check for a secondary effect three spaces away.
+    If `target_3` contains an X-Block:
+      Remove the X-Block from `target_3`.
+      // [UNCERTAIN] This effect has only been observed when jumping over a Diamond. It is unknown if jumping a Spike also destroys an X-Block.
+
+  // Rule 2: Standard Move
+  Else if `target_1` is not a Wall and is not occupied by an obstacle [UNCERTAIN]:
+    // The Agent moves one space.
+    Move the Agent to `target_1`.
+
+  // Rule 3: Invalid Move
+  Else (if the move is blocked):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be an obstacle, a hazard, or a goal.
+- [UNCERTAIN] It is unknown what happens if the Agent attempts to move *onto* a Spike tile instead of jumping over it. They may be obstacles or hazards.
+- [UNCERTAIN] It is unknown if the "overshoot" effect of a jump can destroy objects other than X-Blocks.
+- [UNCERTAIN] It is unknown what happens if the jump landing spot (`target_2`) is occupied by another object.
+- [UNCERTAIN] The exact cause of the no-change frames is not fully clear. It is assumed to be an invalid move (like into a wall) or a "wait" action.
+
+========================================
+ROUND 4 — Frames [9, 10, 11]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Jumpable Objects:** Objects the agent can jump over.
+  - **Diamond:** A blue diamond shape.
+  - **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let the start position be the Agent's current cell.
+  Let `target_1` be the cell 1 space away in the direction of the action.
+  Let `target_2` be the cell 2 spaces away in the direction of the action.
+  Let `target_3` be the cell 3 spaces away in the direction of the action.
+
+  // Rule 1: Jump Move (takes priority)
+  If `target_1` contains a Jumpable Object (Diamond or Spike) AND `target_2` is not a Wall:
+    // The Agent jumps two spaces over the object.
+    Move the Agent to `target_2`.
+    // The jumped-over object is removed.
+    Remove the Jumpable Object from `target_1`.
+    // Check for a secondary effect three spaces away.
+    If `target_3` contains an X-Block:
+      Remove the X-Block from `target_3`.
+      // [UNCERTAIN] This effect has only been observed when jumping over a Diamond. It is unknown if jumping a Spike also destroys an X-Block.
+
+  // Rule 2: Standard Move
+  Else if `target_1` is an empty, traversable tile:
+    // The Agent moves one space.
+    Move the Agent to `target_1`.
+
+  // Rule 3: Blocked Move
+  Else (if the move is blocked by a Wall or an obstacle):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The full list of obstacles that block a standard move is unknown. It is not yet clear if Spikes, Holes, or X-Blocks are obstacles for a standard move.
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be an obstacle, a hazard, or a goal.
+- [UNCERTAIN] It is unknown if the "overshoot" effect of a jump (destroying an object at `target_3`) can destroy objects other than X-Blocks.
+- [UNCERTAIN] It is unknown what happens if the jump landing spot (`target_2`) is occupied by another object.
+
+========================================
+ROUND 5 — Frames [12, 13, 14]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Jumpable Objects:** Objects the agent can jump over.
+  - **Diamond:** A blue diamond shape.
+  - **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let the start position be the Agent's current cell.
+  Let `target_1` be the cell 1 space away in the direction of the action.
+  Let `target_2` be the cell 2 spaces away in the direction of the action.
+  Let `target_3` be the cell 3 spaces away in the direction of the action.
+
+  // Rule 1: Jump Move (highest priority)
+  If `target_1` contains a Jumpable Object (Diamond or Spike) AND `target_2` is not a Wall:
+    Move the Agent to `target_2`.
+    Remove the Jumpable Object from `target_1`.
+    // Check for a secondary "overshoot" effect.
+    If `target_1` previously contained a Diamond AND `target_3` contains an X-Block:
+      Remove the X-Block from `target_3`.
+
+  // Rule 2: Dash Move
+  Else if the Agent is adjacent to a Wall AND the action is parallel to that wall:
+    If `target_1` is empty AND `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+    Else (if the dash path is blocked):
+      // Fall through to check for a standard move or blocked move.
+      // This is handled by the subsequent rules.
+
+  // Rule 3: Standard Move
+  Else if `target_1` is an empty, traversable tile:
+    Move the Agent to `target_1`.
+
+  // Rule 4: Blocked Move
+  Else (if the move is blocked by a Wall or an obstacle):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The "overshoot" effect (destroying an object at `target_3`) has only been observed when jumping a Diamond to destroy an X-Block. It is unknown if this effect occurs when jumping Spikes, or if it can destroy objects other than X-Blocks.
+- [UNCERTAIN] The full list of obstacles that block a standard move is unknown. It is not yet clear if Spikes, Holes, or X-Blocks are obstacles.
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be an obstacle, a hazard, or a goal.
+- [UNCERTAIN] It is unknown what happens if the landing spot of a Jump (`target_2`) is occupied by another object.
+- [UNCERTAIN] It is unknown what happens if a Dash is attempted but `target_2` is occupied or a Wall. Does the agent move one space to `target_1`, or is the entire move blocked?
+
+========================================
+ROUND 6 — Frames [15, 16, 17]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Jumpable Objects:** Objects the agent can jump over. These objects also act as obstacles for standard moves.
+  - **Diamond:** A blue diamond shape.
+  - **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let the start position be the Agent's current cell.
+  Let `target_1` be the cell 1 space away in the direction of the action.
+  Let `target_2` be the cell 2 spaces away in the direction of the action.
+  Let `target_3` be the cell 3 spaces away in the direction of the action.
+
+  // Rule 1: Jump Move (highest priority)
+  If `target_1` contains a Jumpable Object (Diamond or Spike) AND `target_2` is not a Wall:
+    Move the Agent to `target_2`.
+    Remove the Jumpable Object from `target_1`.
+    // Check for a secondary "overshoot" effect.
+    If `target_1` previously contained a Diamond AND `target_3` contains an X-Block:
+      Remove the X-Block from `target_3`.
+
+  // Rule 2: Dash Move
+  Else if the Agent is adjacent to a Wall AND the action is parallel to that wall:
+    If `target_1` is empty AND `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+    Else (if the dash path is blocked):
+      // Fall through to check for a standard move or blocked move.
+      // This is handled by the subsequent rules.
+
+  // Rule 3: Standard Move
+  Else if `target_1` is an empty tile:
+    Move the Agent to `target_1`.
+
+  // Rule 4: Blocked Move
+  Else (if the move is blocked by a Wall, Spike, or other obstacle):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The "overshoot" effect (destroying an object at `target_3`) has only been observed when jumping a Diamond to destroy an X-Block. It is unknown if this effect occurs when jumping Spikes, or if it can destroy objects other than X-Blocks.
+- [UNCERTAIN] It is unknown if X-Blocks or Holes block standard movement.
+- [UNCERTAIN] The behavior of the Hole is unknown. It may be an obstacle, a hazard, or a goal.
+- [UNCERTAIN] It is unknown what happens if the landing spot of a Jump (`target_2`) is occupied by another object.
+- [UNCERTAIN] It is unknown what happens if a Dash is attempted but `target_2` is occupied or a Wall. Does the agent move one space to `target_1`, or is the entire move blocked?
+
+========================================
+ROUND 7 — Frames [18, 19, 20]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let `start_pos` be the Agent's current cell.
+  Let `direction` be the vector of the action.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+  Let `back_pos` be `start_pos - direction`.
+
+  // Rule 1: Jump Move (highest priority)
+  If `target_1` contains a Diamond AND `target_2` is empty and not a Wall:
+    Move the Agent to `target_2`.
+    Remove the Diamond from `target_1`.
+    // Check for a secondary "back-blast" effect.
+    If `back_pos` contains an X-Block:
+      Remove the X-Block from `back_pos`.
+
+  // Rule 2: Dash Move
+  Else if the Agent is adjacent to a Wall AND the action is parallel to that wall AND `target_2` is empty and not a Wall:
+    Move the Agent to `target_2`.
+    // Note: This move occurs regardless of whether `target_1` is empty or occupied.
+    // If `target_1` is occupied, the object is not affected.
+
+  // Rule 3: Consume Spike
+  Else if `target_1` contains a Spike:
+    Move the Agent to `target_1`.
+    Remove the Spike from `target_1`.
+
+  // Rule 4: Standard Move
+  Else if `target_1` is an empty tile:
+    Move the Agent to `target_1`.
+
+  // Rule 5: Blocked Move
+  Else (if the move is blocked by a Wall, Diamond, or other obstacle not covered by a specific rule):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] There is a contradiction regarding the priority of the Dash Move (Rule 2) and the Standard Move (Rule 4).
+  - A Dash was observed over empty tiles when moving from (4,4) to (6,4).
+  - However, a Standard Move was observed when moving from (1,2) to (2,2) under identical conditions (adjacent to wall, parallel move, clear path of 2+ spaces). The reason for this different behavior is unknown.
+- [UNCERTAIN] The "back-blast" effect has only been observed when jumping a Diamond to destroy an X-Block. It is unknown if this effect occurs when jumping other objects (if possible), or if it can destroy objects other than X-Blocks.
+- [UNCERTAIN] It is unknown if X-Blocks or Holes block movement, or if they can be interacted with in other ways.
+- [UNCERTAIN] The behavior of the Hole is completely unknown.
+- [UNCERTAIN] It is unknown what happens if the landing spot of a Jump or Dash (`target_2`) is occupied.
+
+========================================
+ROUND 8 — Frames [21, 22, 23]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let `start_pos` be the Agent's current cell.
+  Let `direction` be the vector of the action.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+  Let `back_pos` be `start_pos - direction`.
+
+  // Rule 1: Jump Move (highest priority)
+  If `target_1` contains a Diamond OR a Hole, AND `target_2` is empty and not a Wall:
+    Let `jumped_object_type` be the type of object in `target_1`.
+    Move the Agent to `target_2`.
+    Remove the object from `target_1`.
+    // Check for a secondary "back-blast" effect, specific to Diamonds.
+    If `jumped_object_type` is a Diamond AND `back_pos` contains an X-Block:
+      Remove the X-Block from `back_pos`.
+
+  // Rule 2: Dash Move
+  Else if the Agent is adjacent to a Wall AND the action is parallel to that wall AND `target_2` is empty and not a Wall:
+    Move the Agent to `target_2`.
+    // Note: This move occurs regardless of whether `target_1` is empty or occupied.
+    // If `target_1` is occupied, the object is not affected.
+
+  // Rule 3: Consume Spike
+  Else if `target_1` contains a Spike:
+    Move the Agent to `target_1`.
+    Remove the Spike from `target_1`.
+
+  // Rule 4: Standard Move
+  Else if `target_1` is an empty tile:
+    Move the Agent to `target_1`.
+
+  // Rule 5: Blocked Move
+  Else (if the move is blocked by a Wall or other obstacle not covered by a specific rule):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] There is a contradiction regarding the priority of the Dash Move (Rule 2) and the Standard Move (Rule 4).
+  - A Dash was observed over empty tiles when moving from (4,4) to (6,4).
+  - However, a Standard Move was observed when moving from (1,2) to (2,2) under identical conditions (adjacent to wall, parallel move, clear path of 2+ spaces). The reason for this different behavior is unknown.
+- [UNCERTAIN] The "back-blast" effect has only been observed when jumping a Diamond to destroy an X-Block. It is unknown if this effect occurs when jumping other objects, or if it can destroy objects other than X-Blocks.
+- [UNCERTAIN] It is unknown if X-Blocks block standard movement.
+- [UNCERTAIN] It is unknown what happens if the landing spot of a Jump or Dash (`target_2`) is occupied.
+
+========================================
+ROUND 9 — Frames [24, 25, 26]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let `start_pos` be the Agent's current cell.
+  Let `direction` be the vector of the action.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+
+  // Rule 1: X-Seeker Jump (highest priority)
+  If `target_1` contains a Diamond:
+    Scan in `direction` from `target_1` to find the first X-Block.
+    If an X-Block is found at position `x_block_pos`:
+      Move the Agent to `x_block_pos`.
+      Remove the Diamond from `target_1`.
+      Remove the X-Block from `x_block_pos`.
+    Else:
+      [UNCERTAIN] The move is likely blocked. The behavior for jumping a Diamond without an X-Block in the path is unknown.
+
+  // Rule 2: Standard Jump
+  Else if `target_1` contains a Hole AND `target_2` is empty and not a Wall:
+    Move the Agent to `target_2`.
+    Remove the Hole from `target_1`.
+
+  // Rule 3: Spike Interaction
+  // An unknown condition determines whether a Spike is jumped over or consumed.
+  Else if `target_1` contains a Spike:
+    If `target_2` is empty and not a Wall AND [UNKNOWN JUMP CONDITION] is met:
+      // Spike Jump
+      Move the Agent to `target_2`.
+      The Spike at `target_1` is NOT removed.
+    Else:
+      // Spike Consume
+      Move the Agent to `target_1`.
+      Remove the Spike from `target_1`.
+
+  // Rule 4: Standard Move
+  Else if `target_1` is an empty tile:
+    Move the Agent to `target_1`.
+
+  // Rule 5: Blocked Move
+  Else (if the move is blocked by a Wall or other obstacle not covered by a specific rule):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The specific condition that distinguishes a "Spike Jump" from a "Spike Consume" is unknown. This is the biggest ambiguity.
+  - A jump occurred when moving Right from (4,4) towards a spike at (5,4).
+  - A consume occurred when moving Left from (6,4) towards the same spike at (5,4), under otherwise identical observable conditions.
+  - A consume also occurred when moving Down from (4,3) towards a spike at (4,4).
+- [UNCERTAIN] The behavior for initiating an X-Seeker Jump (by moving towards a Diamond) when there is no X-Block in the path is unknown.
+- [UNCERTAIN] It is unknown if X-Blocks block standard movement.
+- [UNCERTAIN] It is unknown what happens if the landing spot of any jump is occupied.
+
+========================================
+ROUND 10 — Frames [27, 28, 29]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let `start_pos` be the Agent's current cell.
+  Let `direction` be the vector of the action.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+
+  // Rule 1: X-Seeker Jump (highest priority)
+  If `target_1` contains a Diamond:
+    Scan in `direction` from `target_1` to find the first X-Block.
+    If an X-Block is found at position `x_block_pos`:
+      Move the Agent to `x_block_pos`.
+      Remove the Diamond from `target_1`.
+      Remove the X-Block from `x_block_pos`.
+    Else:
+      [UNCERTAIN] The move is likely blocked. The behavior for jumping a Diamond without an X-Block in the path is unknown.
+
+  // Rule 2: Hole Jump
+  Else if `target_1` contains a Hole AND `target_2` is empty and not a Wall:
+    Move the Agent to `target_2`.
+    Remove the Hole from `target_1`.
+
+  // Rule 3: Spike Interaction
+  Else if `target_1` contains a Spike:
+    // The agent can jump over spikes, but only when moving to the Right.
+    If `direction` is Right AND `target_2` is empty and not a Wall:
+      // Spike Jump (Rightward only)
+      Move the Agent to `target_2`.
+      The Spike at `target_1` is NOT removed.
+    Else:
+      // Spike Consume (for Left, Up, Down moves)
+      Move the Agent to `target_1`.
+      Remove the Spike from `target_1`.
+
+  // Rule 4: Standard Move
+  Else if `target_1` is an empty tile:
+    Move the Agent to `target_1`.
+
+  // Rule 5: Blocked Move
+  Else (if the move is blocked by a Wall or other obstacle not covered by a specific rule):
+    The Agent does not move.
+    The environment remains unchanged.
+
+// Uncertainties
+- [UNCERTAIN] The hypothesis that Spike Jumps only occur when moving Right is based on a single instance and needs further confirmation. It is unknown if other conditions could also allow jumps.
+- [UNCERTAIN] The behavior for initiating an X-Seeker Jump (by moving towards a Diamond) when there is no X-Block in the path is unknown.
+- [UNCERTAIN] It is unknown if X-Blocks block standard movement.
+- [UNCERTAIN] It is unknown what happens if the landing spot of any jump (Hole, Spike, or X-Seeker) is occupied.
+
+========================================
+ROUND 11 — Frames [30, 31, 32]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A single green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A single black square tile. The Agent can occupy the same tile as a Hole.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Core Rules
+On Player Action (Move in a direction):
+  Let `start_pos` be the Agent's current cell.
+  Let `direction` be the vector of the action.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+
+  // Rule 1: Special Start Condition - Jump FROM a Hole
+  If the Agent is on a Hole AND `direction` is Up:
+    If `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+      Remove the Hole from `start_pos`.
+      The action is complete.
+    Else:
+      The Agent does not move. [UNCERTAIN]
+      The action is complete.
+
+  // If the above rule did not apply, proceed to check the target tile.
+  Let `target_1_object` be the object at `target_1`.
+
+  // Rule 2: X-Seeker Jump
+  If `target_1_object` is a Diamond:
+    Scan in `direction` from `target_1` to find the first X-Block.
+    If an X-Block is found at position `x_block_pos`:
+      Move the Agent to `x_block_pos`.
+      Remove the Diamond from `target_1`.
+      Remove the X-Block from `x_block_pos`.
+    Else:
+      The Agent does not move. [UNCERTAIN]
+
+  // Rule 3: Spike Interactions
+  Else if `target_1_object` is a Spike:
+    // Rule 3a: Spike-to-Hole Jump (Highest Spike Priority)
+    If `target_2` contains a Hole:
+      Move the Agent to `target_2`.
+      The Agent now occupies the same tile as the Hole.
+      The Spike at `target_1` is not removed.
+    // Rule 3b: Rightward Spike Jump
+    Else if `direction` is Right AND `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+      The Spike at `target_1` is not removed.
+    // Rule 3c: Spike Consume
+    Else:
+      Move the Agent to `target_1`.
+      Remove the Spike from `target_1`.
+
+  // Rule 4: Hole Interactions
+  Else if `target_1_object` is a Hole:
+    // Rule 4a: Rightward Hole Jump
+    If `direction` is Right AND `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+      Remove the Hole from `target_1`.
+    // Rule 4b: Move Onto Hole
+    Else:
+      Move the Agent to `target_1`.
+      The Agent now occupies the same tile as the Hole, which is not removed.
+
+  // Rule 5: Standard Move
+  Else if `target_1_object` is empty:
+    Move the Agent to `target_1`.
+
+  // Rule 6: Blocked Move
+  Else (e.g., `target_1` is a Wall):
+    The Agent does not move.
+
+// Uncertainties
+- [UNCERTAIN] The direction-specific jumps (from/into Holes, over Spikes) have only been observed for one direction each (Up, Right, Right respectively). It's unknown if other directions have similar properties.
+- [UNCERTAIN] The behavior for initiating an X-Seeker Jump when there is no X-Block in the path is unknown.
+- [UNCERTAIN] It is unknown if X-Blocks block standard movement.
+- [UNCERTAIN] It is unknown what happens if the landing spot of any jump is occupied by an object other than a Hole.
+- [UNCERTAIN] The behavior for a blocked jump (e.g., landing spot is a wall) is not confirmed.
+
+========================================
+ROUND 12 — Frames [33, 34]
+========================================
+
+// Object Definitions
+- **Agent:** The player-controlled red circle.
+- **Diamond:** A blue diamond shape.
+- **Spike:** A green triangle on a light blue background.
+- **X-Block:** A black square with an orange 'X'.
+- **Hole:** A black square tile. The Agent can occupy the same tile as a Hole.
+- **Wall:** The dark grey, impassable border of the grid.
+
+// Rule Precedence
+// The rules are evaluated in the order listed below. The first rule that matches the current state is executed.
+
+// Core Rules
+On Player Action (Move in `direction`):
+  Let `start_pos` be the Agent's current cell.
+  Let `target_1` be `start_pos + direction`.
+  Let `target_2` be `start_pos + 2 * direction`.
+
+  // Rule 1: Jump FROM a Hole
+  // This rule takes precedence over all others if the Agent starts its turn on a Hole.
+  If the Agent is on a Hole AND `direction` is Up:
+    // Assumption: The jump only succeeds if the landing spot is empty.
+    If `target_2` is empty and not a Wall:
+      Move the Agent to `target_2`.
+      Remove the Hole from `start_pos`.
+    Else:
+      The Agent does not move.
+    The action is complete.
+
+  // If Rule 1 did not apply, check the contents of the target cell.
+  Let `target_1_object` be the object at `target_1`.
+
+  // Rule 2: X-Seeker Jump
+  If `target_1_object` is a Diamond:
+    Scan in `direction` from `target_1` to find the first X-Block.
+    If an X-Block is found at position `x_block_pos`:
+      Move the Agent to `x_block_pos`.
+      Remove the Diamond from `target_1`.
+      Remove the X-Block from `x_block_pos`.
+    Else:
+      // Assumption: If no X-Block is found in the path, the move is blocked.
+      The Agent does not move.
+
+  // Rule 3: Spike Interactions
+  Else if `target_1_object` is a Spike:
+    // Rule 3a: Rightward Spike Jump
+    If `direction` is Right:
+      // Assumption: The jump only succeeds if the landing spot is empty.
+      If `target_2` is empty and not a Wall:
+        Move the Agent to `target_2`.
+        The Spike at `target_1` is not removed.
+      Else:
+        The Agent does not move.
+    // Rule 3b: Spike Consume (for all other directions)
+    Else:
+      Move the Agent to `target_1`.
+      Remove the Spike from `target_1`.
+
+  // Rule 4: Move Onto Hole
+  Else if `target_1_object` is a Hole:
+    Move the Agent to `target_1`.
+    The Agent now occupies the same tile as the Hole, which is not removed.
+
+  // Rule 5: Standard Move
+  Else if `target_1_object` is empty:
+    Move the Agent to `target_1`.
+
+  // Rule 6: Blocked Move
+  Else (if `target_1` contains a Wall or an X-Block):
+    // Assumption: X-Blocks are solid and block standard movement.
+    The Agent does not move.

@@ -1,0 +1,15 @@
+{
+  "experiment": "exp04_incremental",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "mode": "magnetworld",
+  "episode": "full_complex",
+  "batch_size": 3,
+  "n_frames": 35,
+  "n_rounds": 12,
+  "verification_verdict": "PARTIALLY CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/20260412_231411_exp04_pseudocode.txt",
+  "rounds_path": "results/20260412_231411_exp04_rounds.txt",
+  "verification_path": "results/20260412_231411_exp04_verification.txt"
+}
