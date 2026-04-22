@@ -75,66 +75,39 @@ Study what changed and infer the transition rule."""
 # -----------------------------------------------------------------------
 
 INCREMENTAL_SYSTEM_PROMPT = """\
-You are an expert at inferring the rules of unknown environments from visual \
-observations alone. You will be shown frames from a 2D environment in small \
-batches. After each batch you will propose or revise your hypothesis about \
-the environment's transition rules.
-
-You MUST output ONLY pseudocode — a high-level, human-readable description \
-of the rules you believe govern this environment. Use plain English with \
-simple indentation. No Python, no code syntax — just logic.
-
-Be precise about:
-  - What visual elements exist (describe their appearance)
-  - How each element behaves when an action occurs
-  - What interactions exist between elements
-  - Edge cases and priorities (which rule wins when two could apply)
-
-Do NOT assume this resembles any known game. Infer everything from the images."""
+You are a careful observer. You will be shown images one batch at a time. \
+After each batch, describe what you observe and what you think is happening."""
 
 INCREMENTAL_FIRST_BATCH_PROMPT = """\
-Here are the first {n} frames from an unknown environment, in chronological order. \
-Each consecutive pair represents the state BEFORE and AFTER a single action.
+Here are {n} images in chronological order.
 
-Study what changes between each pair of frames carefully. Then write your \
-INITIAL HYPOTHESIS — a pseudocode description of the rules you think govern \
-this environment. Mark anything you are uncertain about with [UNCERTAIN].
+Look carefully at what is present and what changes between each image. \
+Describe exactly what you observe, then write your best current understanding \
+of the pattern or rule that governs what is happening.
 
-=== HYPOTHESIS ==="""
+Be specific — refer to what you actually see, not assumptions.
+
+=== OBSERVATION ==="""
 
 INCREMENTAL_NEXT_BATCH_PROMPT = """\
-Here are the next {n} frames, continuing from where we left off.
+Here are {n} more images, continuing in the same sequence.
 
-Your current hypothesis is:
-{hypothesis}
+Study them carefully. What new things do you notice? \
+Does anything confirm, contradict, or extend what you observed before?
 
-Study these new frames. Do they confirm, contradict, or extend your hypothesis? \
-Pay special attention to:
-  - Transitions that your current rules do NOT predict
-  - Cases where your rules predict something different from what happened
-  - New element types or interactions you haven't seen before
+Update your understanding. Write the complete revised description of \
+what is happening and why.
 
-Output your REVISED HYPOTHESIS — the complete updated pseudocode. Remove any \
-[UNCERTAIN] tags for things you are now confident about. Add new [UNCERTAIN] \
-tags for new ambiguities.
-
-=== REVISED HYPOTHESIS ==="""
+=== UPDATED OBSERVATION ==="""
 
 INCREMENTAL_FINAL_PROMPT = """\
-You have now seen all the frames. Your current hypothesis is:
+Here are the final {n} images.
 
-{hypothesis}
+You have now seen the complete sequence. Write your final description: \
+a precise, complete account of the pattern or rules governing what you observed. \
+Every claim must be grounded in something you actually saw.
 
-Write your FINAL pseudocode. This should be:
-  - Complete — every rule that governs this environment
-  - Precise — no ambiguity, a human could implement this
-  - Prioritised — if rules can conflict, state which wins
-  - Concise — no unnecessary detail, no implementation specifics
-
-Remove all [UNCERTAIN] tags. For anything still uncertain, state your best \
-guess and note it as an assumption.
-
-=== FINAL PSEUDOCODE ==="""
+=== FINAL DESCRIPTION ==="""
 
 
 # -----------------------------------------------------------------------
@@ -142,34 +115,33 @@ guess and note it as an assumption.
 # -----------------------------------------------------------------------
 
 VERIFY_SYSTEM_PROMPT = """\
-You are a careful verifier. You will be shown a sequence of images depicting \
-consecutive states of a 2D grid environment, followed by a proposed set of rules \
-(pseudocode) that someone claims describe how the environment works.
+You are a careful verifier. You will be shown a sequence of images, followed \
+by a description of what someone claims is happening in them.
 
-Your job: compare the proposed rules against what you actually observe in the \
-images. Check EVERY transition between consecutive frames.
+Your job: check every consecutive pair of images and decide whether the \
+description correctly accounts for what you actually observe.
 
 You MUST output the following sections in order:
 
 === FRAME-BY-FRAME ANALYSIS ===
 For each pair of consecutive frames, describe:
   - What changed visually between the two frames
-  - Whether the proposed rules correctly predict this change
-  - If not, what the rules got wrong
+  - Whether the proposed description correctly predicts this change
+  - If not, what the description got wrong
 
 === VERDICT ===
 One of: CORRECT, PARTIALLY CORRECT, or INCORRECT
 
 === ISSUES ===
-If not fully correct, list each specific rule that is wrong or missing. \
+If not fully correct, list each specific claim that is wrong or missing. \
 If correct, write "None"."""
 
 VERIFY_USER_PROMPT = """\
-Here are the proposed rules (pseudocode):
+Here is the proposed description:
 
 {pseudocode}
 
-Now verify these rules against the image sequence above."""
+Now verify this description against the image sequence above."""
 
 
 def _encode(path: str) -> str:
@@ -575,35 +547,24 @@ def extract_rule_incremental(
         raise ValueError(f"Unknown provider '{provider}'. Use: fal | claude | gpt4o")
 
 
-def _build_incremental_messages(batches, round_idx, hypothesis):
-    """Build the full message history up to round_idx for multi-turn conversation."""
-    messages = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
+def _build_user_message(batch, round_idx, total_batches):
+    """Build one user message: images + minimal neutral prompt."""
+    content = []
+    for path in batch:
+        content.append(_img_block(path))
 
-    for r in range(round_idx + 1):
-        batch = batches[r]
-        content = []
-        for path in batch:
-            content.append(_img_block(path))
+    is_first = (round_idx == 0)
+    is_last  = (round_idx == total_batches - 1)
 
-        is_last_batch = (r == len(batches) - 1)
+    if is_first:
+        prompt = INCREMENTAL_FIRST_BATCH_PROMPT.format(n=len(batch))
+    elif is_last:
+        prompt = INCREMENTAL_FINAL_PROMPT.format(n=len(batch))
+    else:
+        prompt = INCREMENTAL_NEXT_BATCH_PROMPT.format(n=len(batch))
 
-        if r == 0:
-            content.append({"type": "text", "text": INCREMENTAL_FIRST_BATCH_PROMPT.format(
-                n=len(batch))})
-        elif is_last_batch:
-            content.append({"type": "text", "text": INCREMENTAL_FINAL_PROMPT.format(
-                hypothesis=hypothesis)})
-        else:
-            content.append({"type": "text", "text": INCREMENTAL_NEXT_BATCH_PROMPT.format(
-                n=len(batch), hypothesis=hypothesis)})
-
-        messages.append({"role": "user", "content": content})
-
-        # Add placeholder for assistant response (filled in from prior rounds)
-        if r < round_idx:
-            messages.append({"role": "assistant", "content": hypothesis})
-
-    return messages
+    content.append({"type": "text", "text": prompt})
+    return {"role": "user", "content": content}
 
 
 def _incremental_fal(batches, model, verbose):
@@ -619,7 +580,8 @@ def _incremental_fal(batches, model, verbose):
         default_headers={"Authorization": f"Key {fal_key}"},
     )
 
-    hypothesis = ""
+    # conversation history grows each round: [system, user, assistant, user, assistant, ...]
+    conversation = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
     rounds = []
 
     for r, batch in enumerate(batches):
@@ -631,37 +593,41 @@ def _incremental_fal(batches, model, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        messages = _build_incremental_messages(batches, r, hypothesis)
+        # Append next user message (images + minimal prompt, no hypothesis injected)
+        conversation.append(_build_user_message(batch, r, len(batches)))
 
         response = client.chat.completions.create(
             model=model,
             max_tokens=16000,
             temperature=0.2,
-            messages=messages,
+            messages=conversation,
         )
         raw = response.choices[0].message.content.strip()
 
-        # Extract the hypothesis from the response
-        hypothesis = _extract_hypothesis(raw)
+        # Append the model's actual response as the assistant turn
+        conversation.append({"role": "assistant", "content": raw})
 
+        observation = _extract_hypothesis(raw)
         rounds.append({
             "batch_indices": batch_indices,
-            "hypothesis": hypothesis,
+            "hypothesis": observation,
             "raw": raw,
         })
 
         if verbose:
-            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            preview = observation[:200] + "..." if len(observation) > 200 else observation
             print(f"         → {preview}\n")
 
-    return {"pseudocode": hypothesis, "rounds": rounds}
+    final = rounds[-1]["hypothesis"] if rounds else ""
+    return {"pseudocode": final, "rounds": rounds}
 
 
 def _incremental_claude(batches, verbose):
     import anthropic
     client = anthropic.Anthropic()
 
-    hypothesis = ""
+    # Claude uses same alternating structure but images are base64 source blocks
+    conversation = []
     rounds = []
 
     for r, batch in enumerate(batches):
@@ -673,49 +639,46 @@ def _incremental_claude(batches, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        # Build messages in Anthropic format
-        messages = []
-        for prev_r in range(r + 1):
-            prev_batch = batches[prev_r]
-            content = []
-            for path in prev_batch:
-                content.append({"type": "image", "source": {"type": "base64",
-                                "media_type": "image/png", "data": _encode(path)}})
-            is_last_batch = (prev_r == len(batches) - 1)
-            if prev_r == 0:
-                content.append({"type": "text", "text": INCREMENTAL_FIRST_BATCH_PROMPT.format(
-                    n=len(prev_batch))})
-            elif is_last_batch:
-                content.append({"type": "text", "text": INCREMENTAL_FINAL_PROMPT.format(
-                    hypothesis=hypothesis)})
-            else:
-                content.append({"type": "text", "text": INCREMENTAL_NEXT_BATCH_PROMPT.format(
-                    n=len(prev_batch), hypothesis=hypothesis)})
-            messages.append({"role": "user", "content": content})
-            if prev_r < r:
-                messages.append({"role": "assistant", "content": hypothesis})
+        # Build user message with Claude-format image blocks
+        content = []
+        for path in batch:
+            content.append({"type": "image", "source": {"type": "base64",
+                            "media_type": "image/png", "data": _encode(path)}})
+        is_first = (r == 0)
+        if is_first:
+            prompt = INCREMENTAL_FIRST_BATCH_PROMPT.format(n=len(batch))
+        elif is_last:
+            prompt = INCREMENTAL_FINAL_PROMPT.format(n=len(batch))
+        else:
+            prompt = INCREMENTAL_NEXT_BATCH_PROMPT.format(n=len(batch))
+        content.append({"type": "text", "text": prompt})
+        conversation.append({"role": "user", "content": content})
 
         resp = client.messages.create(
             model="claude-sonnet-4-6", max_tokens=16000,
             system=INCREMENTAL_SYSTEM_PROMPT,
-            messages=messages,
+            messages=conversation,
         )
         raw = resp.content[0].text.strip()
-        hypothesis = _extract_hypothesis(raw)
 
-        rounds.append({"batch_indices": batch_indices, "hypothesis": hypothesis, "raw": raw})
+        # Append real assistant response to conversation
+        conversation.append({"role": "assistant", "content": raw})
+
+        observation = _extract_hypothesis(raw)
+        rounds.append({"batch_indices": batch_indices, "hypothesis": observation, "raw": raw})
         if verbose:
-            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            preview = observation[:200] + "..." if len(observation) > 200 else observation
             print(f"         → {preview}\n")
 
-    return {"pseudocode": hypothesis, "rounds": rounds}
+    final = rounds[-1]["hypothesis"] if rounds else ""
+    return {"pseudocode": final, "rounds": rounds}
 
 
 def _incremental_gpt4o(batches, verbose):
     from openai import OpenAI
     client = OpenAI()
 
-    hypothesis = ""
+    conversation = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
     rounds = []
 
     for r, batch in enumerate(batches):
@@ -727,32 +690,32 @@ def _incremental_gpt4o(batches, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        messages = _build_incremental_messages(batches, r, hypothesis)
+        conversation.append(_build_user_message(batch, r, len(batches)))
 
         resp = client.chat.completions.create(
             model="gpt-4o", max_tokens=16000,
-            messages=messages,
+            messages=conversation,
         )
         raw = resp.choices[0].message.content.strip()
-        hypothesis = _extract_hypothesis(raw)
+        conversation.append({"role": "assistant", "content": raw})
 
-        rounds.append({"batch_indices": batch_indices, "hypothesis": hypothesis, "raw": raw})
+        observation = _extract_hypothesis(raw)
+        rounds.append({"batch_indices": batch_indices, "hypothesis": observation, "raw": raw})
         if verbose:
-            preview = hypothesis[:200] + "..." if len(hypothesis) > 200 else hypothesis
+            preview = observation[:200] + "..." if len(observation) > 200 else observation
             print(f"         → {preview}\n")
 
-    return {"pseudocode": hypothesis, "rounds": rounds}
+    final = rounds[-1]["hypothesis"] if rounds else ""
+    return {"pseudocode": final, "rounds": rounds}
 
 
 def _extract_hypothesis(raw: str) -> str:
-    """Pull the hypothesis/pseudocode from the LLM's response."""
+    """Pull the observation text from the LLM's response (after section header if present)."""
     import re
-    # Try to find content after any of the section headers
-    for header in [r"=== FINAL PSEUDOCODE ===",
-                   r"=== REVISED HYPOTHESIS ===",
-                   r"=== HYPOTHESIS ==="]:
+    for header in [r"=== FINAL DESCRIPTION ===",
+                   r"=== UPDATED OBSERVATION ===",
+                   r"=== OBSERVATION ==="]:
         match = re.search(header + r"\s*\n(.*)", raw, re.DOTALL)
         if match:
             return match.group(1).strip()
-    # Fallback: return the whole response
     return raw
