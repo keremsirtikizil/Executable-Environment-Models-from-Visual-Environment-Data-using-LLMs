@@ -1,0 +1,26 @@
+Scene        : bouncing_ball
+Description  : A ball bouncing on a hard floor filmed in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 24 | Batch : 3 | Rounds : 8
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+Based on the complete sequence of 24 images, the governing rule is that a liquid droplet is undergoing a continuous, highly elastic, and repetitive bounce on a hot surface. This entire phenomenon is a visual demonstration of the **Leidenfrost effect**.
+
+The process unfolds in a clear, repeating cycle, with one full cycle observed between approximately +0.6 ms and +19.3 ms.
+
+1.  **Descent from Apex:** The sequence begins at +0.6 ms with the droplet near the peak of its trajectory, where it is momentarily almost stationary. From this point until it makes contact with the surface, it is visibly accelerating downwards due to gravity. This descent phase is seen again starting at +19.3 ms and continuing through the final frame at +29.3 ms.
+
+2.  **Impact and Compression:** At +11.8 ms, the droplet makes contact with the surface. Crucially, it does not splash or wet the surface. Instead, its downward kinetic energy causes it to deform, flattening into a compressed, oblate shape, which is most pronounced at +13.1 ms.
+
+3.  **Recoil and Ascent:** The droplet's surface tension acts to restore its spherical shape (the state of lowest surface energy). This converts the stored energy from the compression back into kinetic energy, causing the droplet to rebound. At +14.3 ms, it is seen recoiling, and by +15.6 ms, it is fully airborne again and traveling upwards.
+
+4.  **Return to Apex:** The droplet continues to rise until it reaches a new apex around +19.3 ms. The height of this second peak is nearly identical to the starting height observed at +0.6 ms. This visual evidence confirms that the collision is exceptionally elastic, with very little energy being lost in the bounce.
+
+**Conclusion:**
+
+The governing rule is a cyclical interaction dictated by the Leidenfrost effect. The hot surface creates a persistent vapor layer that insulates the droplet and acts as a spring, preventing direct contact and enabling a near-perfectly elastic bounce. The droplet is trapped in a continuous loop of falling, impacting the vapor cushion, and being propelled back up. The changing internal reflections throughout the sequence also indicate that the droplet is likely rotating or oscillating as it moves through these cycles.

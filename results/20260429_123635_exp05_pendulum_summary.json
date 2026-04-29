@@ -1,0 +1,15 @@
+{
+  "experiment": "exp05_realworld",
+  "scene": "pendulum",
+  "description": "A pendulum swinging back and forth in slow motion.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 44,
+  "n_rounds": 15,
+  "verification_verdict": "CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/20260429_123635_exp05_pendulum_pseudocode.txt",
+  "rounds_path": "results/20260429_123635_exp05_pendulum_rounds.txt",
+  "verification_path": "results/20260429_123635_exp05_pendulum_verification.txt"
+}

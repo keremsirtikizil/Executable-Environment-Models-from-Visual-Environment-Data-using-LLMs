@@ -1,0 +1,34 @@
+Scene        : newtons_cradle
+Description  : A Newton's cradle — metal balls suspended on strings, one side struck.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+Based on the complete sequence of images, the following is a precise and complete account of the rules governing the behavior of the Newton's cradle.
+
+The entire sequence documented a systematic physics demonstration, conducted in a series of controlled experiments, to reveal a single, fundamental rule.
+
+**The Governing Rule:**
+
+The number of spheres that swing out from one side of the cradle is always equal to the number of spheres that initiated the impact from the other side. This "N in, N out" rule was demonstrated to be consistent across multiple, progressively complex scenarios.
+
+**Evidence from Observation:**
+
+The demonstration was structured in three distinct experiments, each building on the last:
+
+1.  **The One-Sphere Experiment:** The sequence began with the cradle at rest. An operator was observed lifting and releasing a single sphere from the right end. Upon striking the line of four stationary spheres, the impacting sphere came to a near-complete stop, and a single sphere from the far-left end swung out to approximately the same height. This established the baseline principle for N=1.
+
+2.  **The Two-Sphere Experiment:** The operator then intervened, stopped the motion, and set up a new experiment by lifting and releasing two spheres together from the right end. The observed result was that the two impacting spheres came to rest, and exactly two spheres swung out together from the left end. This confirmed the rule for N=2.
+
+3.  **The Three-Sphere Experiment:** The demonstration concluded with the most complex case. The operator was observed lifting and releasing three spheres from the right end. The result was that three spheres swung out from the left end. This was achieved by the two stationary spheres on the left being set in motion, joined by the middle sphere which continued its motion through the impact. This confirmed the rule for N=3.
+
+**The Role of the Intermediate Spheres:**
+
+In every case, the spheres that were not part of the initial impact or the final swinging group acted as conduits. They were observed to remain almost perfectly stationary while efficiently transferring momentum and energy from the impacting spheres to the exiting spheres.
+
+**Conclusion:**
+
+The sequence was not a depiction of random motion but a methodical, step-by-step proof. By systematically varying the number of impacting spheres (from one, to two, to three), the demonstration conclusively showed that the Newton's cradle operates on a simple, predictable rule rooted in the conservation of momentum and energy.

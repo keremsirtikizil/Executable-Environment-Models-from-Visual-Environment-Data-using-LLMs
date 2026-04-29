@@ -1,0 +1,26 @@
+Scene        : pendulum
+Description  : A pendulum swinging back and forth in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 44 | Batch : 3 | Rounds : 15
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The images document an interactive mechanical exhibit at what appears to be a science museum. The fundamental rule governing the exhibit is that it converts continuous circular motion into two simultaneous, perpendicular, straight-line motions. Every observation throughout the sequence supports this conclusion.
+
+Here is a precise account of this rule, grounded in the visual evidence:
+
+1.  **The Input is Circular Motion:** In every image, a user operates the exhibit by moving a brass-colored handle. The handle is constrained to move along the inner edge of a large metal ring, forcing its path to be a perfect circle. This was observed with multiple operators, including a young man (Image 1), several adults (Image 13), and a child (Image 17).
+
+2.  **The Output is Two Perpendicular Linear Motions:** The circular input drives a complex linkage of silver-colored, interconnected arms. The specific geometry of this linkage forces two of its internal pivot points to move in straight lines.
+    *   **Vertical Motion:** One pivot point moves purely up and down. This was confirmed by observing it reach its absolute highest point when the handle was at the top of the circle (Image 20) and its absolute lowest point when the handle was at the bottom (Images 6, 15, and 33).
+    *   **Horizontal Motion:** Simultaneously, another pivot point moves purely left and right. This was confirmed by observing it reach its rightmost point when the handle was at the far right of the circle (Image 24) and its leftmost point when the handle was at the far left (Image 29).
+
+3.  **The Motion is Verifiably Linear:** The straight-line nature of the two output paths was made visually apparent by the motion blur created when the mechanism was operated at high speed. The blurred paths of the output pivots formed distinct straight lines, both vertically and horizontally (e.g., Images 8, 9, and 24).
+
+4.  **The Rule is Consistent and Reversible:** The mechanical transformation is a robust property of the machine itself. It was observed to be identical regardless of the operator's age or the speed of rotation. Furthermore, the system is reversible; when the direction of rotation was changed from clockwise to counter-clockwise (seen between Image 40 and 41), the linkage simply traced its path in reverse, demonstrating that the relationship between the handle's position and the linkage's configuration is absolute.
+
+In summary, the exhibit is a purely mechanical device that flawlessly translates a single rotational input into two-dimensional linear (Cartesian) motion.

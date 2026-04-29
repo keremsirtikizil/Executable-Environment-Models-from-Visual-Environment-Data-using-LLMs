@@ -40,7 +40,7 @@ from vlm.extractor import (
 )
 
 FRAMES_DIR  = "frames"
-RESULTS_DIR = "results"
+RESULTS_DIR = "results/exp04"
 GIF_DIR     = "gifs"
 os.makedirs(FRAMES_DIR, exist_ok=True)
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -253,7 +253,7 @@ def run():
     rounds = result["rounds"]
 
     # Save pseudocode
-    pseudo_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp04_pseudocode.txt")
+    pseudo_path = os.path.join(RESULTS_DIR, f"{episode_name}_{TIMESTAMP}_pseudocode.txt")
     with open(pseudo_path, "w") as f:
         f.write(f"Provider: {PROVIDER} / Model: {MODEL}\n")
         f.write(f"Mode: {MODE} | Episode: {episode_name}\n")
@@ -265,7 +265,7 @@ def run():
         f.write(pseudocode)
 
     # Save round-by-round history
-    rounds_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp04_rounds.txt")
+    rounds_path = os.path.join(RESULTS_DIR, f"{episode_name}_{TIMESTAMP}_rounds.txt")
     with open(rounds_path, "w") as f:
         for i, rnd in enumerate(rounds):
             f.write(f"\n{'=' * 40}\n")
@@ -299,7 +299,7 @@ def run():
         verification = {"verdict": "ERROR", "issues": str(e),
                         "frame_analysis": "", "raw": ""}
 
-    verify_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp04_verification.txt")
+    verify_path = os.path.join(RESULTS_DIR, f"{episode_name}_{TIMESTAMP}_verification.txt")
     with open(verify_path, "w") as f:
         f.write(f"Verifier: {PROVIDER} / {VERIFY_MODEL}\n")
         f.write(f"Verdict: {verification['verdict']}\n\n")
@@ -334,7 +334,7 @@ def run():
         "rounds_path": rounds_path,
         "verification_path": verify_path,
     }
-    summary_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp04_summary.json")
+    summary_path = os.path.join(RESULTS_DIR, f"{episode_name}_{TIMESTAMP}_summary.json")
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2)
     print(f"Summary → {summary_path}")

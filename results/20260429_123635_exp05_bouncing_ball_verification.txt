@@ -1,0 +1,198 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- Visual change: The droplet moves slightly downwards.
+- Prediction: The description states, "The sequence begins at +0.6 ms with the droplet near the peak of its trajectory, where it is momentarily almost stationary. From this point until it makes contact with the surface, it is visibly accelerating downwards due to gravity." This change is consistent with the description of the droplet descending from its apex.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- Visual change: The droplet moves further downwards, approaching the surface.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- Visual change: The droplet makes contact with the surface. Its bottom edge appears to just touch the surface, and it begins to flatten slightly.
+- Prediction: The description states, "At +11.8 ms, the droplet makes contact with the surface." This is consistent. It also mentions "its downward kinetic energy causes it to deform, flattening into a compressed, oblate shape." The initial flattening is visible.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- Visual change: The droplet is significantly flattened and spread out on the surface, forming a distinct oblate shape.
+- Prediction: The description states, "flattening into a compressed, oblate shape, which is most pronounced at +13.1 ms." This is perfectly consistent with the visual change.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- Visual change: The droplet begins to recoil, becoming less flattened and starting to regain its spherical shape, lifting slightly from the surface.
+- Prediction: The description states, "At +14.3 ms, it is seen recoiling". This is consistent.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- Visual change: The droplet has lifted off the surface and is now clearly airborne, moving upwards, and has largely regained its spherical shape.
+- Prediction: The description states, "by +15.6 ms, it is fully airborne again and traveling upwards." This is consistent.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- Visual change: The droplet moves further upwards.
+- Prediction: Consistent with the description of the droplet traveling upwards.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- Visual change: The droplet moves further upwards.
+- Prediction: Consistent with the description of the droplet traveling upwards.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- Visual change: The droplet moves slightly upwards, reaching its highest point in this ascent.
+- Prediction: The description states, "The droplet continues to rise until it reaches a new apex around +19.3 ms." This is consistent.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- Visual change: The droplet moves slightly downwards from its apex.
+- Prediction: The description states, "This descent phase is seen again starting at +19.3 ms and continuing through the final frame at +29.3 ms." This is consistent with the droplet beginning its descent.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- Visual change: The droplet moves slightly downwards.
+- Prediction: The description states, "The sequence begins at +0.6 ms with the droplet near the peak of its trajectory, where it is momentarily almost stationary. From this point until it makes contact with the surface, it is visibly accelerating downwards due to gravity." This change is consistent with the description of the droplet descending from its apex.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- Visual change: The droplet moves further downwards, approaching the surface.
+- Prediction: Consistent with the description of the droplet accelerating downwards.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- Visual change: The droplet makes contact with the surface. Its bottom edge appears to just touch the surface, and it begins to flatten slightly.
+- Prediction: The description states, "At +11.8 ms, the droplet makes contact with the surface." This is consistent. It also mentions "its downward kinetic energy causes it to deform, flattening into a compressed, oblate shape." The initial flattening is visible.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- Visual change: The droplet is significantly flattened and spread out on the surface, forming a distinct oblate shape.
+- Prediction: The description states, "flattening into a compressed, oblate shape, which is most pronounced at +13.1 ms." This is perfectly consistent with the visual change.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- Visual change: The droplet begins to recoil, becoming less flattened and starting to regain its spherical shape, lifting slightly from the surface.
+- Prediction: The description states, "At +14.3 ms, it is seen recoiling". This is consistent.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- Visual change: The droplet has lifted off the surface and is now clearly airborne, moving upwards, and has largely regained its spherical shape.
+- Prediction: The description states, "by +15.6 ms, it is fully airborne again and traveling upwards." This is consistent.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- Visual change: The droplet moves further upwards.
+- Prediction: Consistent with the description of the droplet traveling upwards.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- Visual change: The droplet moves further upwards.
+- Prediction: Consistent with the description of the droplet traveling upwards.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- Visual change: The droplet moves slightly upwards, reaching its highest point in this ascent.
+- Prediction: The description states, "The droplet continues to rise until it reaches a new apex around +19.3 ms." This is consistent.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- Visual change: The droplet moves slightly downwards from its apex.
+- Prediction: The description states, "This descent phase is seen again starting at +19.3 ms and continuing through the final frame at +29.3 ms." This is consistent with the droplet beginning its descent.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: Consistent with the description of the droplet descending.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None

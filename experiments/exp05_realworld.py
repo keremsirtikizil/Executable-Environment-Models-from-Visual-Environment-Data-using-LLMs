@@ -40,7 +40,7 @@ except ImportError:
 from vlm.extractor import extract_rule_incremental, verify_pseudocode
 
 FRAMES_ROOT = "frames/realworld"
-RESULTS_DIR = "results"
+RESULTS_DIR = "results/exp05"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -52,9 +52,12 @@ BATCH_SIZE   = 3
 
 # Add / remove scenes here. Key = subdirectory under frames/realworld/.
 SCENES = {
-    "bouncing_ball":  "A ball bouncing on a hard floor filmed in slow motion.",
-    "newtons_cradle": "A Newton's cradle — metal balls suspended on strings, one side struck.",
-    "pendulum":       "A pendulum swinging back and forth in slow motion.",
+    "bouncing_ball":   "A ball bouncing on a hard floor filmed in slow motion.",
+    "newtons_cradle":  "A Newton's cradle — metal balls suspended on strings, one side struck.",
+    "pendulum":        "A pendulum swinging back and forth in slow motion.",
+    "double_pendulum": "A double pendulum — two pendulums connected in series, exhibiting chaotic motion.",
+    "cymatics":        "Sand on a metal plate driven by a speaker — Chladni patterns forming at resonant frequencies.",
+    "metronomes":      "Multiple mechanical metronomes on a common movable platform, spontaneously synchronising.",
 }
 
 
@@ -98,7 +101,7 @@ def run_scene(scene_name: str, description: str) -> dict | None:
     pseudocode = result["pseudocode"]
     rounds     = result["rounds"]
 
-    pseudo_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp05_{scene_name}_pseudocode.txt")
+    pseudo_path = os.path.join(RESULTS_DIR, f"{scene_name}_{TIMESTAMP}_pseudocode.txt")
     with open(pseudo_path, "w") as f:
         f.write(f"Scene        : {scene_name}\n")
         f.write(f"Description  : {description}\n")
@@ -107,7 +110,7 @@ def run_scene(scene_name: str, description: str) -> dict | None:
         f.write("=" * 50 + "\nFINAL PSEUDOCODE\n" + "=" * 50 + "\n\n")
         f.write(pseudocode)
 
-    rounds_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp05_{scene_name}_rounds.txt")
+    rounds_path = os.path.join(RESULTS_DIR, f"{scene_name}_{TIMESTAMP}_rounds.txt")
     with open(rounds_path, "w") as f:
         for i, rnd in enumerate(rounds):
             label = "FINAL" if i == len(rounds) - 1 else f"Round {i + 1}"
@@ -132,7 +135,7 @@ def run_scene(scene_name: str, description: str) -> dict | None:
         verification = {"verdict": "ERROR", "issues": str(e),
                         "frame_analysis": "", "raw": ""}
 
-    verify_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp05_{scene_name}_verification.txt")
+    verify_path = os.path.join(RESULTS_DIR, f"{scene_name}_{TIMESTAMP}_verification.txt")
     with open(verify_path, "w") as f:
         f.write(f"Verifier : {PROVIDER} / {VERIFY_MODEL}\n")
         f.write(f"Verdict  : {verification['verdict']}\n\n")
@@ -164,7 +167,7 @@ def run_scene(scene_name: str, description: str) -> dict | None:
         "rounds_path"          : rounds_path,
         "verification_path"    : verify_path,
     }
-    summary_path = os.path.join(RESULTS_DIR, f"{TIMESTAMP}_exp05_{scene_name}_summary.json")
+    summary_path = os.path.join(RESULTS_DIR, f"{scene_name}_{TIMESTAMP}_summary.json")
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2)
     print(f"  Summary       → {summary_path}")
