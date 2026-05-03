@@ -1,0 +1,35 @@
+Scene        : cymatics
+Description  : Sand on a metal plate driven by a speaker — Chladni patterns forming at resonant frequencies.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 80 | Batch : 3 | Rounds : 27
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**OBSERVATIONS**
+
+*   **Image 79:** This image is identical to the last image of the previous batch. It shows the fully bright text of the second intertitle: "as the pitch of the tone increases, geometric patterns will form and become more complex". The static hold continues.
+*   **Image 80:** This image is also identical to the previous one. The text card remains on screen without any changes, concluding the provided sequence.
+
+**FINAL DESCRIPTION**
+
+The sequence of 80 images constitutes the complete introductory and preparatory portion of a highly structured educational video. The video's purpose is to demonstrate a scientific principle related to vibration and frequency, and it does so by meticulously guiding the viewer through every stage of the setup using a consistent, chapter-based format.
+
+The governing pattern is a series of distinct, self-contained chapters, each presented with a deliberate `fade-in -> hold -> fade-out` structure (or a variation thereof) before transitioning to the next.
+
+The sequence unfolds as follows:
+
+*   **Chapter 1: Thematic Introduction (Images 1-21):** The video begins with a quote from Nikola Tesla about "energy, frequency and vibration." This text fades in, is held on screen, and then fades out, establishing the core theme.
+
+*   **Chapter 2: Scene Establishment (Images 22-45):** After a cut to black, a wide shot of an experimental apparatus is revealed. This reveal is achieved diegetically as a spotlight fades in, holds, and then cross-fades with a general ambient light. During this lighting transition, the camera tilts down to reframe the scene into a tighter medium shot. This new shot is held and then fades to black.
+
+*   **Chapter 3: The Input Signal (Images 46-54):** The video cuts to a blurry close-up of a function generator's screen. A focus pull brings the screen into sharp view, revealing the initial settings: a 100.000Hz sine wave with zero output. This shot is held and then fades to black.
+
+*   **Chapter 4: Preparing the Medium (Images 55-64):** This chapter begins with a close-up of a shaker sprinkling fine white granules. It then cuts to a high-angle shot showing a person's hand sprinkling the granules onto the black square plate of the apparatus. Once the plate is covered, the hand withdraws, and the scene fades to black.
+
+*   **Chapter 5: Explanation of Action (Images 65-72):** An intertitle fades in, is held, and fades out. The text, "vibrate the metal plate by using a tone generator..", explicitly states the action that will be performed.
+
+*   **Chapter 6: Explanation of Outcome (Images 73-80):** A second intertitle fades in and is held for the remainder of the sequence. This text, "as the pitch of the tone increases, geometric patterns will form and become more complex", states the scientific principle or expected result of the demonstration.
+
+In summary, the entire sequence is a masterclass in methodical exposition. It never shows the experiment itself, but rather builds anticipation by breaking down every component—the theme, the subject, the stimulus, the medium, and the scientific principle—into its own distinct, digestible chapter. The consistent use of fades and holds creates a slow, deliberate pace designed for maximum clarity, ensuring the viewer understands all the "before" conditions before witnessing the "after."

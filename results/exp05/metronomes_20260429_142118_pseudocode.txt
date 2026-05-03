@@ -1,0 +1,39 @@
+Scene        : metronomes
+Description  : Multiple mechanical metronomes on a common movable platform, spontaneously synchronising.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 108 | Batch : 3 | Rounds : 36
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**Final Description**
+
+The sequence of images documents a comprehensive series of physics demonstrations exploring the phenomenon of synchronization in coupled oscillators. The core principle investigated is how the strength of the physical coupling between five metronomes dictates the type of collective behavior, or "order," that emerges from their interactions. The video is structured as a compilation of distinct experimental runs, or vignettes, each designed to illustrate a different aspect of this principle.
+
+**The Apparatus and Coupling Conditions:**
+
+The setup consists of five identical metronomes mounted on a single wooden board. Two distinct coupling conditions were observed:
+
+1.  **Strong Coupling:** The board was placed on two soda cans, which acted as low-friction rollers. This allowed the entire board to move freely from side to side, creating a strong physical link that efficiently transferred energy and momentum between all five metronomes.
+2.  **Weak Coupling:** The board was placed directly on the fixed surface of a tabletop. This severely restricted movement, creating a weak physical link where only minuscule vibrations could be transferred between the metronomes.
+
+**Demonstrations Observed:**
+
+The video presented the following distinct demonstrations:
+
+*   **Strong Coupling: Emergence of a Global Pattern:**
+    Starting with all five metronomes activated chaotically on the movable platform (strong coupling), the system was observed to spontaneously self-organize. It passed through a brief state of full in-phase synchronization (all five swinging together) before settling into a more complex but highly stable global pattern: a **"2-vs-3" anti-phase state**, where a synchronized block of two metronomes swung in opposition to a synchronized block of three. This state was shown to be a powerful "attractor," as the system also converged on it when started from a different condition (gradually "waking up" dormant metronomes via sympathetic resonance).
+
+*   **Forced Synchronization:**
+    To contrast with spontaneous order, the experimenter lifted the board off the rollers, removing the mutual coupling. He then acted as a dominant external driver, shaking the board to force all five metronomes into simple **in-phase synchronization**. This illustrated the difference between order emerging from within a system and order imposed by an outside force.
+
+*   **Weak Coupling: Emergence of Local Patterns and Chaos:**
+    When the board was placed on the fixed tabletop (weak coupling), the system's behavior changed dramatically, demonstrating that global order could not be easily achieved.
+    *   **Chimera State:** When all five metronomes were started chaotically, the system settled into a stable "chimera state," where a small pocket of local order (a **1-vs-1 anti-phase pair**) coexisted with a larger region of persistent chaos. It was also observed that the chaotic portion was less energy-efficient, stopping first and leaving the stable ordered pair behind.
+    *   **Alternating State:** A separate run showed that the weakly coupled system could achieve a different form of global order: a stable **alternating anti-phase pattern**, where each metronome swung in opposition to its immediate neighbors.
+    *   **Fundamental Patterns:** By activating smaller subgroups, the experiment isolated the fundamental building blocks of order possible under weak coupling. These included the stable **1-vs-1 anti-phase pair** and a stable **`sync-anti-sync` triplet** (where the outer two oscillators moved in unison against the central one).
+
+**Governing Rule:**
+
+The rule governing the observed phenomena is that **the nature of emergent order in a system of coupled oscillators is a direct function of the strength of the coupling between them.** Strong coupling allows for the long-range transfer of energy, enabling the formation of complex, globally organized patterns (like the 2-vs-3 state). Weak coupling restricts interactions to be primarily local, which can result in either a failure to organize globally (the chimera state) or the formation of patterns based on nearest-neighbor interactions (the alternating state and smaller local pairs/triplets). The video systematically and conclusively proves this principle by varying the coupling strength and observing the distinct, repeatable patterns that result.

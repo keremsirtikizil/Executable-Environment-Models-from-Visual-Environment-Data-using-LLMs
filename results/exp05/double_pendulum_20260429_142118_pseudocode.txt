@@ -1,0 +1,34 @@
+Scene        : double_pendulum
+Description  : A double pendulum — two pendulums connected in series, exhibiting chaotic motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The complete sequence documents an edited, step-by-step instructional guide for installing and testing the hardware for a plywood folding partition. The governing pattern is a logical, three-act structure common to DIY tutorials: demonstrating the final product, breaking it down to show a key installation process, and then reassembling it to confirm success.
+
+Here is a precise account of the observed events that reveal this pattern:
+
+**Act 1: Demonstration of Function**
+The sequence began with static images of a closed, two-panel partition. A person then entered and pulled on a central wooden stile, causing the left panel to fold inward. This was evidenced by the black, segmented strap acting as a hinge, bending at its central pivot as the panel moved. This initial action established the intended function of the mechanism.
+
+**Act 2: Disassembly, Testing, and Alignment**
+The sequence then transitioned into a detailed hardware check, which was marked by several distinct steps:
+
+1.  **Disassembly:** The folding panel and the black hinge were removed from the scene. The hinge was replaced by a black spirit level, mounted on the same upper pivot bolt on the central stile.
+2.  **Pivot Freedom Test:** The person released the level, allowing it to swing freely like a pendulum. This was observed through multiple frames showing the level in motion-blurred arcs of decreasing amplitude, demonstrating that the pivot moved without binding.
+3.  **Alignment Test:** The pendulum motion was interrupted when the level was held perfectly stationary and horizontal, confirmed by a single, sharp image where the bubble in the vial was centered. This action demonstrated the use of the tool to verify the pivot's alignment.
+4.  **Reassembly Preparation:** After the tests, the spirit level was removed, and the original black flexible hinge was reinstalled. The person then used a red-handled tool (pliers or a wrench) to methodically tighten first the lower, then the upper bolt, securely fastening the hinge. They then moved to the base of the stile, and their manipulation caused the entire stile to shift slightly, consistent with seating it onto a bottom pivot or floor guide.
+
+**Act 3: Reassembly and Confirmation**
+The final act documented the reassembly of the partition and confirmation of the work.
+
+1.  **Preparatory Pause:** Following the hardware installation, the sequence entered a prolonged static phase, with numerous identical frames showing the person holding the hinge in a ready position. This pause served as a transition point before the next major physical step.
+2.  **Edited Reassembly:** The action resumed with the hinge flexing, indicating the re-attachment of the door panel (which remained off-screen). Crucially, a continuity break was observed here: the person's shirt changed from green to grey, and new screw heads appeared on the previously unblemished right-hand panel. This proves the sequence is not a single take but an edited video, with significant actions occurring between cuts.
+3.  **Final Confirmation:** The sequence concluded by mirroring its beginning. The person (now in the grey shirt) was shown pulling the central stile, causing the reassembled partition to fold. This action confirmed that the installation was successful and the mechanism was once again fully functional.
+
+In summary, the rule governing the sequence is the logic of a structured tutorial: **Show -> Deconstruct & Explain -> Reconstruct & Verify.** Every action, from the swinging level to the tightening of bolts and the final folding motion, served a clear instructional purpose within this framework.

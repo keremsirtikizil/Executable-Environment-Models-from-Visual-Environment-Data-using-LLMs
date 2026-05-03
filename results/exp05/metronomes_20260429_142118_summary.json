@@ -1,0 +1,15 @@
+{
+  "experiment": "exp05_realworld",
+  "scene": "metronomes",
+  "description": "Multiple mechanical metronomes on a common movable platform, spontaneously synchronising.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 108,
+  "n_rounds": 36,
+  "verification_verdict": "UNKNOWN",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/exp05/metronomes_20260429_142118_pseudocode.txt",
+  "rounds_path": "results/exp05/metronomes_20260429_142118_rounds.txt",
+  "verification_path": "results/exp05/metronomes_20260429_142118_verification.txt"
+}

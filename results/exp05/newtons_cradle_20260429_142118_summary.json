@@ -1,0 +1,15 @@
+{
+  "experiment": "exp05_realworld",
+  "scene": "newtons_cradle",
+  "description": "A Newton's cradle \u2014 metal balls suspended on strings, one side struck.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 60,
+  "n_rounds": 20,
+  "verification_verdict": "PARTIALLY CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/exp05/newtons_cradle_20260429_142118_pseudocode.txt",
+  "rounds_path": "results/exp05/newtons_cradle_20260429_142118_rounds.txt",
+  "verification_path": "results/exp05/newtons_cradle_20260429_142118_verification.txt"
+}

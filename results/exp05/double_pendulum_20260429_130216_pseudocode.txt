@@ -1,0 +1,39 @@
+Scene        : double_pendulum
+Description  : A double pendulum — two pendulums connected in series, exhibiting chaotic motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The governing rule of this sequence is that it is not a single, continuous, chronological narrative. Instead, it is a **non-linear compilation of edited clips from a comprehensive instructional video** demonstrating the assembly, function, and operation of a specific piece of articulated hardware.
+
+Every observation supports this conclusion. The sequence is composed of distinct "chapters" or thematic segments presented out of order.
+
+Here is a precise account of the patterns observed, grounded in the visual evidence:
+
+**1. The Non-Chronological Structure:**
+The most definitive evidence for this rule is the clear break in continuity.
+*   In Batches 10 through 12, the person is shown methodically disassembling the central "elbow" joint of the black articulated arm, first using pliers to remove a retaining clip and then separating the two bars completely.
+*   However, in Batch 14, the arm is suddenly and inexplicably fully reassembled, with the person shown folding it into its storage position. This jump is impossible in a linear timeline and proves the images are edited clips from different points in a larger video.
+
+**2. The Thematic "Chapters" of the Instructional Guide:**
+The jumbled clips can be sorted into clear, recurring themes, each representing a chapter from the source video.
+
+*   **Chapter A: Demonstration of Full Functionality:** A series of clips (prominently in Batches 3-8) shows the complete dynamic range of the assembled hardware. This includes unfolding the arm, extending it, pushing it to initiate a free swing, and, crucially, the arm momentarily stopping at a horizontal detent or locking position (Batch 7) before swinging back. This demonstrates the hardware's intended use as a stable support arm that also moves freely.
+
+*   **Chapter B: Demonstration of Assembly & Disassembly:** The sequence includes detailed, close-up actions of working on the hardware itself.
+    *   **Disassembly:** Batches 10-13 show the use of red-handled pliers to remove a small retaining clip, the subsequent separation of the arm's two bars, and finally, work on the wooden mounting strip.
+    *   **Assembly:** Batches 16-18 show the inverse process, where the person holds up the same small retaining clip to the camera before pressing it onto the central pivot pin to secure the joint.
+
+*   **Chapter C: Demonstration of Basic Operation:** Multiple, distinct clips show the simple act of folding and stowing the arm. This action is seen being performed in slightly different ways throughout the sequence (e.g., Batches 3, 9, 14, 19, 20), reinforcing that these are separate takes illustrating a fundamental operation.
+
+**3. The Use of Instructional Techniques:**
+The sequence exhibits techniques common to how-to videos.
+*   **Establishing Shots:** The initial two batches of completely static images serve as a starting point or "before" state.
+*   **Emphasis:** The repetition of the static frame in Batches 17 and 18, where the person holds the small clip up for view, is a deliberate pause to emphasize a critical part for the viewer.
+
+In summary, the sequence is a "highlight reel" from a DIY guide. It showcases the key aspects of a piece of hardware used in a larger project (likely a Murphy bed or folding workbench, given the plywood structure). The governing pattern is the non-linear presentation of these distinct instructional chapters, covering everything from dynamic operation to the fine details of assembly and disassembly.

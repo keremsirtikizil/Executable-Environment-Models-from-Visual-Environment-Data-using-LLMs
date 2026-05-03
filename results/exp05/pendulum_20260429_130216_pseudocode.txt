@@ -1,0 +1,28 @@
+Scene        : pendulum
+Description  : A pendulum swinging back and forth in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 44 | Batch : 3 | Rounds : 15
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The complete sequence of images documents a full cycle of interaction with a large-scale, interactive science museum exhibit. The pattern of events is governed by the principles of mechanical engineering and rotational dynamics. The demonstration unfolds in five distinct, observable phases:
+
+1.  **Setup and Explanation (Images 1-3):** The sequence begins with an operator holding the complex mechanical linkage stationary. His gestures—looking at the camera and pointing at the mechanism—indicate this is a preparatory or explanatory phase.
+
+2.  **Activation (Images 4-9):** The operator applies force to a handle, pushing the entire linkage into a clockwise rotation. The appearance and intensification of motion blur on the moving arms during this phase provide direct visual evidence of the system's acceleration as kinetic energy is put into it.
+
+3.  **Sustained Motion (Images 10-30):** The operator lets go of the handle and steps away. The linkage continues to spin rapidly on its own for numerous complete rotations. The persistent, strong motion blur during this long phase is evidence that the heavy arms have significant rotational inertia, allowing them to store the initial energy and continue moving due to the conservation of momentum.
+
+4.  **Deceleration (Images 31-40):** The motion blur on the linkage's arms begins to visibly decrease. The arms become progressively sharper and more distinct in each frame. This directly illustrates the gradual slowing of the machine as its stored kinetic energy is dissipated by friction.
+
+5.  **Conclusion and Reset (Images 41-42):** The linkage comes to a complete, stationary stop. In the final image, a new museum visitor steps up to the handle, ready to begin the cycle again.
+
+Based on these visual observations, the exhibit demonstrates two primary rules:
+
+*   **It is a Straight-Line Mechanism:** The device is a complex linkage of pivoted arms constrained within a circular track. As the entire apparatus rotates, the geometry of the linkage forces one of the central joints to travel in a path that approximates a straight horizontal line across the middle of the circle. This is most clearly seen as the linkage passes the 9 o'clock and 3 o'clock positions (e.g., Image 8), demonstrating the engineering principle of converting rotational motion into linear motion.
+
+*   **It Demonstrates Rotational Dynamics:** The full cycle—from the initial push, to the long period of self-sustained spinning, to the eventual slowing and stopping—provides a complete and compelling lesson on physical principles. The initial push demonstrates **energy input**. The long free-spin demonstrates the storage of that energy via **rotational inertia** and the **conservation of momentum**. The final, gradual deceleration to a full stop demonstrates the real-world effect of **energy dissipation through friction**.

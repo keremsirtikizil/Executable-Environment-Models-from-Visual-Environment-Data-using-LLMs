@@ -1,0 +1,15 @@
+{
+  "experiment": "exp05_realworld",
+  "scene": "bouncing_ball",
+  "description": "A ball bouncing on a hard floor filmed in slow motion.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 24,
+  "n_rounds": 8,
+  "verification_verdict": "CORRECT",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/exp05/bouncing_ball_20260429_142118_pseudocode.txt",
+  "rounds_path": "results/exp05/bouncing_ball_20260429_142118_rounds.txt",
+  "verification_path": "results/exp05/bouncing_ball_20260429_142118_verification.txt"
+}

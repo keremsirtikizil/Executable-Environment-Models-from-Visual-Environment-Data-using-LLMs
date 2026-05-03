@@ -1,0 +1,36 @@
+Scene        : cymatics
+Description  : Sand on a metal plate driven by a speaker — Chladni patterns forming at resonant frequencies.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 80 | Batch : 3 | Rounds : 27
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The sequence is a structured educational video demonstrating the principles of cymatics (the visualization of sound vibrations). The video is organized into distinct chapters, each with a clear purpose, and it consistently uses a `reveal -> hold -> transition` pattern for both visual demonstrations and textual information.
+
+Here is a complete account of the observed events:
+
+**Chapter 1: Thematic Introduction (Frames 1-21)**
+The video begins with a black screen. A quote attributed to Nikola Tesla—"If you want to find the secrets of the universe, think in terms of energy, frequency and vibration."—fades into view. This quote is held statically on screen for an extended period before fading back to black. This establishes the central theme of the video.
+
+**Chapter 2: First Demonstration Block (Frames 22-42)**
+The scene transitions to a dimly lit experimental setup. A single spotlight illuminates a square metal plate mounted on a central post.
+*   **Preparation:** Fine white particles are poured into a neat pile at the center of the plate.
+*   **Demonstration 1:** After a brief pause, the plate vibrates, and the particles rapidly arrange themselves into a simple cross pattern.
+*   **Demonstration 2:** The experiment is reset with the particles re-piled in the center. The plate vibrates again, and the particles form a second, more complex pattern of a rotated square with lines extending to the corners.
+
+**Chapter 3: Explanation Block 1 (Frames 43-54)**
+The demonstration scene is reset and then fades to black. A new scene appears, showing a close-up of a function generator's screen. The video pulls focus to clearly reveal the frequency used for the first demonstration: "100.000Hz". This shot is held statically before fading to black again.
+
+**Chapter 4: Second Preparation Block (Frames 55-63)**
+This chapter begins with a cinematic, slow-motion close-up of particles being dispensed from a shaker. The scene then cuts to a bright, evenly lit, top-down view of the plate. A person's hand enters the frame and shakes particles from a shaker to create a uniform, random distribution across the entire surface of the plate, representing a new experimental setup.
+
+**Chapter 5: Explanatory Interlude (Frames 64-80)**
+The video transitions back to a more dramatic, focused light on the newly prepared plate. It then cuts to a series of two explanatory text cards on a black screen:
+*   **Card 1 (The Mechanism):** The text "vibrate the metal plate by using a tone generator.." fades in, is held on screen, and then fades out.
+*   **Card 2 (The Principle):** A second text card fades in, reading "as the pitch of the tone increases, geometric patterns will form and become more complex". This text is then held statically for the remainder of the sequence.
+
+The video concludes by holding on this final explanatory text card, having fully prepared the viewer—thematically, visually, and intellectually—for a new series of demonstrations that would presumably follow, proving the stated principle.

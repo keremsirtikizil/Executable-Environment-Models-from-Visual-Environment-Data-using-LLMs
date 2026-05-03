@@ -333,6 +333,65 @@ The accuracy reported in each run's `*_summary.json` is simply `n_passed / n_tot
 
 ---
 
+## Experiment 04 — Incremental Multi-Turn Pseudocode Extraction
+
+Frames are sent in small batches (default 3) through a multi-turn conversation. After each batch the model revises its running hypothesis in light of the new evidence, then produces a final pseudocode description once all frames have been seen. No Python is generated — the focus is on producing the clearest possible human-readable rule description.
+
+### Key design changes from exp01–03
+
+| exp01–03 | exp04 |
+|---|---|
+| All frames in one prompt | Batches of 3 frames per round |
+| Single-shot response | Multi-turn: propose → revise → finalise |
+| Pseudocode + Python | Pseudocode only |
+| MagnetWorld / EchoWorld only | Works on any PNG sequence (game or real-world) |
+
+### Run
+
+```bash
+python experiments/exp04_incremental.py   # MagnetWorld full_complex episode by default
+```
+
+Set `MODE = "external"` and point `EXTERNAL_FRAMES_DIR` at any directory of numbered PNGs to run on real-world footage.
+
+---
+
+## Experiment 05 — Real-World Physics Videos
+
+Extends exp04 to completely real-world video footage. Short clips are sampled at 2 fps with ffmpeg, producing 20–100+ PNG frames per scene. The LLM receives **no scene description** — only the raw frames — and must infer the physics from observation alone.
+
+### Scenes
+
+| Scene | Frames | Verdict | Notes |
+|---|---|---|---|
+| `bouncing_ball` | 24 | **CORRECT** | Superhydrophobic surface; non-monotonic velocity-regime bounce physics |
+| `newtons_cradle` | 60 | PARTIALLY CORRECT | N-in / N-out conservation rule correct; minor left-right direction error |
+| `pendulum` | 44 | PARTIALLY CORRECT | Scene is actually a Peaucellier-Lipkin linkage museum exhibit; model correctly identified circular-to-linear motion conversion |
+| `double_pendulum` | — | — | Wrong video downloaded; frames showed furniture assembly |
+| `cymatics` | — | — | Hz-frequency labels burned into every frame of the real experiment |
+| `metronomes` | 108 | pending | Title card in first batch; actual synchronisation experiment appears clean |
+
+### Notable finding — pendulum scene
+
+The "pendulum" video was actually a Peaucellier-Lipkin linkage exhibit at a science museum. The model — given **zero hints** about what it was watching — correctly identified it as "a purely mechanical device that flawlessly translates a single rotational input into two-dimensional linear (Cartesian) motion." It described all five operational phases (setup, activation, sustained spin, deceleration, reset) and correctly named the straight-line conversion principle.
+
+### Notable finding — bouncing_ball scene
+
+Both runs correctly identified the droplet as bouncing on a superhydrophobic surface. The higher-quality run (CORRECT) described a non-monotonic velocity relationship: clean elastic rebound at high and low velocities (Cassie-Baxter air layer intact) vs. a "pancake" energy-dissipating bounce at intermediate velocity (Wenzel state, droplet penetrates surface texture). This is an accurate description of a known but non-obvious phenomenon.
+
+### Run
+
+```bash
+python experiments/exp05_realworld.py
+```
+
+Frame extraction (requires ffmpeg):
+```bash
+ffmpeg -i your_video.mp4 -vf "fps=2,scale=640:-1" -q:v 2 frames/realworld/<scene>/frame_%03d.png
+```
+
+---
+
 ## Overall results so far
 
 These are the scores we've recorded from runs on `gemini-2.5-pro` (extractor) + `gemini-2.5-flash` (verifier) via fal.ai:
@@ -341,6 +400,7 @@ These are the scores we've recorded from runs on `gemini-2.5-pro` (extractor) + 
 |---|---|---|---|---|---|
 | exp02 | MagnetWorld (5 rules) | 31 | 11/31 (35%) | ~27% over 4 runs | 3/4 CORRECT — overly lenient |
 | exp03 | EchoWorld (5 rules)   | 22 | 8/22 (36%)  | (1 run so far)    | INCORRECT |
+| exp05 | Real-world physics (3 clean scenes) | — | — | CORRECT / PARTIALLY CORRECT / PARTIALLY CORRECT | Verifier matches quality of extraction |
 
 What this tells us:
 
@@ -371,6 +431,15 @@ More interestingly, the failure modes changed in informative ways:
 - **exp03 — same root cause as before.** The new pseudocode now correctly identifies void consumption (the longer episode helped reveal this rule, which was missed in the 6-frame version), but still claims the green diamond moves in the **same** direction as the agent — the inverse of the actual EchoWorld rule. The model is importing MagnetWorld's attraction prior even with 5x more disconfirming evidence.
 
 **Takeaway:** more demonstration frames alone are not the bottleneck. The model is not failing because it lacks examples — it is failing because, given any plausible-looking sequence of frames, it produces a confidently wrong pseudocode that pattern-matches to grid-game priors from training data. Future improvements should focus on the *reasoning loop* (verifier→extractor feedback, multi-model voting, stronger prompts that force the model to explain each frame transition) rather than on simply giving the model more pixels.
+
+### What changes when the environment is real-world (exp05)?
+
+Moving from invented 2D grid games to real-world video footage changes the failure mode significantly:
+
+- **No domain prior to import.** The model cannot "remember" the rules of a Peaucellier-Lipkin linkage or a superhydrophobic droplet the way it can for a grid game. When the scene is unfamiliar, it has no choice but to reason from the pixels — and it does this surprisingly well.
+- **Richer visual signal.** Real video frames contain strong physical cues (motion blur, deformation, trajectory) that are absent in static grid renders. The model reads and uses these cues correctly.
+- **New failure mode: hallucinated scene identity.** For the double pendulum scene, a wrong video was downloaded (Murphy bed assembly guide). The model described it accurately as furniture hardware — and the verifier agreed. Both models were CORRECT about the wrong thing. This highlights that the verification loop only checks internal consistency; it cannot detect if the input material is wrong.
+- **Hint contamination via burned-in text.** The cymatics video had Hz-frequency labels in every frame. The model read these and used them, which violates the "no hints" principle. Scene selection must enforce zero on-screen text.
 
 ---
 
@@ -410,7 +479,9 @@ Each experiment run produces the following in `results/`:
 ├── experiments/
 │   ├── exp01_single_rule.py      # 3-rule experiment (21 tests, small grids)
 │   ├── exp02_complex_rule.py     # 5-rule experiment (31 tests, 10x10 grids)
-│   └── exp03_echo_world.py       # EchoWorld — 5 rules in a different invented game
+│   ├── exp03_echo_world.py       # EchoWorld — 5 rules in a different invented game
+│   ├── exp04_incremental.py      # Incremental multi-turn pseudocode (batched frames, no Python)
+│   └── exp05_realworld.py        # Real-world physics videos → pseudocode
 │
 ├── echo_env/
 │   ├── __init__.py
@@ -441,9 +512,22 @@ Each experiment run produces the following in `results/`:
 │   ├── pipeline_diagram.py       # Generates results/pipeline_diagram.png
 │   └── rule_diagram.py           # Generates results/rule_priority_diagram.png
 │
-├── frames/                       # Auto-generated PNG frames per episode (no labels)
+├── frames/
+│   ├── exp04_*/                  # MagnetWorld frames for exp04 episodes
+│   └── realworld/
+│       ├── bouncing_ball/        # 24 PNGs @ 2 fps
+│       ├── newtons_cradle/       # 60 PNGs @ 2 fps
+│       ├── pendulum/             # 44 PNGs @ 2 fps
+│       ├── double_pendulum/      # 60 PNGs @ 2 fps
+│       ├── cymatics/             # 80 PNGs @ 2 fps
+│       └── metronomes/           # 108 PNGs @ 1 fps
+│
 ├── gifs/                         # Auto-generated GIF animations per episode
-├── results/                      # All output: code, pseudocode, verification, visuals, summary
+├── videos/                       # Source MP4 clips for exp05
+│
+├── results/
+│   ├── exp04/                    # {episode}_{timestamp}_{type}.txt
+│   └── exp05/                    # {scene}_{timestamp}_{type}.txt  (pseudocode, rounds, verification, summary)
 │
 └── README.md
 ```

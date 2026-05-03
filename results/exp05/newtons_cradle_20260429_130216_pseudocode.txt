@@ -1,0 +1,27 @@
+Scene        : newtons_cradle
+Description  : A Newton's cradle — metal balls suspended on strings, one side struck.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+Based on the complete sequence of images, the events are governed by a clear and consistent set of rules, demonstrated through a series of controlled, episodic experiments.
+
+1.  **The "N-in, N-out" Rule:** The primary rule is that the number of spheres set in motion on one side of the cradle results in an equal number of spheres swinging out from the opposite side. This was demonstrated systematically and without exception:
+    *   When **one** sphere was lifted and released, **one** sphere swung out from the opposite end.
+    *   When **two** spheres were lifted and released together, **two** spheres swung out from the opposite end. This was observed being initiated from both the right and left sides.
+    *   When **three** spheres were lifted and released together, **three** spheres swung out from the opposite end.
+
+2.  **The Rule of the Intermediate Spheres:** Spheres that are caught between the impacting group and the exiting group remain stationary. They act as a medium through which the effect is transmitted. This was most clearly observed in the one- and two-sphere experiments, where the central spheres did not visibly move.
+
+3.  **The "Swing" Sphere Phenomenon:** The three-sphere experiment revealed a specific and fascinating application of the first two rules. When three spheres impacted from the right, the two stationary spheres on the left swung out, and they were joined by the central sphere (the third from the left). This central sphere was part of the impacting group but became part of the exiting group, visually demonstrating how the "3-in, 3-out" rule is satisfied in a five-sphere system.
+
+4.  **The Rule of External Intervention:** The system's actions were not spontaneous but were initiated and concluded by an external agent (a hand).
+    *   **Initiation:** Every demonstration began with the cradle at rest. A hand appeared, selected a specific number of spheres, pulled them back to a certain height, and released them.
+    *   **Conclusion:** Between different demonstrations (e.g., switching from the two-sphere to the three-sphere experiment), the hand was observed catching the swinging spheres to stop the motion and reset the system.
+
+In summary, the sequence visually proves a set of predictable rules governing the transfer of motion. The core principle is a one-to-one correspondence in the number of spheres involved in the action and reaction. This effect is transmitted through the stationary intermediate spheres, with all actions being deliberately started and stopped by an external force.

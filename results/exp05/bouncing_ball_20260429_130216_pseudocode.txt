@@ -1,0 +1,31 @@
+Scene        : bouncing_ball
+Description  : A ball bouncing on a hard floor filmed in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 24 | Batch : 3 | Rounds : 8
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The complete sequence of images documents the controlled manipulation of a liquid droplet using a surface with dynamically switchable properties. The governing rule is not a single physical law but a sequence of events orchestrated by changing the surface's wettability in real-time.
+
+Here is a precise, chronological account of what was observed:
+
+1.  **First Interaction: A Passive Bounce.**
+    *   From +0.6 ms to +3.1 ms, a spherical liquid droplet is observed falling under gravity.
+    *   At +4.3 ms, it makes its first impact with the surface. It rebounds immediately, as seen by its upward motion from +5.6 ms to its peak at +8.1 ms.
+    *   **Evidence:** Throughout this entire first bounce, the droplet maintains its near-perfect spherical shape. This indicates that the surface is in a non-wetting, or **superhydrophobic**, state, causing the water to bead up and rebound with minimal contact. The collision is inelastic, as the rebound height at +8.1 ms is lower than the initial drop height.
+
+2.  **Second Interaction: An Active, Propulsive Jump.**
+    *   After the first bounce, the droplet falls again, as seen from +9.3 ms to +11.8 ms.
+    *   The second impact is fundamentally different. At +13.1 ms, the droplet is observed to have collapsed and spread out on the surface, losing its spherical shape. This directly contradicts the behavior of the first impact and proves that the surface property was changed to a wetting, or **hydrophilic**, state just before this impact.
+    *   Instead of remaining stuck, the droplet is then launched upwards. At +15.6 ms, it has fully reformed into a sphere and is already airborne, moving away from the surface. This is not a bounce but a jump, powered by the rapid retraction of the droplet.
+    *   **Evidence:** The most compelling evidence is the jump height. The peak of this jump, seen around +19.3 ms, is significantly higher than the peak of the first passive bounce (+8.1 ms). This is physically impossible without an external energy input. The energy was stored as surface energy when the droplet was forced to flatten and then converted back into kinetic energy upon its release, propelling it upwards.
+
+3.  **Third Interaction: The Setup for a Repeat.**
+    *   Following the powerful jump, the droplet follows a standard ballistic trajectory, falling back towards the surface from +20.6 ms to the final frame at +29.3 ms.
+    *   **Evidence:** The final images show the droplet descending, poised for a third impact. The surface appears to be back in its default non-wetting state, as the droplet is allowed to fly freely. If the sequence were to continue without intervention, another passive bounce like the first one would be expected.
+
+In conclusion, the governing rule is the application and removal of an external stimulus (likely an electric field in a process called **electrowetting**) to toggle the surface between superhydrophobic and hydrophilic states. The experimenter first demonstrates a passive bounce on the default non-wetting surface, then actively catches the droplet by turning the surface "on" (wetting), and finally launches it by turning the surface "off" (non-wetting), causing the droplet to jump with recovered energy.

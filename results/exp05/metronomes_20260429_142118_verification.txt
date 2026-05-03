@@ -1,0 +1,2990 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : UNKNOWN
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frames 0-1:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 1-2:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 2-3:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 3-4:**
+- The title screen "Synchronization of Metronomes starring Daniel" disappears, and the scene changes to a close-up of five metronomes on a white board, with a person's hands visible on either side of the board. The metronomes are stationary.
+- The description correctly implies a transition from an introductory screen to the experimental setup. It states "The setup consists of five identical metronomes mounted on a single wooden board," which aligns with the visual. However, it does not explicitly mention the initial stationary state of the metronomes.
+
+**Frames 4-5:**
+- The metronomes begin to swing. The first metronome from the left is swinging to the left, the second to the right, the third to the left, the fourth to the right, and the fifth to the left.
+- The description states "Starting with all five metronomes activated chaotically on the movable platform (strong coupling)..." This aligns with the metronomes starting to swing. The "chaotically" aspect is visually represented by their differing directions and phases.
+
+**Frames 5-6:**
+- The metronomes continue to swing. Their positions have changed slightly, indicating ongoing motion.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 6-7:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 7-8:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 8-9:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 9-10:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 10-11:**
+- The metronomes continue to swing. Their positions have changed slightly. The person's right hand moves to the right side of the board, and a soda can is placed under the right end of the board.
+- The description states "The board was placed on two soda cans, which acted as low-friction rollers. This allowed the entire board to move freely from side to side, creating a strong physical link..." The placement of the first can is shown, which is part of setting up the "strong coupling" condition.
+
+**Frames 11-12:**
+- The metronomes continue to swing. The person's right hand is still holding the can under the right side of the board.
+- The description implies the setup of the strong coupling condition, which is ongoing.
+
+**Frames 12-13:**
+- The metronomes continue to swing. The person's left hand moves to the left side of the board, and a second soda can is placed under the left end of the board.
+- The description states "The board was placed on two soda cans..." The placement of the second can completes the setup for the "strong coupling" condition.
+
+**Frames 13-14:**
+- The metronomes continue to swing. The person's hands are now holding the board, which is resting on the two cans.
+- The description implies the strong coupling setup is complete and the metronomes are still active.
+
+**Frames 14-15:**
+- The metronomes continue to swing. The person's hands are still holding the board.
+- The description implies the strong coupling setup is complete and the metronomes are still active.
+
+**Frames 15-16:**
+- The metronomes continue to swing. The person's hands are no longer holding the board, which is now freely resting on the two cans. The metronomes are still swinging somewhat chaotically.
+- The description states "Starting with all five metronomes activated chaotically on the movable platform (strong coupling)..." This is consistent with the visual.
+
+**Frames 16-17:**
+- The metronomes continue to swing. There's a slight shift in their relative phases, but they are not yet fully synchronized.
+- The description states "the system was observed to spontaneously self-organize. It passed through a brief state of full in-phase synchronization (all five swinging together) before settling into a more complex but highly stable global pattern: a '2-vs-3' anti-phase state..." This frame shows the initial phase of this self-organization.
+
+**Frames 17-18:**
+- The metronomes continue to swing. They appear to be moving towards a more synchronized state, with the first two on the left swinging somewhat together, and the last three on the right also showing some coherence.
+- This is consistent with the description of the system self-organizing.
+
+**Frames 18-19:**
+- The metronomes continue to swing. The first two metronomes on the left are swinging in phase, and the last three on the right are swinging in phase, but the two groups are in anti-phase with each other. This appears to be the "2-vs-3" anti-phase state.
+- The description states the system settles into a "2-vs-3" anti-phase state, which is clearly visible here.
+
+**Frames 19-20:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 20-21:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 21-22:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 22-23:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 23-24:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 24-25:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 25-26:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 26-27:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 27-28:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 28-29:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 29-30:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 30-31:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 31-32:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 32-33:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 33-34:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 34-35:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 35-36:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 36-37:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 37-38:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 38-39:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 39-40:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 40-41:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 41-42:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 42-43:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 43-44:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 44-45:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 45-46:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 46-47:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 47-48:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 48-49:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 49-50:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 50-51:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 51-52:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 52-53:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 53-54:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 54-55:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 55-56:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 56-57:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 57-58:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 58-59:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 59-60:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 60-61:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 61-62:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 62-63:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 63-64:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 64-65:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 65-66:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 66-67:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 67-68:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 68-69:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 69-70:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 70-71:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 71-72:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 72-73:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 73-74:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 74-75:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 75-76:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 76-77:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 77-78:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 78-79:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 79-80:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 80-81:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 81-82:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 82-83:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 83-84:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 84-85:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 85-86:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 86-87:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 87-88:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 88-89:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 89-90:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 90-91:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 91-92:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 92-93:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 93-94:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 94-95:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 95-96:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 96-97:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 97-98:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 98-99:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 99-100:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 100-101:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 101-102:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 102-103:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 103-104:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 104-105:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 105-106:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 106-107:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 107-108:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 108-109:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 109-110:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 110-111:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 111-112:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 112-113:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 113-114:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 114-115:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 115-116:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 116-117:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 117-118:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 118-119:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 119-120:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 120-121:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 121-122:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 122-123:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 123-124:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 124-125:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 125-126:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 126-127:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 127-128:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 128-129:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 129-130:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 130-131:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 131-132:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 132-133:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 133-134:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 134-135:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 135-136:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 136-137:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 137-138:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 138-139:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 139-140:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 140-141:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 141-142:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 142-143:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 143-144:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 144-145:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 145-146:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 146-147:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 147-148:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 148-149:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 149-150:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 150-151:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 151-152:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 152-153:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 153-154:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 154-155:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 155-156:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 156-157:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 157-158:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 158-159:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 159-160:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 160-161:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 161-162:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 162-163:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 163-164:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 164-165:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 165-166:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 166-167:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 167-168:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 168-169:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 169-170:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 170-171:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 171-172:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 172-173:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 173-174:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 174-175:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 175-176:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 176-177:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 177-178:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 178-179:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 179-180:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 180-181:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 181-182:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 182-183:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 183-184:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 184-185:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 185-186:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 186-187:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 187-188:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 188-189:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 189-190:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 190-191:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 191-192:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 192-193:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 193-194:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 194-195:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 195-196:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 196-197:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 197-198:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 198-199:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 199-200:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 200-201:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 201-202:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 202-203:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 203-204:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 204-205:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 205-206:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 206-207:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 207-208:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 208-209:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 209-210:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 210-211:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 211-212:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 212-213:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 213-214:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 214-215:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 215-216:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 216-217:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 217-218:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 218-219:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 219-220:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 220-221:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 221-222:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 222-223:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 223-224:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 224-225:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 225-226:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 226-227:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 227-228:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 228-229:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 229-230:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 230-231:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 231-232:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 232-233:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 233-234:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 234-235:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 235-236:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 236-237:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 237-238:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 238-239:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 239-240:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 240-241:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 241-242:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 242-243:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 243-244:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 244-245:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 245-246:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 246-247:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 247-248:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 248-249:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 249-250:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 250-251:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 251-252:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 252-253:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 253-254:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 254-255:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 255-256:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 256-257:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 257-258:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 258-259:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 259-260:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 260-261:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 261-262:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 262-263:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 263-264:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 264-265:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 265-266:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 266-267:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 267-268:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 268-269:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 269-270:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 270-271:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 271-272:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 272-273:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 273-274:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 274-275:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 275-276:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 276-277:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 277-278:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 278-279:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 279-280:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 280-281:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 281-282:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 282-283:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 283-284:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 284-285:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 285-286:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 286-287:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 287-288:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 288-289:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 289-290:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 290-291:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 291-292:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 292-293:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 293-294:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 294-295:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 295-296:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 296-297:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 297-298:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 298-299:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 299-300:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 300-301:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 301-302:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 302-303:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 303-304:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 304-305:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 305-306:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 306-307:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 307-308:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 308-309:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 309-310:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 310-311:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 311-312:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 312-313:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 313-314:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 314-315:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 315-316:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 316-317:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 317-318:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 318-319:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 319-320:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 320-321:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 321-322:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 322-323:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 323-324:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 324-325:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 325-326:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 326-327:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 327-328:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 328-329:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 329-330:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 330-331:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 331-332:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 332-333:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 333-334:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 334-335:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 335-336:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 336-337:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 337-338:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 338-339:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 339-340:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 340-341:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 341-342:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 342-343:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 343-344:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 344-345:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 345-346:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 346-347:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 347-348:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 348-349:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 349-350:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 350-351:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 351-352:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 352-353:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 353-354:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 354-355:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 355-356:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 356-357:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 357-358:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 358-359:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 359-360:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 360-361:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 361-362:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 362-363:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 363-364:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 364-365:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 365-366:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 366-367:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 367-368:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 368-369:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 369-370:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 370-371:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 371-372:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 372-373:**
+- The metronomes continue to swing in the "2-vs-3" anti
+
+=== ISSUES ===
+
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frames 0-1:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 1-2:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 2-3:**
+- No visual change.
+- The description does not mention this specific transition, but it is consistent with the overall narrative of a video about metronome synchronization.
+
+**Frames 3-4:**
+- The title screen "Synchronization of Metronomes starring Daniel" disappears, and the scene changes to a close-up of five metronomes on a white board, with a person's hands visible on either side of the board. The metronomes are stationary.
+- The description correctly implies a transition from an introductory screen to the experimental setup. It states "The setup consists of five identical metronomes mounted on a single wooden board," which aligns with the visual. However, it does not explicitly mention the initial stationary state of the metronomes.
+
+**Frames 4-5:**
+- The metronomes begin to swing. The first metronome from the left is swinging to the left, the second to the right, the third to the left, the fourth to the right, and the fifth to the left.
+- The description states "Starting with all five metronomes activated chaotically on the movable platform (strong coupling)..." This aligns with the metronomes starting to swing. The "chaotically" aspect is visually represented by their differing directions and phases.
+
+**Frames 5-6:**
+- The metronomes continue to swing. Their positions have changed slightly, indicating ongoing motion.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 6-7:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 7-8:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 8-9:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 9-10:**
+- The metronomes continue to swing. Their positions have changed slightly.
+- The description implies continuous chaotic movement, which is consistent with the visual.
+
+**Frames 10-11:**
+- The metronomes continue to swing. Their positions have changed slightly. The person's right hand moves to the right side of the board, and a soda can is placed under the right end of the board.
+- The description states "The board was placed on two soda cans, which acted as low-friction rollers. This allowed the entire board to move freely from side to side, creating a strong physical link..." The placement of the first can is shown, which is part of setting up the "strong coupling" condition.
+
+**Frames 11-12:**
+- The metronomes continue to swing. The person's right hand is still holding the can under the right side of the board.
+- The description implies the setup of the strong coupling condition, which is ongoing.
+
+**Frames 12-13:**
+- The metronomes continue to swing. The person's left hand moves to the left side of the board, and a second soda can is placed under the left end of the board.
+- The description states "The board was placed on two soda cans..." The placement of the second can completes the setup for the "strong coupling" condition.
+
+**Frames 13-14:**
+- The metronomes continue to swing. The person's hands are now holding the board, which is resting on the two cans.
+- The description implies the strong coupling setup is complete and the metronomes are still active.
+
+**Frames 14-15:**
+- The metronomes continue to swing. The person's hands are still holding the board.
+- The description implies the strong coupling setup is complete and the metronomes are still active.
+
+**Frames 15-16:**
+- The metronomes continue to swing. The person's hands are no longer holding the board, which is now freely resting on the two cans. The metronomes are still swinging somewhat chaotically.
+- The description states "Starting with all five metronomes activated chaotically on the movable platform (strong coupling)..." This is consistent with the visual.
+
+**Frames 16-17:**
+- The metronomes continue to swing. There's a slight shift in their relative phases, but they are not yet fully synchronized.
+- The description states "the system was observed to spontaneously self-organize. It passed through a brief state of full in-phase synchronization (all five swinging together) before settling into a more complex but highly stable global pattern: a '2-vs-3' anti-phase state..." This frame shows the initial phase of this self-organization.
+
+**Frames 17-18:**
+- The metronomes continue to swing. They appear to be moving towards a more synchronized state, with the first two on the left swinging somewhat together, and the last three on the right also showing some coherence.
+- This is consistent with the description of the system self-organizing.
+
+**Frames 18-19:**
+- The metronomes continue to swing. The first two metronomes on the left are swinging in phase, and the last three on the right are swinging in phase, but the two groups are in anti-phase with each other. This appears to be the "2-vs-3" anti-phase state.
+- The description states the system settles into a "2-vs-3" anti-phase state, which is clearly visible here.
+
+**Frames 19-20:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 20-21:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 21-22:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 22-23:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 23-24:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 24-25:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 25-26:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 26-27:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 27-28:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 28-29:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 29-30:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 30-31:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 31-32:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 32-33:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 33-34:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 34-35:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 35-36:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 36-37:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 37-38:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 38-39:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 39-40:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 40-41:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 41-42:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 42-43:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 43-44:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 44-45:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 45-46:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 46-47:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 47-48:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 48-49:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 49-50:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 50-51:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 51-52:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 52-53:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 53-54:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 54-55:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 55-56:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 56-57:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 57-58:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 58-59:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 59-60:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 60-61:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 61-62:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 62-63:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 63-64:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 64-65:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 65-66:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 66-67:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 67-68:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 68-69:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 69-70:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 70-71:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 71-72:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 72-73:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 73-74:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 74-75:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 75-76:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 76-77:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 77-78:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 78-79:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 79-80:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 80-81:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 81-82:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 82-83:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 83-84:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 84-85:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 85-86:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 86-87:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 87-88:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 88-89:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 89-90:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 90-91:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 91-92:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 92-93:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 93-94:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 94-95:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 95-96:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 96-97:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 97-98:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 98-99:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 99-100:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 100-101:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 101-102:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 102-103:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 103-104:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 104-105:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 105-106:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 106-107:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 107-108:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 108-109:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 109-110:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 110-111:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 111-112:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 112-113:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 113-114:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 114-115:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 115-116:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 116-117:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 117-118:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 118-119:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 119-120:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 120-121:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 121-122:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 122-123:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 123-124:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 124-125:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 125-126:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 126-127:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 127-128:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 128-129:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 129-130:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 130-131:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 131-132:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 132-133:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 133-134:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 134-135:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 135-136:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 136-137:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 137-138:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 138-139:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 139-140:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 140-141:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 141-142:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 142-143:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 143-144:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 144-145:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 145-146:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 146-147:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 147-148:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 148-149:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 149-150:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 150-151:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 151-152:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 152-153:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 153-154:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 154-155:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 155-156:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 156-157:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 157-158:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 158-159:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 159-160:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 160-161:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 161-162:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 162-163:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 163-164:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 164-165:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 165-166:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 166-167:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 167-168:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 168-169:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 169-170:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 170-171:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 171-172:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 172-173:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 173-174:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 174-175:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 175-176:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 176-177:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 177-178:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 178-179:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 179-180:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 180-181:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 181-182:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 182-183:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 183-184:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 184-185:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 185-186:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 186-187:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 187-188:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 188-189:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 189-190:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 190-191:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 191-192:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 192-193:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 193-194:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 194-195:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 195-196:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 196-197:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 197-198:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 198-199:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 199-200:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 200-201:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 201-202:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 202-203:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 203-204:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 204-205:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 205-206:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 206-207:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 207-208:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 208-209:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 209-210:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 210-211:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 211-212:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 212-213:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 213-214:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 214-215:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 215-216:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 216-217:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 217-218:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 218-219:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 219-220:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 220-221:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 221-222:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 222-223:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 223-224:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 224-225:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 225-226:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 226-227:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 227-228:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 228-229:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 229-230:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 230-231:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 231-232:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 232-233:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 233-234:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 234-235:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 235-236:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 236-237:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 237-238:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 238-239:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 239-240:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 240-241:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 241-242:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 242-243:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 243-244:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 244-245:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 245-246:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 246-247:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 247-248:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 248-249:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 249-250:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 250-251:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 251-252:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 252-253:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 253-254:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 254-255:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 255-256:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 256-257:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 257-258:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 258-259:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 259-260:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 260-261:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 261-262:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 262-263:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 263-264:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 264-265:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 265-266:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 266-267:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 267-268:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 268-269:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 269-270:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 270-271:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 271-272:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 272-273:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 273-274:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 274-275:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 275-276:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 276-277:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 277-278:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 278-279:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 279-280:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 280-281:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 281-282:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 282-283:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 283-284:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 284-285:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 285-286:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 286-287:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 287-288:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 288-289:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 289-290:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 290-291:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 291-292:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 292-293:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 293-294:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 294-295:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 295-296:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 296-297:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 297-298:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 298-299:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 299-300:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 300-301:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 301-302:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 302-303:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 303-304:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 304-305:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 305-306:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 306-307:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 307-308:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 308-309:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 309-310:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 310-311:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 311-312:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 312-313:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 313-314:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 314-315:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 315-316:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 316-317:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 317-318:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 318-319:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 319-320:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 320-321:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 321-322:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 322-323:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 323-324:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 324-325:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 325-326:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 326-327:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 327-328:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 328-329:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 329-330:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 330-331:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 331-332:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 332-333:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 333-334:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 334-335:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 335-336:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 336-337:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 337-338:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 338-339:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 339-340:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 340-341:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 341-342:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 342-343:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 343-344:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 344-345:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 345-346:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 346-347:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 347-348:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 348-349:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 349-350:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 350-351:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 351-352:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 352-353:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 353-354:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 354-355:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 355-356:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 356-357:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 357-358:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 358-359:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 359-360:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 360-361:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 361-362:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 362-363:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 363-364:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 364-365:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 365-366:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 366-367:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 367-368:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 368-369:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 369-370:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 370-371:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 371-372:**
+- The metronomes continue to swing in the "2-vs-3" anti-phase state.
+- Consistent with the description.
+
+**Frames 372-373:**
+- The metronomes continue to swing in the "2-vs-3" anti

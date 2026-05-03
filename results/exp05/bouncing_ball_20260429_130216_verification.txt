@@ -1,0 +1,200 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : PARTIALLY CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- Visual change: The droplet moves slightly downwards.
+- Prediction: "From +0.6 ms to +3.1 ms, a spherical liquid droplet is observed falling under gravity." This correctly predicts the downward movement.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: "From +0.6 ms to +3.1 ms, a spherical liquid droplet is observed falling under gravity." This correctly predicts the downward movement.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- Visual change: The droplet has moved significantly downwards and is now in contact with the surface, appearing slightly flattened at the bottom.
+- Prediction: "At +4.3 ms, it makes its first impact with the surface." This correctly identifies the impact. The description also states "It rebounds immediately, as seen by its upward motion from +5.6 ms to its peak at +8.1 ms." While the impact is at +4.3 ms, the immediate rebound isn't explicitly stated for this frame transition, but the overall sequence of events is correct.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- Visual change: The droplet has lifted off the surface and is moving upwards. It has regained its spherical shape.
+- Prediction: "It rebounds immediately, as seen by its upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward motion and regaining of spherical shape.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward movement.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- Visual change: The droplet continues to move upwards, reaching its highest point in this first bounce.
+- Prediction: "upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward movement and identifies +8.1 ms as the peak.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- Visual change: The droplet has started to move downwards.
+- Prediction: "After the first bounce, the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- Visual change: The droplet continues to move downwards, nearing the surface.
+- Prediction: "the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- Visual change: The droplet has impacted the surface and is significantly flattened and spread out.
+- Prediction: "At +13.1 ms, the droplet is observed to have collapsed and spread out on the surface, losing its spherical shape." This accurately describes the visual change.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- Visual change: The droplet has started to retract from its flattened state, becoming more spherical but still in contact with the surface.
+- Prediction: "Instead of remaining stuck, the droplet is then launched upwards." The description implies an immediate launch, but the droplet first retracts on the surface before becoming airborne. The description "At +15.6 ms, it has fully reformed into a sphere and is already airborne" is slightly off as it's reforming and still in contact at +14.3 ms.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- Visual change: The droplet has lifted off the surface and is now a well-formed sphere, moving upwards.
+- Prediction: "At +15.6 ms, it has fully reformed into a sphere and is already airborne, moving away from the surface." This accurately describes the state and motion at +15.6 ms.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "moving away from the surface." This correctly predicts the upward movement.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "moving away from the surface." This correctly predicts the upward movement.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- Visual change: The droplet continues to move upwards, reaching its highest point in this second jump.
+- Prediction: "The peak of this jump, seen around +19.3 ms, is significantly higher than the peak of the first passive bounce (+8.1 ms)." This correctly identifies the peak and notes its higher position.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- Visual change: The droplet has started to move downwards.
+- Prediction: "the droplet follows a standard ballistic trajectory, falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- Visual change: The droplet continues to move downwards, nearing the surface.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+=== ISSUES ===
+- The description states that the droplet "rebounds immediately" after the first impact at +4.3 ms. While it does rebound, the upward motion is explicitly noted from +5.6 ms, leaving a slight gap in the immediate description of the rebound between +4.3 ms and +5.6 ms.
+- For the second interaction, the description states, "Instead of remaining stuck, the droplet is then launched upwards. At +15.6 ms, it has fully reformed into a sphere and is already airborne". This overlooks the intermediate step seen at +14.3 ms where the droplet is retracting and reforming its spherical shape while still in contact with the surface, before becoming fully airborne at +15.6 ms. The launch is not instantaneous from the flattened state.
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- Visual change: The droplet moves slightly downwards.
+- Prediction: "From +0.6 ms to +3.1 ms, a spherical liquid droplet is observed falling under gravity." This correctly predicts the downward movement.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- Visual change: The droplet moves further downwards.
+- Prediction: "From +0.6 ms to +3.1 ms, a spherical liquid droplet is observed falling under gravity." This correctly predicts the downward movement.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- Visual change: The droplet has moved significantly downwards and is now in contact with the surface, appearing slightly flattened at the bottom.
+- Prediction: "At +4.3 ms, it makes its first impact with the surface." This correctly identifies the impact. The description also states "It rebounds immediately, as seen by its upward motion from +5.6 ms to its peak at +8.1 ms." While the impact is at +4.3 ms, the immediate rebound isn't explicitly stated for this frame transition, but the overall sequence of events is correct.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- Visual change: The droplet has lifted off the surface and is moving upwards. It has regained its spherical shape.
+- Prediction: "It rebounds immediately, as seen by its upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward motion and regaining of spherical shape.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward movement.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- Visual change: The droplet continues to move upwards, reaching its highest point in this first bounce.
+- Prediction: "upward motion from +5.6 ms to its peak at +8.1 ms." This correctly predicts the upward movement and identifies +8.1 ms as the peak.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- Visual change: The droplet has started to move downwards.
+- Prediction: "After the first bounce, the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- Visual change: The droplet continues to move downwards, nearing the surface.
+- Prediction: "the droplet falls again, as seen from +9.3 ms to +11.8 ms." This correctly predicts the downward motion.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- Visual change: The droplet has impacted the surface and is significantly flattened and spread out.
+- Prediction: "At +13.1 ms, the droplet is observed to have collapsed and spread out on the surface, losing its spherical shape." This accurately describes the visual change.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- Visual change: The droplet has started to retract from its flattened state, becoming more spherical but still in contact with the surface.
+- Prediction: "Instead of remaining stuck, the droplet is then launched upwards." The description implies an immediate launch, but the droplet first retracts on the surface before becoming airborne. The description "At +15.6 ms, it has fully reformed into a sphere and is already airborne" is slightly off as it's reforming and still in contact at +14.3 ms.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- Visual change: The droplet has lifted off the surface and is now a well-formed sphere, moving upwards.
+- Prediction: "At +15.6 ms, it has fully reformed into a sphere and is already airborne, moving away from the surface." This accurately describes the state and motion at +15.6 ms.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "moving away from the surface." This correctly predicts the upward movement.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- Visual change: The droplet continues to move upwards.
+- Prediction: "moving away from the surface." This correctly predicts the upward movement.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- Visual change: The droplet continues to move upwards, reaching its highest point in this second jump.
+- Prediction: "The peak of this jump, seen around +19.3 ms, is significantly higher than the peak of the first passive bounce (+8.1 ms)." This correctly identifies the peak and notes its higher position.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- Visual change: The droplet has started to move downwards.
+- Prediction: "the droplet follows a standard ballistic trajectory, falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- Visual change: The droplet continues to move downwards.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- Visual change: The droplet continues to move downwards, nearing the surface.
+- Prediction: "falling back towards the surface from +20.6 ms to the final frame at +29.3 ms." This correctly predicts the downward motion.
+
+=== VERDICT ===
+PARTIALLY CORRECT
+
+=== ISSUES ===
+- The description states that the droplet "rebounds immediately" after the first impact at +4.3 ms. While it does rebound, the upward motion is explicitly noted from +5.6 ms, leaving a slight gap in the immediate description of the rebound between +4.3 ms and +5.6 ms.
+- For the second interaction, the description states, "Instead of remaining stuck, the droplet is then launched upwards. At +15.6 ms, it has fully reformed into a sphere and is already airborne". This overlooks the intermediate step seen at +14.3 ms where the droplet is retracting and reforming its spherical shape while still in contact with the surface, before becoming fully airborne at +15.6 ms. The launch is not instantaneous from the flattened state.

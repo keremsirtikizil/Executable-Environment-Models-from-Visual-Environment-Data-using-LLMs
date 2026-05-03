@@ -1,0 +1,2224 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : UNKNOWN
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frames 1-2:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 2-3:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 3-4:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 4-5:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 5-6:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 6-7:**
+- What changed visually: A person's arm and part of their torso, wearing a green long-sleeved shirt, appear from the bottom left of the frame, reaching towards the central vertical strip.
+- Whether the proposed description correctly predicts this change: Yes, the description states "A person then entered and pulled on a central wooden stile".
+
+**Frames 7-8:**
+- What changed visually: The person's arm and hand are now fully visible, grasping the central vertical strip. The black segmented strap (hinge) is still straight.
+- Whether the proposed description correctly predicts this change: Yes, the description states "A person then entered and pulled on a central wooden stile".
+
+**Frames 8-9:**
+- What changed visually: The person's hand has moved down the central strip. The black segmented strap has bent significantly, with the top segment angled downwards and to the left, and the bottom segment angled upwards and to the left. This indicates the left panel is folding inward.
+- Whether the proposed description correctly predicts this change: Yes, the description states "causing the left panel to fold inward. This was evidenced by the black, segmented strap acting as a hinge, bending at its central pivot as the panel moved."
+
+**Frames 9-10:**
+- What changed visually: The black segmented strap has bent further, now forming a sharper angle. The person's hand is still holding the central strip.
+- Whether the proposed description correctly predicts this change: Yes, this continues the action of the panel folding.
+
+**Frames 10-11:**
+- What changed visually: The black segmented strap is now completely gone. In its place, a black spirit level is attached to the central vertical strip, pivoted near the top. The person's hand is holding the spirit level horizontally.
+- Whether the proposed description correctly predicts this change: Partially. The description states "The folding panel and the black hinge were removed from the scene. The hinge was replaced by a black spirit level, mounted on the same upper pivot bolt on the central stile." This frame shows the spirit level mounted, but the description doesn't explicitly mention the person holding it horizontally at this exact point. However, the overall action of replacing the hinge with the level is correct.
+
+**Frames 11-12:**
+- What changed visually: The person's hand is no longer holding the spirit level. The spirit level has swung downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The person released the level, allowing it to swing freely like a pendulum. This was observed through multiple frames showing the level in motion-blurred arcs of decreasing amplitude, demonstrating that the pivot moved without binding."
+
+**Frames 12-13:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 13-14:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 14-15:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 15-16:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 16-17:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 17-18:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 18-19:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 19-20:**
+- What changed visually: The spirit level is now horizontal and stationary. The bubble in the vial is centered.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The pendulum motion was interrupted when the level was held perfectly stationary and horizontal, confirmed by a single, sharp image where the bubble in the vial was centered."
+
+**Frames 20-21:**
+- What changed visually: The spirit level has swung slightly downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this indicates the level is still swinging or being moved. The description mentions "multiple frames showing the level in motion-blurred arcs of decreasing amplitude" for the "Pivot Freedom Test" and then "The pendulum motion was interrupted when the level was held perfectly stationary and horizontal". This frame shows it moving again after being stationary, which is consistent with the idea of testing.
+
+**Frames 21-22:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the motion.
+
+**Frames 22-23:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the motion.
+
+**Frames 23-24:**
+- What changed visually: The spirit level is gone. The black segmented hinge is back in place, but it is straight and not bent. The person's hand is visible, holding the hinge.
+- Whether the proposed description correctly predicts this change: Yes, the description states "After the tests, the spirit level was removed, and the original black flexible hinge was reinstalled."
+
+**Frames 24-25:**
+- What changed visually: The person's hand is still holding the hinge, which remains straight.
+- Whether the proposed description correctly predicts this change: Yes, this is part of the reinstallation.
+
+**Frames 25-26:**
+- What changed visually: The person's hand is still holding the hinge. A red-handled tool (pliers) is now visible in their other hand, positioned near the lower bolt on the hinge.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The person then used a red-handled tool (pliers or a wrench) to methodically tighten first the lower, then the upper bolt, securely fastening the hinge."
+
+**Frames 26-27:**
+- What changed visually: The person is actively using the pliers to tighten the lower bolt on the hinge.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 27-28:**
+- What changed visually: The person is still using the pliers to tighten the lower bolt.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 28-29:**
+- What changed visually: The person has moved the pliers to the upper bolt on the hinge and is tightening it.
+- Whether the proposed description correctly predicts this change: Yes, the description states "methodically tighten first the lower, then the upper bolt".
+
+**Frames 29-30:**
+- What changed visually: The person is still tightening the upper bolt with the pliers.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 30-31:**
+- What changed visually: The pliers are gone. The person's hands are now positioned near the bottom of the central vertical strip, and the strip appears to be shifting slightly.
+- Whether the proposed description correctly predicts this change: Yes, the description states "They then moved to the base of the stile, and their manipulation caused the entire stile to shift slightly, consistent with seating it onto a bottom pivot or floor guide."
+
+**Frames 31-32:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 32-33:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 33-34:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 34-35:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 35-36:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 36-37:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 37-38:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 38-39:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 39-40:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 40-41:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 41-42:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 42-43:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 43-44:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 44-45:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 45-46:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 46-47:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 47-48:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 48-49:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 49-50:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 50-51:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 51-52:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 52-53:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 53-54:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 54-55:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 55-56:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 56-57:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 57-58:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 58-59:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 59-60:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 60-61:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 61-62:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 62-63:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 63-64:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 64-65:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 65-66:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 66-67:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 67-68:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 68-69:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 69-70:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 70-71:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 71-72:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 72-73:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 73-74:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 74-75:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 75-76:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 76-77:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 77-78:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 78-79:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 79-80:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 80-81:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 81-82:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 82-83:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 83-84:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 84-85:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 85-86:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 86-87:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 87-88:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 88-89:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 89-90:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 90-91:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 91-92:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 92-93:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 93-94:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 94-95:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 95-96:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 96-97:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 97-98:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 98-99:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 99-100:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 100-101:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 101-102:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 102-103:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 103-104:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 104-105:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 105-106:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 106-107:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 107-108:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 108-109:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 109-110:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 110-111:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 111-112:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 112-113:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 113-114:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 114-115:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 115-116:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 116-117:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 117-118:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 118-119:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 119-120:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 120-121:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 121-122:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 122-123:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 123-124:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 124-125:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 125-126:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 126-127:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 127-128:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 128-129:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 129-130:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 130-131:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 131-132:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 132-133:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 133-134:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 134-135:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 135-136:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 136-137:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 137-138:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 138-139:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 139-140:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 140-141:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 141-142:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 142-143:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 143-144:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 144-145:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 145-146:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 146-147:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 147-148:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 148-149:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 149-150:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 150-151:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 151-152:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 152-153:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 153-154:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 154-155:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 155-156:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 156-157:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 157-158:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 158-159:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 159-160:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 160-161:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 161-162:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 162-163:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 163-164:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 164-165:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 165-166:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 166-167:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 167-168:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 168-169:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 169-170:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 170-171:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 171-172:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 172-173:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 173-174:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 174-175:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 175-176:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 176-177:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 177-178:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 178-179:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 179-180:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 180-181:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 181-182:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 182-183:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 183-184:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 184-185:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 185-186:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 186-187:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 187-188:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 188-189:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 189-190:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 190-191:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 191-192:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 192-193:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 193-194:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 194-195:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 195-196:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 196-197:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 197-198:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 198-199:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 199-200:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 200-201:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 201-202:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 202-203:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 203-204:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 204-205:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 205-206:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 206-207:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 207-208:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 208-209:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 209-210:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 210-211:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 211-212:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 212-213:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 213-214:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 214-215:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 215-216:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 216-217:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 217-218:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 218-219:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 219-220:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 220-221:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 221-222:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 222-223:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 223-224:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 224-225:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 225-226:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 226-227:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 227-228:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 228-229:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 229-230:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 230-231:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 231-232:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 232-233:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 233-234:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 234-235:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 235-236:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 236-237:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 237-238:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 238-239:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 239-240:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 240-241:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 241-242:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 242-243:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 243-244:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 244-245:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 245-246:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 246-247:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 247-248:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 248-249:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 249-250:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 250-251:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 251-252:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 252-253:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 253-254:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 254-255:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 255-256:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 256-257:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 257-258:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 258-259:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 259-260:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 260-261:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 261-262:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 262-263:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 263-264:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 264-265:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 265-266:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 266-267:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 267-268:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 268-269:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 269-270:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 270-271:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 271-272:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 272-273:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 273-274:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 274-275:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 275-276:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 276-277:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 277-278:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting
+
+=== ISSUES ===
+
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frames 1-2:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 2-3:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 3-4:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 4-5:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 5-6:**
+- What changed visually: No significant visual change.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The sequence began with static images of a closed, two-panel partition."
+
+**Frames 6-7:**
+- What changed visually: A person's arm and part of their torso, wearing a green long-sleeved shirt, appear from the bottom left of the frame, reaching towards the central vertical strip.
+- Whether the proposed description correctly predicts this change: Yes, the description states "A person then entered and pulled on a central wooden stile".
+
+**Frames 7-8:**
+- What changed visually: The person's arm and hand are now fully visible, grasping the central vertical strip. The black segmented strap (hinge) is still straight.
+- Whether the proposed description correctly predicts this change: Yes, the description states "A person then entered and pulled on a central wooden stile".
+
+**Frames 8-9:**
+- What changed visually: The person's hand has moved down the central strip. The black segmented strap has bent significantly, with the top segment angled downwards and to the left, and the bottom segment angled upwards and to the left. This indicates the left panel is folding inward.
+- Whether the proposed description correctly predicts this change: Yes, the description states "causing the left panel to fold inward. This was evidenced by the black, segmented strap acting as a hinge, bending at its central pivot as the panel moved."
+
+**Frames 9-10:**
+- What changed visually: The black segmented strap has bent further, now forming a sharper angle. The person's hand is still holding the central strip.
+- Whether the proposed description correctly predicts this change: Yes, this continues the action of the panel folding.
+
+**Frames 10-11:**
+- What changed visually: The black segmented strap is now completely gone. In its place, a black spirit level is attached to the central vertical strip, pivoted near the top. The person's hand is holding the spirit level horizontally.
+- Whether the proposed description correctly predicts this change: Partially. The description states "The folding panel and the black hinge were removed from the scene. The hinge was replaced by a black spirit level, mounted on the same upper pivot bolt on the central stile." This frame shows the spirit level mounted, but the description doesn't explicitly mention the person holding it horizontally at this exact point. However, the overall action of replacing the hinge with the level is correct.
+
+**Frames 11-12:**
+- What changed visually: The person's hand is no longer holding the spirit level. The spirit level has swung downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The person released the level, allowing it to swing freely like a pendulum. This was observed through multiple frames showing the level in motion-blurred arcs of decreasing amplitude, demonstrating that the pivot moved without binding."
+
+**Frames 12-13:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 13-14:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 14-15:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 15-16:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 16-17:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 17-18:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 18-19:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the pendulum motion.
+
+**Frames 19-20:**
+- What changed visually: The spirit level is now horizontal and stationary. The bubble in the vial is centered.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The pendulum motion was interrupted when the level was held perfectly stationary and horizontal, confirmed by a single, sharp image where the bubble in the vial was centered."
+
+**Frames 20-21:**
+- What changed visually: The spirit level has swung slightly downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this indicates the level is still swinging or being moved. The description mentions "multiple frames showing the level in motion-blurred arcs of decreasing amplitude" for the "Pivot Freedom Test" and then "The pendulum motion was interrupted when the level was held perfectly stationary and horizontal". This frame shows it moving again after being stationary, which is consistent with the idea of testing.
+
+**Frames 21-22:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the motion.
+
+**Frames 22-23:**
+- What changed visually: The spirit level has swung further downwards and to the right, appearing motion-blurred.
+- Whether the proposed description correctly predicts this change: Yes, this continues the motion.
+
+**Frames 23-24:**
+- What changed visually: The spirit level is gone. The black segmented hinge is back in place, but it is straight and not bent. The person's hand is visible, holding the hinge.
+- Whether the proposed description correctly predicts this change: Yes, the description states "After the tests, the spirit level was removed, and the original black flexible hinge was reinstalled."
+
+**Frames 24-25:**
+- What changed visually: The person's hand is still holding the hinge, which remains straight.
+- Whether the proposed description correctly predicts this change: Yes, this is part of the reinstallation.
+
+**Frames 25-26:**
+- What changed visually: The person's hand is still holding the hinge. A red-handled tool (pliers) is now visible in their other hand, positioned near the lower bolt on the hinge.
+- Whether the proposed description correctly predicts this change: Yes, the description states "The person then used a red-handled tool (pliers or a wrench) to methodically tighten first the lower, then the upper bolt, securely fastening the hinge."
+
+**Frames 26-27:**
+- What changed visually: The person is actively using the pliers to tighten the lower bolt on the hinge.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 27-28:**
+- What changed visually: The person is still using the pliers to tighten the lower bolt.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 28-29:**
+- What changed visually: The person has moved the pliers to the upper bolt on the hinge and is tightening it.
+- Whether the proposed description correctly predicts this change: Yes, the description states "methodically tighten first the lower, then the upper bolt".
+
+**Frames 29-30:**
+- What changed visually: The person is still tightening the upper bolt with the pliers.
+- Whether the proposed description correctly predicts this change: Yes, this continues the tightening action.
+
+**Frames 30-31:**
+- What changed visually: The pliers are gone. The person's hands are now positioned near the bottom of the central vertical strip, and the strip appears to be shifting slightly.
+- Whether the proposed description correctly predicts this change: Yes, the description states "They then moved to the base of the stile, and their manipulation caused the entire stile to shift slightly, consistent with seating it onto a bottom pivot or floor guide."
+
+**Frames 31-32:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 32-33:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 33-34:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 34-35:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 35-36:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 36-37:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 37-38:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 38-39:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 39-40:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 40-41:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 41-42:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 42-43:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 43-44:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 44-45:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 45-46:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 46-47:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 47-48:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 48-49:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 49-50:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 50-51:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 51-52:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 52-53:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 53-54:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 54-55:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 55-56:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 56-57:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 57-58:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 58-59:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 59-60:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 60-61:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 61-62:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 62-63:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 63-64:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 64-65:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 65-66:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 66-67:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 67-68:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 68-69:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 69-70:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 70-71:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 71-72:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 72-73:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 73-74:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 74-75:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 75-76:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 76-77:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 77-78:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 78-79:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 79-80:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 80-81:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 81-82:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 82-83:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 83-84:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 84-85:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 85-86:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 86-87:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 87-88:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 88-89:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 89-90:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 90-91:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 91-92:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 92-93:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 93-94:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 94-95:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 95-96:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 96-97:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 97-98:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 98-99:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 99-100:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 100-101:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 101-102:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 102-103:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 103-104:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 104-105:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 105-106:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 106-107:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 107-108:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 108-109:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 109-110:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 110-111:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 111-112:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 112-113:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 113-114:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 114-115:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 115-116:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 116-117:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 117-118:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 118-119:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 119-120:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 120-121:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 121-122:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 122-123:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 123-124:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 124-125:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 125-126:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 126-127:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 127-128:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 128-129:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 129-130:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 130-131:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 131-132:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 132-133:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 133-134:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 134-135:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 135-136:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 136-137:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 137-138:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 138-139:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 139-140:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 140-141:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 141-142:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 142-143:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 143-144:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 144-145:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 145-146:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 146-147:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 147-148:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 148-149:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 149-150:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 150-151:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 151-152:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 152-153:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 153-154:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 154-155:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 155-156:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 156-157:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 157-158:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 158-159:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 159-160:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 160-161:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 161-162:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 162-163:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 163-164:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 164-165:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 165-166:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 166-167:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 167-168:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 168-169:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 169-170:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 170-171:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 171-172:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 172-173:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 173-174:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 174-175:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 175-176:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 176-177:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 177-178:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 178-179:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 179-180:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 180-181:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 181-182:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 182-183:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 183-184:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 184-185:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 185-186:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 186-187:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 187-188:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 188-189:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 189-190:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 190-191:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 191-192:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 192-193:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 193-194:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 194-195:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 195-196:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 196-197:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 197-198:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 198-199:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 199-200:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 200-201:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 201-202:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 202-203:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 203-204:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 204-205:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 205-206:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 206-207:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 207-208:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 208-209:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 209-210:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 210-211:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 211-212:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 212-213:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 213-214:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 214-215:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 215-216:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 216-217:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 217-218:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 218-219:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 219-220:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 220-221:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 221-222:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 222-223:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 223-224:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 224-225:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 225-226:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 226-227:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 227-228:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 228-229:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 229-230:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 230-231:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 231-232:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 232-233:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 233-234:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 234-235:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 235-236:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 236-237:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 237-238:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 238-239:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 239-240:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 240-241:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 241-242:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 242-243:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 243-244:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 244-245:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 245-246:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 246-247:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 247-248:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 248-249:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 249-250:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 250-251:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 251-252:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 252-253:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 253-254:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 254-255:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 255-256:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 256-257:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 257-258:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 258-259:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 259-260:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 260-261:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 261-262:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 262-263:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 263-264:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 264-265:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 265-266:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 266-267:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 267-268:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 268-269:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 269-270:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 270-271:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 271-272:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 272-273:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 273-274:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 274-275:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 275-276:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 276-277:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting action.
+
+**Frames 277-278:**
+- What changed visually: The person's hands are still at the bottom of the central strip, which continues to shift.
+- Whether the proposed description correctly predicts this change: Yes, this continues the shifting

@@ -1,0 +1,15 @@
+{
+  "experiment": "exp05_realworld",
+  "scene": "double_pendulum",
+  "description": "A double pendulum \u2014 two pendulums connected in series, exhibiting chaotic motion.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 60,
+  "n_rounds": 20,
+  "verification_verdict": "UNKNOWN",
+  "verification_model": "google/gemini-2.5-flash",
+  "pseudocode_path": "results/exp05/double_pendulum_20260429_142118_pseudocode.txt",
+  "rounds_path": "results/exp05/double_pendulum_20260429_142118_rounds.txt",
+  "verification_path": "results/exp05/double_pendulum_20260429_142118_verification.txt"
+}

@@ -1,0 +1,28 @@
+Scene        : bouncing_ball
+Description  : A ball bouncing on a hard floor filmed in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 24 | Batch : 3 | Rounds : 8
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+Based on the complete visual sequence, the governing rule is that the interaction between the liquid droplet and the surface is critically dependent on the impact velocity, resulting in three distinct bouncing regimes arranged in a non-monotonic pattern. The droplet does not simply lose energy and stick; instead, it transitions between different types of bounces.
+
+Here is a precise account of the observed pattern:
+
+1.  **High-Velocity Regime (First Bounce):**
+    *   **Observation:** The sequence begins with the droplet falling from its highest point. The first impact and rebound are extremely rapid, occurring in the interval between +3.1 ms and +5.6 ms, indicating a very short contact time. Throughout this interaction, the droplet maintains its spherical shape. The subsequent rebound is high, reaching its apex around +8.1 ms.
+    *   **Interpretation:** At high impact velocity, the droplet undergoes a clean, elastic-like rebound, characteristic of a stable non-wetting state (the Cassie-Baxter state) where it bounces on a trapped layer of air.
+
+2.  **Intermediate-Velocity Regime (Second Bounce):**
+    *   **Observation:** After the first bounce, the droplet falls from a lower height, impacting the surface with a medium velocity. This interaction is fundamentally different. The droplet makes contact around +11.8 ms, is seen visibly flattened and spread out on the surface at +13.1 ms, and only begins to lift off after +14.3 ms. This demonstrates a significantly longer contact time compared to the first bounce. This "pancake" bounce is less efficient, as the peak of the second rebound (around +20.6 ms) is visibly much lower than the first. Furthermore, a small, bright spot of residue is left on the surface (visible from +15.6 ms onwards).
+    *   **Interpretation:** At this intermediate velocity, the droplet has enough energy to overcome the air cushion and temporarily wet the surface texture (transitioning to a Wenzel state). This causes it to flatten and lose significant energy before surface tension pulls it back into a sphere and propels it upwards.
+
+3.  **Low-Velocity Regime (Third Bounce):**
+    *   **Observation:** The droplet falls for a third time from a very low height, resulting in a low-velocity impact. Surprisingly, the behavior reverts to that of the first bounce. The impact and rebound are again extremely rapid, occurring between +24.3 ms and +25.6 ms. The droplet does not visibly flatten.
+    *   **Interpretation:** At this low impact velocity, the droplet's momentum is insufficient to force the transition into the wetted state. It once again bounces cleanly and elastically off the trapped air layer, exhibiting a short contact time, though the rebound height is now very small due to the energy lost in the previous bounce.
+
+In summary, the governing rule observed is a non-monotonic relationship between impact velocity and bounce type: the droplet bounces cleanly at high and low velocities but undergoes a distinct, energy-dissipating "pancake" bounce within a specific intermediate velocity range.

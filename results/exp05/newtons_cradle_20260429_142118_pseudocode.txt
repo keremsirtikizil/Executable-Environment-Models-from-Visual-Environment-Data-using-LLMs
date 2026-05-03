@@ -1,0 +1,32 @@
+Scene        : newtons_cradle
+Description  : A Newton's cradle — metal balls suspended on strings, one side struck.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+Based on the complete sequence of 57 images, two distinct sets of rules govern what is being observed. The first rule governs the *presentation* of the images, and the second governs the *physical behavior* of the object shown within coherent segments.
+
+**Rule 1: The sequence is a non-chronological, edited montage.**
+
+The images do not represent a single, continuous event unfolding in time. Instead, they are a compilation of separate clips, edited together in a jumbled order. This is demonstrated by numerous physically impossible transitions observed throughout the sequence:
+
+*   **Jumping between experiments:** The scene abruptly switches from the setup of a one-sphere experiment (Image 39) to the setup of a two-sphere experiment (Image 40), and later from a two-sphere setup to a three-sphere setup (Image 42 to 43).
+*   **Inconsistent motion:** The sequence jumps from the result of a two-sphere collision (Image 32, with two spheres swinging left) to a completely different state showing a single sphere swinging right (Image 33). The final batches show chaotic jumps between two-sphere and three-sphere motions (e.g., Image 52 to 53).
+
+**Rule 2: Within each coherent clip, the Newton's cradle demonstrates consistent physical principles.**
+
+Despite the jumbled presentation, the segments themselves reveal a clear and predictable set of behaviors based on the laws of physics.
+
+*   **Initiation of Motion:** The cradle remains perfectly static (as seen in Images 1-7) until an external force is applied. In every case, motion is initiated by a human hand pulling back one or more spheres (e.g., Images 8-11), giving them potential energy.
+*   **Conservation of Momentum and Energy:** The core principle observed is that the number of spheres released is equal to the number of spheres ejected on the opposite side.
+    *   **One Sphere:** When one sphere is released (Image 12), it strikes the line, and one sphere is ejected from the far end (Image 14).
+    *   **Two Spheres:** When two spheres are released together (Image 29), they strike the line, and two spheres are ejected from the far end (Image 31).
+    *   **Three Spheres:** When three spheres are released together (Image 48), they strike the line, and three spheres are ejected from the far end (Image 48).
+*   **Symmetrical, Cyclical Motion:** The action is a repeating cycle. The ejected spheres swing to a height nearly equal to the initial release height, then swing back to strike the line and repeat the process in reverse (as seen in the one-sphere cycle from Image 15 to 17 and the three-sphere cycle from Image 48 to 51).
+
+In summary, the sequence is a visual catalog of a Newton's cradle's behavior, not a linear narrative. Its governing pattern is an editorial one, presenting different physical demonstrations out of order. However, within each demonstration, the cradle itself operates according to the predictable and consistent laws of physics, primarily the conservation of momentum and energy.

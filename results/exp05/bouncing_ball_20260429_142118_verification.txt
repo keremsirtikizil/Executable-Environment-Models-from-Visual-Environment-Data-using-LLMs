@@ -1,0 +1,198 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- **Visual change:** The droplet moves downwards slightly.
+- **Prediction:** The description states the sequence begins with the droplet falling. This is consistent.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet is falling. This is consistent.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- **Visual change:** The droplet has moved significantly downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the first impact and rebound are rapid, occurring between +3.1 ms and +5.6 ms. This frame shows the droplet nearing impact, consistent with the start of the impact phase.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- **Visual change:** The droplet has rebounded significantly upwards from the surface. It maintains its spherical shape.
+- **Prediction:** The description states the first impact and rebound are rapid, occurring between +3.1 ms and +5.6 ms, and that the droplet maintains its spherical shape. This is consistent with the rapid rebound and shape retention.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the subsequent rebound is high. This is consistent with the upward movement.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- **Visual change:** The droplet reaches its highest point in this rebound, appearing to momentarily pause before starting to fall again.
+- **Prediction:** The description states the rebound reaches its apex around +8.1 ms. This is consistent.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- **Visual change:** The droplet begins to move downwards again.
+- **Prediction:** The description implies the droplet falls after reaching its apex. This is consistent.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet falls from a lower height. This is consistent.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- **Visual change:** The droplet moves further downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the droplet makes contact around +11.8 ms. This is consistent with the droplet nearing impact.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- **Visual change:** The droplet has impacted the surface and is significantly flattened and spread out.
+- **Prediction:** The description states the droplet is seen visibly flattened and spread out on the surface at +13.1 ms. This is consistent.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- **Visual change:** The droplet has started to retract from its flattened state and is beginning to lift off, though it is still in contact with the surface and appears somewhat flattened.
+- **Prediction:** The description states the droplet only begins to lift off after +14.3 ms. This is consistent with the droplet still being partially flattened and in contact.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- **Visual change:** The droplet has lifted off the surface and is regaining a more spherical shape, moving upwards. A small, bright spot (residue) is visible on the surface where the droplet impacted.
+- **Prediction:** The description states the droplet begins to lift off after +14.3 ms and that a small, bright spot of residue is left on the surface (visible from +15.6 ms onwards). This is consistent.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical. The residue spot remains on the surface.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- **Visual change:** The droplet reaches its highest point in this rebound, appearing to momentarily pause before starting to fall again.
+- **Prediction:** The description states the peak of the second rebound is around +20.6 ms. This is consistent.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- **Visual change:** The droplet begins to move downwards again.
+- **Prediction:** The description implies the droplet falls after reaching its apex. This is consistent.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet falls for a third time from a very low height. This is consistent.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- **Visual change:** The droplet moves further downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the impact occurs between +24.3 ms and +25.6 ms. This is consistent with the droplet nearing impact.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- **Visual change:** The droplet has rebounded upwards from the surface. It maintains its spherical shape.
+- **Prediction:** The description states the impact and rebound are again extremely rapid, occurring between +24.3 ms and +25.6 ms, and that the droplet does not visibly flatten. This is consistent with the rapid rebound and shape retention.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (+0.6 ms) to Frame 2 (+1.8 ms):**
+- **Visual change:** The droplet moves downwards slightly.
+- **Prediction:** The description states the sequence begins with the droplet falling. This is consistent.
+
+**Frame 2 (+1.8 ms) to Frame 3 (+3.1 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet is falling. This is consistent.
+
+**Frame 3 (+3.1 ms) to Frame 4 (+4.3 ms):**
+- **Visual change:** The droplet has moved significantly downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the first impact and rebound are rapid, occurring between +3.1 ms and +5.6 ms. This frame shows the droplet nearing impact, consistent with the start of the impact phase.
+
+**Frame 4 (+4.3 ms) to Frame 5 (+5.6 ms):**
+- **Visual change:** The droplet has rebounded significantly upwards from the surface. It maintains its spherical shape.
+- **Prediction:** The description states the first impact and rebound are rapid, occurring between +3.1 ms and +5.6 ms, and that the droplet maintains its spherical shape. This is consistent with the rapid rebound and shape retention.
+
+**Frame 5 (+5.6 ms) to Frame 6 (+6.8 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the subsequent rebound is high. This is consistent with the upward movement.
+
+**Frame 6 (+6.8 ms) to Frame 7 (+8.1 ms):**
+- **Visual change:** The droplet reaches its highest point in this rebound, appearing to momentarily pause before starting to fall again.
+- **Prediction:** The description states the rebound reaches its apex around +8.1 ms. This is consistent.
+
+**Frame 7 (+8.1 ms) to Frame 8 (+9.3 ms):**
+- **Visual change:** The droplet begins to move downwards again.
+- **Prediction:** The description implies the droplet falls after reaching its apex. This is consistent.
+
+**Frame 8 (+9.3 ms) to Frame 9 (+10.6 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet falls from a lower height. This is consistent.
+
+**Frame 9 (+10.6 ms) to Frame 10 (+11.8 ms):**
+- **Visual change:** The droplet moves further downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the droplet makes contact around +11.8 ms. This is consistent with the droplet nearing impact.
+
+**Frame 10 (+11.8 ms) to Frame 11 (+13.1 ms):**
+- **Visual change:** The droplet has impacted the surface and is significantly flattened and spread out.
+- **Prediction:** The description states the droplet is seen visibly flattened and spread out on the surface at +13.1 ms. This is consistent.
+
+**Frame 11 (+13.1 ms) to Frame 12 (+14.3 ms):**
+- **Visual change:** The droplet has started to retract from its flattened state and is beginning to lift off, though it is still in contact with the surface and appears somewhat flattened.
+- **Prediction:** The description states the droplet only begins to lift off after +14.3 ms. This is consistent with the droplet still being partially flattened and in contact.
+
+**Frame 12 (+14.3 ms) to Frame 13 (+15.6 ms):**
+- **Visual change:** The droplet has lifted off the surface and is regaining a more spherical shape, moving upwards. A small, bright spot (residue) is visible on the surface where the droplet impacted.
+- **Prediction:** The description states the droplet begins to lift off after +14.3 ms and that a small, bright spot of residue is left on the surface (visible from +15.6 ms onwards). This is consistent.
+
+**Frame 13 (+15.6 ms) to Frame 14 (+16.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical. The residue spot remains on the surface.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 14 (+16.8 ms) to Frame 15 (+18.1 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 15 (+18.1 ms) to Frame 16 (+19.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states the droplet is propelled upwards. This is consistent.
+
+**Frame 16 (+19.3 ms) to Frame 17 (+20.6 ms):**
+- **Visual change:** The droplet reaches its highest point in this rebound, appearing to momentarily pause before starting to fall again.
+- **Prediction:** The description states the peak of the second rebound is around +20.6 ms. This is consistent.
+
+**Frame 17 (+20.6 ms) to Frame 18 (+21.8 ms):**
+- **Visual change:** The droplet begins to move downwards again.
+- **Prediction:** The description implies the droplet falls after reaching its apex. This is consistent.
+
+**Frame 18 (+21.8 ms) to Frame 19 (+23.1 ms):**
+- **Visual change:** The droplet continues to move downwards.
+- **Prediction:** The description states the droplet falls for a third time from a very low height. This is consistent.
+
+**Frame 19 (+23.1 ms) to Frame 20 (+24.3 ms):**
+- **Visual change:** The droplet moves further downwards and is now very close to the surface, almost touching.
+- **Prediction:** The description states the impact occurs between +24.3 ms and +25.6 ms. This is consistent with the droplet nearing impact.
+
+**Frame 20 (+24.3 ms) to Frame 21 (+25.6 ms):**
+- **Visual change:** The droplet has rebounded upwards from the surface. It maintains its spherical shape.
+- **Prediction:** The description states the impact and rebound are again extremely rapid, occurring between +24.3 ms and +25.6 ms, and that the droplet does not visibly flatten. This is consistent with the rapid rebound and shape retention.
+
+**Frame 21 (+25.6 ms) to Frame 22 (+26.8 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+**Frame 22 (+26.8 ms) to Frame 23 (+28.1 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+**Frame 23 (+28.1 ms) to Frame 24 (+29.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The description states it bounces cleanly. This is consistent with the upward movement.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None

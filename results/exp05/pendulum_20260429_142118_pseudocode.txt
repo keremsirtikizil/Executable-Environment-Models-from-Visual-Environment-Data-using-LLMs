@@ -1,0 +1,31 @@
+Scene        : pendulum
+Description  : A pendulum swinging back and forth in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 44 | Batch : 3 | Rounds : 15
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+**FINAL DESCRIPTION**
+
+The sequence of images is an edited video recording that primarily documents one interactive science museum exhibit, but is briefly interrupted by a clip of a second, different exhibit from the same location.
+
+**The Primary Subject: The Centrifugal Governor (Images 1-40 & 43-44)**
+
+The main subject is a large, circular kinetic sculpture designed to demonstrate the principle of centrifugal force. Its mechanism consists of a central hub with a brass-colored handle and two long, rotating arms, each with a smaller, hinged arm at its end.
+
+The governing rule of this exhibit is the direct relationship between rotational speed and centrifugal force:
+1.  **Acceleration:** When a user turns the crank, they apply energy, causing the central linkage to rotate. As the speed increases, the resulting centrifugal force overcomes gravity, causing the hinged arms to swing outwards. This was observed with multiple users (the boy, the woman in black, the woman in stripes, the woman with the patterned top).
+2.  **Deceleration:** When the user stops applying energy, the system "coasts" on inertia. As friction and air resistance slow the rotation, the centrifugal force weakens, and gravity pulls the hinged arms back to their folded, resting position. This was observed multiple times after users let go of the crank.
+3.  **Forced Braking:** The sequence also captured an alternative form of deceleration when a small child grabbed a spinning arm. This applied a strong frictional force, causing the machine to slow down much more rapidly than it would naturally, providing a clear demonstration of how friction removes kinetic energy from a system.
+
+**The Interruption: The Kinetic Walker (Images 41-42)**
+
+The continuous observation of the first exhibit is abruptly interrupted. These two images show a completely different machine within the same large ring. This second exhibit features a black central hub with a visible green circuit board and a complex, multi-jointed linkage resembling the legs of a walking machine (akin to a Jansen's linkage). Its purpose is to demonstrate how simple rotational motion can be converted into complex, life-like locomotion.
+
+**The Conclusion: The Return to the Primary Subject**
+
+Following the brief clip of the second exhibit, the sequence immediately cuts back to the original centrifugal governor (Images 43-44), which is still in motion from a previous user's turn.
+
+Therefore, the ultimate rule governing the sequence is that of an **edited video**. The creator's intent was to document the centrifugal governor in detail, capturing its full cycle of operation through the varied interactions of different museum visitors. This primary narrative was then punctuated by a short, spliced-in clip of another interesting mechanical exhibit, before returning to the original subject to conclude the observation.
