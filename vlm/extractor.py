@@ -568,6 +568,7 @@ def extract_rule_incremental(
     model: str = "google/gemini-2.5-pro",
     verbose: bool = True,
     prompt_style: str = "grid",
+    scene_hint: str | None = None,
 ) -> dict:
     """
     Send frames in small batches via a multi-turn conversation.
@@ -575,6 +576,10 @@ def extract_rule_incremental(
 
     prompt_style: "grid"    — neutral observation prompts (exp01-04, default)
                   "physics" — IF/THEN/ELSE pseudocode prompts (exp05 real-world)
+
+    scene_hint: optional natural-language description appended to the system
+                prompt as "\\n\\nScene context: {scene_hint}". Used by
+                exp07 to test whether label injection biases the output.
 
     Returns dict with keys:
       pseudocode     str   final consolidated pseudocode
@@ -589,7 +594,7 @@ def extract_rule_incremental(
               f"{len(batches)} batches of ~{batch_size}")
 
     if provider == "fal":
-        return _incremental_fal(batches, model, verbose, prompt_style)
+        return _incremental_fal(batches, model, verbose, prompt_style, scene_hint)
     elif provider == "claude":
         return _incremental_claude(batches, verbose, prompt_style)
     elif provider == "gpt4o":
@@ -627,7 +632,7 @@ def _build_user_message(batch, round_idx, total_batches, prompt_style="grid"):
     return {"role": "user", "content": content}
 
 
-def _incremental_fal(batches, model, verbose, prompt_style="grid"):
+def _incremental_fal(batches, model, verbose, prompt_style="grid", scene_hint=None):
     from openai import OpenAI
 
     fal_key = os.environ.get("FAL_KEY")
@@ -641,6 +646,8 @@ def _incremental_fal(batches, model, verbose, prompt_style="grid"):
     )
 
     system = PHYSICS_INCREMENTAL_SYSTEM_PROMPT if prompt_style == "physics" else INCREMENTAL_SYSTEM_PROMPT
+    if scene_hint:
+        system = system + f"\n\nScene context: {scene_hint}"
     conversation = [{"role": "system", "content": system}]
     rounds = []
 
