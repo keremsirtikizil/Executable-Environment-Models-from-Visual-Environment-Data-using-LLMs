@@ -1,0 +1,9 @@
+{
+  "scene": "billiards_physics",
+  "model": "google/gemini-2.5-pro",
+  "n_steps": 120,
+  "status": "error",
+  "n_frames": 0,
+  "gif_exists": false,
+  "gif_path": null
+}

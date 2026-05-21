@@ -1,0 +1,9 @@
+{
+  "scene": "bouncing_ball",
+  "model": "google/gemini-2.5-pro",
+  "n_steps": 120,
+  "status": "ok",
+  "n_frames": 120,
+  "gif_exists": true,
+  "gif_path": "results/exp08/bouncing_ball/simulation.gif"
+}
