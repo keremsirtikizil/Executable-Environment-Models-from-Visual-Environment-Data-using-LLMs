@@ -1,0 +1,145 @@
+Pair     : pendulum  vs  double_pendulum
+Model    : fal / google/gemini-2.5-flash
+
+==================================================
+COMPARISON ANALYSIS
+==================================================
+
+Here's an analysis of the PURE pseudocode summaries:
+
+**1. SHARED PHYSICS**
+
+*   **State-based transitions:** Both systems define states and rules that govern transitions between these states based on conditions (e.g., `IF System.state == LOCKED_WALL AND UserAction == TOGGLE_KEY_LOCK THEN SET System.state = ROTATABLE_DOOR` in B, and `IF is_turning == true THEN SET mechanism_state = rotating` in A).
+*   **Interaction-driven changes:** Both systems show that external interactions (operator actions in A, UserAction in B) cause changes in the system's state or properties.
+*   **Conditional logic:** Both use `IF...THEN` and `ELSE IF` structures to define how the system behaves under different conditions.
+
+**2. UNIQUE TO A (pendulum)**
+
+*   **Continuous variable modeling:** PURE models `mechanism_rotation_speed` with a range of discrete values (none, very_slow, slow, fast, very_fast, slowing) that represent a continuous spectrum.
+*   **Inertia/Decay:** The system explicitly models the slowing down of the mechanism when the operator stops turning it (`ELSE IF mechanism_state == rotating...`).
+*   **Time-based sequencing:** Operator actions are explicitly tied to specific time points (`IF time == 13: THEN SET operator = none`).
+*   **Configuration change based on speed:** The `mechanism_configuration` (extended/retracted) changes based on the `mechanism_rotation_speed`.
+*   **Operator presence:** The concept of an `operator` interacting with the system is central.
+
+**3. UNIQUE TO B (double_pendulum)**
+
+*   **Complex system states:** The `System.state` variable captures more abstract and composite states like `LOCKED_WALL`, `ROTATABLE_DOOR`, `FOLDED_WALL`.
+*   **Multiple user actions:** Distinct `UserAction` types (TOGGLE_KEY_LOCK, TOGGLE_BOLTS, TOGGLE_FOLD, MOVE_PANELS) are defined, suggesting different interaction modalities.
+*   **Multiple interacting components:** The system explicitly refers to `Brace`, `PanelLeft`, and `PanelRight` with their own properties (`orientation`, `isMobile`, `isSwingable`), indicating a system with multiple parts.
+*   **Hierarchical state dependencies:** The mobility and swingability of panels are directly dependent on the overarching `System.state`.
+
+**4. SENSITIVITY**
+
+**Rating: HIGH**
+
+**Explanation:** The difference in the videos (pendulum vs. double pendulum) is very clearly reflected in the pseudocode.
+
+*   **Scene A (pendulum)** focuses on the *dynamics* of a single rotating mechanism, its speed changes, and how that speed affects its configuration. The "pendulum" aspect is implicitly captured by the rotation and configuration changes.
+*   **Scene B (double_pendulum)**, despite its name, describes a system with *multiple, distinct, and interacting components* (panels, brace) that can be locked, unlocked, folded, and swung. The "double pendulum" aspect is not directly modeled as a physical swinging motion but rather as a system with multiple, interconnected parts that can change their configuration and mobility. The pseudocode for B is much more about the *structural and operational states* of a multi-part system rather than the continuous dynamics of a single rotating object.
+
+The pseudocode for A describes a single, continuously moving object, while B describes a multi-component system with discrete operational states. This fundamental difference in the nature of the physical system is very well captured.
+
+==================================================
+PSEUDOCODE A — pendulum
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman, two_girls)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, very_fast, slowing)
+  mechanism_configuration: (extended, retracted)
+  time: integer
+
+RULES:
+  // Initialization
+  IF time == 1:
+    THEN SET mechanism_configuration = extended
+    AND SET mechanism_state = stationary
+
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+  IF time == 46: THEN SET operator = two_girls
+  IF time == 50: THEN SET operator = none
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37) OR
+     (operator == two_girls AND time >= 46 AND time <= 49):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+    ELSE IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = very_fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == very_fast OR mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      CONTINUE // Inertia keeps it spinning
+
+  // Configuration Change based on speed
+  IF mechanism_rotation_speed == very_fast AND mechanism_configuration == extended:
+    THEN SET mechanism_configuration = retracted
+  ELSE IF mechanism_rotation_speed < very_fast AND mechanism_configuration == retracted:
+    THEN SET mechanism_configuration = extended
+
+==================================================
+PSEUDOCODE B — double_pendulum
+==================================================
+
+STATE VARIABLES:
+  System.state: {LOCKED_WALL, ROTATABLE_DOOR, LOCKED_DOOR, UNBOLTED_WALL, FOLDED_WALL}
+  UserAction: {TOGGLE_KEY_LOCK, TOGGLE_BOLTS, TOGGLE_FOLD, MOVE_PANELS, NONE}
+  Brace.orientation: {VERTICAL, HORIZONTAL, ROTATING}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelRight.isSwingable: {TRUE, FALSE}
+
+RULES:
+  // Door operation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == VERTICAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_WALL
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == HORIZONTAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_DOOR
+  IF System.state == LOCKED_DOOR AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+
+  // Panel separation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = FOLDED_WALL
+  IF System.state == FOLDED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = LOCKED_WALL
+
+  // Panel mobility based on system state
+  IF System.state == FOLDED_WALL
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+    THEN SET PanelRight.isSwingable = FALSE
+  ELSE IF System.state == ROTATABLE_DOOR OR System.state == LOCKED_DOOR
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = TRUE
+  ELSE // State is LOCKED_WALL or UNBOLTED_WALL
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = FALSE

@@ -1,0 +1,14 @@
+{
+  "experiment": "exp06_comparison",
+  "scene": "billiards_physics",
+  "description": "Billiard balls rolling and colliding on a pool table \u2014 various shots.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 36,
+  "n_rounds": 12,
+  "verification_verdict": "CORRECT",
+  "pseudocode_path": "results/exp06/billiards_physics_20260521_104510_pseudocode.txt",
+  "rounds_path": "results/exp06/billiards_physics_20260521_104510_rounds.txt",
+  "verification_path": "results/exp06/billiards_physics_20260521_104510_verification.txt"
+}

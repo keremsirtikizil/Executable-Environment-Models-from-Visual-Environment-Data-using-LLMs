@@ -1,0 +1,238 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : PARTIALLY CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 to 2:**
+- Visual change: The text "Slow Motion Pin Action" is replaced by a view of a bowling lane with 10 pins standing.
+- Correctness of description: The description does not explicitly mention the initial text or its replacement by the bowling lane scene. It starts with `simulation_state` being active and `game_state` being ready, which aligns with the bowling scene. However, the transition from text to scene is not covered.
+
+**Frame 2 to 3:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins. Only a few pins are visible behind the arm.
+- Correctness of description: The description states `IF reset_cycle IS preparing_spare: IF pinsetter_deck.state IS lifting AND deck is clear of sweep path: SET sweep_arm.state to lowering`. This aligns with the sweep arm moving down. The description also mentions `IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping`, which is consistent with the arm moving across the lane.
+
+**Frame 3 to 4:**
+- Visual change: The scene transitions to a black screen.
+- Correctness of description: The description does not explicitly account for a black screen appearing at this point. The rules for `simulation_state IS finished` would lead to a black screen, but the conditions for `game_completion_condition is met` are not met here, nor is `reset_cycle` set to `resetting_frame` which would eventually lead to a black screen if `game_is_over` was true.
+
+**Frame 4 to 5:**
+- Visual change: The black screen is replaced by a view of a bowling lane with 10 pins standing, and a bowling ball is visible among them, with some pins already fallen or falling.
+- Correctness of description: The description does not account for the transition from a black screen back to a bowling scene with pins already in motion and a ball present. The rules would suggest a `game_state` of `ready` or `ball_rolling` leading to `pins_interacting`, but not directly from a black screen to `pins_interacting`.
+
+**Frame 5 to 6:**
+- Visual change: The bowling scene with pins and ball is replaced by text "3/4 Pocket Strike" and "6-pin snaps out the 10-pin".
+- Correctness of description: The description mentions `IF game_state IS end_of_roll AND reset_cycle IS idle: LET standing_pins = GET_PINS_BY_STATE(standing) IF roll_number IS 1: IF COUNT(standing_pins) IS 0: // Strike IF initial_hit_type IS brooklyn: THEN SET ui_text to "Brooklyn Strike" ELSE: THEN SET ui_text to "Strike"`. This partially aligns with displaying strike information. However, it doesn't explicitly mention "3/4 Pocket Strike" or the specific pin interaction "6-pin snaps out the 10-pin".
+
+**Frame 6 to 7:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is moving towards pins, and some pins are already falling.
+- Correctness of description: The description does not account for the transition from text to a bowling scene with pins already in motion. It would typically go from `end_of_roll` to `reset_cycle` and then `ready` before a new ball is detected.
+
+**Frame 7 to 8:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to Frame 3 to 4, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 8 to 9:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing, and a blue and red bowling ball is rolling towards them.
+- Correctness of description: The description does not account for the transition from a black screen to a bowling scene with a ball rolling. If `game_state` was `ready` and a ball was detected, it would set `game_state` to `ball_rolling`, which is consistent with the visual of a ball rolling towards pins.
+
+**Frame 9 to 10:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins and the ball.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 10 to 11:**
+- Visual change: The sweep arm has retracted, and 10 pins are standing on the lane.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to retracting` and the pinsetter `spotting` new pins and `raising` them.
+
+**Frame 11 to 12:**
+- Visual change: A bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: The description does not account for the immediate appearance of a ball and falling pins after the pins were just reset. It should go through `game_state` `ready` then `ball_rolling` before `pins_interacting`.
+
+**Frame 12 to 13:**
+- Visual change: The bowling scene is replaced by text "High Pocket Strike" and "2-pin trips the 4 - 7".
+- Correctness of description: Similar to Frame 5 to 6, this partially aligns with displaying strike information. However, it doesn't explicitly mention "High Pocket Strike" or the specific pin interaction "2-pin trips the 4 - 7".
+
+**Frame 13 to 14:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is moving towards pins, and some pins are already falling.
+- Correctness of description: Similar to Frame 6 to 7, the description does not account for the transition from text to a bowling scene with pins already in motion.
+
+**Frame 14 to 15:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to Frame 3 to 4 and 7 to 8, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 15 to 16:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically the pinsetter `spotting` new pins and `raising` them, leading to `game_state` `ready`.
+
+**Frame 16 to 17:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins. Only one pin is visible behind the arm.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 17 to 18:**
+- Visual change: The bowling scene is replaced by text "Strike" and "Through the nose".
+- Correctness of description: Similar to previous text frames, this partially aligns with displaying strike information. It mentions "Strike", but not "Through the nose" as a specific `initial_hit_type`. The `initial_hit_type` only includes `nose_hit`, `pocket`, and `brooklyn`.
+
+**Frame 18 to 19:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: Similar to previous transitions from text to action, the description does not account for the immediate appearance of a ball and falling pins.
+
+**Frame 19 to 20:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to previous black screen transitions, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 20 to 21:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically the pinsetter `spotting` new pins and `raising` them, leading to `game_state` `ready`.
+
+**Frame 21 to 22:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 22 to 23:**
+- Visual change: The bowling scene is replaced by text "4 - 10".
+- Correctness of description: The description does not account for displaying specific pin numbers like "4 - 10" as `ui_text`. The `ui_text` is only set to "Brooklyn Strike" or "Strike".
+
+**Frame 23 to 24:**
+- Visual change: The text is replaced by a bowling scene where a sweep arm is moving across the lane, and only a few pins are visible, some standing, some fallen.
+- Correctness of description: The description does not account for the transition from text to a scene with a sweep arm already in motion and pins in various states.
+
+**Frame 24 to 25:**
+- Visual change: The sweep arm has retracted, and 10 pins are standing on the lane.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to retracting` and the pinsetter `spotting` new pins and `raising` them.
+
+**Frame 25 to 26:**
+- Visual change: The bowling scene is replaced by text "Brooklyn Strike 2".
+- Correctness of description: Similar to previous text frames, this partially aligns with displaying strike information. It mentions "Brooklyn Strike", but the "2" is not explicitly covered.
+
+**Frame 26 to 27:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: Similar to previous transitions from text to action, the description does not account for the immediate appearance of a ball and falling pins.
+
+**Frame 27 to 28:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to previous black screen transitions, the description does not explicitly account for a black screen appearing at this point.
+
+=== ISSUES ===
+1.  **Missing Initial Text/Scene Transition:** The description does not account for the initial text "Slow Motion Pin Action" and its transition to the bowling lane scene.
+2.  **Unaccounted Black Screens:** The description does not explain the appearance of black screens between bowling action segments (Frames 3-4, 7-8, 14-15, 19-20, 27-28). The `simulation_state: finished` rule would lead to a black screen, but the conditions for `game_is_over` are not met at these points.
+3.  **Abrupt Scene Changes (Text to Action):** The description does not account for transitions from text screens directly to bowling action scenes where the ball is already in motion or pins are already falling (Frames 4-5, 6-7, 13-14, 18-19, 26-27). The `game_state` should progress through `ready` and `ball_rolling` before `pins_interacting`.
+4.  **Incomplete UI Text Handling:** The `ui_text` rule only covers "Brooklyn Strike" and "Strike". It does not account for specific strike descriptions like "3/4 Pocket Strike", "6-pin snaps out the 10-pin", "High Pocket Strike", "2-pin trips the 4 - 7", "Through the nose", or specific pin splits like "4 - 10".
+5.  **Missing "Brooklyn Strike 2" Detail:** The `ui_text` rule for "Brooklyn Strike" does not account for the "2" in "Brooklyn Strike 2".
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 to 2:**
+- Visual change: The text "Slow Motion Pin Action" is replaced by a view of a bowling lane with 10 pins standing.
+- Correctness of description: The description does not explicitly mention the initial text or its replacement by the bowling lane scene. It starts with `simulation_state` being active and `game_state` being ready, which aligns with the bowling scene. However, the transition from text to scene is not covered.
+
+**Frame 2 to 3:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins. Only a few pins are visible behind the arm.
+- Correctness of description: The description states `IF reset_cycle IS preparing_spare: IF pinsetter_deck.state IS lifting AND deck is clear of sweep path: SET sweep_arm.state to lowering`. This aligns with the sweep arm moving down. The description also mentions `IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping`, which is consistent with the arm moving across the lane.
+
+**Frame 3 to 4:**
+- Visual change: The scene transitions to a black screen.
+- Correctness of description: The description does not explicitly account for a black screen appearing at this point. The rules for `simulation_state IS finished` would lead to a black screen, but the conditions for `game_completion_condition is met` are not met here, nor is `reset_cycle` set to `resetting_frame` which would eventually lead to a black screen if `game_is_over` was true.
+
+**Frame 4 to 5:**
+- Visual change: The black screen is replaced by a view of a bowling lane with 10 pins standing, and a bowling ball is visible among them, with some pins already fallen or falling.
+- Correctness of description: The description does not account for the transition from a black screen back to a bowling scene with pins already in motion and a ball present. The rules would suggest a `game_state` of `ready` or `ball_rolling` leading to `pins_interacting`, but not directly from a black screen to `pins_interacting`.
+
+**Frame 5 to 6:**
+- Visual change: The bowling scene with pins and ball is replaced by text "3/4 Pocket Strike" and "6-pin snaps out the 10-pin".
+- Correctness of description: The description mentions `IF game_state IS end_of_roll AND reset_cycle IS idle: LET standing_pins = GET_PINS_BY_STATE(standing) IF roll_number IS 1: IF COUNT(standing_pins) IS 0: // Strike IF initial_hit_type IS brooklyn: THEN SET ui_text to "Brooklyn Strike" ELSE: THEN SET ui_text to "Strike"`. This partially aligns with displaying strike information. However, it doesn't explicitly mention "3/4 Pocket Strike" or the specific pin interaction "6-pin snaps out the 10-pin".
+
+**Frame 6 to 7:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is moving towards pins, and some pins are already falling.
+- Correctness of description: The description does not account for the transition from text to a bowling scene with pins already in motion. It would typically go from `end_of_roll` to `reset_cycle` and then `ready` before a new ball is detected.
+
+**Frame 7 to 8:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to Frame 3 to 4, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 8 to 9:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing, and a blue and red bowling ball is rolling towards them.
+- Correctness of description: The description does not account for the transition from a black screen to a bowling scene with a ball rolling. If `game_state` was `ready` and a ball was detected, it would set `game_state` to `ball_rolling`, which is consistent with the visual of a ball rolling towards pins.
+
+**Frame 9 to 10:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins and the ball.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 10 to 11:**
+- Visual change: The sweep arm has retracted, and 10 pins are standing on the lane.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to retracting` and the pinsetter `spotting` new pins and `raising` them.
+
+**Frame 11 to 12:**
+- Visual change: A bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: The description does not account for the immediate appearance of a ball and falling pins after the pins were just reset. It should go through `game_state` `ready` then `ball_rolling` before `pins_interacting`.
+
+**Frame 12 to 13:**
+- Visual change: The bowling scene is replaced by text "High Pocket Strike" and "2-pin trips the 4 - 7".
+- Correctness of description: Similar to Frame 5 to 6, this partially aligns with displaying strike information. However, it doesn't explicitly mention "High Pocket Strike" or the specific pin interaction "2-pin trips the 4 - 7".
+
+**Frame 13 to 14:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is moving towards pins, and some pins are already falling.
+- Correctness of description: Similar to Frame 6 to 7, the description does not account for the transition from text to a bowling scene with pins already in motion.
+
+**Frame 14 to 15:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to Frame 3 to 4 and 7 to 8, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 15 to 16:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically the pinsetter `spotting` new pins and `raising` them, leading to `game_state` `ready`.
+
+**Frame 16 to 17:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins. Only one pin is visible behind the arm.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 17 to 18:**
+- Visual change: The bowling scene is replaced by text "Strike" and "Through the nose".
+- Correctness of description: Similar to previous text frames, this partially aligns with displaying strike information. It mentions "Strike", but not "Through the nose" as a specific `initial_hit_type`. The `initial_hit_type` only includes `nose_hit`, `pocket`, and `brooklyn`.
+
+**Frame 18 to 19:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: Similar to previous transitions from text to action, the description does not account for the immediate appearance of a ball and falling pins.
+
+**Frame 19 to 20:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to previous black screen transitions, the description does not explicitly account for a black screen appearing at this point.
+
+**Frame 20 to 21:**
+- Visual change: The black screen is replaced by a bowling scene with 10 pins standing.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically the pinsetter `spotting` new pins and `raising` them, leading to `game_state` `ready`.
+
+**Frame 21 to 22:**
+- Visual change: A sweep arm moves down and across the lane, obscuring most of the pins.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to lowering` and `sweeping`.
+
+**Frame 22 to 23:**
+- Visual change: The bowling scene is replaced by text "4 - 10".
+- Correctness of description: The description does not account for displaying specific pin numbers like "4 - 10" as `ui_text`. The `ui_text` is only set to "Brooklyn Strike" or "Strike".
+
+**Frame 23 to 24:**
+- Visual change: The text is replaced by a bowling scene where a sweep arm is moving across the lane, and only a few pins are visible, some standing, some fallen.
+- Correctness of description: The description does not account for the transition from text to a scene with a sweep arm already in motion and pins in various states.
+
+**Frame 24 to 25:**
+- Visual change: The sweep arm has retracted, and 10 pins are standing on the lane.
+- Correctness of description: This is consistent with the `reset_cycle` rules, specifically `sweep_arm.state to retracting` and the pinsetter `spotting` new pins and `raising` them.
+
+**Frame 25 to 26:**
+- Visual change: The bowling scene is replaced by text "Brooklyn Strike 2".
+- Correctness of description: Similar to previous text frames, this partially aligns with displaying strike information. It mentions "Brooklyn Strike", but the "2" is not explicitly covered.
+
+**Frame 26 to 27:**
+- Visual change: The text is replaced by a bowling scene where a bowling ball is visible among the pins, and many pins are falling or have fallen.
+- Correctness of description: Similar to previous transitions from text to action, the description does not account for the immediate appearance of a ball and falling pins.
+
+**Frame 27 to 28:**
+- Visual change: The bowling scene is replaced by a black screen.
+- Correctness of description: Similar to previous black screen transitions, the description does not explicitly account for a black screen appearing at this point.
+
+=== VERDICT ===
+PARTIALLY CORRECT
+
+=== ISSUES ===
+1.  **Missing Initial Text/Scene Transition:** The description does not account for the initial text "Slow Motion Pin Action" and its transition to the bowling lane scene.
+2.  **Unaccounted Black Screens:** The description does not explain the appearance of black screens between bowling action segments (Frames 3-4, 7-8, 14-15, 19-20, 27-28). The `simulation_state: finished` rule would lead to a black screen, but the conditions for `game_is_over` are not met at these points.
+3.  **Abrupt Scene Changes (Text to Action):** The description does not account for transitions from text screens directly to bowling action scenes where the ball is already in motion or pins are already falling (Frames 4-5, 6-7, 13-14, 18-19, 26-27). The `game_state` should progress through `ready` and `ball_rolling` before `pins_interacting`.
+4.  **Incomplete UI Text Handling:** The `ui_text` rule only covers "Brooklyn Strike" and "Strike". It does not account for specific strike descriptions like "3/4 Pocket Strike", "6-pin snaps out the 10-pin", "High Pocket Strike", "2-pin trips the 4 - 7", "Through the nose", or specific pin splits like "4 - 10".
+5.  **Missing "Brooklyn Strike 2" Detail:** The `ui_text` rule for "Brooklyn Strike" does not account for the "2" in "Brooklyn Strike 2".

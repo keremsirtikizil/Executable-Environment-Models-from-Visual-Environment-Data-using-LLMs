@@ -1,0 +1,14 @@
+{
+  "experiment": "exp06_comparison",
+  "scene": "bowling_strike",
+  "description": "A bowling ball strikes all ten pins simultaneously \u2014 a perfect strike.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 31,
+  "n_rounds": 11,
+  "verification_verdict": "PARTIALLY CORRECT",
+  "pseudocode_path": "results/exp06/bowling_strike_20260521_112245_pseudocode.txt",
+  "rounds_path": "results/exp06/bowling_strike_20260521_112245_rounds.txt",
+  "verification_path": "results/exp06/bowling_strike_20260521_112245_verification.txt"
+}

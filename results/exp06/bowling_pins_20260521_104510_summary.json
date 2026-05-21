@@ -1,0 +1,14 @@
+{
+  "experiment": "exp06_comparison",
+  "scene": "bowling_pins",
+  "description": "Bowling pins standing on a lane \u2014 a ball rolls in and scatters the pins.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 31,
+  "n_rounds": 11,
+  "verification_verdict": "PARTIALLY CORRECT",
+  "pseudocode_path": "results/exp06/bowling_pins_20260521_104510_pseudocode.txt",
+  "rounds_path": "results/exp06/bowling_pins_20260521_104510_rounds.txt",
+  "verification_path": "results/exp06/bowling_pins_20260521_104510_verification.txt"
+}

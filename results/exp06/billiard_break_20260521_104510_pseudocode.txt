@@ -1,0 +1,134 @@
+Scene        : billiard_break
+Description  : A billiards break shot — cue ball struck hard, scattering the rack.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 30 | Batch : 3 | Rounds : 10
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+STATE VARIABLES:
+  `time`: Integer
+  `cueStick.x`: Float
+  `cueStick.velocityX`: Float
+  `cueStick.temperature`: Float
+  `cueStick.isVisible`: Boolean
+  `yellowBall.x`: Float
+  `yellowBall.y`: Float
+  `yellowBall.velocityX`: Float
+  `yellowBall.velocityY`: Float
+  `yellowBall.temperature`: Float
+  `yellowBall.isVisible`: Boolean
+  `whiteBall.x`: Float
+  `whiteBall.y`: Float
+  `whiteBall.velocityX`: Float
+  `whiteBall.temperature`: Float
+  `whiteBall.isVisible`: Boolean
+  `spottedBall.x`: Float
+  `spottedBall.y`: Float
+  `spottedBall.velocityX`: Float
+  `spottedBall.isVisible`: Boolean
+  `heatTrail`: List of `TrailPoint` objects, each with `x`, `y`, `temperature`, `lifespan`
+  `mistEffect.x`: Float
+  `mistEffect.y`: Float
+  `mistEffect.isVisible`: Boolean
+  `mistEffect.lifespan`: Integer
+  `spotlight.intensity`: Float
+  `viewMode`: Enum (`NORMAL`, `THERMAL`)
+  `table.color`: Enum (`BLUE`, `GREEN`)
+  `hasCueStruck`: Boolean
+  `hasBallsCollided`: Boolean
+  `GRAVITY`: Constant Float
+  `TABLE_Y`: Constant Float
+  `CUSHION_X`: Constant Float
+  `HOT_TEMP`: Constant Float
+  `AMBIENT_TEMP`: Constant Float
+  `COOLING_RATE`: Constant Float
+  `REBOUND_HEAT`: Constant Float
+  `FRICTION_HEAT_RATE`: Constant Float
+  `CUE_STRIKE_TIME`: Constant Integer = 15
+  `BALL_COLLISION_TIME`: Constant Integer = 18
+  `THERMAL_VIEW_TIME`: Constant Integer = 20
+  `NORMAL_VIEW_TIME`: Constant Integer = 23
+  `SCENE_1_END_TIME`: Constant Integer = 25
+  `SCENE_2_START_TIME`: Constant Integer = 26
+  `SPOTTED_IMPACT_TIME`: Constant Integer = 27
+  `FADE_START_TIME`: Constant Integer = 28
+  `FINAL_END_TIME`: Constant Integer = 29
+
+RULES:
+  IF `time` == 12:
+    THEN `hasCueStruck` = `FALSE`
+    THEN `hasBallsCollided` = `FALSE`
+    THEN `viewMode` = `NORMAL`
+    THEN `table.color` = `BLUE`
+    THEN `spotlight.intensity` = 1.0
+    THEN `heatTrail` = EMPTY_LIST
+    THEN `cueStick.isVisible` = `TRUE`
+    THEN `yellowBall.isVisible` = `TRUE`
+    THEN `whiteBall.isVisible` = `TRUE`
+    THEN `spottedBall.isVisible` = `FALSE`
+    THEN `mistEffect.isVisible` = `FALSE`
+
+  IF `time` >= 12 AND `time` < `SCENE_1_END_TIME`:
+    IF `time` >= `CUE_STRIKE_TIME` AND `hasCueStruck` == `FALSE`:
+      THEN `hasCueStruck` = `TRUE`
+      THEN `yellowBall.velocityX` = `POST_STRIKE_VX`
+      THEN `yellowBall.velocityY` = `JUMP_VELOCITY`
+      THEN `cueStick.temperature` = `HOT_TEMP`
+    IF `time` >= `BALL_COLLISION_TIME` AND `hasBallsCollided` == `FALSE`:
+      THEN `hasBallsCollided` = `TRUE`
+      THEN `yellowBall.velocityX` = `POST_COLLISION_YELLOW_VX`
+      THEN `whiteBall.velocityX` = `POST_COLLISION_WHITE_VX`
+      THEN `yellowBall.temperature` = `HOT_TEMP`
+      THEN `whiteBall.temperature` = `HOT_TEMP`
+    IF `hasBallsCollided` == `TRUE` AND `yellowBall.x` >= `CUSHION_X`:
+      THEN `yellowBall.x` = `CUSHION_X`
+      THEN `yellowBall.velocityX` = -`yellowBall.velocityX`
+      THEN `yellowBall.temperature` = `yellowBall.temperature` + `REBOUND_HEAT`
+    IF `time` >= `THERMAL_VIEW_TIME` AND `time` < `NORMAL_VIEW_TIME`:
+      THEN `viewMode` = `THERMAL`
+    ELSE IF `time` >= `NORMAL_VIEW_TIME`:
+      THEN `viewMode` = `NORMAL`
+
+  IF `time` == `SCENE_1_END_TIME`:
+    THEN `yellowBall.isVisible` = `FALSE`
+    THEN `whiteBall.isVisible` = `FALSE`
+    THEN `cueStick.isVisible` = `FALSE`
+    THEN `spotlight.intensity` = 0.0
+
+  IF `time` == `SCENE_2_START_TIME`:
+    THEN `table.color` = `GREEN`
+    THEN `spotlight.intensity` = 1.0
+    THEN `spottedBall.isVisible` = `TRUE`
+    THEN `spottedBall.x` = `INITIAL_SPOTTED_X`
+    THEN `spottedBall.y` = `TABLE_Y`
+    THEN `spottedBall.velocityX` = `SPOTTED_V`
+    THEN `viewMode` = `NORMAL`
+
+  IF `time` > `SCENE_2_START_TIME` AND `time` < `SPOTTED_IMPACT_TIME`:
+    THEN `spottedBall.x` = `spottedBall.x` + `spottedBall.velocityX`
+
+  IF `time` == `SPOTTED_IMPACT_TIME`:
+    THEN `spottedBall.x` = `CUSHION_X`
+    THEN `spottedBall.velocityX` = -`spottedBall.velocityX`
+    THEN `mistEffect.isVisible` = `TRUE`
+    THEN `mistEffect.x` = `CUSHION_X`
+    THEN `mistEffect.y` = `TABLE_Y`
+    THEN `mistEffect.lifespan` = 10
+
+  IF `time` > `SPOTTED_IMPACT_TIME`:
+    THEN `spottedBall.x` = `spottedBall.x` + `spottedBall.velocityX`
+    THEN `mistEffect.lifespan` = `mistEffect.lifespan` - 1
+
+  IF `time` == `FADE_START_TIME`:
+    THEN `spottedBall.isVisible` = `FALSE`
+
+  IF `time` >= `FADE_START_TIME`:
+    THEN `spotlight.intensity` = `spotlight.intensity` * 0.5
+    IF `mistEffect.lifespan` <= 0:
+      THEN `mistEffect.isVisible` = `FALSE`
+
+  IF `time` == `FINAL_END_TIME`:
+    THEN `spotlight.intensity` = 0.0
+    THEN `mistEffect.isVisible` = `FALSE`

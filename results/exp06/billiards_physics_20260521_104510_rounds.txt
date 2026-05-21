@@ -1,0 +1,2999 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("TitleCard", "Shot", "SpinDemo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `display_title_text`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+
+RULES:
+  IF `scene` == "TitleCard":
+    THEN SET `display_title_text` = TRUE
+  
+  IF `scene` == "TitleCard" AND `scene_timer` > 1:
+    THEN SET `scene` = "Shot"
+    THEN SET `display_title_text` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "Shot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+
+  IF `scene` == "Shot" AND cue_ball collides with object_ball:
+    THEN MOVE object_ball towards pocket
+    THEN SET `cue_ball_moving` = FALSE
+
+  IF `scene` == "Shot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+
+  IF `display_camera_info` == TRUE:
+    THEN DISPLAY camera_info_overlay
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo", "HopStunTitle", "HopAnalysis", "StunShotDemo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `hop_analysis_ball_moving`: BOOLEAN
+  `stun_shot_cue_ball_moving`: BOOLEAN
+  `stun_shot_object_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `display_hop_stun_title`: BOOLEAN
+  `display_hop_analysis_graphics`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "ThrowDemo" AND `scene_timer` > 25:
+    THEN SET `scene` = "HopStunTitle"
+    THEN SET `throw_demo_cue_ball_moving` = FALSE
+    THEN SET `throw_demo_object_ball_moving` = FALSE
+    THEN SET `display_hop_stun_title` = TRUE
+
+  IF `scene` == "HopStunTitle":
+    IF `display_hop_stun_title` == TRUE:
+      THEN DISPLAY text "6 - Ball Hop and Stun"
+
+  IF `scene` == "HopStunTitle" AND `scene_timer` > 26:
+    THEN SET `scene` = "HopAnalysis"
+    THEN SET `display_hop_stun_title` = FALSE
+    THEN SET `display_hop_analysis_graphics` = TRUE
+    THEN SET `hop_analysis_ball_moving` = TRUE
+
+  IF `scene` == "HopAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_hop_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DISPLAY text "$0.37 hop"
+    IF `hop_analysis_ball_moving` == TRUE:
+      THEN MOVE hop_analysis_ball with slight upward arc
+
+  IF `scene` == "HopAnalysis" AND `scene_timer` > 27:
+    THEN SET `scene` = "StunShotDemo"
+    THEN SET `display_hop_analysis_graphics` = FALSE
+    THEN SET `hop_analysis_ball_moving` = FALSE
+    THEN SET `stun_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "StunShotDemo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `stun_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `stun_shot_cue_ball_moving` = FALSE
+      THEN SET `stun_shot_object_ball_moving` = TRUE
+      THEN STOP cue_ball motion
+    IF `stun_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball away from collision point
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo", "HopStunTitle", "HopAnalysis", "StunShotDemo", "PushShotTitle", "PushShotAnalysis", "LegalShotDemo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `hop_analysis_ball_moving`: BOOLEAN
+  `stun_shot_cue_ball_moving`: BOOLEAN
+  `stun_shot_object_ball_moving`: BOOLEAN
+  `legal_shot_cue_ball_moving`: BOOLEAN
+  `legal_shot_object_ball_moving`: BOOLEAN
+  `push_shot_cue_ball_moving`: BOOLEAN
+  `push_shot_object_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `display_hop_stun_title`: BOOLEAN
+  `display_hop_analysis_graphics`: BOOLEAN
+  `display_push_shot_title`: BOOLEAN
+  `display_push_shot_analysis_graphics`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "ThrowDemo" AND `scene_timer` > 25:
+    THEN SET `scene` = "HopStunTitle"
+    THEN SET `throw_demo_cue_ball_moving` = FALSE
+    THEN SET `throw_demo_object_ball_moving` = FALSE
+    THEN SET `display_hop_stun_title` = TRUE
+
+  IF `scene` == "HopStunTitle":
+    IF `display_hop_stun_title` == TRUE:
+      THEN DISPLAY text "6 - Ball Hop and Stun"
+
+  IF `scene` == "HopStunTitle" AND `scene_timer` > 26:
+    THEN SET `scene` = "HopAnalysis"
+    THEN SET `display_hop_stun_title` = FALSE
+    THEN SET `display_hop_analysis_graphics` = TRUE
+    THEN SET `hop_analysis_ball_moving` = TRUE
+
+  IF `scene` == "HopAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_hop_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DISPLAY text "$0.37 hop"
+    IF `hop_analysis_ball_moving` == TRUE:
+      THEN MOVE hop_analysis_ball with slight upward arc
+
+  IF `scene` == "HopAnalysis" AND `scene_timer` > 27:
+    THEN SET `scene` = "StunShotDemo"
+    THEN SET `display_hop_analysis_graphics` = FALSE
+    THEN SET `hop_analysis_ball_moving` = FALSE
+    THEN SET `stun_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "StunShotDemo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `stun_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `stun_shot_cue_ball_moving` = FALSE
+      THEN SET `stun_shot_object_ball_moving` = TRUE
+      THEN STOP cue_ball motion
+    IF `stun_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball away from collision point
+
+  IF `scene` == "StunShotDemo" AND `scene_timer` > 28:
+    THEN SET `scene` = "PushShotTitle"
+    THEN SET `stun_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_push_shot_title` = TRUE
+
+  IF `scene` == "PushShotTitle":
+    IF `display_push_shot_title` == TRUE:
+      THEN DISPLAY text "7 - Push Shots and Double Hits"
+
+  IF `scene` == "PushShotTitle" AND `scene_timer` > 29:
+    THEN SET `scene` = "PushShotAnalysis"
+    THEN SET `display_push_shot_title` = FALSE
+    THEN SET `display_push_shot_analysis_graphics` = TRUE
+    THEN SET video_filter = "BlackAndWhite"
+
+  IF `scene` == "PushShotAnalysis":
+    IF `display_push_shot_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+    IF `push_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_stick towards cue_ball
+      IF cue_stick collides with cue_ball:
+        THEN SET `push_shot_object_ball_moving` = TRUE
+    IF `push_shot_object_ball_moving` == TRUE:
+      THEN MOVE cue_stick, cue_ball, and object_ball forward together
+
+  IF `scene` == "PushShotAnalysis" AND `scene_timer` > 30:
+    THEN SET `scene` = "LegalShotDemo"
+    THEN SET `display_push_shot_analysis_graphics` = FALSE
+    THEN SET `push_shot_cue_ball_moving` = FALSE
+    THEN SET `push_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `legal_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "LegalShotDemo":
+    IF `legal_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `legal_shot_cue_ball_moving` = FALSE
+      THEN SET `legal_shot_object_ball_moving` = TRUE
+    IF `legal_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "LegalShotDemo" AND `scene_timer` > 31:
+    THEN SET `scene` = "PushShotAnalysis"
+    THEN SET `legal_shot_object_ball_moving` = FALSE
+    THEN SET `display_push_shot_analysis_graphics` = TRUE
+    THEN SET `push_shot_cue_ball_moving` = TRUE
+    THEN SET video_filter = "BlackAndWhite"
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo", "HopStunTitle", "HopAnalysis", "StunShotDemo", "PushShotTitle", "PushShotAnalysis", "LegalShotDemo", "FinalShotDemo", "WrapUpTitle", "WrapUpSlowMo")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `hop_analysis_ball_moving`: BOOLEAN
+  `stun_shot_cue_ball_moving`: BOOLEAN
+  `stun_shot_object_ball_moving`: BOOLEAN
+  `push_shot_cue_ball_moving`: BOOLEAN
+  `push_shot_object_ball_moving`: BOOLEAN
+  `legal_shot_cue_ball_moving`: BOOLEAN
+  `legal_shot_object_ball_moving`: BOOLEAN
+  `final_shot_cue_ball_moving`: BOOLEAN
+  `wrap_up_cue_tip_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `display_hop_stun_title`: BOOLEAN
+  `display_hop_analysis_graphics`: BOOLEAN
+  `display_push_shot_title`: BOOLEAN
+  `display_push_shot_analysis_graphics`: BOOLEAN
+  `display_wrap_up_title`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "ThrowDemo" AND `scene_timer` > 25:
+    THEN SET `scene` = "HopStunTitle"
+    THEN SET `throw_demo_cue_ball_moving` = FALSE
+    THEN SET `throw_demo_object_ball_moving` = FALSE
+    THEN SET `display_hop_stun_title` = TRUE
+
+  IF `scene` == "HopStunTitle":
+    IF `display_hop_stun_title` == TRUE:
+      THEN DISPLAY text "6 - Ball Hop and Stun"
+
+  IF `scene` == "HopStunTitle" AND `scene_timer` > 26:
+    THEN SET `scene` = "HopAnalysis"
+    THEN SET `display_hop_stun_title` = FALSE
+    THEN SET `display_hop_analysis_graphics` = TRUE
+    THEN SET `hop_analysis_ball_moving` = TRUE
+
+  IF `scene` == "HopAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_hop_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DISPLAY text "$0.37 hop"
+    IF `hop_analysis_ball_moving` == TRUE:
+      THEN MOVE hop_analysis_ball with slight upward arc
+
+  IF `scene` == "HopAnalysis" AND `scene_timer` > 27:
+    THEN SET `scene` = "StunShotDemo"
+    THEN SET `display_hop_analysis_graphics` = FALSE
+    THEN SET `hop_analysis_ball_moving` = FALSE
+    THEN SET `stun_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "StunShotDemo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `stun_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `stun_shot_cue_ball_moving` = FALSE
+      THEN SET `stun_shot_object_ball_moving` = TRUE
+      THEN STOP cue_ball motion
+    IF `stun_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball away from collision point
+
+  IF `scene` == "StunShotDemo" AND `scene_timer` > 28:
+    THEN SET `scene` = "PushShotTitle"
+    THEN SET `stun_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_push_shot_title` = TRUE
+
+  IF `scene` == "PushShotTitle":
+    IF `display_push_shot_title` == TRUE:
+      THEN DISPLAY text "7 - Push Shots and Double Hits"
+
+  IF `scene` == "PushShotTitle" AND `scene_timer` > 29:
+    THEN SET `scene` = "PushShotAnalysis"
+    THEN SET `display_push_shot_title` = FALSE
+    THEN SET `display_push_shot_analysis_graphics` = TRUE
+    THEN SET video_filter = "BlackAndWhite"
+
+  IF `scene` == "PushShotAnalysis":
+    IF `display_push_shot_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+    IF `push_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_stick towards cue_ball
+      IF cue_stick collides with cue_ball:
+        THEN SET `push_shot_object_ball_moving` = TRUE
+    IF `push_shot_object_ball_moving` == TRUE:
+      THEN MOVE cue_stick, cue_ball, and object_ball forward together
+
+  IF `scene` == "PushShotAnalysis" AND `scene_timer` > 30:
+    THEN SET `scene` = "LegalShotDemo"
+    THEN SET `display_push_shot_analysis_graphics` = FALSE
+    THEN SET `push_shot_cue_ball_moving` = FALSE
+    THEN SET `push_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `legal_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "LegalShotDemo":
+    IF `legal_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `legal_shot_cue_ball_moving` = FALSE
+      THEN SET `legal_shot_object_ball_moving` = TRUE
+    IF `legal_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "LegalShotDemo" AND `scene_timer` > 31:
+    THEN SET `scene` = "FinalShotDemo"
+    THEN SET `legal_shot_object_ball_moving` = FALSE
+    THEN SET `final_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "FinalShotDemo":
+    IF `final_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_stick towards cue_ball
+      IF cue_stick collides with cue_ball:
+        THEN SET `final_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "FinalShotDemo" AND `scene_timer` > 32:
+    THEN SET `scene` = "WrapUpTitle"
+    THEN SET `display_wrap_up_title` = TRUE
+
+  IF `scene` == "WrapUpTitle":
+    IF `display_wrap_up_title` == TRUE:
+      THEN DISPLAY wrap_up_title_card_with_collage
+
+  IF `scene` == "WrapUpTitle" AND `scene_timer` > 33:
+    THEN SET `scene` = "WrapUpSlowMo"
+    THEN SET `display_wrap_up_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `wrap_up_cue_tip_moving` = TRUE
+
+  IF `scene` == "WrapUpSlowMo":
+    IF `wrap_up_cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip towards cue_ball
+      IF cue_tip collides with cue_ball:
+        THEN DEFORM cue_ball
+        THEN SET `wrap_up_cue_tip_moving` = FALSE
+
+==================================================
+Round 11  —  frames [30, 31, 32]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo", "HopStunTitle", "HopAnalysis", "StunShotDemo", "PushShotTitle", "PushShotAnalysis", "LegalShotDemo", "FinalShotDemo", "WrapUpTitle", "WrapUpSlowMo", "End")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `hop_analysis_ball_moving`: BOOLEAN
+  `stun_shot_cue_ball_moving`: BOOLEAN
+  `stun_shot_object_ball_moving`: BOOLEAN
+  `push_shot_cue_ball_moving`: BOOLEAN
+  `push_shot_object_ball_moving`: BOOLEAN
+  `legal_shot_cue_ball_moving`: BOOLEAN
+  `legal_shot_object_ball_moving`: BOOLEAN
+  `final_shot_cue_ball_moving`: BOOLEAN
+  `wrap_up_cue_tip_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `display_hop_stun_title`: BOOLEAN
+  `display_hop_analysis_graphics`: BOOLEAN
+  `display_push_shot_title`: BOOLEAN
+  `display_push_shot_analysis_graphics`: BOOLEAN
+  `display_wrap_up_title`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+  `push_shot_phase`: ("Setup", "Execution")
+  `legal_shot_phase`: ("Setup", "Execution")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "ThrowDemo" AND `scene_timer` > 25:
+    THEN SET `scene` = "HopStunTitle"
+    THEN SET `throw_demo_cue_ball_moving` = FALSE
+    THEN SET `throw_demo_object_ball_moving` = FALSE
+    THEN SET `display_hop_stun_title` = TRUE
+
+  IF `scene` == "HopStunTitle":
+    IF `display_hop_stun_title` == TRUE:
+      THEN DISPLAY text "6 - Ball Hop and Stun"
+
+  IF `scene` == "HopStunTitle" AND `scene_timer` > 26:
+    THEN SET `scene` = "HopAnalysis"
+    THEN SET `display_hop_stun_title` = FALSE
+    THEN SET `display_hop_analysis_graphics` = TRUE
+    THEN SET `hop_analysis_ball_moving` = TRUE
+
+  IF `scene` == "HopAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_hop_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DISPLAY text "$0.37 hop"
+    IF `hop_analysis_ball_moving` == TRUE:
+      THEN MOVE hop_analysis_ball with slight upward arc
+
+  IF `scene` == "HopAnalysis" AND `scene_timer` > 27:
+    THEN SET `scene` = "StunShotDemo"
+    THEN SET `display_hop_analysis_graphics` = FALSE
+    THEN SET `hop_analysis_ball_moving` = FALSE
+    THEN SET `stun_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "StunShotDemo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `stun_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `stun_shot_cue_ball_moving` = FALSE
+      THEN SET `stun_shot_object_ball_moving` = TRUE
+      THEN STOP cue_ball motion
+    IF `stun_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball away from collision point
+
+  IF `scene` == "StunShotDemo" AND `scene_timer` > 28:
+    THEN SET `scene` = "PushShotTitle"
+    THEN SET `stun_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_push_shot_title` = TRUE
+
+  IF `scene` == "PushShotTitle":
+    IF `display_push_shot_title` == TRUE:
+      THEN DISPLAY text "7 - Push Shots and Double Hits"
+
+  IF `scene` == "PushShotTitle" AND `scene_timer` > 29:
+    THEN SET `scene` = "PushShotAnalysis"
+    THEN SET `display_push_shot_title` = FALSE
+    THEN SET `push_shot_phase` = "Setup"
+    THEN SET `display_push_shot_analysis_graphics` = TRUE
+    THEN SET video_filter = "BlackAndWhite"
+
+  IF `scene` == "PushShotAnalysis":
+    IF `display_push_shot_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+    IF `push_shot_phase` == "Setup":
+      THEN DISPLAY cue_ball and object_ball at rest, close together
+      IF `scene_timer` > 30:
+        THEN SET `push_shot_phase` = "Execution"
+        THEN SET `push_shot_cue_ball_moving` = TRUE
+    IF `push_shot_phase` == "Execution":
+      IF `push_shot_cue_ball_moving` == TRUE:
+        THEN MOVE cue_stick towards cue_ball
+        IF cue_stick collides with cue_ball:
+          THEN SET `push_shot_object_ball_moving` = TRUE
+      IF `push_shot_object_ball_moving` == TRUE:
+        THEN MOVE cue_stick, cue_ball, and object_ball forward together
+
+  IF `scene` == "PushShotAnalysis" AND `scene_timer` > 31:
+    THEN SET `scene` = "LegalShotDemo"
+    THEN SET `display_push_shot_analysis_graphics` = FALSE
+    THEN SET `push_shot_cue_ball_moving` = FALSE
+    THEN SET `push_shot_object_ball_moving` = FALSE
+    THEN SET `legal_shot_phase` = "Setup"
+
+  IF `scene` == "LegalShotDemo":
+    IF `legal_shot_phase` == "Setup":
+      THEN SET video_filter = "BlackAndWhite"
+      THEN DISPLAY cue_stick approaching cue_ball with aiming_diagram
+      IF `scene_timer` > 32:
+        THEN SET `legal_shot_phase` = "Execution"
+        THEN SET `legal_shot_cue_ball_moving` = TRUE
+    IF `legal_shot_phase` == "Execution":
+      THEN SET video_filter = "None"
+      IF `legal_shot_cue_ball_moving` == TRUE:
+        THEN MOVE cue_ball towards object_ball
+      IF cue_ball collides with object_ball:
+        THEN SET `legal_shot_cue_ball_moving` = FALSE
+        THEN SET `legal_shot_object_ball_moving` = TRUE
+      IF `legal_shot_object_ball_moving` == TRUE:
+        THEN MOVE object_ball towards pocket
+
+  IF `scene` == "LegalShotDemo" AND `scene_timer` > 33:
+    THEN SET `scene` = "FinalShotDemo"
+    THEN SET `legal_shot_object_ball_moving` = FALSE
+    THEN SET `final_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "FinalShotDemo":
+    IF `final_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_stick towards cue_ball
+      IF cue_stick collides with cue_ball:
+        THEN SET `final_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "FinalShotDemo" AND `scene_timer` > 34:
+    THEN SET `scene` = "WrapUpTitle"
+    THEN SET `display_wrap_up_title` = TRUE
+
+  IF `scene` == "WrapUpTitle":
+    IF `display_wrap_up_title` == TRUE:
+      THEN DISPLAY wrap_up_title_card_with_collage
+
+  IF `scene` == "WrapUpTitle" AND `scene_timer` > 35:
+    THEN SET `scene` = "WrapUpSlowMo"
+    THEN SET `display_wrap_up_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `wrap_up_cue_tip_moving` = TRUE
+
+  IF `scene` == "WrapUpSlowMo":
+    IF `wrap_up_cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip towards cue_ball
+      IF cue_tip collides with cue_ball:
+        THEN DEFORM cue_ball
+        THEN SET `wrap_up_cue_tip_moving` = FALSE
+    IF `wrap_up_cue_tip_moving` == FALSE:
+      THEN CONTINUE showing deformed cue_ball
+
+  IF `scene` == "WrapUpSlowMo" AND `scene_timer` > 36:
+    THEN SET `scene` = "End"
+
+==================================================
+FINAL  —  frames [33, 34, 35]
+==================================================
+
+STATE VARIABLES:
+  `scene`: ("IntroTitle", "IntroShot", "SpinDemo", "RattleSetup", "RattleTitle", "RattleAnalysis", "CurvedPathTitle", "MasseShotDemo", "ThermalAnalysis", "ThermalGroovesAnalysis", "DrawShotSetup", "DrawShotExecution", "DrawShotSlowMo", "SquirtTitle", "SquirtDemoSetup", "SquirtDemoAnalysis", "SquirtCauseAnalysis", "ThrowTitle", "ThrowAnalysis", "ThrowDemo", "HopStunTitle", "HopAnalysis", "StunShotDemo", "PushShotTitle", "PushShotAnalysis", "LegalShotDemo", "FinalShotDemo", "WrapUpTitle", "WrapUpSlowMo", "OutroShot", "CreditShot", "End")
+  `scene_timer`: INTEGER
+  `cue_ball_moving`: BOOLEAN
+  `object_ball_moving`: BOOLEAN
+  `striped_ball_spinning`: BOOLEAN
+  `analysis_ball_moving`: BOOLEAN
+  `masse_ball_moving`: BOOLEAN
+  `draw_shot_cue_ball_moving`: BOOLEAN
+  `slow_mo_ball_jumping`: BOOLEAN
+  `cue_tip_moving`: BOOLEAN
+  `throw_demo_cue_ball_moving`: BOOLEAN
+  `throw_demo_object_ball_moving`: BOOLEAN
+  `hop_analysis_ball_moving`: BOOLEAN
+  `stun_shot_cue_ball_moving`: BOOLEAN
+  `stun_shot_object_ball_moving`: BOOLEAN
+  `push_shot_cue_ball_moving`: BOOLEAN
+  `push_shot_object_ball_moving`: BOOLEAN
+  `legal_shot_cue_ball_moving`: BOOLEAN
+  `legal_shot_object_ball_moving`: BOOLEAN
+  `final_shot_cue_ball_moving`: BOOLEAN
+  `wrap_up_cue_tip_moving`: BOOLEAN
+  `credit_shot_cue_ball_moving`: BOOLEAN
+  `display_intro_title`: BOOLEAN
+  `display_camera_info`: BOOLEAN
+  `display_rattle_title`: BOOLEAN
+  `display_analysis_graphics`: BOOLEAN
+  `display_curved_path_title`: BOOLEAN
+  `display_masse_shot_graphics`: BOOLEAN
+  `display_thermal_highlight`: BOOLEAN
+  `display_thermal_grooves_graphics`: BOOLEAN
+  `display_draw_shot_diagram`: BOOLEAN
+  `display_slow_mo_info`: BOOLEAN
+  `display_draw_shot_spin_axis`: BOOLEAN
+  `display_squirt_title`: BOOLEAN
+  `display_squirt_analysis_graphics`: BOOLEAN
+  `display_squirt_cause_text`: BOOLEAN
+  `display_squirt_line_graphic`: BOOLEAN
+  `display_throw_title`: BOOLEAN
+  `display_throw_analysis_graphics`: BOOLEAN
+  `display_hop_stun_title`: BOOLEAN
+  `display_hop_analysis_graphics`: BOOLEAN
+  `display_push_shot_title`: BOOLEAN
+  `display_push_shot_analysis_graphics`: BOOLEAN
+  `display_wrap_up_title`: BOOLEAN
+  `display_credit_watermark`: BOOLEAN
+  `aiming_diagram_state`: ("CenterDraw", "RightEnglish")
+  `push_shot_phase`: ("Setup", "Execution")
+  `legal_shot_phase`: ("Setup", "Execution")
+
+RULES:
+  IF `scene` == "IntroTitle":
+    THEN SET `display_intro_title` = TRUE
+  
+  IF `scene` == "IntroTitle" AND `scene_timer` > 1:
+    THEN SET `scene` = "IntroShot"
+    THEN SET `display_intro_title` = FALSE
+    THEN SET `cue_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `cue_ball_moving` = FALSE
+      THEN SET `object_ball_moving` = TRUE
+
+  IF `scene` == "IntroShot" AND `object_ball_moving` == TRUE:
+    THEN MOVE object_ball towards pocket
+
+  IF `scene` == "IntroShot" AND `scene_timer` > 3:
+    THEN SET `scene` = "SpinDemo"
+    THEN SET `striped_ball_spinning` = TRUE
+    THEN SET `display_camera_info` = TRUE
+
+  IF `scene` == "SpinDemo" AND `striped_ball_spinning` == TRUE:
+    THEN ROTATE striped_ball at high speed
+  
+  IF `scene` == "SpinDemo" AND `scene_timer` > 4:
+    THEN SET `scene` = "RattleSetup"
+    THEN SET `striped_ball_spinning` = FALSE
+    THEN SET `display_camera_info` = FALSE
+
+  IF `scene` == "RattleSetup" AND `scene_timer` > 5:
+    THEN SET `scene` = "RattleTitle"
+    THEN SET `display_rattle_title` = TRUE
+
+  IF `scene` == "RattleTitle" AND `scene_timer` > 6:
+    THEN SET `scene` = "RattleAnalysis"
+    THEN SET `display_rattle_title` = FALSE
+    THEN SET `display_analysis_graphics` = TRUE
+    THEN SET `analysis_ball_moving` = TRUE
+
+  IF `scene` == "RattleAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_analysis_graphics` == TRUE:
+      THEN DISPLAY reticle_overlay
+    IF `analysis_ball_moving` == TRUE:
+      THEN MOVE analysis_ball towards pocket_wall
+    IF analysis_ball collides with pocket_wall:
+      THEN DRAW trajectory_lines
+      THEN CHANGE analysis_ball direction
+
+  IF `scene` == "RattleAnalysis" AND `scene_timer` > 7:
+    THEN SET `scene` = "CurvedPathTitle"
+    THEN SET `display_analysis_graphics` = FALSE
+    THEN SET `analysis_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_curved_path_title` = TRUE
+
+  IF `scene` == "CurvedPathTitle":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_curved_path_title` == TRUE:
+      THEN DISPLAY text "3 - Curved CB Paths and Burn Marks"
+
+  IF `scene` == "CurvedPathTitle" AND `scene_timer` > 8:
+    THEN SET `scene` = "MasseShotDemo"
+    THEN SET `display_curved_path_title` = FALSE
+    THEN SET `display_masse_shot_graphics` = TRUE
+    THEN SET `masse_ball_moving` = TRUE
+
+  IF `scene` == "MasseShotDemo":
+    IF `display_masse_shot_graphics` == TRUE:
+      THEN DISPLAY text "10.) Massé shots"
+      THEN DISPLAY aiming_diagram
+      THEN DRAW curved_path_line
+    IF `masse_ball_moving` == TRUE:
+      THEN MOVE cue_ball along curved_path_line
+
+  IF `scene` == "MasseShotDemo" AND `scene_timer` > 9:
+    THEN SET `scene` = "ThermalAnalysis"
+    THEN SET `display_masse_shot_graphics` = FALSE
+    THEN SET `masse_ball_moving` = FALSE
+
+  IF `scene` == "ThermalAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `scene_timer` > 10:
+      THEN SET `display_thermal_highlight` = TRUE
+    IF `display_thermal_highlight` == TRUE:
+      THEN DRAW highlight_circle on thermal_image_background
+
+  IF `scene` == "ThermalAnalysis" AND `scene_timer` > 11:
+    THEN SET `scene` = "ThermalGroovesAnalysis"
+    THEN SET `display_thermal_highlight` = FALSE
+    THEN SET `display_thermal_grooves_graphics` = TRUE
+
+  IF `scene` == "ThermalGroovesAnalysis":
+    THEN DISPLAY thermal_image_background
+    THEN DISPLAY temperature_scale
+    IF `display_thermal_grooves_graphics` == TRUE:
+      THEN DRAW rail_outline
+      THEN DISPLAY text "rail"
+      THEN DISPLAY text '"grooves"'
+
+  IF `scene` == "ThermalGroovesAnalysis" AND `scene_timer` > 12:
+    THEN SET `scene` = "DrawShotSetup"
+    THEN SET `display_thermal_grooves_graphics` = FALSE
+    THEN SET `display_draw_shot_diagram` = TRUE
+    THEN SET `aiming_diagram_state` = "CenterDraw"
+
+  IF `scene` == "DrawShotSetup":
+    THEN DISPLAY player_aiming
+    IF `display_draw_shot_diagram` == TRUE:
+      THEN DISPLAY draw_shot_aiming_diagram
+
+  IF `scene` == "DrawShotSetup" AND `scene_timer` > 13:
+    THEN SET `scene` = "DrawShotExecution"
+    THEN SET `display_draw_shot_diagram` = FALSE
+    THEN SET `draw_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "DrawShotExecution" AND `draw_shot_cue_ball_moving` == TRUE:
+    THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `draw_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "DrawShotExecution" AND `scene_timer` > 14:
+    THEN SET `scene` = "DrawShotSlowMo"
+    THEN SET `display_slow_mo_info` = TRUE
+    THEN SET `slow_mo_ball_jumping` = TRUE
+
+  IF `scene` == "DrawShotSlowMo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `slow_mo_ball_jumping` == TRUE:
+      THEN MOVE slow_mo_ball with slight upward arc
+    IF `scene_timer` > 15:
+      THEN SET `display_draw_shot_spin_axis` = TRUE
+    IF `display_draw_shot_spin_axis` == TRUE:
+      THEN DRAW spin_axis_lines on slow_mo_ball
+
+  IF `scene` == "DrawShotSlowMo" AND `scene_timer` > 16:
+    THEN SET `scene` = "SquirtTitle"
+    THEN SET `display_slow_mo_info` = FALSE
+    THEN SET `display_draw_shot_spin_axis` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_squirt_title` = TRUE
+    THEN SET `aiming_diagram_state` = "RightEnglish"
+
+  IF `scene` == "SquirtTitle":
+    IF `display_squirt_title` == TRUE:
+      THEN DISPLAY text "4 - Cue Ball Deflection (Squirt)"
+
+  IF `scene` == "SquirtTitle" AND `scene_timer` > 17:
+    THEN SET `scene` = "SquirtDemoSetup"
+    THEN SET `display_squirt_title` = FALSE
+
+  IF `scene` == "SquirtDemoSetup":
+    THEN DISPLAY player_aiming_at_line_of_balls
+
+  IF `scene` == "SquirtDemoSetup" AND `scene_timer` > 18:
+    THEN SET `scene` = "SquirtDemoAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = TRUE
+
+  IF `scene` == "SquirtDemoAnalysis":
+    IF `display_squirt_analysis_graphics` == TRUE:
+      THEN DISPLAY ruler_on_table
+      THEN DRAW black_line_on_table
+      THEN DISPLAY text "Predator Revo"
+
+  IF `scene` == "SquirtDemoAnalysis" AND `scene_timer` > 19:
+    THEN SET `scene` = "SquirtCauseAnalysis"
+    THEN SET `display_squirt_analysis_graphics` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_squirt_cause_text` = TRUE
+
+  IF `scene` == "SquirtCauseAnalysis":
+    IF `display_squirt_cause_text` == TRUE:
+      THEN DISPLAY text "What causes squirt?"
+    IF `scene_timer` > 20:
+      THEN SET `display_squirt_cause_text` = FALSE
+      THEN SET `display_squirt_line_graphic` = TRUE
+      THEN DEFORM cue_ball at point of impact
+    IF `display_squirt_line_graphic` == TRUE:
+      THEN DRAW yellow_line labeled "squirt"
+    IF `scene_timer` > 21:
+      THEN SET `display_squirt_line_graphic` = FALSE
+      THEN ZOOM IN on cue_tip
+      THEN SET `cue_tip_moving` = TRUE
+    IF `cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip away from impact point
+      THEN DISPLAY chalk_dust_effect
+
+  IF `scene` == "SquirtCauseAnalysis" AND `scene_timer` > 22:
+    THEN SET `scene` = "ThrowTitle"
+    THEN SET `cue_tip_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_throw_title` = TRUE
+
+  IF `scene` == "ThrowTitle":
+    IF `display_throw_title` == TRUE:
+      THEN DISPLAY text "5 - Object Ball Throw"
+
+  IF `scene` == "ThrowTitle" AND `scene_timer` > 23:
+    THEN SET `scene` = "ThrowAnalysis"
+    THEN SET `display_throw_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `display_throw_analysis_graphics` = TRUE
+
+  IF `scene` == "ThrowAnalysis":
+    IF `display_throw_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DRAW yellow_highlight_circle at collision_point
+      THEN DRAW white_line for aiming_path
+
+  IF `scene` == "ThrowAnalysis" AND `scene_timer` > 24:
+    THEN SET `scene` = "ThrowDemo"
+    THEN SET `display_throw_analysis_graphics` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `throw_demo_cue_ball_moving` = TRUE
+    THEN SET `throw_demo_object_ball_moving` = TRUE
+
+  IF `scene` == "ThrowDemo":
+    IF `throw_demo_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards rail
+      IF cue_ball collides with rail:
+        THEN CHANGE cue_ball direction
+    IF `throw_demo_object_ball_moving` == TRUE:
+      THEN MOVE object_ball towards pocket
+
+  IF `scene` == "ThrowDemo" AND `scene_timer` > 25:
+    THEN SET `scene` = "HopStunTitle"
+    THEN SET `throw_demo_cue_ball_moving` = FALSE
+    THEN SET `throw_demo_object_ball_moving` = FALSE
+    THEN SET `display_hop_stun_title` = TRUE
+
+  IF `scene` == "HopStunTitle":
+    IF `display_hop_stun_title` == TRUE:
+      THEN DISPLAY text "6 - Ball Hop and Stun"
+
+  IF `scene` == "HopStunTitle" AND `scene_timer` > 26:
+    THEN SET `scene` = "HopAnalysis"
+    THEN SET `display_hop_stun_title` = FALSE
+    THEN SET `display_hop_analysis_graphics` = TRUE
+    THEN SET `hop_analysis_ball_moving` = TRUE
+
+  IF `scene` == "HopAnalysis":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `display_hop_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+      THEN DISPLAY text "$0.37 hop"
+    IF `hop_analysis_ball_moving` == TRUE:
+      THEN MOVE hop_analysis_ball with slight upward arc
+
+  IF `scene` == "HopAnalysis" AND `scene_timer` > 27:
+    THEN SET `scene` = "StunShotDemo"
+    THEN SET `display_hop_analysis_graphics` = FALSE
+    THEN SET `hop_analysis_ball_moving` = FALSE
+    THEN SET `stun_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "StunShotDemo":
+    THEN SET video_filter = "BlackAndWhite"
+    IF `stun_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF cue_ball collides with object_ball:
+      THEN SET `stun_shot_cue_ball_moving` = FALSE
+      THEN SET `stun_shot_object_ball_moving` = TRUE
+      THEN STOP cue_ball motion
+    IF `stun_shot_object_ball_moving` == TRUE:
+      THEN MOVE object_ball away from collision point
+
+  IF `scene` == "StunShotDemo" AND `scene_timer` > 28:
+    THEN SET `scene` = "PushShotTitle"
+    THEN SET `stun_shot_object_ball_moving` = FALSE
+    THEN SET video_filter = "None"
+    THEN SET `display_push_shot_title` = TRUE
+
+  IF `scene` == "PushShotTitle":
+    IF `display_push_shot_title` == TRUE:
+      THEN DISPLAY text "7 - Push Shots and Double Hits"
+
+  IF `scene` == "PushShotTitle" AND `scene_timer` > 29:
+    THEN SET `scene` = "PushShotAnalysis"
+    THEN SET `display_push_shot_title` = FALSE
+    THEN SET `push_shot_phase` = "Setup"
+    THEN SET `display_push_shot_analysis_graphics` = TRUE
+    THEN SET video_filter = "BlackAndWhite"
+
+  IF `scene` == "PushShotAnalysis":
+    IF `display_push_shot_analysis_graphics` == TRUE:
+      THEN DISPLAY high_speed_camera_overlay
+    IF `push_shot_phase` == "Setup":
+      THEN DISPLAY cue_ball and object_ball at rest, close together
+      IF `scene_timer` > 30:
+        THEN SET `push_shot_phase` = "Execution"
+        THEN SET `push_shot_cue_ball_moving` = TRUE
+    IF `push_shot_phase` == "Execution":
+      IF `push_shot_cue_ball_moving` == TRUE:
+        THEN MOVE cue_stick towards cue_ball
+        IF cue_stick collides with cue_ball:
+          THEN SET `push_shot_object_ball_moving` = TRUE
+      IF `push_shot_object_ball_moving` == TRUE:
+        THEN MOVE cue_stick, cue_ball, and object_ball forward together
+
+  IF `scene` == "PushShotAnalysis" AND `scene_timer` > 31:
+    THEN SET `scene` = "LegalShotDemo"
+    THEN SET `display_push_shot_analysis_graphics` = FALSE
+    THEN SET `push_shot_cue_ball_moving` = FALSE
+    THEN SET `push_shot_object_ball_moving` = FALSE
+    THEN SET `legal_shot_phase` = "Setup"
+
+  IF `scene` == "LegalShotDemo":
+    IF `legal_shot_phase` == "Setup":
+      THEN SET video_filter = "BlackAndWhite"
+      THEN DISPLAY cue_stick approaching cue_ball with aiming_diagram
+      IF `scene_timer` > 32:
+        THEN SET `legal_shot_phase` = "Execution"
+        THEN SET `legal_shot_cue_ball_moving` = TRUE
+    IF `legal_shot_phase` == "Execution":
+      THEN SET video_filter = "None"
+      IF `legal_shot_cue_ball_moving` == TRUE:
+        THEN MOVE cue_ball towards object_ball
+      IF cue_ball collides with object_ball:
+        THEN SET `legal_shot_cue_ball_moving` = FALSE
+        THEN SET `legal_shot_object_ball_moving` = TRUE
+      IF `legal_shot_object_ball_moving` == TRUE:
+        THEN MOVE object_ball towards pocket
+
+  IF `scene` == "LegalShotDemo" AND `scene_timer` > 33:
+    THEN SET `scene` = "FinalShotDemo"
+    THEN SET `legal_shot_object_ball_moving` = FALSE
+    THEN SET `final_shot_cue_ball_moving` = TRUE
+
+  IF `scene` == "FinalShotDemo":
+    IF `final_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_stick towards cue_ball
+      IF cue_stick collides with cue_ball:
+        THEN SET `final_shot_cue_ball_moving` = FALSE
+
+  IF `scene` == "FinalShotDemo" AND `scene_timer` > 34:
+    THEN SET `scene` = "WrapUpTitle"
+    THEN SET `display_wrap_up_title` = TRUE
+
+  IF `scene` == "WrapUpTitle":
+    IF `display_wrap_up_title` == TRUE:
+      THEN DISPLAY wrap_up_title_card_with_collage
+
+  IF `scene` == "WrapUpTitle" AND `scene_timer` > 35:
+    THEN SET `scene` = "WrapUpSlowMo"
+    THEN SET `display_wrap_up_title` = FALSE
+    THEN SET video_filter = "BlackAndWhite"
+    THEN SET `wrap_up_cue_tip_moving` = TRUE
+
+  IF `scene` == "WrapUpSlowMo":
+    IF `display_slow_mo_info` == TRUE:
+      THEN DISPLAY high_speed_camera_text_overlay
+    IF `wrap_up_cue_tip_moving` == TRUE:
+      THEN MOVE cue_tip towards cue_ball
+      IF cue_tip collides with cue_ball:
+        THEN DEFORM cue_ball
+        THEN SET `wrap_up_cue_tip_moving` = FALSE
+
+  IF `scene` == "WrapUpSlowMo" AND `scene_timer` > 36:
+    THEN SET `scene` = "OutroShot"
+    THEN SET video_filter = "None"
+    THEN SET `display_slow_mo_info` = FALSE
+
+  IF `scene` == "OutroShot":
+    THEN DISPLAY hand holding cue stick over table
+
+  IF `scene` == "OutroShot" AND `scene_timer` > 37:
+    THEN SET `scene` = "CreditShot"
+    THEN SET `credit_shot_cue_ball_moving` = TRUE
+    THEN SET `display_credit_watermark` = TRUE
+
+  IF `scene` == "CreditShot":
+    IF `credit_shot_cue_ball_moving` == TRUE:
+      THEN MOVE cue_ball towards object_ball
+    IF `display_credit_watermark` == TRUE:
+      THEN DISPLAY "Eagletrickshots2" watermark
+
+  IF `scene` == "CreditShot" AND `scene_timer` > 38:
+    THEN SET `scene` = "End"

@@ -1,0 +1,194 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : PARTIALLY CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 to Frame 2:**
+- **Visual change:** The bowling ball has moved slightly forward, closer to the pins.
+- **Correctness of description:** The description correctly predicts this change. The `ball.position` is updated based on `ball.velocity` when `game_state` is `BALL_IN_PLAY`.
+
+**Frame 2 to Frame 3:**
+- **Visual change:** The bowling ball has moved further forward and is now making contact with the front-most pin. The ball's color has changed from black to green.
+- **Correctness of description:** The description correctly predicts the ball's movement and contact with a pin. However, it does not account for the change in the ball's color. The rule `IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE: pin.state = falling` is triggered, but the color change is not mentioned.
+
+**Frame 3 to Frame 4:**
+- **Visual change:** The ball has moved further into the pins. Several pins are now falling or have fallen, specifically the front-most pin and pins to its right.
+- **Correctness of description:** The description correctly predicts that pins will start falling due to collisions. The rule `pin.state = falling` and subsequent updates to `pin.position` and `pin.velocity` are consistent with the visual changes.
+
+**Frame 4 to Frame 5:**
+- **Visual change:** More pins have fallen or are in the process of falling. The ball is still moving through the pins.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement. The rules for `pin.state = falling` and `pin.position` updates are consistent.
+
+**Frame 5 to Frame 6:**
+- **Visual change:** The ball has moved past the pins. Most of the pins have fallen, with only two pins remaining standing and one pin lying on its side.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins (`ball.position.z > PIN_DECK_END_Z` leading to `ball.visible = false` and `game_state = POST_ROLL`). It also accounts for pins falling and settling.
+
+**Frame 6 to Frame 7:**
+- **Visual change:** The ball is no longer visible. The pins that were falling have now settled into their fallen or standing positions. Two pins are standing, and the rest are fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible (`ball.visible = false`) and pins settling (`pin.velocity is near zero` leading to `pin.state = fallen`).
+
+**Frame 7 to Frame 8:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display now shows "6" on the left and "7" on the right, and "PICK'S" is visible on the right side of the display. The overall perspective has also changed, appearing to be a different shot or a reset of the entire scene.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset to their initial positions and the ball being visible again. However, the change in the score display and the appearance of "PICK'S" are not explicitly covered by the provided rules. The perspective change also suggests a cut in the video rather than a continuous simulation.
+
+**Frame 8 to Frame 9:**
+- **Visual change:** The black bowling ball has moved forward and is now a red bowling ball. It is making contact with the pins, causing some to fall.
+- **Correctness of description:** The description correctly predicts the ball's movement and collision with pins. However, it does not account for the change in the ball's color from black to red.
+
+**Frame 9 to Frame 10:**
+- **Visual change:** The red bowling ball has moved further into the pins, and more pins are falling or have fallen.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement.
+
+**Frame 10 to Frame 11:**
+- **Visual change:** The red bowling ball has moved past the pins. Most pins have fallen, with only one pin remaining standing.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 11 to Frame 12:**
+- **Visual change:** The red bowling ball is no longer visible. The pins that were falling have settled, with one pin standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+**Frame 12 to Frame 13:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display still shows "7". The perspective is similar to the first set of frames.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset and the ball being visible. The score display remaining "7" is not explicitly covered by the `RESETTING` state, which sets `score_display.text = ""`.
+
+**Frame 13 to Frame 14:**
+- **Visual change:** The black bowling ball has moved slightly forward.
+- **Correctness of description:** The description correctly predicts the ball's movement.
+
+**Frame 14 to Frame 15:**
+- **Visual change:** The black bowling ball has moved further forward and is now making contact with a pin. The ball's color has changed from black to green.
+- **Correctness of description:** The description correctly predicts the ball's movement and contact with a pin. However, it does not account for the change in the ball's color.
+
+**Frame 15 to Frame 16:**
+- **Visual change:** The green bowling ball has moved further into the pins, and the pin it hit is falling.
+- **Correctness of description:** The description correctly predicts the ball's movement and the pin falling.
+
+**Frame 16 to Frame 17:**
+- **Visual change:** The green bowling ball has moved past the pins. The pin it hit has fallen, and another pin has also fallen.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 17 to Frame 18:**
+- **Visual change:** The green bowling ball is no longer visible. The pins have settled, with one pin standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+**Frame 18 to Frame 19:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display still shows "7". The perspective is similar to the first set of frames.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset and the ball being visible. The score display remaining "7" is not explicitly covered by the `RESETTING` state, which sets `score_display.text = ""`.
+
+**Frame 19 to Frame 20:**
+- **Visual change:** The black bowling ball has moved forward and is now a red bowling ball. It is making contact with the pins, causing some to fall.
+- **Correctness of description:** The description correctly predicts the ball's movement and collision with pins. However, it does not account for the change in the ball's color from black to red.
+
+**Frame 20 to Frame 21:**
+- **Visual change:** The red bowling ball has moved further into the pins, and more pins are falling or have fallen.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement.
+
+**Frame 21 to Frame 22:**
+- **Visual change:** The red bowling ball has moved past the pins. Most pins have fallen, with two pins remaining standing.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 22 to Frame 23:**
+- **Visual change:** The red bowling ball is no longer visible. The pins that were falling have settled, with two pins standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+=== ISSUES ===
+1.  **Ball color changes:** The description does not account for the bowling ball changing color (black to green in frames 2-3, black to red in frames 8-9, black to green in frames 14-15, black to red in frames 19-20). The `ball` object only has a `visible` property, not a `color` property or a mechanism for it to change.
+2.  **Score Display in RESETTING state:** The rule for `RESETTING` states `score_display.text = ""`, but in frames 7-8, the score display changes from showing a score to showing "6" and "7" and "PICK'S", and in frames 12-13 and 18-19, it remains "7" instead of clearing.
+3.  **Perspective/Scene Changes:** The abrupt changes in perspective and the appearance of "PICK'S" on the score display (frames 7-8) suggest that these are not continuous simulations but rather cuts between different takes or different parts of a game, which the current rules do not explicitly model. The `RESETTING` state handles the pins and ball, but not the broader scene elements or score display details.
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 to Frame 2:**
+- **Visual change:** The bowling ball has moved slightly forward, closer to the pins.
+- **Correctness of description:** The description correctly predicts this change. The `ball.position` is updated based on `ball.velocity` when `game_state` is `BALL_IN_PLAY`.
+
+**Frame 2 to Frame 3:**
+- **Visual change:** The bowling ball has moved further forward and is now making contact with the front-most pin. The ball's color has changed from black to green.
+- **Correctness of description:** The description correctly predicts the ball's movement and contact with a pin. However, it does not account for the change in the ball's color. The rule `IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE: pin.state = falling` is triggered, but the color change is not mentioned.
+
+**Frame 3 to Frame 4:**
+- **Visual change:** The ball has moved further into the pins. Several pins are now falling or have fallen, specifically the front-most pin and pins to its right.
+- **Correctness of description:** The description correctly predicts that pins will start falling due to collisions. The rule `pin.state = falling` and subsequent updates to `pin.position` and `pin.velocity` are consistent with the visual changes.
+
+**Frame 4 to Frame 5:**
+- **Visual change:** More pins have fallen or are in the process of falling. The ball is still moving through the pins.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement. The rules for `pin.state = falling` and `pin.position` updates are consistent.
+
+**Frame 5 to Frame 6:**
+- **Visual change:** The ball has moved past the pins. Most of the pins have fallen, with only two pins remaining standing and one pin lying on its side.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins (`ball.position.z > PIN_DECK_END_Z` leading to `ball.visible = false` and `game_state = POST_ROLL`). It also accounts for pins falling and settling.
+
+**Frame 6 to Frame 7:**
+- **Visual change:** The ball is no longer visible. The pins that were falling have now settled into their fallen or standing positions. Two pins are standing, and the rest are fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible (`ball.visible = false`) and pins settling (`pin.velocity is near zero` leading to `pin.state = fallen`).
+
+**Frame 7 to Frame 8:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display now shows "6" on the left and "7" on the right, and "PICK'S" is visible on the right side of the display. The overall perspective has also changed, appearing to be a different shot or a reset of the entire scene.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset to their initial positions and the ball being visible again. However, the change in the score display and the appearance of "PICK'S" are not explicitly covered by the provided rules. The perspective change also suggests a cut in the video rather than a continuous simulation.
+
+**Frame 8 to Frame 9:**
+- **Visual change:** The black bowling ball has moved forward and is now a red bowling ball. It is making contact with the pins, causing some to fall.
+- **Correctness of description:** The description correctly predicts the ball's movement and collision with pins. However, it does not account for the change in the ball's color from black to red.
+
+**Frame 9 to Frame 10:**
+- **Visual change:** The red bowling ball has moved further into the pins, and more pins are falling or have fallen.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement.
+
+**Frame 10 to Frame 11:**
+- **Visual change:** The red bowling ball has moved past the pins. Most pins have fallen, with only one pin remaining standing.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 11 to Frame 12:**
+- **Visual change:** The red bowling ball is no longer visible. The pins that were falling have settled, with one pin standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+**Frame 12 to Frame 13:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display still shows "7". The perspective is similar to the first set of frames.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset and the ball being visible. The score display remaining "7" is not explicitly covered by the `RESETTING` state, which sets `score_display.text = ""`.
+
+**Frame 13 to Frame 14:**
+- **Visual change:** The black bowling ball has moved slightly forward.
+- **Correctness of description:** The description correctly predicts the ball's movement.
+
+**Frame 14 to Frame 15:**
+- **Visual change:** The black bowling ball has moved further forward and is now making contact with a pin. The ball's color has changed from black to green.
+- **Correctness of description:** The description correctly predicts the ball's movement and contact with a pin. However, it does not account for the change in the ball's color.
+
+**Frame 15 to Frame 16:**
+- **Visual change:** The green bowling ball has moved further into the pins, and the pin it hit is falling.
+- **Correctness of description:** The description correctly predicts the ball's movement and the pin falling.
+
+**Frame 16 to Frame 17:**
+- **Visual change:** The green bowling ball has moved past the pins. The pin it hit has fallen, and another pin has also fallen.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 17 to Frame 18:**
+- **Visual change:** The green bowling ball is no longer visible. The pins have settled, with one pin standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+**Frame 18 to Frame 19:**
+- **Visual change:** The scene has changed significantly. The pins are reset to their initial standing positions, and a black bowling ball is visible at the start of the lane. The score display still shows "7". The perspective is similar to the first set of frames.
+- **Correctness of description:** The description's `RESETTING` state would account for the pins being reset and the ball being visible. The score display remaining "7" is not explicitly covered by the `RESETTING` state, which sets `score_display.text = ""`.
+
+**Frame 19 to Frame 20:**
+- **Visual change:** The black bowling ball has moved forward and is now a red bowling ball. It is making contact with the pins, causing some to fall.
+- **Correctness of description:** The description correctly predicts the ball's movement and collision with pins. However, it does not account for the change in the ball's color from black to red.
+
+**Frame 20 to Frame 21:**
+- **Visual change:** The red bowling ball has moved further into the pins, and more pins are falling or have fallen.
+- **Correctness of description:** The description correctly predicts the continued falling of pins and the ball's movement.
+
+**Frame 21 to Frame 22:**
+- **Visual change:** The red bowling ball has moved past the pins. Most pins have fallen, with two pins remaining standing.
+- **Correctness of description:** The description correctly predicts the ball moving past the pins and pins falling.
+
+**Frame 22 to Frame 23:**
+- **Visual change:** The red bowling ball is no longer visible. The pins that were falling have settled, with two pins standing and the rest fallen.
+- **Correctness of description:** The description correctly predicts the ball becoming invisible and pins settling.
+
+=== VERDICT ===
+PARTIALLY CORRECT
+
+=== ISSUES ===
+1.  **Ball color changes:** The description does not account for the bowling ball changing color (black to green in frames 2-3, black to red in frames 8-9, black to green in frames 14-15, black to red in frames 19-20). The `ball` object only has a `visible` property, not a `color` property or a mechanism for it to change.
+2.  **Score Display in RESETTING state:** The rule for `RESETTING` states `score_display.text = ""`, but in frames 7-8, the score display changes from showing a score to showing "6" and "7" and "PICK'S", and in frames 12-13 and 18-19, it remains "7" instead of clearing.
+3.  **Perspective/Scene Changes:** The abrupt changes in perspective and the appearance of "PICK'S" on the score display (frames 7-8) suggest that these are not continuous simulations but rather cuts between different takes or different parts of a game, which the current rules do not explicitly model. The `RESETTING` state handles the pins and ball, but not the broader scene elements or score display details.

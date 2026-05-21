@@ -1,0 +1,864 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  ball_color: {black, green}
+  ball_z_position: number
+  PIN_PROXIMITY_THRESHOLD: constant
+  START_Z_POSITION: constant
+
+RULES:
+  IF ball_z_position < PIN_PROXIMITY_THRESHOLD:
+    THEN ball_z_position = ball_z_position + 1
+  
+  IF ball_color IS black AND ball_z_position >= PIN_PROXIMITY_THRESHOLD:
+    THEN ball_color = green
+    AND ball_z_position = START_Z_POSITION
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.state: {standing, falling, fallen}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  PIN_DECK_START_Z: constant
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF ball.visible IS true:
+    ball.position = ball.position + ball.velocity
+
+  IF ball.position.z > PIN_DECK_END_Z:
+    ball.visible = false
+
+  FOR EACH pin IN pins:
+    IF pin.state IS falling:
+      pin.position = pin.position + pin.velocity
+      // Simplified check for pin settling
+      IF pin.velocity is near zero AND pin is on the ground:
+        pin.state = fallen
+
+  IF ball.position.z >= PIN_DECK_START_Z AND ball.visible IS true:
+    FOR EACH pin IN pins:
+      IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+        pin.state = falling
+        pin.velocity = calculate_imparted_velocity(ball, pin)
+        pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  FOR EACH pin1 IN pins:
+    IF pin1.state IS falling:
+      FOR EACH pin2 IN pins:
+        IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+          pin2.state = falling
+          pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+          pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, RESETTING}
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.state: {standing, falling, fallen}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  pins_are_settled: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    THEN game_state = RESETTING
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    ball.visible = true
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+    game_state = BALL_IN_PLAY
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    FOR EACH pin IN pins:
+      IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+        pin.state = falling
+        pin.velocity = calculate_imparted_velocity(ball, pin)
+        pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        pin1.position = pin1.position + pin1.velocity
+        // Simplified physics update
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS false:
+    is_any_pin_moving = false
+    FOR EACH pin IN pins:
+      IF pin.state IS falling:
+        is_any_pin_moving = true
+        BREAK
+    IF is_any_pin_moving IS false:
+      pins_are_settled = true
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  pins_are_settled: boolean
+  sweep_bar.is_active: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        // Simplified physics update
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    standing_pin_count = 0
+    FOR EACH pin IN pins:
+      IF pin.state IS standing:
+        standing_pin_count = standing_pin_count + 1
+    IF roll_number IS 1 AND standing_pin_count > 0:
+      game_state = SWEEPING
+    ELSE: // Strike or end of second roll
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    IF sweep_bar.is_active IS false:
+      sweep_bar.is_active = true
+    // Sweeping action occurs
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    // Assume sweep completes in one step for simplicity
+    sweep_bar.is_active = false
+    roll_number = 2
+    ball.visible = true
+    ball.position = ball.initial_position
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    ball.visible = true
+    ball.position = ball.initial_position
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  total_frame_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  pins_are_settled: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    THEN game_state = BALL_IN_PLAY
+    AND ball.visible = true
+    AND ball.position = ball.initial_position
+    AND ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_count = count(pins where state IS fallen OR state IS falling)
+    total_frame_score = fallen_count
+    score_display.text = total_frame_score
+    IF roll_number IS 1:
+      standing_pin_count = 10 - fallen_count
+      IF standing_pin_count IS 0:
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE:
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    roll_number = 2
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    total_frame_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  first_roll_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  ball.color: {black, green}
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  pins_are_settled: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.color = black
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      ball.color = green
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_this_roll = count(pins where state IS fallen OR state IS falling)
+    IF roll_number IS 1:
+      first_roll_score = fallen_this_roll
+      score_display.text = first_roll_score
+      IF first_roll_score == 10:
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE: // roll_number IS 2
+      second_roll_score = fallen_this_roll
+      total_frame_score = first_roll_score + second_roll_score
+      score_display.text = total_frame_score
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    roll_number = 2
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    first_roll_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  first_roll_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  ball.color: {black, green}
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  pins_are_settled: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.color = black
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      ball.color = green
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_this_roll = count(pins where state IS fallen OR state IS falling)
+    IF roll_number IS 1:
+      first_roll_score = fallen_this_roll
+      score_display.text = first_roll_score
+      IF first_roll_score == 10:
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE: // roll_number IS 2
+      second_roll_score = fallen_this_roll
+      total_frame_score = first_roll_score + second_roll_score
+      score_display.text = total_frame_score
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    roll_number = 2
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    first_roll_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  pinsetter_state: {INACTIVE, LOWERING, PLACING, RETRACTING}
+  pins_to_set: array of pin IDs
+  roll_number: {1, 2}
+  first_roll_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  ball.color: {black, green}
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared, setting}
+  pin.visible: boolean
+  pins_are_settled: boolean
+  PIN_DECK_END_Z: constant
+  COLLISION_DISTANCE: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL AND pinsetter_state IS INACTIVE:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.color = black
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      ball.color = green
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = true
+    WHILE is_any_pin_moving IS true:
+      is_any_pin_moving = false
+      FOR EACH pin IN pins:
+        IF pin.state IS falling:
+          is_any_pin_moving = true
+          // Update physics, check for settling
+          IF pin.velocity is near zero:
+            pin.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_this_roll = count(pins where state IS fallen)
+    IF roll_number IS 1:
+      first_roll_score = fallen_this_roll
+      score_display.text = first_roll_score
+      IF first_roll_score == 10:
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE: // roll_number IS 2
+      total_frame_score = first_roll_score + fallen_this_roll
+      score_display.text = total_frame_score
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+        pin.visible = false
+    roll_number = 2
+    game_state = AWAITING_ROLL // Simplified: assumes standing pins remain for next roll
+
+  IF game_state IS RESETTING AND pinsetter_state IS INACTIVE:
+    pinsetter_state = LOWERING
+    pins_to_set = all pin IDs from 1 to 10
+    FOR EACH pin IN pins:
+      pin.visible = false
+      pin.state = cleared
+
+  IF pinsetter_state IS LOWERING:
+    // Animate pinsetter mechanism down
+    // For simplicity, assume it happens instantly
+    pinsetter_state = PLACING
+
+  IF pinsetter_state IS PLACING:
+    FOR EACH pin_id IN pins_to_set:
+      pins[pin_id].state = setting
+      pins[pin_id].visible = true
+      pins[pin_id].position = pins[pin_id].initial_position
+    // Animate pins being placed
+    pinsetter_state = RETRACTING
+
+  IF pinsetter_state IS RETRACTING:
+    // Animate pinsetter mechanism up
+    // For simplicity, assume it happens instantly
+    FOR EACH pin_id IN pins_to_set:
+      pins[pin_id].state = standing
+    pinsetter_state = INACTIVE
+    roll_number = 1
+    first_roll_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, RESETTING}
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  ball.color: {red}
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  score_display.text: string
+  pins_are_settled: boolean
+  NUM_PINS: constant (e.g., 7)
+  COLLISION_DISTANCE: constant
+  PIN_DECK_END_Z: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    score_display.text = count(pins where state IS standing)
+    // On start signal:
+    game_state = BALL_IN_PLAY
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        // Check for pin-pin collisions
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        // Check for settling
+        IF pin1.velocity is near zero AND pin1 is on the ground:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    standing_pins = count(pins where state IS standing)
+    score_display.text = standing_pins
+    // After a delay:
+    game_state = RESETTING
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    ball.visible = true
+    ball.position = ball.initial_position
+    ball.velocity = (0, 0)
+    game_state = AWAITING_ROLL
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  ball.color: {red}
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  sweep_bar.is_active: boolean
+  sweep_bar.position_z: number
+  score_display.text: string
+  pins_are_settled: boolean
+  NUM_PINS: constant
+  COLLISION_DISTANCE: constant
+  PIN_DECK_END_Z: constant
+  SWEEP_BAR_START_Z: constant
+  SWEEP_BAR_END_Z: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    score_display.text = count(pins where state IS standing)
+    // On start signal:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin IN pins:
+      IF pin.state IS falling:
+        is_any_pin_moving = true
+        // Update physics and check for settling
+        IF pin.velocity is near zero:
+          pin.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    standing_pins = count(pins where state IS standing)
+    score_display.text = standing_pins
+    IF roll_number IS 1:
+      IF standing_pins > 0:
+        game_state = SWEEPING
+      ELSE: // Strike
+        game_state = RESETTING
+    ELSE: // After roll 2
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    IF sweep_bar.is_active IS false:
+      sweep_bar.is_active = true
+      sweep_bar.position_z = SWEEP_BAR_START_Z
+    sweep_bar.position_z = sweep_bar.position_z + sweep_bar_velocity
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    IF sweep_bar.position_z >= SWEEP_BAR_END_Z:
+      sweep_bar.is_active = false
+      roll_number = 2
+      game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    game_state = AWAITING_ROLL
+
+==================================================
+FINAL  —  frames [30]
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  first_roll_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  sweep_bar.is_active: boolean
+  pins_are_settled: boolean
+  NUM_PINS: constant
+  COLLISION_DISTANCE: constant
+  PIN_DECK_END_Z: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    // On user input to roll:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        // Check for pin-pin collisions
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        // Check for settling
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_this_roll = count(pins where state IS fallen OR state IS falling)
+    IF roll_number IS 1:
+      first_roll_score = fallen_this_roll
+      score_display.text = first_roll_score
+      IF first_roll_score == NUM_PINS: // Strike
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE: // roll_number IS 2
+      second_roll_score = fallen_this_roll
+      total_frame_score = first_roll_score + second_roll_score
+      score_display.text = total_frame_score
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    IF sweep_bar.is_active IS false:
+      sweep_bar.is_active = true
+    // Sweeping action occurs
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    // Assume sweep completes
+    sweep_bar.is_active = false
+    roll_number = 2
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    // After a delay:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    first_roll_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL

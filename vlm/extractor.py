@@ -661,7 +661,14 @@ def _incremental_fal(batches, model, verbose, prompt_style="grid"):
             temperature=0.2,
             messages=conversation,
         )
-        raw = response.choices[0].message.content.strip()
+        content = response.choices[0].message.content
+        if content is None:
+            finish = response.choices[0].finish_reason
+            raise RuntimeError(
+                f"Model returned null content on batch {r} (finish_reason={finish!r}). "
+                "This is usually a transient API error — retry the scene."
+            )
+        raw = content.strip()
 
         # Replace the just-sent user message with text-only summary to prevent
         # image accumulation in the history (avoids 413 on long videos)

@@ -1,0 +1,103 @@
+Scene        : bowling_pins
+Description  : Bowling pins standing on a lane — a ball rolls in and scatters the pins.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 31 | Batch : 3 | Rounds : 11
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+STATE VARIABLES:
+  simulation_state: (active, finished)
+  game_state: (ready, ball_rolling, pins_interacting, end_of_roll)
+  reset_cycle: (idle, preparing_spare, resetting_frame)
+  roll_number: (1, 2)
+  game_is_over: BOOLEAN
+  initial_hit_type: (none, pocket, brooklyn, nose_hit)
+  ball: Ball object with properties (position, velocity)
+  pins: LIST of Pin objects, each with properties (id, position, state: {standing, falling, fallen, lifted})
+  sweep_arm: SweepArm object with properties (state: {retracted, lowering, sweeping, retracting})
+  pinsetter_deck: PinsetterDeck object with properties (state: {raised, lowering, on_deck, lifting, spotting, raising})
+  ui_text: STRING
+
+RULES:
+  IF simulation_state IS finished:
+    THEN RENDER black_screen
+    // No other rules are processed
+
+  ELSE IF simulation_state IS active:
+    IF game_state IS ready AND a ball is detected entering the lane:
+      THEN SET game_state to ball_rolling
+      SET initial_hit_type to none
+      CLEAR ui_text
+
+    IF game_state IS ball_rolling AND ball collides_with a pin for the first time:
+      THEN SET game_state to pins_interacting
+      IF first pin hit is pin_1 AND ball.impact_point is on the left side of pin_1:
+        THEN SET initial_hit_type to brooklyn
+      ELSE IF first pin hit is pin_1 AND ball.impact_point is on the right side of pin_1:
+        THEN SET initial_hit_type to pocket
+      ELSE IF first pin hit is pin_1 AND ball.impact_point is near the center of pin_1:
+        THEN SET initial_hit_type to nose_hit
+      TRANSFER momentum from ball to the hit pin(s)
+      SET hit_pin(s).state to falling
+
+    IF game_state IS pins_interacting:
+      UPDATE ball.position and ball.velocity
+      FOR EACH pin_A in pins:
+        IF pin_A.state IS falling:
+          UPDATE pin_A.position and pin_A.velocity
+          FOR EACH pin_B in pins where pin_A IS NOT pin_B:
+            IF pin_A collides_with pin_B AND pin_B.state IS standing:
+              THEN TRANSFER momentum from pin_A to pin_B
+              SET pin_B.state to falling
+      IF all pins and ball have stopped moving:
+        THEN SET game_state to end_of_roll
+
+    IF game_state IS end_of_roll AND reset_cycle IS idle:
+      LET standing_pins = GET_PINS_BY_STATE(standing)
+      IF roll_number IS 1:
+        IF COUNT(standing_pins) IS 0: // Strike
+          IF initial_hit_type IS brooklyn: THEN SET ui_text to "Brooklyn Strike"
+          ELSE: THEN SET ui_text to "Strike"
+          SET reset_cycle to resetting_frame
+        ELSE: // Open first roll
+          SET reset_cycle to preparing_spare
+      ELSE IF roll_number IS 2:
+        SET reset_cycle to resetting_frame
+      IF game_completion_condition is met: // e.g., 10th frame is over
+        SET game_is_over to TRUE
+      DISPLAY ui_text
+
+    IF reset_cycle IS preparing_spare:
+      IF pinsetter_deck.state IS raised: THEN SET pinsetter_deck.state to lowering
+      IF pinsetter_deck.state IS on_deck:
+        FOR EACH pin in pins WHERE pin.state IS standing: SET pin.state to lifted
+        SET pinsetter_deck.state to lifting
+      IF pinsetter_deck.state IS lifting AND deck is clear of sweep path: SET sweep_arm.state to lowering
+      IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping
+      IF sweep_arm.state IS sweeping:
+        MOVE sweep_arm forward; REMOVE all pins WHERE state IS fallen
+        IF sweep_arm reaches end of deck: SET sweep_arm.state to retracting
+      IF sweep_arm.state IS retracted AND pinsetter_deck.state IS lifting: SET pinsetter_deck.state to spotting
+      IF pinsetter_deck.state IS spotting AND deck is on_deck:
+        FOR EACH pin in pins WHERE pin.state IS lifted: SET pin.state to standing
+        SET pinsetter_deck.state to raising
+      IF pinsetter_deck.state IS raised:
+        SET reset_cycle to idle; SET game_state to ready; SET roll_number to 2
+
+    IF reset_cycle IS resetting_frame:
+      IF sweep_arm.state IS retracted: SET sweep_arm.state to lowering
+      IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping
+      IF sweep_arm.state IS sweeping:
+        MOVE sweep_arm forward; REMOVE all pins from lane
+        IF sweep_arm reaches end of deck: SET sweep_arm.state to retracting
+      IF sweep_arm.state IS retracted AND pinsetter_deck.state IS raised: SET pinsetter_deck.state to lowering
+      IF pinsetter_deck.state IS on_deck:
+        CREATE new set of 10 standing pins
+        SET pinsetter_deck.state to raising
+      IF pinsetter_deck.state IS raised:
+        IF game_is_over IS TRUE:
+          THEN SET simulation_state to finished
+        ELSE:
+          SET reset_cycle to idle; SET game_state to ready; SET roll_number to 1

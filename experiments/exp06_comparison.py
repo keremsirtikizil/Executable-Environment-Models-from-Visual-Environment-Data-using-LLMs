@@ -171,20 +171,31 @@ def run_scene(scene_name: str, description: str) -> dict | None:
     return summary
 
 
-# ── reuse existing exp05 pseudocode ───────────────────────────────────────────
+# ── reuse existing pseudocode ─────────────────────────────────────────────────
+
+def _extract_pseudocode_from_file(path: str) -> str:
+    with open(path) as f:
+        text = f.read()
+    marker = "FINAL PSEUDOCODE\n" + "=" * 50
+    idx = text.find(marker)
+    return text[idx + len(marker):].strip() if idx != -1 else text.strip()
+
 
 def load_latest_exp05_pseudocode(scene_name: str) -> str | None:
     pattern = os.path.join(EXP05_DIR, f"{scene_name}_*_pseudocode.txt")
     matches = sorted(glob.glob(pattern))
     if not matches:
         return None
-    path = matches[-1]
-    with open(path) as f:
-        text = f.read()
-    # extract the part after the header
-    marker = "FINAL PSEUDOCODE\n" + "=" * 50
-    idx = text.find(marker)
-    return text[idx + len(marker):].strip() if idx != -1 else text.strip()
+    return _extract_pseudocode_from_file(matches[-1])
+
+
+def load_latest_exp06_pseudocode(scene_name: str) -> str | None:
+    """Load the most recent pseudocode already produced in this experiment."""
+    pattern = os.path.join(RESULTS_DIR, f"{scene_name}_*_pseudocode.txt")
+    matches = sorted(glob.glob(pattern))
+    if not matches:
+        return None
+    return _extract_pseudocode_from_file(matches[-1])
 
 
 # ── VLM comparison ────────────────────────────────────────────────────────────
@@ -268,8 +279,13 @@ def run():
 
     results: dict[str, str] = {}  # scene_name -> pseudocode
 
-    # Run new scenes
+    # Run new scenes — skip any that already have a result in RESULTS_DIR
     for scene_name, description in SCENES.items():
+        existing = load_latest_exp06_pseudocode(scene_name)
+        if existing:
+            print(f"\n  [RESUME] Skipping '{scene_name}' — result already exists.")
+            results[scene_name] = existing
+            continue
         summary = run_scene(scene_name, description)
         if summary:
             results[scene_name] = summary["pseudocode"]
@@ -297,7 +313,14 @@ def run():
 
     for scene_a, scene_b in comparison_pairs:
         if scene_a in results and scene_b in results:
-            run_comparison(scene_a, results[scene_a], scene_b, results[scene_b])
+            # Skip if a comparison file for this pair already exists
+            existing_cmp = sorted(glob.glob(
+                os.path.join(RESULTS_DIR, f"compare_{scene_a}_vs_{scene_b}_*.txt")
+            ))
+            if existing_cmp:
+                print(f"\n  [RESUME] Skipping comparison ({scene_a} vs {scene_b}) — already exists.")
+            else:
+                run_comparison(scene_a, results[scene_a], scene_b, results[scene_b])
         else:
             missing = [s for s in (scene_a, scene_b) if s not in results]
             print(f"  SKIP pair ({scene_a}, {scene_b}) — missing: {missing}")

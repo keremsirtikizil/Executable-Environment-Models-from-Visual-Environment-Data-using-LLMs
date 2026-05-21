@@ -1,0 +1,14 @@
+{
+  "experiment": "exp06_comparison",
+  "scene": "billiard_break",
+  "description": "A billiards break shot \u2014 cue ball struck hard, scattering the rack.",
+  "provider": "fal",
+  "model": "google/gemini-2.5-pro",
+  "batch_size": 3,
+  "n_frames": 30,
+  "n_rounds": 10,
+  "verification_verdict": "INCORRECT",
+  "pseudocode_path": "results/exp06/billiard_break_20260521_104510_pseudocode.txt",
+  "rounds_path": "results/exp06/billiard_break_20260521_104510_rounds.txt",
+  "verification_path": "results/exp06/billiard_break_20260521_104510_verification.txt"
+}

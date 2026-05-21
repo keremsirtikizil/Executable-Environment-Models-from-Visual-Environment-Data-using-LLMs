@@ -1,0 +1,249 @@
+Pair     : bowling_pins  vs  bowling_strike
+Model    : fal / google/gemini-2.5-flash
+
+==================================================
+COMPARISON ANALYSIS
+==================================================
+
+Here's an analysis of the two PURE pseudocode summaries:
+
+## 1. SHARED PHYSICS
+
+*   **Ball-Pin Collision:** Both systems model the ball colliding with pins, causing them to fall.
+*   **Pin-Pin Collision:** Both systems model pins colliding with each other, causing other standing pins to fall.
+*   **Pin Settling:** Both systems recognize when pins have stopped moving (fallen) after interactions.
+*   **Sweep Mechanism:** Both systems include a sweep mechanism to clear fallen pins.
+*   **Pin Reset:** Both systems reset pins to their initial standing positions for a new roll/frame.
+*   **Game State Progression:** Both systems track distinct phases of a bowling game (e.g., ball rolling, post-roll interactions, resetting).
+*   **Roll Number Tracking:** Both systems track whether it's the first or second roll of a frame.
+
+## 2. UNIQUE TO A (bowling_pins)
+
+*   **Detailed Pinsetter Mechanism:** Explicitly models the `pinsetter_deck` with states like `lowering`, `on_deck`, `lifting`, `spotting`, and `raising`.
+*   **Pin Lifting for Spare:** Pins are explicitly `lifted` by the pinsetter during the spare preparation cycle, rather than just being cleared by the sweep.
+*   **Specific Hit Types:** Identifies and labels `initial_hit_type` (pocket, brooklyn, nose_hit) based on the ball's first impact point.
+*   **UI Text for Hit Types/Scores:** Displays specific text like "Brooklyn Strike" or "Strike".
+*   **Simulation/Game Over States:** Includes `simulation_state` (active, finished) and `game_is_over` for overall simulation control.
+*   **Momentum Transfer:** Explicitly mentions "TRANSFER momentum" during collisions.
+*   **Sweep Arm States:** Detailed `sweep_arm` states (retracted, lowering, sweeping, retracting).
+
+## 3. UNIQUE TO B (bowling_strike)
+
+*   **Explicit Velocity Updates:** Explicitly shows `ball.position = ball.position + ball.velocity` and `pin.position = pin.position + pin.velocity`.
+*   **Angular Velocity:** Models `pin.angular_velocity` and its calculation.
+*   **Collision Distance:** Uses a `COLLISION_DISTANCE` constant for collision detection.
+*   **Score Calculation & Display:** Explicitly calculates `first_roll_score`, `second_roll_score`, and `total_frame_score`, and updates `score_display.text`.
+*   **Simplified Sweep/Reset:** The sweep is a single `sweep_bar.is_active` flag, and resetting is a more direct "After a delay" action without detailed pinsetter states.
+*   **Pin States for Clearing:** Uses `cleared` state for pins after sweeping.
+*   **User Input for Roll:** Mentions "On user input to roll" to initiate `BALL_IN_PLAY`.
+
+## 4. SENSITIVITY
+
+**Rating: HIGH**
+
+**Explanation:** The difference in the videos (one focusing on general bowling mechanics, the other specifically on a "strike" scenario) is very clearly reflected in the pseudocode.
+
+*   **Video A (bowling_pins):** The extensive detail on the pinsetter, sweep arm, and specific hit types (`brooklyn`, `pocket`) suggests a video that explores the *mechanics and nuances* of bowling, including how pins are reset for a spare or a new frame, and different ways a ball can hit. This aligns with a broader "bowling_pins" context.
+*   **Video B (bowling_strike):** The focus on score calculation, the simplified sweep/reset, and the explicit mention of `NUM_PINS` for a strike condition (`first_roll_score == NUM_PINS`) strongly indicates a video specifically demonstrating or analyzing a *strike*. The lack of detailed pinsetter mechanics for spares (it jumps straight to `RESETTING` after a strike) further supports this. The explicit velocity and angular velocity updates suggest a focus on the *physics* of the strike itself.
+
+The level of detail and the specific rules captured directly correspond to the likely focus of each video.
+
+==================================================
+PSEUDOCODE A — bowling_pins
+==================================================
+
+STATE VARIABLES:
+  simulation_state: (active, finished)
+  game_state: (ready, ball_rolling, pins_interacting, end_of_roll)
+  reset_cycle: (idle, preparing_spare, resetting_frame)
+  roll_number: (1, 2)
+  game_is_over: BOOLEAN
+  initial_hit_type: (none, pocket, brooklyn, nose_hit)
+  ball: Ball object with properties (position, velocity)
+  pins: LIST of Pin objects, each with properties (id, position, state: {standing, falling, fallen, lifted})
+  sweep_arm: SweepArm object with properties (state: {retracted, lowering, sweeping, retracting})
+  pinsetter_deck: PinsetterDeck object with properties (state: {raised, lowering, on_deck, lifting, spotting, raising})
+  ui_text: STRING
+
+RULES:
+  IF simulation_state IS finished:
+    THEN RENDER black_screen
+    // No other rules are processed
+
+  ELSE IF simulation_state IS active:
+    IF game_state IS ready AND a ball is detected entering the lane:
+      THEN SET game_state to ball_rolling
+      SET initial_hit_type to none
+      CLEAR ui_text
+
+    IF game_state IS ball_rolling AND ball collides_with a pin for the first time:
+      THEN SET game_state to pins_interacting
+      IF first pin hit is pin_1 AND ball.impact_point is on the left side of pin_1:
+        THEN SET initial_hit_type to brooklyn
+      ELSE IF first pin hit is pin_1 AND ball.impact_point is on the right side of pin_1:
+        THEN SET initial_hit_type to pocket
+      ELSE IF first pin hit is pin_1 AND ball.impact_point is near the center of pin_1:
+        THEN SET initial_hit_type to nose_hit
+      TRANSFER momentum from ball to the hit pin(s)
+      SET hit_pin(s).state to falling
+
+    IF game_state IS pins_interacting:
+      UPDATE ball.position and ball.velocity
+      FOR EACH pin_A in pins:
+        IF pin_A.state IS falling:
+          UPDATE pin_A.position and pin_A.velocity
+          FOR EACH pin_B in pins where pin_A IS NOT pin_B:
+            IF pin_A collides_with pin_B AND pin_B.state IS standing:
+              THEN TRANSFER momentum from pin_A to pin_B
+              SET pin_B.state to falling
+      IF all pins and ball have stopped moving:
+        THEN SET game_state to end_of_roll
+
+    IF game_state IS end_of_roll AND reset_cycle IS idle:
+      LET standing_pins = GET_PINS_BY_STATE(standing)
+      IF roll_number IS 1:
+        IF COUNT(standing_pins) IS 0: // Strike
+          IF initial_hit_type IS brooklyn: THEN SET ui_text to "Brooklyn Strike"
+          ELSE: THEN SET ui_text to "Strike"
+          SET reset_cycle to resetting_frame
+        ELSE: // Open first roll
+          SET reset_cycle to preparing_spare
+      ELSE IF roll_number IS 2:
+        SET reset_cycle to resetting_frame
+      IF game_completion_condition is met: // e.g., 10th frame is over
+        SET game_is_over to TRUE
+      DISPLAY ui_text
+
+    IF reset_cycle IS preparing_spare:
+      IF pinsetter_deck.state IS raised: THEN SET pinsetter_deck.state to lowering
+      IF pinsetter_deck.state IS on_deck:
+        FOR EACH pin in pins WHERE pin.state IS standing: SET pin.state to lifted
+        SET pinsetter_deck.state to lifting
+      IF pinsetter_deck.state IS lifting AND deck is clear of sweep path: SET sweep_arm.state to lowering
+      IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping
+      IF sweep_arm.state IS sweeping:
+        MOVE sweep_arm forward; REMOVE all pins WHERE state IS fallen
+        IF sweep_arm reaches end of deck: SET sweep_arm.state to retracting
+      IF sweep_arm.state IS retracted AND pinsetter_deck.state IS lifting: SET pinsetter_deck.state to spotting
+      IF pinsetter_deck.state IS spotting AND deck is on_deck:
+        FOR EACH pin in pins WHERE pin.state IS lifted: SET pin.state to standing
+        SET pinsetter_deck.state to raising
+      IF pinsetter_deck.state IS raised:
+        SET reset_cycle to idle; SET game_state to ready; SET roll_number to 2
+
+    IF reset_cycle IS resetting_frame:
+      IF sweep_arm.state IS retracted: SET sweep_arm.state to lowering
+      IF sweep_arm.state IS lowering AND arm reaches lane: SET sweep_arm.state to sweeping
+      IF sweep_arm.state IS sweeping:
+        MOVE sweep_arm forward; REMOVE all pins from lane
+        IF sweep_arm reaches end of deck: SET sweep_arm.state to retracting
+      IF sweep_arm.state IS retracted AND pinsetter_deck.state IS raised: SET pinsetter_deck.state to lowering
+      IF pinsetter_deck.state IS on_deck:
+        CREATE new set of 10 standing pins
+        SET pinsetter_deck.state to raising
+      IF pinsetter_deck.state IS raised:
+        IF game_is_over IS TRUE:
+          THEN SET simulation_state to finished
+        ELSE:
+          SET reset_cycle to idle; SET game_state to ready; SET roll_number to 1
+
+==================================================
+PSEUDOCODE B — bowling_strike
+==================================================
+
+STATE VARIABLES:
+  game_state: {AWAITING_ROLL, BALL_IN_PLAY, POST_ROLL, SWEEPING, RESETTING}
+  roll_number: {1, 2}
+  first_roll_score: number
+  score_display.text: string
+  ball.position: (x, z)
+  ball.velocity: (vx, vz)
+  ball.visible: boolean
+  pins: array of pin objects
+  pin.id: number
+  pin.position: (x, z)
+  pin.initial_position: (x, z)
+  pin.state: {standing, falling, fallen, cleared}
+  pin.velocity: (vx, vz)
+  pin.angular_velocity: number
+  sweep_bar.is_active: boolean
+  pins_are_settled: boolean
+  NUM_PINS: constant
+  COLLISION_DISTANCE: constant
+  PIN_DECK_END_Z: constant
+
+RULES:
+  IF game_state IS AWAITING_ROLL:
+    // On user input to roll:
+    game_state = BALL_IN_PLAY
+    ball.visible = true
+    ball.position = ball.initial_position
+    ball.velocity = ball.initial_velocity
+
+  IF game_state IS BALL_IN_PLAY:
+    ball.position = ball.position + ball.velocity
+    IF ball.position.z > PIN_DECK_END_Z:
+      ball.visible = false
+      game_state = POST_ROLL
+      pins_are_settled = false
+    ELSE:
+      FOR EACH pin IN pins:
+        IF pin.state IS standing AND distance(ball.position, pin.position) < COLLISION_DISTANCE:
+          pin.state = falling
+          pin.velocity = calculate_imparted_velocity(ball, pin)
+          pin.angular_velocity = calculate_imparted_angular_velocity(ball, pin)
+
+  IF game_state IS BALL_IN_PLAY OR game_state IS POST_ROLL:
+    is_any_pin_moving = false
+    FOR EACH pin1 IN pins:
+      IF pin1.state IS falling:
+        is_any_pin_moving = true
+        pin1.position = pin1.position + pin1.velocity
+        // Check for pin-pin collisions
+        FOR EACH pin2 IN pins:
+          IF pin1.id != pin2.id AND pin2.state IS standing AND distance(pin1.position, pin2.position) < COLLISION_DISTANCE:
+            pin2.state = falling
+            pin2.velocity = calculate_imparted_velocity(pin1, pin2)
+            pin2.angular_velocity = calculate_imparted_angular_velocity(pin1, pin2)
+        // Check for settling
+        IF pin1.velocity is near zero:
+          pin1.state = fallen
+    IF game_state IS POST_ROLL AND is_any_pin_moving IS false:
+      pins_are_settled = true
+
+  IF game_state IS POST_ROLL AND pins_are_settled IS true:
+    fallen_this_roll = count(pins where state IS fallen OR state IS falling)
+    IF roll_number IS 1:
+      first_roll_score = fallen_this_roll
+      score_display.text = first_roll_score
+      IF first_roll_score == NUM_PINS: // Strike
+        game_state = RESETTING
+      ELSE:
+        game_state = SWEEPING
+    ELSE: // roll_number IS 2
+      second_roll_score = fallen_this_roll
+      total_frame_score = first_roll_score + second_roll_score
+      score_display.text = total_frame_score
+      game_state = RESETTING
+
+  IF game_state IS SWEEPING:
+    IF sweep_bar.is_active IS false:
+      sweep_bar.is_active = true
+    // Sweeping action occurs
+    FOR EACH pin IN pins:
+      IF pin.state IS fallen:
+        pin.state = cleared
+    // Assume sweep completes
+    sweep_bar.is_active = false
+    roll_number = 2
+    game_state = AWAITING_ROLL
+
+  IF game_state IS RESETTING:
+    // After a delay:
+    FOR EACH pin IN pins:
+      pin.state = standing
+      pin.position = pin.initial_position
+    roll_number = 1
+    first_roll_score = 0
+    score_display.text = ""
+    game_state = AWAITING_ROLL

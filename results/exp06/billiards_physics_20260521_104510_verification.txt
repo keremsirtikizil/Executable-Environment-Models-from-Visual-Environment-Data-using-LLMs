@@ -1,0 +1,294 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Correctness of the description for frame 1 to 2:**
+- Visual changes: The image transitions from a collage of billiard scenes with text overlays to a black and white close-up of a cue ball and an object ball on a pool table. The text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 2 to 3:**
+- Visual changes: The scene changes from a black and white shot of a cue ball and object ball to a black and white close-up of a striped ball. High-speed camera information is overlaid on the top and bottom of the screen.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 3 to 4:**
+- Visual changes: The scene changes from a black and white close-up of a striped ball with camera info to a color shot of a pool table from an overhead perspective. A cue stick is visible on the left, and a striped ball is near the right rail next to a white measuring device. The camera info is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 4 to 5:**
+- Visual changes: The scene changes from a color overhead shot of a pool table to a black and white shot of a cue ball and object ball, similar to frame 2, but with a title overlay "2 - Corner Pocket Rattle".
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 5 to 6:**
+- Visual changes: The scene changes from the "Corner Pocket Rattle" title card to a black and white shot of a cue ball near a pocket, with white lines indicating trajectories and a circular aiming diagram in the top right corner. The title card is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 6 to 7:**
+- Visual changes: The scene changes from the black and white analysis shot to a thermal image background with a temperature scale on the right and the title "3 - Curved CB Paths and Burn Marks" overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 7 to 8:**
+- Visual changes: The scene changes from the thermal image title card to a color shot of a person playing pool, with a cue ball following a curved path. Text overlays "10.) Massé shots" and "Coriolis aiming system massé shot" are present, along with an aiming diagram.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 8 to 9:**
+- Visual changes: The scene changes from the masse shot demo to a thermal image background with a temperature scale. A white circle highlights a spot on the thermal image. The text overlays and aiming diagram are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 9 to 10:**
+- Visual changes: The scene changes from the thermal image with a highlight to a different thermal image, showing "rail" and "grooves" text overlays and a white line outlining the rail. The highlight circle is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 10 to 11:**
+- Visual changes: The scene changes from the thermal image analysis to a color shot of a person aiming a pool cue at a cue ball on a pool table. An aiming diagram is in the top left. The thermal image and text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 11 to 12:**
+- Visual changes: The scene changes from the player aiming to a black and white close-up of a cue ball and an object ball, with high-speed camera information overlaid. The aiming diagram is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 12 to 13:**
+- Visual changes: The scene changes from the close-up of the cue ball and object ball to a slightly different black and white close-up, showing a white line indicating a spin axis on the cue ball. The camera information remains.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 13 to 14:**
+- Visual changes: The scene changes from the black and white close-up with spin axis to a color shot of a player aiming at a line of object balls on a pool table. An aiming diagram is in the top right. The camera info and spin axis are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 14 to 15:**
+- Visual changes: The scene changes from the player aiming to a close-up overhead shot of a cue ball, a ruler, and two object balls on a blue pool table. A black line is drawn on the table, and "Predator Revo" text is present. The aiming diagram remains.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 15 to 16:**
+- Visual changes: The scene changes from the overhead shot with the ruler to a black and white close-up of a cue stick approaching a cue ball. The text "What causes squirt?" is overlaid. The ruler, black line, and "Predator Revo" text are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 16 to 17:**
+- Visual changes: The scene changes from the "What causes squirt?" text to a yellow line labeled "squirt" overlaid on the cue ball, indicating deflection. The cue ball appears slightly deformed at the point of impact.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 17 to 18:**
+- Visual changes: The scene changes from the cue ball impact analysis to a close-up of the cue tip, showing chalk dust. The yellow line and "squirt" text are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 18 to 19:**
+- Visual changes: The scene changes from the cue tip close-up to a black and white overhead shot of a striped ball spinning rapidly.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 19 to 20:**
+- Visual changes: The scene changes from the spinning striped ball to a black and white close-up of three object balls, with high-speed camera information overlaid. A yellow highlight circle and a white line are present.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 20 to 21:**
+- Visual changes: The scene changes from the black and white close-up of object balls to a color shot of a cue ball and an object ball moving on a pool table. The camera info and graphics are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 21 to 22:**
+- Visual changes: The scene changes from the moving balls to a color shot of a cue stick hitting a cue ball, viewed from the side.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 22 to 23:**
+- Visual changes: The scene changes from the side view of the cue stick hitting the cue ball to a black and white close-up of a cue ball hopping, with high-speed camera information and "$0.37 hop" text overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 23 to 24:**
+- Visual changes: The scene changes from the hopping cue ball to a black and white shot of a cue ball hitting an object ball, with the cue ball stopping after impact.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 24 to 25:**
+- Visual changes: The scene changes from the stun shot demo to a black and white close-up of a cue stick hitting a cue ball, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 25 to 26:**
+- Visual changes: The scene changes from the close-up of the cue stick hitting the cue ball to a color shot of a hand holding a cue stick, aiming at a cue ball and object ball that are very close together.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 26 to 27:**
+- Visual changes: The scene changes from the close-up of the hand aiming to a black and white close-up of a cue stick pushing a cue ball and object ball forward together, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 27 to 28:**
+- Visual changes: The scene changes from the push shot analysis to a color shot of a person playing pool in a pool hall, with multiple pool tables visible. The person is making a shot.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 28 to 29:**
+- Visual changes: The scene changes from the pool hall shot to a collage of billiard scenes with text overlays "AMAZING BILLIARDS PHYSICS IN SUPER SLOW MOTION". This is the wrap-up title card.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 29 to 30:**
+- Visual changes: The scene changes from the wrap-up title card to a black and white close-up of a cue stick hitting a cue ball, showing the cue ball deforming. The text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 30 to 31:**
+- Visual changes: The scene changes from the cue ball deformation shot to a black and white shot of a hand holding a cue stick over a pool table.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 31 to 32:**
+- Visual changes: The scene changes from the hand holding the cue stick to a black and white shot of a cue ball and an object ball at rest. High-speed camera information is overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 32 to 33:**
+- Visual changes: The scene changes from the cue ball and object ball at rest to a black and white close-up of a cue stick hitting a cue ball.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 33 to 34:**
+- Visual changes: The scene changes from the cue stick hitting the cue ball to a color shot of a cue stick moving across a pool table, viewed from the side.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 34 to 35:**
+- Visual changes: The scene changes from the side view of the cue stick to a black and white close-up of a cue ball and an object ball colliding, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 35 to 36:**
+- Visual changes: The scene changes from the black and white collision shot to a color shot of a person playing pool in a pool hall, similar to frame 28, but with a "Eagletrickshots2" watermark in the bottom right.
+- The description correctly predicts this change.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Correctness of the description for frame 1 to 2:**
+- Visual changes: The image transitions from a collage of billiard scenes with text overlays to a black and white close-up of a cue ball and an object ball on a pool table. The text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 2 to 3:**
+- Visual changes: The scene changes from a black and white shot of a cue ball and object ball to a black and white close-up of a striped ball. High-speed camera information is overlaid on the top and bottom of the screen.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 3 to 4:**
+- Visual changes: The scene changes from a black and white close-up of a striped ball with camera info to a color shot of a pool table from an overhead perspective. A cue stick is visible on the left, and a striped ball is near the right rail next to a white measuring device. The camera info is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 4 to 5:**
+- Visual changes: The scene changes from a color overhead shot of a pool table to a black and white shot of a cue ball and object ball, similar to frame 2, but with a title overlay "2 - Corner Pocket Rattle".
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 5 to 6:**
+- Visual changes: The scene changes from the "Corner Pocket Rattle" title card to a black and white shot of a cue ball near a pocket, with white lines indicating trajectories and a circular aiming diagram in the top right corner. The title card is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 6 to 7:**
+- Visual changes: The scene changes from the black and white analysis shot to a thermal image background with a temperature scale on the right and the title "3 - Curved CB Paths and Burn Marks" overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 7 to 8:**
+- Visual changes: The scene changes from the thermal image title card to a color shot of a person playing pool, with a cue ball following a curved path. Text overlays "10.) Massé shots" and "Coriolis aiming system massé shot" are present, along with an aiming diagram.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 8 to 9:**
+- Visual changes: The scene changes from the masse shot demo to a thermal image background with a temperature scale. A white circle highlights a spot on the thermal image. The text overlays and aiming diagram are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 9 to 10:**
+- Visual changes: The scene changes from the thermal image with a highlight to a different thermal image, showing "rail" and "grooves" text overlays and a white line outlining the rail. The highlight circle is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 10 to 11:**
+- Visual changes: The scene changes from the thermal image analysis to a color shot of a person aiming a pool cue at a cue ball on a pool table. An aiming diagram is in the top left. The thermal image and text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 11 to 12:**
+- Visual changes: The scene changes from the player aiming to a black and white close-up of a cue ball and an object ball, with high-speed camera information overlaid. The aiming diagram is gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 12 to 13:**
+- Visual changes: The scene changes from the close-up of the cue ball and object ball to a slightly different black and white close-up, showing a white line indicating a spin axis on the cue ball. The camera information remains.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 13 to 14:**
+- Visual changes: The scene changes from the black and white close-up with spin axis to a color shot of a player aiming at a line of object balls on a pool table. An aiming diagram is in the top right. The camera info and spin axis are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 14 to 15:**
+- Visual changes: The scene changes from the player aiming to a close-up overhead shot of a cue ball, a ruler, and two object balls on a blue pool table. A black line is drawn on the table, and "Predator Revo" text is present. The aiming diagram remains.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 15 to 16:**
+- Visual changes: The scene changes from the overhead shot with the ruler to a black and white close-up of a cue stick approaching a cue ball. The text "What causes squirt?" is overlaid. The ruler, black line, and "Predator Revo" text are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 16 to 17:**
+- Visual changes: The scene changes from the "What causes squirt?" text to a yellow line labeled "squirt" overlaid on the cue ball, indicating deflection. The cue ball appears slightly deformed at the point of impact.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 17 to 18:**
+- Visual changes: The scene changes from the cue ball impact analysis to a close-up of the cue tip, showing chalk dust. The yellow line and "squirt" text are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 18 to 19:**
+- Visual changes: The scene changes from the cue tip close-up to a black and white overhead shot of a striped ball spinning rapidly.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 19 to 20:**
+- Visual changes: The scene changes from the spinning striped ball to a black and white close-up of three object balls, with high-speed camera information overlaid. A yellow highlight circle and a white line are present.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 20 to 21:**
+- Visual changes: The scene changes from the black and white close-up of object balls to a color shot of a cue ball and an object ball moving on a pool table. The camera info and graphics are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 21 to 22:**
+- Visual changes: The scene changes from the moving balls to a color shot of a cue stick hitting a cue ball, viewed from the side.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 22 to 23:**
+- Visual changes: The scene changes from the side view of the cue stick hitting the cue ball to a black and white close-up of a cue ball hopping, with high-speed camera information and "$0.37 hop" text overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 23 to 24:**
+- Visual changes: The scene changes from the hopping cue ball to a black and white shot of a cue ball hitting an object ball, with the cue ball stopping after impact.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 24 to 25:**
+- Visual changes: The scene changes from the stun shot demo to a black and white close-up of a cue stick hitting a cue ball, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 25 to 26:**
+- Visual changes: The scene changes from the close-up of the cue stick hitting the cue ball to a color shot of a hand holding a cue stick, aiming at a cue ball and object ball that are very close together.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 26 to 27:**
+- Visual changes: The scene changes from the close-up of the hand aiming to a black and white close-up of a cue stick pushing a cue ball and object ball forward together, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 27 to 28:**
+- Visual changes: The scene changes from the push shot analysis to a color shot of a person playing pool in a pool hall, with multiple pool tables visible. The person is making a shot.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 28 to 29:**
+- Visual changes: The scene changes from the pool hall shot to a collage of billiard scenes with text overlays "AMAZING BILLIARDS PHYSICS IN SUPER SLOW MOTION". This is the wrap-up title card.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 29 to 30:**
+- Visual changes: The scene changes from the wrap-up title card to a black and white close-up of a cue stick hitting a cue ball, showing the cue ball deforming. The text overlays are gone.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 30 to 31:**
+- Visual changes: The scene changes from the cue ball deformation shot to a black and white shot of a hand holding a cue stick over a pool table.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 31 to 32:**
+- Visual changes: The scene changes from the hand holding the cue stick to a black and white shot of a cue ball and an object ball at rest. High-speed camera information is overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 32 to 33:**
+- Visual changes: The scene changes from the cue ball and object ball at rest to a black and white close-up of a cue stick hitting a cue ball.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 33 to 34:**
+- Visual changes: The scene changes from the cue stick hitting the cue ball to a color shot of a cue stick moving across a pool table, viewed from the side.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 34 to 35:**
+- Visual changes: The scene changes from the side view of the cue stick to a black and white close-up of a cue ball and an object ball colliding, with high-speed camera information overlaid.
+- The description correctly predicts this change.
+
+**Correctness of the description for frame 35 to 36:**
+- Visual changes: The scene changes from the black and white collision shot to a color shot of a person playing pool in a pool hall, similar to frame 28, but with a "Eagletrickshots2" watermark in the bottom right.
+- The description correctly predicts this change.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None
