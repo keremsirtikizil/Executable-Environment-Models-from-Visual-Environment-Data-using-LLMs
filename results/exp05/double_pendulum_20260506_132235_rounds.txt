@@ -1,0 +1,804 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  BoltTop.state: {ENGAGED, DISENGAGED}
+  BoltBottom.state: {ENGAGED, DISENGAGED}
+  Panels.status: {LOCKED, UNLOCKED}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+
+RULES:
+  IF BoltTop.state == ENGAGED AND BoltBottom.state == ENGAGED
+    THEN SET Panels.status = LOCKED
+  ELSE
+    SET Panels.status = UNLOCKED
+
+  IF Panels.status == LOCKED
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE
+    SET PanelLeft.isMobile = TRUE
+    SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  BoltTop.state: {ENGAGED, DISENGAGED}
+  BoltBottom.state: {ENGAGED, DISENGAGED}
+  Panels.status: {LOCKED, UNLOCKED}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+
+RULES:
+  IF BoltTop.state == ENGAGED AND BoltBottom.state == ENGAGED
+    THEN SET Panels.status = LOCKED
+  ELSE
+    SET Panels.status = UNLOCKED
+
+  IF Panels.status == LOCKED
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE
+    SET PanelLeft.isMobile = TRUE
+    SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  FoldingBrace.state: {EXTENDED, FOLDING, FOLDED}
+  UserAction: {PULLS_BRACE_UP, PUSHES_BRACE_DOWN, NONE}
+  Panels.status: {LOCKED, UNLOCKED}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+
+RULES:
+  IF UserAction == PULLS_BRACE_UP AND FoldingBrace.state == EXTENDED
+    THEN SET FoldingBrace.state = FOLDING
+
+  IF FoldingBrace.state == EXTENDED
+    THEN SET Panels.status = LOCKED
+  ELSE
+    SET Panels.status = UNLOCKED
+
+  IF Panels.status == LOCKED
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE
+    SET PanelLeft.isMobile = TRUE
+    SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {VERTICAL_LOCKED, HORIZONTAL_LOCKED, UNLOCKED}
+  UserAction: {PULLS_UP_FROM_VERTICAL, ROTATES_TO_HORIZONTAL, RELEASES_FROM_HORIZONTAL, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+
+RULES:
+  IF Brace.state == VERTICAL_LOCKED AND UserAction == PULLS_UP_FROM_VERTICAL
+    THEN SET Brace.state = UNLOCKED
+
+  IF Brace.state == UNLOCKED AND UserAction == ROTATES_TO_HORIZONTAL
+    THEN SET Brace.state = HORIZONTAL_LOCKED
+
+  IF Brace.state == HORIZONTAL_LOCKED AND UserAction == RELEASES_FROM_HORIZONTAL
+    THEN SET Brace.state = UNLOCKED
+
+  IF Brace.state == VERTICAL_LOCKED
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+
+  IF Brace.state == HORIZONTAL_LOCKED
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+  IF Brace.state == UNLOCKED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, FOLDING_UP, LOCKED_HORIZONTAL, FOLDING_DOWN}
+  UserAction: {UNLOCKS_VERTICAL_BRACE, LOCKS_HORIZONTAL_BRACE, UNLOCKS_HORIZONTAL_BRACE, LOCKS_VERTICAL_BRACE, NONE}
+  PanelLeft.status: {LOCKED, UNLOCKED}
+  PanelRight.status: {LOCKED, UNLOCKED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_VERTICAL_BRACE
+    THEN SET Brace.state = FOLDING_UP
+
+  IF Brace.state == FOLDING_UP AND UserAction == LOCKS_HORIZONTAL_BRACE
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_HORIZONTAL_BRACE
+    THEN SET Brace.state = FOLDING_DOWN
+
+  IF Brace.state == FOLDING_DOWN AND UserAction == LOCKS_VERTICAL_BRACE
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == LOCKED_VERTICAL
+    THEN SET PanelLeft.status = LOCKED
+    THEN SET PanelRight.status = LOCKED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL
+    THEN SET PanelLeft.status = LOCKED
+    THEN SET PanelRight.status = UNLOCKED
+  ELSE
+    SET PanelLeft.status = UNLOCKED
+    SET PanelRight.status = UNLOCKED
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, LOCKED_HORIZONTAL, ROTATING}
+  Brace.angle: [0, 180] // 0=vertical down, 90=horizontal, 180=vertical up
+  UserAction: {UNLOCK, LOCK, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND UserAction == UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == LOCKED_HORIZONTAL AND UserAction == UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND UserAction == LOCK AND Brace.angle is near 0
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == ROTATING AND UserAction == LOCK AND Brace.angle is near 90
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == ROTATING
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == LOCKED_VERTICAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, LOCKED_HORIZONTAL, ROTATING}
+  Brace.angle: [0, 180] // 0=vertical down, 90=horizontal, 180=vertical up
+  Key.action: {TURN_TO_LOCK, TURN_TO_UNLOCK, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND Key.action == TURN_TO_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == LOCKED_HORIZONTAL AND Key.action == TURN_TO_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Key.action == TURN_TO_LOCK AND Brace.angle is near 90
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == ROTATING AND Key.action == TURN_TO_LOCK AND Brace.angle is near 0
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == ROTATING AND Key.action == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == LOCKED_VERTICAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, LOCKED_HORIZONTAL, ROTATING}
+  Brace.angle: [0, 180] // 0=vertical down, 90=horizontal, 180=vertical up
+  Key.action: {TURN_TO_LOCK, TURN_TO_UNLOCK, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND Key.action == TURN_TO_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == LOCKED_HORIZONTAL AND Key.action == TURN_TO_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Key.action == TURN_TO_LOCK AND Brace.angle is near 90
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == ROTATING AND Key.action == TURN_TO_LOCK AND Brace.angle is near 0
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == ROTATING AND Key.action == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == LOCKED_VERTICAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, LOCKED_HORIZONTAL, ROTATING}
+  Brace.angle: [0, 180] // 0=vertical down, 90=horizontal
+  UserAction: {PULLS_BRACE_FROM_VERTICAL, PUSHES_BRACE_TO_VERTICAL, TURNS_KEY_TO_LOCK, TURNS_KEY_TO_UNLOCK, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND UserAction == PULLS_BRACE_FROM_VERTICAL
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == LOCKED_HORIZONTAL AND UserAction == TURNS_KEY_TO_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND UserAction == PUSHES_BRACE_TO_VERTICAL AND Brace.angle is near 0
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == ROTATING AND UserAction == TURNS_KEY_TO_LOCK AND Brace.angle is near 90
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == ROTATING AND UserAction == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == LOCKED_VERTICAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {LOCKED_VERTICAL, LOCKED_HORIZONTAL, ROTATING}
+  Brace.angle: [0, 90] // 0=vertical, 90=horizontal
+  UserAction: {TURNS_HORIZONTAL_KEY_LOCK, TURNS_HORIZONTAL_KEY_UNLOCK, TURNS_VERTICAL_BOLT_LOCK, TURNS_VERTICAL_BOLT_UNLOCK, NONE}
+  Panels.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == LOCKED_VERTICAL AND UserAction == TURNS_VERTICAL_BOLT_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == LOCKED_HORIZONTAL AND UserAction == TURNS_HORIZONTAL_KEY_UNLOCK
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND UserAction == TURNS_VERTICAL_BOLT_LOCK AND Brace.angle is near 0
+    THEN SET Brace.state = LOCKED_VERTICAL
+
+  IF Brace.state == ROTATING AND UserAction == TURNS_HORIZONTAL_KEY_LOCK AND Brace.angle is near 90
+    THEN SET Brace.state = LOCKED_HORIZONTAL
+
+  IF Brace.state == ROTATING AND UserAction == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == LOCKED_VERTICAL OR Brace.state == LOCKED_HORIZONTAL
+    THEN SET Panels.status = SECURED
+  ELSE
+    SET Panels.status = UNSECURED
+
+==================================================
+Round 11  —  frames [30, 31, 32]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {BOLTED_VERTICAL, LOCKED_VERTICAL_CATCH, LOCKED_HORIZONTAL_KEY, ROTATING}
+  Brace.angle: [0, 90] // 0=vertical, 90=horizontal
+  UserAction: {UNLOCKS_VERTICAL_BOLT, LOCKS_VERTICAL_BOLT, UNLOCKS_VERTICAL_CATCH, ENGAGES_VERTICAL_CATCH, UNLOCKS_HORIZONTAL_KEY, LOCKS_HORIZONTAL_KEY, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == BOLTED_VERTICAL AND UserAction == UNLOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == LOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = BOLTED_VERTICAL
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == UNLOCKS_VERTICAL_CATCH
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 0 AND UserAction == ENGAGES_VERTICAL_CATCH
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_HORIZONTAL_KEY AND UserAction == UNLOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 90 AND UserAction == LOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = LOCKED_HORIZONTAL_KEY
+
+  IF Brace.state == ROTATING AND UserAction == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == BOLTED_VERTICAL OR Brace.state == LOCKED_VERTICAL_CATCH
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL_KEY
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE // Brace.state == ROTATING
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 12  —  frames [33, 34, 35]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {BOLTED_VERTICAL, LOCKED_VERTICAL_CATCH, LOCKED_HORIZONTAL_KEY, ROTATING}
+  Brace.angle: [0, 90] // 0=vertical, 90=horizontal
+  UserAction: {UNLOCKS_VERTICAL_BOLT, LOCKS_VERTICAL_BOLT, UNLOCKS_VERTICAL_CATCH, ENGAGES_VERTICAL_CATCH, UNLOCKS_HORIZONTAL_KEY, LOCKS_HORIZONTAL_KEY, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == BOLTED_VERTICAL AND UserAction == UNLOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == LOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = BOLTED_VERTICAL
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == UNLOCKS_VERTICAL_CATCH
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 0 AND UserAction == ENGAGES_VERTICAL_CATCH
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_HORIZONTAL_KEY AND UserAction == UNLOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 90 AND UserAction == LOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = LOCKED_HORIZONTAL_KEY
+
+  IF Brace.state == ROTATING AND UserAction == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == BOLTED_VERTICAL OR Brace.state == LOCKED_VERTICAL_CATCH
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL_KEY
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE // Brace.state == ROTATING
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 13  —  frames [36, 37, 38]
+==================================================
+
+STATE VARIABLES:
+  Brace.state: {BOLTED_VERTICAL, LOCKED_VERTICAL_CATCH, LOCKED_HORIZONTAL_KEY, ROTATING}
+  Brace.angle: [0, 90] // 0=vertical, 90=horizontal
+  UserAction: {UNLOCKS_VERTICAL_BOLT, LOCKS_VERTICAL_BOLT, UNLOCKS_VERTICAL_CATCH, ENGAGES_VERTICAL_CATCH, UNLOCKS_HORIZONTAL_KEY, LOCKS_HORIZONTAL_KEY, NONE}
+  PanelLeft.status: {SECURED, UNSECURED}
+  PanelRight.status: {SECURED, UNSECURED}
+
+RULES:
+  IF Brace.state == BOLTED_VERTICAL AND UserAction == UNLOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == LOCKS_VERTICAL_BOLT
+    THEN SET Brace.state = BOLTED_VERTICAL
+
+  IF Brace.state == LOCKED_VERTICAL_CATCH AND UserAction == UNLOCKS_VERTICAL_CATCH
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 0 AND UserAction == ENGAGES_VERTICAL_CATCH
+    THEN SET Brace.state = LOCKED_VERTICAL_CATCH
+
+  IF Brace.state == LOCKED_HORIZONTAL_KEY AND UserAction == UNLOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = ROTATING
+
+  IF Brace.state == ROTATING AND Brace.angle is near 90 AND UserAction == LOCKS_HORIZONTAL_KEY
+    THEN SET Brace.state = LOCKED_HORIZONTAL_KEY
+
+  IF Brace.state == ROTATING AND UserAction == NONE
+    THEN UPDATE Brace.angle based on gravity and momentum
+
+  IF Brace.state == BOLTED_VERTICAL OR Brace.state == LOCKED_VERTICAL_CATCH
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = SECURED
+  ELSE IF Brace.state == LOCKED_HORIZONTAL_KEY
+    THEN SET PanelLeft.status = SECURED
+    THEN SET PanelRight.status = UNSECURED
+  ELSE // Brace.state == ROTATING
+    SET PanelLeft.status = UNSECURED
+    SET PanelRight.status = UNSECURED
+
+==================================================
+Round 14  —  frames [39, 40, 41]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, MOVES_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == MOVES_PANELS
+    THEN CHANGE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 15  —  frames [42, 43, 44]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, SEPARATES_PANELS, JOINS_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly/Assembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == SEPARATES_PANELS
+    THEN INCREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == JOINS_PANELS
+    THEN DECREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND PanelGap.width is near 0 AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 16  —  frames [45, 46, 47]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, SEPARATES_PANELS, JOINS_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly/Assembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == SEPARATES_PANELS
+    THEN INCREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == JOINS_PANELS
+    THEN DECREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND PanelGap.width is near 0 AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 17  —  frames [48, 49, 50]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, SEPARATES_PANELS, JOINS_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly/Assembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == SEPARATES_PANELS
+    THEN INCREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == JOINS_PANELS
+    THEN DECREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND PanelGap.width is near 0 AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 18  —  frames [51, 52, 53]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, SEPARATES_PANELS, JOINS_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly/Assembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == SEPARATES_PANELS
+    THEN INCREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == JOINS_PANELS
+    THEN DECREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND PanelGap.width is near 0 AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+Round 19  —  frames [54, 55, 56]
+==================================================
+
+STATE VARIABLES:
+  Mechanism.state: {LOCKED_VERTICAL, UNBOLTED_FOR_FOLDING, FOLDED, LOCKED_HORIZONTAL, ROTATING}
+  UserAction: {UNLOCKS_BOLTS, LOCKS_BOLTS, FOLDS_BRACE, UNFOLDS_BRACE, UNLOCKS_KEY, LOCKS_KEY, SEPARATES_PANELS, JOINS_PANELS, NONE}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelGap.width: float
+
+RULES:
+  // Disassembly/Assembly Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_BOLTS
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == FOLDS_BRACE
+    THEN SET Mechanism.state = FOLDED
+
+  IF Mechanism.state == FOLDED AND UserAction == SEPARATES_PANELS
+    THEN INCREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND UserAction == JOINS_PANELS
+    THEN DECREASE PanelGap.width
+
+  IF Mechanism.state == FOLDED AND PanelGap.width is near 0 AND UserAction == UNFOLDS_BRACE
+    THEN SET Mechanism.state = UNBOLTED_FOR_FOLDING
+
+  IF Mechanism.state == UNBOLTED_FOR_FOLDING AND UserAction == LOCKS_BOLTS
+    THEN SET Mechanism.state = LOCKED_VERTICAL
+
+  // Door Path
+  IF Mechanism.state == LOCKED_VERTICAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  IF Mechanism.state == ROTATING AND UserAction == LOCKS_KEY AND Brace.angle is near 90
+    THEN SET Mechanism.state = LOCKED_HORIZONTAL
+
+  IF Mechanism.state == LOCKED_HORIZONTAL AND UserAction == UNLOCKS_KEY
+    THEN SET Mechanism.state = ROTATING
+
+  // Panel Mobility Logic
+  IF Mechanism.state == LOCKED_VERTICAL OR Mechanism.state == UNBOLTED_FOR_FOLDING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+  ELSE IF Mechanism.state == FOLDED
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+  ELSE IF Mechanism.state == LOCKED_HORIZONTAL OR Mechanism.state == ROTATING
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = TRUE
+
+==================================================
+FINAL  —  frames [57, 58, 59]
+==================================================
+
+STATE VARIABLES:
+  System.state: {LOCKED_WALL, ROTATABLE_DOOR, LOCKED_DOOR, UNBOLTED_WALL, FOLDED_WALL}
+  UserAction: {TOGGLE_KEY_LOCK, TOGGLE_BOLTS, TOGGLE_FOLD, MOVE_PANELS, NONE}
+  Brace.orientation: {VERTICAL, HORIZONTAL, ROTATING}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelRight.isSwingable: {TRUE, FALSE}
+
+RULES:
+  // Door operation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == VERTICAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_WALL
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == HORIZONTAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_DOOR
+  IF System.state == LOCKED_DOOR AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+
+  // Panel separation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = FOLDED_WALL
+  IF System.state == FOLDED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = LOCKED_WALL
+
+  // Panel mobility based on system state
+  IF System.state == FOLDED_WALL
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+    THEN SET PanelRight.isSwingable = FALSE
+  ELSE IF System.state == ROTATABLE_DOOR OR System.state == LOCKED_DOOR
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = TRUE
+  ELSE // State is LOCKED_WALL or UNBOLTED_WALL
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = FALSE

@@ -1,0 +1,558 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 0 to 1:**
+- Visual change: The text "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration." and "— Nikola Tesla" fades in slightly.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 1 to 2:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 2 to 3:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 3 to 4:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 4 to 5:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 5 to 6:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 6 to 7:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 7 to 8:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 8 to 9:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 9 to 10:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 10 to 11:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 11 to 12:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 12 to 13:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 13 to 14:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 14 to 15:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 15 to 16:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 16 to 17:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 17 to 18:**
+- Visual change: The text begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_OUT`, so `quote_opacity` decreases.
+
+**Frame 18 to 19:**
+- Visual change: The text continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_OUT`, so `quote_opacity` decreases.
+
+**Frame 19 to 20:**
+- Visual change: The screen is black, and then a dimly lit room with a table and equipment begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `QUOTE` to `BUTTON_ROOM`, and `scene_phase` becomes `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 20 to 21:**
+- Visual change: The room continues to fade in, becoming slightly brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 21 to 22:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 22 to 23:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 23 to 24:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 24 to 25:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 25 to 26:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 26 to 27:**
+- Visual change: The camera zooms in slightly and pans down towards the table.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, and `scene_phase` transitions to `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 27 to 28:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 28 to 29:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 29 to 30:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 30 to 31:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 31 to 32:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 32 to 33:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 33 to 34:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 34 to 35:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 35 to 36:**
+- Visual change: The camera continues to zoom in and pan down. The room also fades out slightly.
+- Correctness of description: The description correctly predicts the zoom and pan. It also predicts the fading out of the room as `scene_phase` transitions to `FADING_OUT`.
+
+**Frame 36 to 37:**
+- Visual change: The room fades to black.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `BUTTON_ROOM` to `GENERATOR_DISPLAY`, and `button_room_opacity` becomes 0.0.
+
+**Frame 37 to 38:**
+- Visual change: A blurred blue screen of a function generator begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 38 to 39:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 39 to 40:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 40 to 41:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 41 to 42:**
+- Visual change: The generator display is now fully focused and bright.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, and `generator_display_blur` reaches 0.0, `generator_display_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+**Frame 42 to 43:**
+- Visual change: The generator display remains focused and bright.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `HOLDING`.
+
+**Frame 43 to 44:**
+- Visual change: The generator display begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` transitions to `FADING_OUT`, so `generator_display_opacity` decreases.
+
+**Frame 44 to 45:**
+- Visual change: The generator display continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FADING_OUT`, so `generator_display_opacity` decreases.
+
+**Frame 45 to 46:**
+- Visual change: The screen is black, then a hand holding a salt shaker begins to appear, and salt starts to pour out.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `GENERATOR_DISPLAY` to `SALT_POURING`, and `scene_phase` becomes `POURING_CLOSEUP`, so `salt_pouring_closeup_opacity` increases and new particles are created.
+
+**Frame 46 to 47:**
+- Visual change: More salt pours out of the shaker.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_CLOSEUP`, so new particles are created.
+
+**Frame 47 to 48:**
+- Visual change: More salt pours out of the shaker.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_CLOSEUP`, so new particles are created.
+
+**Frame 48 to 49:**
+- Visual change: The camera zooms out to show a wider view of the hand shaking salt onto a black square plate.
+- Correctness of description: The description correctly predicts this change. `scene_phase` transitions from `POURING_CLOSEUP` to `POURING_WIDE`, and `salt_pouring_wide_opacity` becomes 1.0, and `hand_visible` becomes TRUE.
+
+**Frame 49 to 50:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 50 to 51:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 51 to 52:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 52 to 53:**
+- Visual change: The hand begins to retract from the frame.
+- Correctness of description: The description correctly predicts this change. `scene_phase` transitions to `RETRACTING_HAND`, so `hand_position` updates.
+
+**Frame 53 to 54:**
+- Visual change: The hand continues to retract and is almost out of frame. The scene also begins to fade out.
+- Correctness of description: The description correctly predicts the hand retraction. It also predicts the fading out of the scene as `scene_phase` transitions to `FADING_OUT`.
+
+**Frame 54 to 55:**
+- Visual change: The screen is black.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `SALT_POURING` to `EXPLANATION_TEXT`, and `salt_pouring_wide_opacity` becomes 0.0.
+
+**Frame 55 to 56:**
+- Visual change: The text "vibrate the metal plate by using a tone generator.." begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 56 to 57:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 57 to 58:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 58 to 59:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 59 to 60:**
+- Visual change: The text is now fully visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, and `explanation_text_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+**Frame 60 to 61:**
+- Visual change: The text remains visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `HOLDING`.
+
+**Frame 61 to 62:**
+- Visual change: The text begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` transitions to `FADING_OUT`, so `explanation_text_opacity` decreases.
+
+**Frame 62 to 63:**
+- Visual change: The text continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_OUT`, so `explanation_text_opacity` decreases.
+
+**Frame 63 to 64:**
+- Visual change: The screen is black, then new text "as the pitch of the tone increases, geometric patterns will form and become more complex" begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` transitions to `FADING_IN` (after `explanation_text_index` increments), so `explanation_text_opacity` increases.
+
+**Frame 64 to 65:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 65 to 66:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 66 to 67:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 67 to 68:**
+- Visual change: The new text is now fully visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, and `explanation_text_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 0 to 1:**
+- Visual change: The text "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration." and "— Nikola Tesla" fades in slightly.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 1 to 2:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 2 to 3:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 3 to 4:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 4 to 5:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 5 to 6:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 6 to 7:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 7 to 8:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 8 to 9:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 9 to 10:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 10 to 11:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 11 to 12:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 12 to 13:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 13 to 14:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 14 to 15:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 15 to 16:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 16 to 17:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_IN`, so `quote_opacity` increases.
+
+**Frame 17 to 18:**
+- Visual change: The text begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_OUT`, so `quote_opacity` decreases.
+
+**Frame 18 to 19:**
+- Visual change: The text continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `QUOTE`, `scene_phase` is `FADING_OUT`, so `quote_opacity` decreases.
+
+**Frame 19 to 20:**
+- Visual change: The screen is black, and then a dimly lit room with a table and equipment begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `QUOTE` to `BUTTON_ROOM`, and `scene_phase` becomes `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 20 to 21:**
+- Visual change: The room continues to fade in, becoming slightly brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 21 to 22:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 22 to 23:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 23 to 24:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 24 to 25:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 25 to 26:**
+- Visual change: The room continues to fade in, becoming brighter.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `FADING_IN`, so `button_room_opacity` increases.
+
+**Frame 26 to 27:**
+- Visual change: The camera zooms in slightly and pans down towards the table.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, and `scene_phase` transitions to `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 27 to 28:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 28 to 29:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 29 to 30:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 30 to 31:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 31 to 32:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 32 to 33:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 33 to 34:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 34 to 35:**
+- Visual change: The camera continues to zoom in and pan down.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `BUTTON_ROOM`, `scene_phase` is `ZOOMING`, so `camera_zoom` and `camera_pan_y` increase.
+
+**Frame 35 to 36:**
+- Visual change: The camera continues to zoom in and pan down. The room also fades out slightly.
+- Correctness of description: The description correctly predicts the zoom and pan. It also predicts the fading out of the room as `scene_phase` transitions to `FADING_OUT`.
+
+**Frame 36 to 37:**
+- Visual change: The room fades to black.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `BUTTON_ROOM` to `GENERATOR_DISPLAY`, and `button_room_opacity` becomes 0.0.
+
+**Frame 37 to 38:**
+- Visual change: A blurred blue screen of a function generator begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 38 to 39:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 39 to 40:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 40 to 41:**
+- Visual change: The generator display continues to fade in and become less blurred.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, so `generator_display_opacity` increases and `generator_display_blur` decreases.
+
+**Frame 41 to 42:**
+- Visual change: The generator display is now fully focused and bright.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FOCUSING`, and `generator_display_blur` reaches 0.0, `generator_display_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+**Frame 42 to 43:**
+- Visual change: The generator display remains focused and bright.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `HOLDING`.
+
+**Frame 43 to 44:**
+- Visual change: The generator display begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` transitions to `FADING_OUT`, so `generator_display_opacity` decreases.
+
+**Frame 44 to 45:**
+- Visual change: The generator display continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `GENERATOR_DISPLAY`, `scene_phase` is `FADING_OUT`, so `generator_display_opacity` decreases.
+
+**Frame 45 to 46:**
+- Visual change: The screen is black, then a hand holding a salt shaker begins to appear, and salt starts to pour out.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `GENERATOR_DISPLAY` to `SALT_POURING`, and `scene_phase` becomes `POURING_CLOSEUP`, so `salt_pouring_closeup_opacity` increases and new particles are created.
+
+**Frame 46 to 47:**
+- Visual change: More salt pours out of the shaker.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_CLOSEUP`, so new particles are created.
+
+**Frame 47 to 48:**
+- Visual change: More salt pours out of the shaker.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_CLOSEUP`, so new particles are created.
+
+**Frame 48 to 49:**
+- Visual change: The camera zooms out to show a wider view of the hand shaking salt onto a black square plate.
+- Correctness of description: The description correctly predicts this change. `scene_phase` transitions from `POURING_CLOSEUP` to `POURING_WIDE`, and `salt_pouring_wide_opacity` becomes 1.0, and `hand_visible` becomes TRUE.
+
+**Frame 49 to 50:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 50 to 51:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 51 to 52:**
+- Visual change: The hand continues to shake salt onto the plate.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `SALT_POURING`, `scene_phase` is `POURING_WIDE`, so new particles are created and the hand position updates.
+
+**Frame 52 to 53:**
+- Visual change: The hand begins to retract from the frame.
+- Correctness of description: The description correctly predicts this change. `scene_phase` transitions to `RETRACTING_HAND`, so `hand_position` updates.
+
+**Frame 53 to 54:**
+- Visual change: The hand continues to retract and is almost out of frame. The scene also begins to fade out.
+- Correctness of description: The description correctly predicts the hand retraction. It also predicts the fading out of the scene as `scene_phase` transitions to `FADING_OUT`.
+
+**Frame 54 to 55:**
+- Visual change: The screen is black.
+- Correctness of description: The description correctly predicts this change. `current_scene` transitions from `SALT_POURING` to `EXPLANATION_TEXT`, and `salt_pouring_wide_opacity` becomes 0.0.
+
+**Frame 55 to 56:**
+- Visual change: The text "vibrate the metal plate by using a tone generator.." begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 56 to 57:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 57 to 58:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 58 to 59:**
+- Visual change: The text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 59 to 60:**
+- Visual change: The text is now fully visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, and `explanation_text_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+**Frame 60 to 61:**
+- Visual change: The text remains visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `HOLDING`.
+
+**Frame 61 to 62:**
+- Visual change: The text begins to fade out.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` transitions to `FADING_OUT`, so `explanation_text_opacity` decreases.
+
+**Frame 62 to 63:**
+- Visual change: The text continues to fade out and is almost completely gone.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_OUT`, so `explanation_text_opacity` decreases.
+
+**Frame 63 to 64:**
+- Visual change: The screen is black, then new text "as the pitch of the tone increases, geometric patterns will form and become more complex" begins to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` transitions to `FADING_IN` (after `explanation_text_index` increments), so `explanation_text_opacity` increases.
+
+**Frame 64 to 65:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 65 to 66:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 66 to 67:**
+- Visual change: The new text continues to fade in.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, so `explanation_text_opacity` increases.
+
+**Frame 67 to 68:**
+- Visual change: The new text is now fully visible.
+- Correctness of description: The description correctly predicts this change. `current_scene` is `EXPLANATION_TEXT`, `scene_phase` is `FADING_IN`, and `explanation_text_opacity` reaches 1.0, and `scene_phase` transitions to `HOLDING`.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None

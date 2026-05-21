@@ -1,0 +1,53 @@
+Scene        : bouncing_ball
+Description  : A ball bouncing on a hard floor filmed in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 24 | Batch : 3 | Rounds : 8
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.initial_height: float
+  droplet.state: [AIRBORNE, COMPRESSING, REBOUNDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+  restitution_velocity: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y AND droplet.velocity_y < 0:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = REBOUNDING
+
+  IF droplet.state == REBOUNDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+      IF droplet.height >= droplet.initial_height:
+        THEN
+          droplet.height = droplet.initial_height
+          droplet.width = droplet.initial_height
+          droplet.state = AIRBORNE
+          droplet.velocity_y = restitution_velocity
+```

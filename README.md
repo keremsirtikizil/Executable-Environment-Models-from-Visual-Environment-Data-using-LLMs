@@ -362,14 +362,16 @@ Extends exp04 to completely real-world video footage. Short clips are sampled at
 
 ### Scenes
 
-| Scene | Frames | Verdict | Notes |
+| Scene | Frames | Best verdict | Notes |
 |---|---|---|---|
-| `bouncing_ball` | 24 | **CORRECT** | Superhydrophobic surface; non-monotonic velocity-regime bounce physics |
-| `newtons_cradle` | 60 | PARTIALLY CORRECT | N-in / N-out conservation rule correct; minor left-right direction error |
-| `pendulum` | 44 | PARTIALLY CORRECT | Scene is actually a Peaucellier-Lipkin linkage museum exhibit; model correctly identified circular-to-linear motion conversion |
-| `double_pendulum` | — | — | Wrong video downloaded; frames showed furniture assembly |
-| `cymatics` | — | — | Hz-frequency labels burned into every frame of the real experiment |
-| `metronomes` | 108 | pending | Title card in first batch; actual synchronisation experiment appears clean |
+| `bouncing_ball` | 24 | **CORRECT** | Superhydrophobic surface; non-monotonic velocity-regime bounce physics (Cassie-Baxter / Wenzel states) |
+| `newtons_cradle` | 60 | PARTIALLY CORRECT | N-in / N-out conservation rule correct; minor left-right direction error in 3-ball case |
+| `pendulum` | 44 | **CORRECT** | Scene is actually a Peaucellier-Lipkin linkage museum exhibit; model correctly identified circular-to-linear motion conversion |
+| `metronomes` | 108 | UNKNOWN* | Correctly described 2-vs-3 anti-phase attractor and strong/weak coupling conditions |
+| `double_pendulum` | 60 | — | Wrong video downloaded; frames showed furniture assembly guide |
+| `cymatics` | 80 | PARTIALLY CORRECT | 80 frames captured only the intro sequence; actual Chladni patterns have Hz labels burned in |
+
+\* Verifier returned UNKNOWN — the pseudocode description was structurally correct but could not be definitively confirmed or denied.
 
 ### Notable finding — pendulum scene
 
@@ -378,6 +380,10 @@ The "pendulum" video was actually a Peaucellier-Lipkin linkage exhibit at a scie
 ### Notable finding — bouncing_ball scene
 
 Both runs correctly identified the droplet as bouncing on a superhydrophobic surface. The higher-quality run (CORRECT) described a non-monotonic velocity relationship: clean elastic rebound at high and low velocities (Cassie-Baxter air layer intact) vs. a "pancake" energy-dissipating bounce at intermediate velocity (Wenzel state, droplet penetrates surface texture). This is an accurate description of a known but non-obvious phenomenon.
+
+### Notable finding — metronomes scene
+
+Despite a title card in the first three frames ("Synchronization of Metronomes"), the model correctly described the full physical experiment: five metronomes on a board, two coupling conditions (strong = board on soda-can rollers; weak = board on fixed table), spontaneous emergence of a "2-vs-3 anti-phase" attractor under strong coupling, and experimenter-driven forced synchronization. The model distinguished between order *emerging* from within the system and order *imposed* by an external agent — the precise physical distinction the experiment is designed to demonstrate.
 
 ### Run
 
@@ -400,7 +406,7 @@ These are the scores we've recorded from runs on `gemini-2.5-pro` (extractor) + 
 |---|---|---|---|---|---|
 | exp02 | MagnetWorld (5 rules) | 31 | 11/31 (35%) | ~27% over 4 runs | 3/4 CORRECT — overly lenient |
 | exp03 | EchoWorld (5 rules)   | 22 | 8/22 (36%)  | (1 run so far)    | INCORRECT |
-| exp05 | Real-world physics (3 clean scenes) | — | — | CORRECT / PARTIALLY CORRECT / PARTIALLY CORRECT | Verifier matches quality of extraction |
+| exp05 | Real-world physics (4 valid scenes) | — | — | CORRECT, CORRECT, PARTIALLY CORRECT, UNKNOWN | Verifier quality matches extraction quality |
 
 What this tells us:
 

@@ -1,0 +1,2062 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  `text_opacity`: REAL (0.0 to 1.0)
+
+RULES:
+  IF `text_opacity` < 1.0:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  `scene_state`: (`FADING_IN`, `HOLDING`, `FADING_OUT`)
+  `text_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+
+RULES:
+  IF `scene_state` == `FADING_IN`:
+    THEN `text_opacity` = `text_opacity` + `FADE_IN_RATE`
+    IF `text_opacity` >= 1.0:
+      THEN `text_opacity` = 1.0
+      THEN `scene_state` = `HOLDING`
+      THEN `hold_timer` = `HOLD_DURATION`
+  ELSE IF `scene_state` == `HOLDING`:
+    THEN `hold_timer` = `hold_timer` - 1
+    IF `hold_timer` <= 0:
+      THEN `scene_state` = `FADING_OUT`
+  ELSE IF `scene_state` == `FADING_OUT`:
+    THEN `text_opacity` = `text_opacity` - `FADE_OUT_RATE`
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+
+==================================================
+Round 11  —  frames [30, 31, 32]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+
+==================================================
+Round 12  —  frames [33, 34, 35]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+
+==================================================
+Round 13  —  frames [36, 37, 38]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `ZOOMING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+
+==================================================
+Round 14  —  frames [39, 40, 41]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+
+==================================================
+Round 15  —  frames [42, 43, 44]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+
+==================================================
+Round 16  —  frames [45, 46, 47]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+
+==================================================
+Round 17  —  frames [48, 49, 50]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+
+==================================================
+Round 18  —  frames [51, 52, 53]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+
+==================================================
+Round 19  —  frames [54, 55, 56]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_SHAKER`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_shaker_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_SHAKER`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `SALT_SHAKER`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `salt_shaker_opacity` = `salt_shaker_opacity` + `FADE_RATE`
+      IF `salt_shaker_opacity` >= 1.0:
+        THEN `salt_shaker_opacity` = 1.0
+        THEN `scene_phase` = `POURING`
+    ELSE IF `scene_phase` == `POURING`:
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      FOR EACH particle in `salt_particles`:
+        THEN UPDATE particle.position based on gravity
+
+==================================================
+Round 20  —  frames [57, 58, 59]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_animation_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+
+==================================================
+Round 21  —  frames [60, 61, 62]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+
+==================================================
+Round 22  —  frames [63, 64, 65]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+
+==================================================
+Round 23  —  frames [66, 67, 68]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `EXPLANATION_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+
+==================================================
+Round 24  —  frames [69, 70, 71]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`, `VIBRATION_EXPERIMENT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `vibration_experiment_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `EXPLANATION_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` - `FADE_RATE`
+      IF `explanation_text_opacity` <= 0.0:
+        THEN `explanation_text_opacity` = 0.0
+        THEN `current_scene` = `VIBRATION_EXPERIMENT`
+        THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `VIBRATION_EXPERIMENT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `vibration_experiment_opacity` = `vibration_experiment_opacity` + `FADE_RATE`
+
+==================================================
+Round 25  —  frames [72, 73, 74]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`, `VIBRATION_EXPERIMENT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `vibration_experiment_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+  `explanation_text_index`: INTEGER
+  `EXPLANATION_TEXTS`: LIST of strings
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `explanation_text_index` = 0
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `EXPLANATION_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` - `FADE_RATE`
+      IF `explanation_text_opacity` <= 0.0:
+        THEN `explanation_text_opacity` = 0.0
+        THEN `explanation_text_index` = `explanation_text_index` + 1
+        IF `explanation_text_index` < length(`EXPLANATION_TEXTS`):
+          THEN `scene_phase` = `FADING_IN`
+        ELSE:
+          THEN `current_scene` = `VIBRATION_EXPERIMENT`
+          THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `VIBRATION_EXPERIMENT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `vibration_experiment_opacity` = `vibration_experiment_opacity` + `FADE_RATE`
+
+==================================================
+Round 26  —  frames [75, 76, 77]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`, `VIBRATION_EXPERIMENT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `vibration_experiment_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+  `explanation_text_index`: INTEGER
+  `EXPLANATION_TEXTS`: LIST of strings
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `explanation_text_index` = 0
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `EXPLANATION_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` - `FADE_RATE`
+      IF `explanation_text_opacity` <= 0.0:
+        THEN `explanation_text_opacity` = 0.0
+        THEN `explanation_text_index` = `explanation_text_index` + 1
+        IF `explanation_text_index` < length(`EXPLANATION_TEXTS`):
+          THEN `scene_phase` = `FADING_IN`
+        ELSE:
+          THEN `current_scene` = `VIBRATION_EXPERIMENT`
+          THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `VIBRATION_EXPERIMENT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `vibration_experiment_opacity` = `vibration_experiment_opacity` + `FADE_RATE`
+
+==================================================
+FINAL  —  frames [78, 79]
+==================================================
+
+STATE VARIABLES:
+  `current_scene`: (`QUOTE`, `BUTTON_ROOM`, `GENERATOR_DISPLAY`, `SALT_POURING`, `EXPLANATION_TEXT`, `VIBRATION_EXPERIMENT`)
+  `scene_phase`: (`FADING_IN`, `HOLDING`, `FADING_OUT`, `ZOOMING`, `ZOOM_HOLD`, `FOCUSING`, `POURING_CLOSEUP`, `POURING_WIDE`, `RETRACTING_HAND`)
+  `quote_opacity`: REAL (0.0 to 1.0)
+  `button_room_opacity`: REAL (0.0 to 1.0)
+  `generator_display_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_closeup_opacity`: REAL (0.0 to 1.0)
+  `salt_pouring_wide_opacity`: REAL (0.0 to 1.0)
+  `explanation_text_opacity`: REAL (0.0 to 1.0)
+  `vibration_experiment_opacity`: REAL (0.0 to 1.0)
+  `generator_display_blur`: REAL (0.0 to MAX_BLUR)
+  `watermark_opacity`: REAL (0.0 to 1.0)
+  `watermark_revealed_chars`: INTEGER
+  `hold_timer`: INTEGER
+  `dot_angle`: REAL
+  `camera_zoom`: REAL
+  `camera_pan_y`: REAL
+  `salt_particles`: LIST of particle objects (with position, velocity, state: `FALLING` or `LANDED`)
+  `hand_position`: Vector2D
+  `hand_visible`: BOOLEAN
+  `hand_animation_timer`: INTEGER
+  `explanation_text_index`: INTEGER
+  `EXPLANATION_TEXTS`: LIST of strings
+
+RULES:
+  IF `current_scene` == `QUOTE`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `quote_opacity` = `quote_opacity` + `FADE_RATE`
+      IF `quote_opacity` >= 1.0:
+        THEN `quote_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `QUOTE_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `quote_opacity` = `quote_opacity` - `FADE_RATE`
+      IF `quote_opacity` <= 0.0:
+        THEN `quote_opacity` = 0.0
+        THEN `current_scene` = `BUTTON_ROOM`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `camera_zoom` = 1.0
+        THEN `camera_pan_y` = 0.0
+  ELSE IF `current_scene` == `BUTTON_ROOM`:
+    IF `button_room_opacity` > 0:
+      THEN `dot_angle` = `dot_angle` + `DOT_ROTATION_SPEED`
+    IF `scene_phase` == `FADING_IN`:
+      THEN `button_room_opacity` = `button_room_opacity` + `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` + `FADE_RATE`
+      IF `button_room_opacity` >= 1.0:
+        THEN `button_room_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `BUTTON_ROOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `ZOOMING`
+    ELSE IF `scene_phase` == `ZOOMING`:
+      THEN `camera_zoom` = `camera_zoom` + `ZOOM_RATE`
+      THEN `camera_pan_y` = `camera_pan_y` + `PAN_RATE`
+      THEN `watermark_revealed_chars` = `watermark_revealed_chars` + `TEXT_REVEAL_RATE`
+      IF `camera_zoom` >= `MAX_ZOOM`:
+        THEN `camera_zoom` = `MAX_ZOOM`
+        THEN `scene_phase` = `ZOOM_HOLD`
+        THEN `hold_timer` = `ZOOM_HOLD_DURATION`
+    ELSE IF `scene_phase` == `ZOOM_HOLD`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `button_room_opacity` = `button_room_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `button_room_opacity` <= 0.0:
+        THEN `button_room_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `GENERATOR_DISPLAY`
+        THEN `scene_phase` = `FOCUSING`
+        THEN `generator_display_opacity` = 0.0
+        THEN `generator_display_blur` = `MAX_BLUR`
+  ELSE IF `current_scene` == `GENERATOR_DISPLAY`:
+    IF `scene_phase` == `FOCUSING`:
+      THEN `generator_display_opacity` = `generator_display_opacity` + `FADE_RATE`
+      THEN `generator_display_blur` = `generator_display_blur` - `FOCUS_RATE`
+      IF `generator_display_blur` <= 0.0:
+        THEN `generator_display_blur` = 0.0
+        THEN `generator_display_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `GENERATOR_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `generator_display_opacity` = `generator_display_opacity` - `FADE_RATE`
+      IF `generator_display_opacity` <= 0.0:
+        THEN `generator_display_opacity` = 0.0
+        THEN `current_scene` = `SALT_POURING`
+        THEN `scene_phase` = `POURING_CLOSEUP`
+        THEN `hold_timer` = `CLOSEUP_DURATION`
+  ELSE IF `current_scene` == `SALT_POURING`:
+    IF `scene_phase` == `POURING_CLOSEUP`:
+      THEN `salt_pouring_closeup_opacity` = `salt_pouring_closeup_opacity` + `FADE_RATE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `salt_pouring_closeup_opacity` = 0.0
+        THEN `scene_phase` = `POURING_WIDE`
+        THEN `salt_pouring_wide_opacity` = 1.0
+        THEN `watermark_opacity` = 1.0
+        THEN `hand_visible` = TRUE
+        THEN `hold_timer` = `POURING_DURATION`
+    ELSE IF `scene_phase` == `POURING_WIDE`:
+      THEN `hold_timer` = `hold_timer` - 1
+      THEN `hand_animation_timer` = `hand_animation_timer` + 1
+      THEN `hand_position` = `hand_position` + sin(`hand_animation_timer` * `SHAKE_SPEED`) * `SHAKE_AMPLITUDE`
+      THEN CREATE new particle in `salt_particles` at shaker nozzle position
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `RETRACTING_HAND`
+    ELSE IF `scene_phase` == `RETRACTING_HAND`:
+      THEN `hand_position` = `hand_position` + `RETRACT_VECTOR`
+      IF `hand_position` is off-screen:
+        THEN `hand_visible` = FALSE
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `salt_pouring_wide_opacity` = `salt_pouring_wide_opacity` - `FADE_RATE`
+      THEN `watermark_opacity` = `watermark_opacity` - `FADE_RATE`
+      IF `salt_pouring_wide_opacity` <= 0.0:
+        THEN `salt_pouring_wide_opacity` = 0.0
+        THEN `watermark_opacity` = 0.0
+        THEN `current_scene` = `EXPLANATION_TEXT`
+        THEN `scene_phase` = `FADING_IN`
+        THEN `explanation_text_index` = 0
+    FOR EACH particle in `salt_particles`:
+      IF particle.state == `FALLING`:
+        THEN UPDATE particle.position based on gravity
+        IF particle collides with plate:
+          THEN particle.state = `LANDED`
+  ELSE IF `current_scene` == `EXPLANATION_TEXT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` + `FADE_RATE`
+      IF `explanation_text_opacity` >= 1.0:
+        THEN `explanation_text_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`
+        THEN `hold_timer` = `EXPLANATION_HOLD_DURATION`
+    ELSE IF `scene_phase` == `HOLDING`:
+      THEN `hold_timer` = `hold_timer` - 1
+      IF `hold_timer` <= 0:
+        THEN `scene_phase` = `FADING_OUT`
+    ELSE IF `scene_phase` == `FADING_OUT`:
+      THEN `explanation_text_opacity` = `explanation_text_opacity` - `FADE_RATE`
+      IF `explanation_text_opacity` <= 0.0:
+        THEN `explanation_text_opacity` = 0.0
+        THEN `explanation_text_index` = `explanation_text_index` + 1
+        IF `explanation_text_index` < length(`EXPLANATION_TEXTS`):
+          THEN `scene_phase` = `FADING_IN`
+        ELSE:
+          THEN `current_scene` = `VIBRATION_EXPERIMENT`
+          THEN `scene_phase` = `FADING_IN`
+  ELSE IF `current_scene` == `VIBRATION_EXPERIMENT`:
+    IF `scene_phase` == `FADING_IN`:
+      THEN `vibration_experiment_opacity` = `vibration_experiment_opacity` + `FADE_RATE`
+      IF `vibration_experiment_opacity` >= 1.0:
+        THEN `vibration_experiment_opacity` = 1.0
+        THEN `scene_phase` = `HOLDING`

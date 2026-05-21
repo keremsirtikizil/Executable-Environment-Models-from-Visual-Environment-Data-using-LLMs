@@ -1,0 +1,1186 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+
+RULES:
+  IF TRUE:
+    THEN SET ball[i].position = ball[i].rest_position FOR ALL i in [1..5]
+    THEN SET ball[i].velocity = (0, 0) FOR ALL i in [1..5]
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+
+RULES:
+  IF TRUE:
+    THEN SET ball[i].position = ball[i].rest_position FOR ALL i in [1..5]
+    THEN SET ball[i].velocity = (0, 0) FOR ALL i in [1..5]
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand.
+
+RULES:
+  IF hand.is_present == FALSE:
+    THEN SET ball[i].position = ball[i].rest_position FOR ALL i in [1..5]
+    THEN SET ball[i].velocity = (0, 0) FOR ALL i in [1..5]
+  IF hand.is_present == TRUE AND hand.position != ball[5].rest_position:
+    THEN MOVE hand.position towards ball[5].rest_position
+  IF hand.position == ball[5].rest_position:
+    THEN SET ball[5].position = hand.position
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, HELD, SWINGING}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand.
+
+RULES:
+  IF ball[i].state == RESTING:
+    THEN SET ball[i].position = ball[i].rest_position
+    THEN SET ball[i].velocity = (0, 0)
+  IF hand.is_present AND hand is touching ball[5]:
+    THEN SET ball[5].state = HELD
+  IF ball[5].state == HELD AND hand is moving:
+    THEN SET ball[5].position = hand.position
+  IF ball[5].state == HELD AND hand releases ball[5]:
+    THEN SET ball[5].state = SWINGING
+    THEN SET hand.is_present = FALSE
+  IF ball[i].state == SWINGING:
+    THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+    THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+
+RULES:
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      IF ball[i].state == SWINGING AND ball[i+1].state == RESTING AND ball[i] is moving towards ball[i+1]:
+        LET end_of_chain_index = i + 1
+        WHILE end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == RESTING:
+          INCREMENT end_of_chain_index
+        THEN SET ball[end_of_chain_index].velocity = ball[i].velocity
+        THEN SET ball[end_of_chain_index].state = SWINGING
+        THEN SET ball[i].velocity = (0, 0)
+        THEN SET ball[i].state = RESTING
+        THEN SET ball[i].position = ball[i].rest_position
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state == RESTING AND ball[i+1] is moving towards ball[i]:
+        LET start_of_chain_index = i
+        WHILE start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == RESTING:
+          DECREMENT start_of_chain_index
+        THEN SET ball[start_of_chain_index].velocity = ball[i+1].velocity
+        THEN SET ball[start_of_chain_index].state = SWINGING
+        THEN SET ball[i+1].velocity = (0, 0)
+        THEN SET ball[i+1].state = RESTING
+        THEN SET ball[i+1].position = ball[i+1].rest_position
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+
+RULES:
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      IF ball[i].state == SWINGING AND ball[i+1].state == RESTING AND ball[i] is moving towards ball[i+1]:
+        LET end_of_chain_index = i + 1
+        WHILE end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == RESTING:
+          INCREMENT end_of_chain_index
+        THEN SET ball[end_of_chain_index].velocity = ball[i].velocity
+        THEN SET ball[end_of_chain_index].state = SWINGING
+        THEN SET ball[i].velocity = (0, 0)
+        THEN SET ball[i].state = RESTING
+        THEN SET ball[i].position = ball[i].rest_position
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state == RESTING AND ball[i+1] is moving towards ball[i]:
+        LET start_of_chain_index = i
+        WHILE start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == RESTING:
+          DECREMENT start_of_chain_index
+        THEN SET ball[start_of_chain_index].velocity = ball[i+1].velocity
+        THEN SET ball[start_of_chain_index].state = SWINGING
+        THEN SET ball[i+1].velocity = (0, 0)
+        THEN SET ball[i+1].state = RESTING
+        THEN SET ball[i+1].position = ball[i+1].rest_position
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_holding[1..5]: A boolean array indicating if a hand is holding a ball.
+
+RULES:
+  FOR i from 1 to 5:
+    IF hand.is_holding[i] == TRUE:
+      THEN SET ball[i].state = HELD
+      THEN SET ball[i].position = ball[i].rest_position
+      THEN SET ball[i].velocity = (0,0)
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET end_of_chain_index = i + 1
+        WHILE end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == RESTING:
+          INCREMENT end_of_chain_index
+        
+        IF end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == HELD:
+          // Chain is blocked, so incoming ball stops
+          SET ball[i].state = RESTING
+          SET ball[i].velocity = (0,0)
+          SET ball[i].position = ball[i].rest_position
+        ELSE:
+          // Transfer momentum to the last ball of the resting chain
+          SET ball[end_of_chain_index].velocity = ball[i].velocity
+          SET ball[end_of_chain_index].state = SWINGING
+          SET ball[i].state = RESTING
+          SET ball[i].velocity = (0,0)
+          SET ball[i].position = ball[i].rest_position
+
+      // Right-to-Left Collision
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET start_of_chain_index = i
+        WHILE start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == RESTING:
+          DECREMENT start_of_chain_index
+        
+        IF start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == HELD:
+          // Chain is blocked, so incoming ball stops
+          SET ball[i+1].state = RESTING
+          SET ball[i+1].velocity = (0,0)
+          SET ball[i+1].position = ball[i+1].rest_position
+        ELSE:
+          // Transfer momentum to the first ball of the resting chain
+          SET ball[start_of_chain_index].velocity = ball[i+1].velocity
+          SET ball[start_of_chain_index].state = SWINGING
+          SET ball[i+1].state = RESTING
+          SET ball[i+1].velocity = (0,0)
+          SET ball[i+1].position = ball[i+1].rest_position
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand.
+  hand.grasped_ball_index: Integer (0 if none, 1-5)
+
+RULES:
+  IF hand.is_present AND hand.grasped_ball_index > 0:
+    LET i = hand.grasped_ball_index
+    SET ball[i].state = HELD
+    SET ball[i].position = hand.position
+    SET ball[i].velocity = (0,0)
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET end_of_chain_index = i + 1
+        WHILE end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == RESTING:
+          INCREMENT end_of_chain_index
+        IF end_of_chain_index < 5 AND ball[end_of_chain_index + 1].state == HELD:
+          SET ball[i].state = RESTING
+          SET ball[i].velocity = (0,0)
+          SET ball[i].position = ball[i].rest_position
+        ELSE:
+          SET ball[end_of_chain_index].velocity = ball[i].velocity
+          SET ball[end_of_chain_index].state = SWINGING
+          SET ball[i].state = RESTING
+          SET ball[i].velocity = (0,0)
+          SET ball[i].position = ball[i].rest_position
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET start_of_chain_index = i
+        WHILE start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == RESTING:
+          DECREMENT start_of_chain_index
+        IF start_of_chain_index > 1 AND ball[start_of_chain_index - 1].state == HELD:
+          SET ball[i+1].state = RESTING
+          SET ball[i+1].velocity = (0,0)
+          SET ball[i+1].position = ball[i+1].rest_position
+        ELSE:
+          SET ball[start_of_chain_index].velocity = ball[i+1].velocity
+          SET ball[start_of_chain_index].state = SWINGING
+          SET ball[i+1].state = RESTING
+          SET ball[i+1].velocity = (0,0)
+          SET ball[i+1].position = ball[i+1].rest_position
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+
+  IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+==================================================
+Round 11  —  frames [30, 31, 32]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+
+  IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+==================================================
+Round 12  —  frames [33, 34, 35]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+==================================================
+Round 13  —  frames [36, 37, 38]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision (Swinging)
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 14  —  frames [39, 40, 41]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision (Swinging)
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 15  —  frames [42, 43, 44]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision (Swinging)
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 16  —  frames [45, 46, 47]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision (Swinging)
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 17  —  frames [48, 49, 50]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Left-to-Right Collision (Swinging)
+      IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 18  —  frames [51, 52, 53]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Head-on collision between two swinging groups
+      IF ball[i].state == SWINGING AND ball[i+1].state == SWINGING AND ball[i] is moving towards ball[i+1] AND ball[i+1] is moving towards ball[i]:
+        LET group_L_end = i
+        LET group_L_start = i
+        WHILE group_L_start > 1 AND ball[group_L_start - 1].state == SWINGING: DECREMENT group_L_start
+        LET num_L = group_L_end - group_L_start + 1
+        LET velocity_L = ball[i].velocity
+
+        LET group_R_start = i + 1
+        LET group_R_end = i + 1
+        WHILE group_R_end < 5 AND ball[group_R_end + 1].state == SWINGING: INCREMENT group_R_end
+        LET num_R = group_R_end - group_R_start + 1
+        LET velocity_R = ball[i+1].velocity
+
+        FOR k from group_L_start to group_R_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+
+        LET new_group_L_start = group_L_start
+        LET new_group_L_end = group_L_start + num_R - 1
+        FOR k from new_group_L_start to new_group_L_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_R
+
+        LET new_group_R_end = group_R_end
+        LET new_group_R_start = group_R_end - num_L + 1
+        FOR k from new_group_R_start to new_group_R_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_L
+
+      // Left-to-Right Collision (Swinging into stationary)
+      ELSE IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging into stationary)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+Round 19  —  frames [54, 55, 56]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Head-on collision between two swinging groups
+      IF ball[i].state == SWINGING AND ball[i+1].state == SWINGING AND ball[i] is moving towards ball[i+1] AND ball[i+1] is moving towards ball[i]:
+        LET group_L_end = i
+        LET group_L_start = i
+        WHILE group_L_start > 1 AND ball[group_L_start - 1].state == SWINGING: DECREMENT group_L_start
+        LET num_L = group_L_end - group_L_start + 1
+        LET velocity_L = ball[i].velocity
+
+        LET group_R_start = i + 1
+        LET group_R_end = i + 1
+        WHILE group_R_end < 5 AND ball[group_R_end + 1].state == SWINGING: INCREMENT group_R_end
+        LET num_R = group_R_end - group_R_start + 1
+        LET velocity_R = ball[i+1].velocity
+
+        FOR k from group_L_start to group_R_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+
+        LET new_group_L_start = group_L_start
+        LET new_group_L_end = group_L_start + num_R - 1
+        FOR k from new_group_L_start to new_group_L_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_R
+
+        LET new_group_R_end = group_R_end
+        LET new_group_R_start = group_R_end - num_L + 1
+        FOR k from new_group_R_start to new_group_R_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_L
+
+      // Left-to-Right Collision (Swinging into stationary)
+      ELSE IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging into stationary)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position
+
+==================================================
+FINAL  —  frames [57, 58, 59]
+==================================================
+
+STATE VARIABLES:
+  ball[1..5].position: A vector representing the center of the ball.
+  ball[1..5].velocity: A vector representing the velocity of the ball.
+  ball[1..5].state: Enum {RESTING, SWINGING, HELD}
+  ball[1..5].rest_position: A constant vector for the resting position of each ball.
+  ball.radius: A constant float.
+  hand.is_present: Boolean
+  hand.position: A vector representing the position of the hand's grip.
+  hand.grasped_ball_indices: A list of integers representing the indices of held balls.
+
+RULES:
+  IF hand.is_present == TRUE AND hand.grasped_ball_indices is not empty:
+    LET reference_index = max(hand.grasped_ball_indices)
+    SET ball[reference_index].position = hand.position
+    FOR each index `i` in hand.grasped_ball_indices:
+      SET ball[i].state = HELD
+      SET ball[i].velocity = (0,0)
+      IF i != reference_index:
+        SET ball[i].position = ball[reference_index].position - vector((reference_index - i) * 2 * ball.radius, 0)
+  ELSE IF hand.is_present == FALSE:
+    FOR i from 1 to 5:
+      IF ball[i].state == HELD:
+        SET ball[i].state = SWINGING
+
+  FOR i from 1 to 5:
+    IF ball[i].state == SWINGING:
+      THEN apply acceleration towards ball[i].rest_position to ball[i].velocity
+      THEN SET ball[i].position = ball[i].position + ball[i].velocity
+
+  FOR i from 1 to 4:
+    IF distance(ball[i].position, ball[i+1].position) <= 2 * ball.radius:
+      // Head-on collision between two swinging groups
+      IF ball[i].state == SWINGING AND ball[i+1].state == SWINGING AND ball[i] is moving towards ball[i+1] AND ball[i+1] is moving towards ball[i]:
+        LET group_L_end = i
+        LET group_L_start = i
+        WHILE group_L_start > 1 AND ball[group_L_start - 1].state == SWINGING: DECREMENT group_L_start
+        LET num_L = group_L_end - group_L_start + 1
+        LET velocity_L = ball[i].velocity
+
+        LET group_R_start = i + 1
+        LET group_R_end = i + 1
+        WHILE group_R_end < 5 AND ball[group_R_end + 1].state == SWINGING: INCREMENT group_R_end
+        LET num_R = group_R_end - group_R_start + 1
+        LET velocity_R = ball[i+1].velocity
+
+        FOR k from group_L_start to group_R_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+
+        LET new_group_L_start = group_L_start
+        LET new_group_L_end = group_L_start + num_R - 1
+        FOR k from new_group_L_start to new_group_L_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_R
+
+        LET new_group_R_end = group_R_end
+        LET new_group_R_start = group_R_end - num_L + 1
+        FOR k from new_group_R_start to new_group_R_end: SET ball[k].state = SWINGING; SET ball[k].velocity = velocity_L
+
+      // Left-to-Right Collision (Swinging into stationary)
+      ELSE IF ball[i].state == SWINGING AND ball[i+1].state != SWINGING AND ball[i] is moving towards ball[i+1]:
+        LET swinging_group_start = i
+        WHILE swinging_group_start > 1 AND ball[swinging_group_start - 1].state == SWINGING: DECREMENT swinging_group_start
+        LET num_swinging = i - swinging_group_start + 1
+        LET incoming_velocity = ball[i].velocity
+        LET chain_end = i + 1
+        WHILE chain_end < 5 AND ball[chain_end + 1].state != SWINGING: INCREMENT chain_end
+        LET is_blocked = FALSE
+        FOR k from (chain_end - num_swinging + 1) to chain_end:
+          IF k >= 1 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from swinging_group_start to i: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_end - num_swinging + 1) >= 1:
+          FOR k from (chain_end - num_swinging + 1) to chain_end: SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Right-to-Left Collision (Swinging into stationary)
+      ELSE IF ball[i+1].state == SWINGING AND ball[i].state != SWINGING AND ball[i+1] is moving towards ball[i]:
+        LET swinging_group_end = i + 1
+        WHILE swinging_group_end < 5 AND ball[swinging_group_end + 1].state == SWINGING: INCREMENT swinging_group_end
+        LET num_swinging = swinging_group_end - (i + 1) + 1
+        LET incoming_velocity = ball[i+1].velocity
+        LET chain_start = i
+        WHILE chain_start > 1 AND ball[chain_start - 1].state != SWINGING: DECREMENT chain_start
+        LET is_blocked = FALSE
+        FOR k from chain_start to (chain_start + num_swinging - 1):
+          IF k <= 5 AND ball[k].state == HELD: is_blocked = TRUE; BREAK
+        FOR k from (i + 1) to swinging_group_end: SET ball[k].state = RESTING; SET ball[k].velocity = (0,0); SET ball[k].position = ball[k].rest_position
+        IF is_blocked == FALSE AND (chain_start + num_swinging - 1) <= 5:
+          FOR k from chain_start to (chain_start + num_swinging - 1): SET ball[k].state = SWINGING; SET ball[k].velocity = incoming_velocity
+
+      // Collision involving a HELD ball and a RESTING ball
+      ELSE IF (ball[i].state == HELD AND ball[i+1].state == RESTING) OR (ball[i+1].state == HELD AND ball[i].state == RESTING):
+        IF hand.is_present AND hand.grasped_ball_indices is not empty:
+          LET ref_idx = max(hand.grasped_ball_indices)
+          SET hand.position = ball[ref_idx].rest_position

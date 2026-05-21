@@ -1,0 +1,297 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  gravity: float
+
+RULES:
+  IF TRUE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+```
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  gravity: float
+
+RULES:
+  IF TRUE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+```
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  surface.y: float
+  gravity: float
+
+RULES:
+  IF droplet.y > surface.y:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+  ELSE:
+    THEN
+      droplet.y = surface.y
+      droplet.velocity_y = 0
+      droplet.height = droplet.height - 0.1 * droplet.height
+      droplet.width = droplet.width + 0.1 * droplet.width
+```
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.state: [AIRBORNE, COMPRESSING, EXPANDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = EXPANDING
+
+  IF droplet.state == EXPANDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+```
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.initial_height: float
+  droplet.state: [AIRBORNE, COMPRESSING, REBOUNDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+  restitution_velocity: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y AND droplet.velocity_y < 0:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = REBOUNDING
+
+  IF droplet.state == REBOUNDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+      IF droplet.height >= droplet.initial_height:
+        THEN
+          droplet.height = droplet.initial_height
+          droplet.width = droplet.initial_height
+          droplet.state = AIRBORNE
+          droplet.velocity_y = restitution_velocity
+```
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.initial_height: float
+  droplet.state: [AIRBORNE, COMPRESSING, REBOUNDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+  restitution_velocity: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y AND droplet.velocity_y < 0:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = REBOUNDING
+
+  IF droplet.state == REBOUNDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+      IF droplet.height >= droplet.initial_height:
+        THEN
+          droplet.height = droplet.initial_height
+          droplet.width = droplet.initial_height
+          droplet.state = AIRBORNE
+          droplet.velocity_y = restitution_velocity
+```
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.initial_height: float
+  droplet.state: [AIRBORNE, COMPRESSING, REBOUNDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+  restitution_velocity: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y AND droplet.velocity_y < 0:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = REBOUNDING
+
+  IF droplet.state == REBOUNDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+      IF droplet.height >= droplet.initial_height:
+        THEN
+          droplet.height = droplet.initial_height
+          droplet.width = droplet.initial_height
+          droplet.state = AIRBORNE
+          droplet.velocity_y = restitution_velocity
+```
+
+==================================================
+FINAL  —  frames [21, 22, 23]
+==================================================
+
+```pseudocode
+STATE VARIABLES:
+  droplet.y: float
+  droplet.velocity_y: float
+  droplet.height: float
+  droplet.width: float
+  droplet.initial_height: float
+  droplet.state: [AIRBORNE, COMPRESSING, REBOUNDING]
+  droplet.min_height: float
+  surface.y: float
+  gravity: float
+  deformation_rate: float
+  restitution_velocity: float
+
+RULES:
+  IF droplet.state == AIRBORNE:
+    THEN
+      droplet.velocity_y = droplet.velocity_y - gravity
+      droplet.y = droplet.y + droplet.velocity_y
+      IF droplet.y <= surface.y AND droplet.velocity_y < 0:
+        THEN
+          droplet.y = surface.y
+          droplet.velocity_y = 0
+          droplet.state = COMPRESSING
+  
+  IF droplet.state == COMPRESSING:
+    THEN
+      droplet.height = droplet.height - deformation_rate
+      droplet.width = droplet.width + deformation_rate
+      IF droplet.height <= droplet.min_height:
+        THEN
+          droplet.state = REBOUNDING
+
+  IF droplet.state == REBOUNDING:
+    THEN
+      droplet.height = droplet.height + deformation_rate
+      droplet.width = droplet.width - deformation_rate
+      IF droplet.height >= droplet.initial_height:
+        THEN
+          droplet.height = droplet.initial_height
+          droplet.width = droplet.initial_height
+          droplet.state = AIRBORNE
+          droplet.velocity_y = restitution_velocity
+```

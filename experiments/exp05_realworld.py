@@ -92,6 +92,7 @@ def run_scene(scene_name: str, description: str) -> dict | None:
             provider=PROVIDER,
             model=MODEL,
             verbose=True,
+            prompt_style="physics",
         )
     except Exception as e:
         print(f"  EXTRACTION ERROR: {e}")

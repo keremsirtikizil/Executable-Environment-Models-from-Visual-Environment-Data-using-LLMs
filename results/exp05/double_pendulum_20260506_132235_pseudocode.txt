@@ -1,0 +1,51 @@
+Scene        : double_pendulum
+Description  : A double pendulum — two pendulums connected in series, exhibiting chaotic motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 60 | Batch : 3 | Rounds : 20
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+STATE VARIABLES:
+  System.state: {LOCKED_WALL, ROTATABLE_DOOR, LOCKED_DOOR, UNBOLTED_WALL, FOLDED_WALL}
+  UserAction: {TOGGLE_KEY_LOCK, TOGGLE_BOLTS, TOGGLE_FOLD, MOVE_PANELS, NONE}
+  Brace.orientation: {VERTICAL, HORIZONTAL, ROTATING}
+  PanelLeft.isMobile: {TRUE, FALSE}
+  PanelRight.isMobile: {TRUE, FALSE}
+  PanelRight.isSwingable: {TRUE, FALSE}
+
+RULES:
+  // Door operation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == VERTICAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_WALL
+  IF System.state == ROTATABLE_DOOR AND Brace.orientation == HORIZONTAL AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = LOCKED_DOOR
+  IF System.state == LOCKED_DOOR AND UserAction == TOGGLE_KEY_LOCK
+    THEN SET System.state = ROTATABLE_DOOR
+
+  // Panel separation state transitions
+  IF System.state == LOCKED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = FOLDED_WALL
+  IF System.state == FOLDED_WALL AND UserAction == TOGGLE_FOLD
+    THEN SET System.state = UNBOLTED_WALL
+  IF System.state == UNBOLTED_WALL AND UserAction == TOGGLE_BOLTS
+    THEN SET System.state = LOCKED_WALL
+
+  // Panel mobility based on system state
+  IF System.state == FOLDED_WALL
+    THEN SET PanelLeft.isMobile = TRUE
+    THEN SET PanelRight.isMobile = TRUE
+    THEN SET PanelRight.isSwingable = FALSE
+  ELSE IF System.state == ROTATABLE_DOOR OR System.state == LOCKED_DOOR
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = TRUE
+  ELSE // State is LOCKED_WALL or UNBOLTED_WALL
+    THEN SET PanelLeft.isMobile = FALSE
+    THEN SET PanelRight.isMobile = FALSE
+    THEN SET PanelRight.isSwingable = FALSE

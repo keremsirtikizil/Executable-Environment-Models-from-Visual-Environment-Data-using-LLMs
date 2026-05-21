@@ -1,0 +1,683 @@
+
+==================================================
+Round 1  —  frames [0, 1, 2]
+==================================================
+
+STATE VARIABLES:
+  person_head_orientation: (away_from_camera, towards_camera)
+  person_expression: (neutral, smiling)
+  person_left_hand_state: (in_pocket, pointing_down)
+  person_on_left_is_visible: (true, false)
+  time: (frame1, frame2, frame3)
+
+RULES:
+  IF time == frame1:
+    THEN SET person_head_orientation = away_from_camera
+    AND SET person_expression = neutral
+    AND SET person_left_hand_state = in_pocket
+    AND SET person_on_left_is_visible = false
+
+  IF time == frame2 AND person_head_orientation == away_from_camera:
+    THEN SET person_head_orientation = towards_camera
+
+  IF time == frame3 AND person_head_orientation == towards_camera:
+    THEN SET person_head_orientation = away_from_camera
+    AND SET person_expression = smiling
+    AND SET person_left_hand_state = pointing_down
+    AND SET person_on_left_is_visible = true
+
+==================================================
+Round 2  —  frames [3, 4, 5]
+==================================================
+
+STATE VARIABLES:
+  person_action: (observing, looking_at_camera, turning_handle)
+  person_left_hand_state: (in_pocket, pointing_down, at_side)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET person_action = observing
+    AND SET person_left_hand_state = in_pocket
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF time == 2 AND person_action == observing:
+    THEN SET person_action = looking_at_camera
+
+  IF time == 3 AND person_action == looking_at_camera:
+    THEN SET person_action = observing
+    AND SET person_left_hand_state = pointing_down
+
+  IF time == 4 AND person_left_hand_state == pointing_down:
+    THEN SET person_action = turning_handle
+    AND SET person_left_hand_state = at_side
+
+  IF person_action == turning_handle AND mechanism_state == stationary:
+    THEN SET mechanism_state = rotating
+    AND SET mechanism_rotation_speed = slow
+
+  IF mechanism_rotation_speed == slow AND person_action == turning_handle:
+    THEN SET mechanism_rotation_speed = fast
+
+==================================================
+Round 3  —  frames [6, 7, 8]
+==================================================
+
+STATE VARIABLES:
+  person_action: (idle, looking_at_camera, turning_handle, observing_rotation)
+  person_right_hand_state: (on_handle, off_handle)
+  person_left_hand_state: (in_pocket, pointing_down, at_side, clenched_fist)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET person_action = idle
+    AND SET person_right_hand_state = off_handle
+    AND SET person_left_hand_state = in_pocket
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF time == 2 AND person_action == idle:
+    THEN SET person_action = looking_at_camera
+
+  IF time == 3 AND person_action == looking_at_camera:
+    THEN SET person_action = idle
+    AND SET person_left_hand_state = pointing_down
+
+  IF time >= 4 AND person_action == idle:
+    THEN SET person_action = turning_handle
+    AND SET person_right_hand_state = on_handle
+    AND SET person_left_hand_state = at_side
+
+  IF person_action == turning_handle AND mechanism_state == stationary:
+    THEN SET mechanism_state = rotating
+    AND SET mechanism_rotation_speed = slow
+
+  IF person_action == turning_handle AND mechanism_rotation_speed == slow:
+    THEN SET mechanism_rotation_speed = fast
+
+  IF time >= 8 AND person_action == turning_handle:
+    THEN SET person_action = observing_rotation
+    AND SET person_right_hand_state = off_handle
+    AND SET person_left_hand_state = clenched_fist
+
+  IF person_action == observing_rotation:
+    THEN SET mechanism_state = rotating
+    AND SET mechanism_rotation_speed = fast
+
+==================================================
+Round 4  —  frames [9, 10, 11]
+==================================================
+
+STATE VARIABLES:
+  person_action: (idle, looking_at_camera, turning_handle, observing, exiting)
+  person_right_hand_state: (on_handle, off_handle)
+  person_left_hand_state: (in_pocket, pointing_down, at_side, clenched_fist)
+  person_visibility: (fully_visible, partially_visible)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast, slowing)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET person_action = idle
+    AND SET person_right_hand_state = off_handle
+    AND SET person_left_hand_state = in_pocket
+    AND SET person_visibility = fully_visible
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF time >= 2 AND time <= 3:
+    THEN SET person_action = looking_at_camera
+    ELSE SET person_action = idle
+    AND IF time == 3: THEN SET person_left_hand_state = pointing_down
+
+  IF time >= 4 AND time < 8:
+    THEN SET person_action = turning_handle
+    AND SET person_right_hand_state = on_handle
+    AND SET person_left_hand_state = at_side
+    AND SET mechanism_state = rotating
+    AND SET mechanism_rotation_speed = fast
+
+  IF time >= 8 AND person_action != exiting:
+    THEN SET person_action = observing
+    AND SET person_right_hand_state = off_handle
+    AND SET mechanism_rotation_speed = slowing
+
+  IF time >= 8 AND time < 10:
+    THEN SET person_left_hand_state = clenched_fist
+
+  IF time >= 10 AND person_action != exiting:
+    THEN SET person_left_hand_state = in_pocket
+
+  IF time == 11:
+    THEN SET person_action = looking_at_camera
+
+  IF time >= 12:
+    THEN SET person_action = exiting
+    AND SET person_visibility = partially_visible
+
+==================================================
+Round 5  —  frames [12, 13, 14]
+==================================================
+
+STATE VARIABLES:
+  actor_state: (present, exiting, gone)
+  actor_action: (idle, looking_at_camera, turning_handle, observing)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast, slowing)
+  new_person_action: (not_present, walking_past)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET actor_state = present
+    AND SET actor_action = idle
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+    AND SET new_person_action = not_present
+
+  IF time >= 2 AND time <= 3 AND actor_state == present:
+    THEN SET actor_action = looking_at_camera
+    ELSE IF actor_state == present AND actor_action != turning_handle AND actor_action != observing:
+    THEN SET actor_action = idle
+
+  IF time >= 4 AND time < 8 AND actor_state == present:
+    THEN SET actor_action = turning_handle
+    AND SET mechanism_state = rotating
+    AND SET mechanism_rotation_speed = fast
+
+  IF time >= 8 AND actor_action == turning_handle:
+    THEN SET actor_action = observing
+    AND SET mechanism_rotation_speed = slowing
+
+  IF time >= 12 AND actor_state == present:
+    THEN SET actor_state = exiting
+
+  IF time >= 13 AND actor_state == exiting:
+    THEN SET actor_state = gone
+
+  IF time >= 14:
+    THEN SET new_person_action = walking_past
+
+  IF actor_state == gone AND mechanism_state == rotating:
+    THEN CONTINUE SET mechanism_rotation_speed = slowing
+
+==================================================
+Round 6  —  frames [15, 16, 17]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl)
+  operator_action: (idle, looking_at_camera, turning_handle, observing, exiting, approaching)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast, slowing, very_slow)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET operator = boy
+    AND SET operator_action = idle
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF operator == boy:
+    IF time >= 2 AND time <= 3: THEN SET operator_action = looking_at_camera
+    IF time >= 4 AND time <= 7:
+      THEN SET operator_action = turning_handle
+      AND SET mechanism_state = rotating
+      AND SET mechanism_rotation_speed = fast
+    IF time >= 8 AND time <= 11:
+      THEN SET operator_action = observing
+      AND SET mechanism_rotation_speed = slowing
+    IF time >= 12:
+      THEN SET operator_action = exiting
+
+  IF time == 13 AND operator_action == exiting:
+    THEN SET operator = none
+
+  IF operator == none AND mechanism_state == rotating:
+    IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+
+  IF time >= 16 AND operator == none:
+    THEN SET operator = girl
+    AND SET operator_action = approaching
+
+  IF operator == girl AND operator_action == approaching AND time >= 17:
+    THEN SET operator_action = turning_handle
+
+  IF operator == girl AND operator_action == turning_handle:
+    THEN SET mechanism_rotation_speed = slow
+
+==================================================
+Round 7  —  frames [18, 19, 20]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl)
+  operator_action: (idle, looking_at_camera, turning_handle, observing, exiting, approaching)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast, slowing, very_slow)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET operator = boy
+    AND SET operator_action = idle
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF operator == boy:
+    IF time >= 2 AND time <= 3: THEN SET operator_action = looking_at_camera
+    IF time >= 4 AND time <= 7:
+      THEN SET operator_action = turning_handle
+      AND SET mechanism_state = rotating
+      AND SET mechanism_rotation_speed = fast
+    IF time >= 8 AND time <= 11:
+      THEN SET operator_action = observing
+      AND SET mechanism_rotation_speed = slowing
+    IF time >= 12:
+      THEN SET operator_action = exiting
+
+  IF time == 13 AND operator_action == exiting:
+    THEN SET operator = none
+
+  IF operator == none AND mechanism_state == rotating:
+    IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+
+  IF time >= 16 AND operator == none:
+    THEN SET operator = girl
+    AND SET operator_action = approaching
+
+  IF operator == girl:
+    IF operator_action == approaching AND time >= 17:
+      THEN SET operator_action = turning_handle
+    IF operator_action == turning_handle:
+      IF mechanism_rotation_speed == very_slow:
+        THEN SET mechanism_rotation_speed = slow
+      ELSE IF mechanism_rotation_speed == slow:
+        THEN SET mechanism_rotation_speed = fast
+
+==================================================
+Round 8  —  frames [21, 22, 23]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl)
+  operator_action: (idle, looking_at_camera, turning_handle, observing, exiting, approaching)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, slow, fast, slowing, very_slow)
+  time: integer
+
+RULES:
+  IF time == 1:
+    THEN SET operator = boy
+    AND SET operator_action = idle
+    AND SET mechanism_state = stationary
+    AND SET mechanism_rotation_speed = none
+
+  IF operator == boy:
+    IF time >= 2 AND time <= 3: THEN SET operator_action = looking_at_camera
+    IF time >= 4 AND time <= 7:
+      THEN SET operator_action = turning_handle
+      AND SET mechanism_state = rotating
+      AND SET mechanism_rotation_speed = fast
+    IF time >= 8 AND time <= 11:
+      THEN SET operator_action = observing
+      AND SET mechanism_rotation_speed = slowing
+    IF time == 12:
+      THEN SET operator_action = exiting
+
+  IF time == 13 AND operator == boy AND operator_action == exiting:
+    THEN SET operator = none
+
+  IF operator == none AND mechanism_state == rotating:
+    IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+
+  IF time == 16 AND operator == none:
+    THEN SET operator = girl
+    AND SET operator_action = approaching
+
+  IF operator == girl:
+    IF operator_action == approaching AND time >= 17:
+      THEN SET operator_action = turning_handle
+    IF operator_action == turning_handle:
+      IF mechanism_rotation_speed == very_slow:
+        THEN SET mechanism_rotation_speed = slow
+      ELSE IF mechanism_rotation_speed == slow:
+        THEN SET mechanism_rotation_speed = fast
+    IF time == 23:
+      THEN SET operator_action = exiting
+
+  IF time == 24 AND operator == girl AND operator_action == exiting:
+    THEN SET operator = none
+
+==================================================
+Round 9  —  frames [24, 25, 26]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl)
+  operator_action: (idle, looking_at_camera, turning_handle, observing, exiting, approaching)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, slowing)
+  time: integer
+
+RULES:
+  // Actor Behavior
+  IF time == 1: THEN SET operator = boy, operator_action = idle
+  IF operator == boy:
+    IF time >= 4 AND time <= 7: THEN SET operator_action = turning_handle
+    IF time >= 8 AND time <= 11: THEN SET operator_action = observing
+    IF time == 12: THEN SET operator_action = exiting
+  IF time == 13 AND operator == boy: THEN SET operator = none
+
+  IF time == 16 AND operator == none: THEN SET operator = girl, operator_action = approaching
+  IF operator == girl:
+    IF time >= 17 AND time <= 22: THEN SET operator_action = turning_handle
+    IF time == 23: THEN SET operator_action = exiting
+  IF time == 24 AND operator == girl: THEN SET operator = none
+
+  // Mechanism Physics
+  IF operator_action == turning_handle:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+  ELSE IF mechanism_state == rotating:
+    IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      SET mechanism_state = stationary
+      SET mechanism_rotation_speed = none
+
+==================================================
+Round 10  —  frames [27, 28, 29]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, slowing)
+  time: integer
+
+RULES:
+  // Operator Sequencing
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+
+  // Determine if handle is being turned based on current operator and time
+  LET is_turning = false
+  IF operator == boy AND time >= 4 AND time <= 7: THEN SET is_turning = true
+  IF operator == girl AND time >= 17 AND time <= 22: THEN SET is_turning = true
+  IF operator == woman AND time >= 32: THEN SET is_turning = true
+
+  // Mechanism Physics
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+  ELSE IF mechanism_state == rotating: // No one is turning the handle
+    IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      // Mechanism continues to rotate at very_slow speed due to inertia
+      CONTINUE
+
+==================================================
+Round 11  —  frames [30, 31, 32]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, slowing)
+  time: integer
+
+RULES:
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      // Mechanism continues to rotate at very_slow speed due to inertia
+      // as observed between operators.
+      CONTINUE
+
+==================================================
+Round 12  —  frames [33, 34, 35]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, slowing)
+  time: integer
+
+RULES:
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      // Mechanism continues to rotate at very_slow speed due to inertia
+      CONTINUE
+
+==================================================
+Round 13  —  frames [36, 37, 38]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, slowing)
+  time: integer
+
+RULES:
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      // Mechanism continues to rotate at very_slow speed due to inertia
+      CONTINUE
+
+==================================================
+Round 14  —  frames [39, 40, 41]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman, two_girls)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, very_fast, slowing)
+  mechanism_configuration: (extended, retracted)
+  time: integer
+
+RULES:
+  // Initialization
+  IF time == 1:
+    THEN SET mechanism_configuration = extended
+
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+  IF time == 46: THEN SET operator = two_girls
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37) OR
+     (operator == two_girls AND time >= 46):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+    ELSE IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = very_fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == very_fast OR mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      CONTINUE // Inertia keeps it spinning
+
+  // Configuration Change based on speed
+  IF mechanism_rotation_speed == very_fast AND mechanism_configuration == extended:
+    THEN SET mechanism_configuration = retracted
+
+==================================================
+FINAL  —  frames [42, 43]
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman, two_girls)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, very_fast, slowing)
+  mechanism_configuration: (extended, retracted)
+  time: integer
+
+RULES:
+  // Initialization
+  IF time == 1:
+    THEN SET mechanism_configuration = extended
+    AND SET mechanism_state = stationary
+
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+  IF time == 46: THEN SET operator = two_girls
+  IF time == 50: THEN SET operator = none
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37) OR
+     (operator == two_girls AND time >= 46 AND time <= 49):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+    ELSE IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = very_fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == very_fast OR mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      CONTINUE // Inertia keeps it spinning
+
+  // Configuration Change based on speed
+  IF mechanism_rotation_speed == very_fast AND mechanism_configuration == extended:
+    THEN SET mechanism_configuration = retracted
+  ELSE IF mechanism_rotation_speed < very_fast AND mechanism_configuration == retracted:
+    THEN SET mechanism_configuration = extended

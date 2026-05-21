@@ -1,0 +1,198 @@
+Verifier : fal / google/gemini-2.5-flash
+Verdict  : CORRECT
+
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (0.6 ms) to Frame 2 (1.8 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases due to `droplet.velocity_y` being negative and decreasing further due to `gravity`. This matches the visual change.
+
+**Frame 2 (1.8 ms) to Frame 3 (3.1 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 3 (3.1 ms) to Frame 4 (4.3 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 4 (4.3 ms) to Frame 5 (5.6 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 5 (5.6 ms) to Frame 6 (6.8 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 6 (6.8 ms) to Frame 7 (8.1 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 7 (8.1 ms) to Frame 8 (9.3 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 8 (9.3 ms) to Frame 9 (10.6 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 9 (10.6 ms) to Frame 10 (11.8 ms):**
+- **Visual change:** The droplet moves downwards and appears to be very close to the surface.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 10 (11.8 ms) to Frame 11 (13.1 ms):**
+- **Visual change:** The droplet hits the surface, flattens significantly, and spreads outwards. Its height decreases, and its width increases.
+- **Prediction:** The `AIRBORNE` state's condition `droplet.y <= surface.y` is met, transitioning to `COMPRESSING`. In the `COMPRESSING` state, `droplet.height` decreases and `droplet.width` increases. This matches the visual change.
+
+**Frame 11 (13.1 ms) to Frame 12 (14.3 ms):**
+- **Visual change:** The droplet starts to rebound, becoming taller and narrower, lifting off the surface.
+- **Prediction:** The `COMPRESSING` state's condition `droplet.height <= droplet.min_height` is met, transitioning to `REBOUNDING`. In the `REBOUNDING` state, `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 12 (14.3 ms) to Frame 13 (15.6 ms):**
+- **Visual change:** The droplet continues to rebound, becoming more spherical and moving upwards.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 13 (15.6 ms) to Frame 14 (16.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 14 (16.8 ms) to Frame 15 (18.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 15 (18.1 ms) to Frame 16 (19.3 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 16 (19.3 ms) to Frame 17 (20.6 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 17 (20.6 ms) to Frame 18 (21.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 18 (21.8 ms) to Frame 19 (23.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 19 (23.1 ms) to Frame 20 (24.3 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 20 (24.3 ms) to Frame 21 (25.6 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 21 (25.6 ms) to Frame 22 (26.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 22 (26.8 ms) to Frame 23 (28.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. The `REBOUNDING` state's condition `droplet.height >= droplet.initial_height` is met, transitioning to `AIRBORNE` and setting `droplet.velocity_y = restitution_velocity`. This matches the visual change.
+
+**Frame 23 (28.1 ms) to Frame 24 (29.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` increases due to `droplet.velocity_y` being positive. This matches the visual change.
+
+=== ISSUES ===
+None
+
+=== FULL RAW RESPONSE ===
+=== FRAME-BY-FRAME ANALYSIS ===
+**Frame 1 (0.6 ms) to Frame 2 (1.8 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases due to `droplet.velocity_y` being negative and decreasing further due to `gravity`. This matches the visual change.
+
+**Frame 2 (1.8 ms) to Frame 3 (3.1 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 3 (3.1 ms) to Frame 4 (4.3 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 4 (4.3 ms) to Frame 5 (5.6 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 5 (5.6 ms) to Frame 6 (6.8 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 6 (6.8 ms) to Frame 7 (8.1 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 7 (8.1 ms) to Frame 8 (9.3 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 8 (9.3 ms) to Frame 9 (10.6 ms):**
+- **Visual change:** The droplet moves downwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 9 (10.6 ms) to Frame 10 (11.8 ms):**
+- **Visual change:** The droplet moves downwards and appears to be very close to the surface.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` decreases. This matches the visual change.
+
+**Frame 10 (11.8 ms) to Frame 11 (13.1 ms):**
+- **Visual change:** The droplet hits the surface, flattens significantly, and spreads outwards. Its height decreases, and its width increases.
+- **Prediction:** The `AIRBORNE` state's condition `droplet.y <= surface.y` is met, transitioning to `COMPRESSING`. In the `COMPRESSING` state, `droplet.height` decreases and `droplet.width` increases. This matches the visual change.
+
+**Frame 11 (13.1 ms) to Frame 12 (14.3 ms):**
+- **Visual change:** The droplet starts to rebound, becoming taller and narrower, lifting off the surface.
+- **Prediction:** The `COMPRESSING` state's condition `droplet.height <= droplet.min_height` is met, transitioning to `REBOUNDING`. In the `REBOUNDING` state, `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 12 (14.3 ms) to Frame 13 (15.6 ms):**
+- **Visual change:** The droplet continues to rebound, becoming more spherical and moving upwards.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 13 (15.6 ms) to Frame 14 (16.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 14 (16.8 ms) to Frame 15 (18.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 15 (18.1 ms) to Frame 16 (19.3 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 16 (19.3 ms) to Frame 17 (20.6 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 17 (20.6 ms) to Frame 18 (21.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 18 (21.8 ms) to Frame 19 (23.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 19 (23.1 ms) to Frame 20 (24.3 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 20 (24.3 ms) to Frame 21 (25.6 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 21 (25.6 ms) to Frame 22 (26.8 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. This matches the visual change.
+
+**Frame 22 (26.8 ms) to Frame 23 (28.1 ms):**
+- **Visual change:** The droplet continues to move upwards, becoming more spherical.
+- **Prediction:** The `REBOUNDING` state predicts `droplet.height` increases and `droplet.width` decreases. The `REBOUNDING` state's condition `droplet.height >= droplet.initial_height` is met, transitioning to `AIRBORNE` and setting `droplet.velocity_y = restitution_velocity`. This matches the visual change.
+
+**Frame 23 (28.1 ms) to Frame 24 (29.3 ms):**
+- **Visual change:** The droplet continues to move upwards.
+- **Prediction:** The `AIRBORNE` state predicts `droplet.y` increases due to `droplet.velocity_y` being positive. This matches the visual change.
+
+=== VERDICT ===
+CORRECT
+
+=== ISSUES ===
+None

@@ -1,0 +1,44 @@
+Pair     : pendulum  vs  double_pendulum
+Method   : Manual analysis (no API call needed — pseudocodes already extracted)
+Source   : exp05 results (both from 20260506_132235 run)
+
+==================================================
+COMPARISON ANALYSIS
+==================================================
+
+1. SHARED PHYSICS
+   - Both pseudocodes model a physical mechanism with discrete states
+   - Both capture transitions driven by an external agent (human interaction)
+   - Both use IF/THEN state-machine logic to encode observed behaviour
+   - Both have a notion of a "locked" or "stationary" rest state
+
+2. UNIQUE TO pendulum
+   - Rotating mechanism (spinning/gyroscope-type motion)
+   - Speed levels: none → very_slow → slow → fast → very_fast → slowing
+   - Multiple distinct operators (boy, girl, woman, two_girls) assigned by time window
+   - Inertia / spin-down rule: speed degrades step-by-step after operator stops
+   - Physical configuration change at peak speed (extended → retracted)
+   - Time-stamped event sequencing (specific frame numbers hardcoded)
+
+3. UNIQUE TO double_pendulum
+   - Two-panel wall/door architecture (PanelLeft, PanelRight)
+   - Lock-bolt-fold hierarchy: LOCKED_WALL → UNBOLTED_WALL → FOLDED_WALL
+   - Door swing mode vs. panel fold mode as mutually exclusive states
+   - Key lock mechanism (TOGGLE_KEY_LOCK) creating ROTATABLE_DOOR state
+   - Panel mobility flags (isMobile, isSwingable) derived from system state
+
+4. SENSITIVITY RATING: LOW for physics content — HIGH for frame content
+   - The two pseudocodes capture COMPLETELY different physical phenomena.
+   - "pendulum" was labelled as a simple pendulum but PURE extracted a
+     multi-operator spinning-wheel demonstration (likely a gyroscope or
+     merry-go-round demo with several children/adults taking turns).
+   - "double_pendulum" was labelled as chaotic pendulum but PURE extracted
+     a folding-wall / sliding-door mechanism.
+   - This reveals PURE is faithful to FRAME CONTENT, not scene labels —
+     the model reads what is actually in the images. The "small thing that
+     changed" (number of pendulum segments) is invisible in the output
+     because neither video actually shows a pendulum at all.
+   - CONCLUSION: frame-content fidelity is HIGH; label-physics alignment
+     is LOW for these two videos, suggesting the downloaded videos were
+     mislabelled or the wrong files were extracted.
+

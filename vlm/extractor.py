@@ -111,6 +111,54 @@ Every claim must be grounded in something you actually saw.
 
 
 # -----------------------------------------------------------------------
+# Physics-domain incremental prompts (used by exp05 for real-world video)
+# Forces structured pseudocode output instead of scientific prose
+# -----------------------------------------------------------------------
+
+PHYSICS_INCREMENTAL_SYSTEM_PROMPT = """\
+You output ONLY pseudocode. No prose, no explanations, no observations. \
+Watch the frames and write IF/THEN/ELSE rules that describe what you see as a simulation. \
+Every response must be pseudocode — nothing else."""
+
+PHYSICS_INCREMENTAL_FIRST_BATCH_PROMPT = """\
+Here are {n} frames in chronological order.
+
+Output pseudocode only:
+
+STATE VARIABLES:
+  <name>: <type or range>
+
+RULES:
+  IF <condition>: THEN <effect>
+  ..."""
+
+PHYSICS_INCREMENTAL_NEXT_BATCH_PROMPT = """\
+Here are {n} more frames.
+
+Update your pseudocode. Add, remove, or correct rules based on what you now see. \
+Output the full revised pseudocode only — no commentary.
+
+STATE VARIABLES:
+  ...
+
+RULES:
+  IF <condition>: THEN <effect>
+  ..."""
+
+PHYSICS_INCREMENTAL_FINAL_PROMPT = """\
+Here are the final {n} frames.
+
+Output the final pseudocode only.
+
+STATE VARIABLES:
+  <name>: <type or range>
+
+RULES:
+  IF <condition>: THEN <effect>
+"""
+
+
+# -----------------------------------------------------------------------
 # Verification prompts — a second LLM checks the pseudocode against images
 # -----------------------------------------------------------------------
 
@@ -519,16 +567,19 @@ def extract_rule_incremental(
     provider: str = "fal",
     model: str = "google/gemini-2.5-pro",
     verbose: bool = True,
+    prompt_style: str = "grid",
 ) -> dict:
     """
     Send frames in small batches via a multi-turn conversation.
     Each round the LLM proposes or revises its pseudocode hypothesis.
 
+    prompt_style: "grid"    — neutral observation prompts (exp01-04, default)
+                  "physics" — IF/THEN/ELSE pseudocode prompts (exp05 real-world)
+
     Returns dict with keys:
       pseudocode     str   final consolidated pseudocode
       rounds         list  of dicts, each with 'batch_indices', 'hypothesis', 'raw'
     """
-    # Split image_paths into batches
     batches = []
     for i in range(0, len(image_paths), batch_size):
         batches.append(image_paths[i:i + batch_size])
@@ -538,17 +589,17 @@ def extract_rule_incremental(
               f"{len(batches)} batches of ~{batch_size}")
 
     if provider == "fal":
-        return _incremental_fal(batches, model, verbose)
+        return _incremental_fal(batches, model, verbose, prompt_style)
     elif provider == "claude":
-        return _incremental_claude(batches, verbose)
+        return _incremental_claude(batches, verbose, prompt_style)
     elif provider == "gpt4o":
-        return _incremental_gpt4o(batches, verbose)
+        return _incremental_gpt4o(batches, verbose, prompt_style)
     else:
         raise ValueError(f"Unknown provider '{provider}'. Use: fal | claude | gpt4o")
 
 
-def _build_user_message(batch, round_idx, total_batches):
-    """Build one user message: images + minimal neutral prompt."""
+def _build_user_message(batch, round_idx, total_batches, prompt_style="grid"):
+    """Build one user message: images + prompt. prompt_style: 'grid' or 'physics'."""
     content = []
     for path in batch:
         content.append(_img_block(path))
@@ -556,18 +607,27 @@ def _build_user_message(batch, round_idx, total_batches):
     is_first = (round_idx == 0)
     is_last  = (round_idx == total_batches - 1)
 
-    if is_first:
-        prompt = INCREMENTAL_FIRST_BATCH_PROMPT.format(n=len(batch))
-    elif is_last:
-        prompt = INCREMENTAL_FINAL_PROMPT.format(n=len(batch))
+    if prompt_style == "physics":
+        first_p = PHYSICS_INCREMENTAL_FIRST_BATCH_PROMPT
+        next_p  = PHYSICS_INCREMENTAL_NEXT_BATCH_PROMPT
+        final_p = PHYSICS_INCREMENTAL_FINAL_PROMPT
     else:
-        prompt = INCREMENTAL_NEXT_BATCH_PROMPT.format(n=len(batch))
+        first_p = INCREMENTAL_FIRST_BATCH_PROMPT
+        next_p  = INCREMENTAL_NEXT_BATCH_PROMPT
+        final_p = INCREMENTAL_FINAL_PROMPT
+
+    if is_first:
+        prompt = first_p.format(n=len(batch))
+    elif is_last:
+        prompt = final_p.format(n=len(batch))
+    else:
+        prompt = next_p.format(n=len(batch))
 
     content.append({"type": "text", "text": prompt})
     return {"role": "user", "content": content}
 
 
-def _incremental_fal(batches, model, verbose):
+def _incremental_fal(batches, model, verbose, prompt_style="grid"):
     from openai import OpenAI
 
     fal_key = os.environ.get("FAL_KEY")
@@ -580,8 +640,8 @@ def _incremental_fal(batches, model, verbose):
         default_headers={"Authorization": f"Key {fal_key}"},
     )
 
-    # conversation history grows each round: [system, user, assistant, user, assistant, ...]
-    conversation = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
+    system = PHYSICS_INCREMENTAL_SYSTEM_PROMPT if prompt_style == "physics" else INCREMENTAL_SYSTEM_PROMPT
+    conversation = [{"role": "system", "content": system}]
     rounds = []
 
     for r, batch in enumerate(batches):
@@ -593,8 +653,7 @@ def _incremental_fal(batches, model, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        # Append next user message (images + minimal prompt, no hypothesis injected)
-        conversation.append(_build_user_message(batch, r, len(batches)))
+        conversation.append(_build_user_message(batch, r, len(batches), prompt_style))
 
         response = client.chat.completions.create(
             model=model,
@@ -604,7 +663,9 @@ def _incremental_fal(batches, model, verbose):
         )
         raw = response.choices[0].message.content.strip()
 
-        # Append the model's actual response as the assistant turn
+        # Replace the just-sent user message with text-only summary to prevent
+        # image accumulation in the history (avoids 413 on long videos)
+        conversation[-1] = {"role": "user", "content": f"[Frames {batch_indices[0]}-{batch_indices[-1]}]"}
         conversation.append({"role": "assistant", "content": raw})
 
         observation = _extract_hypothesis(raw)
@@ -622,11 +683,20 @@ def _incremental_fal(batches, model, verbose):
     return {"pseudocode": final, "rounds": rounds}
 
 
-def _incremental_claude(batches, verbose):
+def _incremental_claude(batches, verbose, prompt_style="grid"):
     import anthropic
     client = anthropic.Anthropic()
 
-    # Claude uses same alternating structure but images are base64 source blocks
+    system = PHYSICS_INCREMENTAL_SYSTEM_PROMPT if prompt_style == "physics" else INCREMENTAL_SYSTEM_PROMPT
+    if prompt_style == "physics":
+        first_p, next_p, final_p = (PHYSICS_INCREMENTAL_FIRST_BATCH_PROMPT,
+                                     PHYSICS_INCREMENTAL_NEXT_BATCH_PROMPT,
+                                     PHYSICS_INCREMENTAL_FINAL_PROMPT)
+    else:
+        first_p, next_p, final_p = (INCREMENTAL_FIRST_BATCH_PROMPT,
+                                     INCREMENTAL_NEXT_BATCH_PROMPT,
+                                     INCREMENTAL_FINAL_PROMPT)
+
     conversation = []
     rounds = []
 
@@ -639,29 +709,28 @@ def _incremental_claude(batches, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        # Build user message with Claude-format image blocks
         content = []
         for path in batch:
             content.append({"type": "image", "source": {"type": "base64",
                             "media_type": "image/png", "data": _encode(path)}})
-        is_first = (r == 0)
-        if is_first:
-            prompt = INCREMENTAL_FIRST_BATCH_PROMPT.format(n=len(batch))
+        if r == 0:
+            prompt = first_p.format(n=len(batch))
         elif is_last:
-            prompt = INCREMENTAL_FINAL_PROMPT.format(n=len(batch))
+            prompt = final_p.format(n=len(batch))
         else:
-            prompt = INCREMENTAL_NEXT_BATCH_PROMPT.format(n=len(batch))
+            prompt = next_p.format(n=len(batch))
         content.append({"type": "text", "text": prompt})
         conversation.append({"role": "user", "content": content})
 
         resp = client.messages.create(
             model="claude-sonnet-4-6", max_tokens=16000,
-            system=INCREMENTAL_SYSTEM_PROMPT,
+            system=system,
             messages=conversation,
         )
         raw = resp.content[0].text.strip()
 
-        # Append real assistant response to conversation
+        # Replace with text-only summary to prevent image accumulation
+        conversation[-1] = {"role": "user", "content": f"[Frames {batch_indices[0]}-{batch_indices[-1]}]"}
         conversation.append({"role": "assistant", "content": raw})
 
         observation = _extract_hypothesis(raw)
@@ -674,11 +743,12 @@ def _incremental_claude(batches, verbose):
     return {"pseudocode": final, "rounds": rounds}
 
 
-def _incremental_gpt4o(batches, verbose):
+def _incremental_gpt4o(batches, verbose, prompt_style="grid"):
     from openai import OpenAI
     client = OpenAI()
 
-    conversation = [{"role": "system", "content": INCREMENTAL_SYSTEM_PROMPT}]
+    system = PHYSICS_INCREMENTAL_SYSTEM_PROMPT if prompt_style == "physics" else INCREMENTAL_SYSTEM_PROMPT
+    conversation = [{"role": "system", "content": system}]
     rounds = []
 
     for r, batch in enumerate(batches):
@@ -690,13 +760,15 @@ def _incremental_gpt4o(batches, verbose):
             label = "FINAL" if is_last else f"Round {r + 1}/{len(batches)}"
             print(f"  [{label}] Sending frames {batch_indices[0]}-{batch_indices[-1]}...")
 
-        conversation.append(_build_user_message(batch, r, len(batches)))
+        conversation.append(_build_user_message(batch, r, len(batches), prompt_style))
 
         resp = client.chat.completions.create(
             model="gpt-4o", max_tokens=16000,
             messages=conversation,
         )
         raw = resp.choices[0].message.content.strip()
+        # Replace with text-only summary to prevent image accumulation
+        conversation[-1] = {"role": "user", "content": f"[Frames {batch_indices[0]}-{batch_indices[-1]}]"}
         conversation.append({"role": "assistant", "content": raw})
 
         observation = _extract_hypothesis(raw)
@@ -717,5 +789,14 @@ def _extract_hypothesis(raw: str) -> str:
                    r"=== OBSERVATION ==="]:
         match = re.search(header + r"\s*\n(.*)", raw, re.DOTALL)
         if match:
-            return match.group(1).strip()
-    return raw
+            return _strip_md_fences(match.group(1).strip())
+    return _strip_md_fences(raw)
+
+
+def _strip_md_fences(text: str) -> str:
+    """Remove ```pseudocode / ``` markdown fences if the LLM wraps its output."""
+    import re
+    match = re.match(r"^```[a-z]*\s*\n(.*?)```\s*$", text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return text

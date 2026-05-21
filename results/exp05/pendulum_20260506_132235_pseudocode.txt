@@ -1,0 +1,62 @@
+Scene        : pendulum
+Description  : A pendulum swinging back and forth in slow motion.
+Provider     : fal / google/gemini-2.5-pro
+Frames       : 44 | Batch : 3 | Rounds : 15
+
+==================================================
+FINAL PSEUDOCODE
+==================================================
+
+STATE VARIABLES:
+  operator: (none, boy, girl, woman, two_girls)
+  mechanism_state: (stationary, rotating)
+  mechanism_rotation_speed: (none, very_slow, slow, fast, very_fast, slowing)
+  mechanism_configuration: (extended, retracted)
+  time: integer
+
+RULES:
+  // Initialization
+  IF time == 1:
+    THEN SET mechanism_configuration = extended
+    AND SET mechanism_state = stationary
+
+  // Operator Sequencing based on time
+  IF time == 1: THEN SET operator = boy
+  IF time == 13: THEN SET operator = none
+  IF time == 16: THEN SET operator = girl
+  IF time == 24: THEN SET operator = none
+  IF time == 31: THEN SET operator = woman
+  IF time == 38: THEN SET operator = none
+  IF time == 46: THEN SET operator = two_girls
+  IF time == 50: THEN SET operator = none
+
+  // Determine if the handle is being turned
+  LET is_turning = false
+  IF (operator == boy AND time >= 4 AND time <= 7) OR
+     (operator == girl AND time >= 17 AND time <= 22) OR
+     (operator == woman AND time >= 32 AND time <= 37) OR
+     (operator == two_girls AND time >= 46 AND time <= 49):
+    THEN SET is_turning = true
+
+  // Mechanism Physics based on interaction
+  IF is_turning == true:
+    SET mechanism_state = rotating
+    IF mechanism_rotation_speed == none OR mechanism_rotation_speed == very_slow:
+      THEN SET mechanism_rotation_speed = slow
+    ELSE IF mechanism_rotation_speed == slow:
+      THEN SET mechanism_rotation_speed = fast
+    ELSE IF mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = very_fast
+  ELSE IF mechanism_state == rotating: // Handle is not being turned
+    IF mechanism_rotation_speed == very_fast OR mechanism_rotation_speed == fast:
+      THEN SET mechanism_rotation_speed = slowing
+    ELSE IF mechanism_rotation_speed == slowing:
+      THEN SET mechanism_rotation_speed = very_slow
+    ELSE IF mechanism_rotation_speed == very_slow:
+      CONTINUE // Inertia keeps it spinning
+
+  // Configuration Change based on speed
+  IF mechanism_rotation_speed == very_fast AND mechanism_configuration == extended:
+    THEN SET mechanism_configuration = retracted
+  ELSE IF mechanism_rotation_speed < very_fast AND mechanism_configuration == retracted:
+    THEN SET mechanism_configuration = extended
